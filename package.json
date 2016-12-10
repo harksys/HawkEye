@@ -1,5 +1,5 @@
 {
-  "name": "hawk-eye",
+  "name": "hawkeye",
   "version": "0.0.1",
   "description": "",
   "main": "main.js",
@@ -9,12 +9,20 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/harksys/Hawk-Eye.git"
+    "url": "git+https://github.com/harksys/HawkEye.git"
   },
-  "author": "",
+  "author": "Andrew Hathaway <andrew@harksys.com>",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/harksys/Hawk-Eye/issues"
   },
-  "homepage": "https://github.com/harksys/Hawk-Eye#readme"
+  "homepage": "https://github.com/harksys/Hawk-Eye#readme",
+  "devDependencies": {
+    "del": "^2.2.2",
+    "gulp": "^3.9.1",
+    "gulp-rename": "^1.2.2",
+    "run-sequence": "^1.2.2",
+    "typings": "^2.0.0",
+    "webpack": "^1.14.0"
+  }
 }
