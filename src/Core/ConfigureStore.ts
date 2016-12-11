@@ -39,5 +39,5 @@ export default function configureStore(reducer: any): Redux.Store<IState>
   // Persist this store in localstorage
   persistStore(store, {});
 
-  return store;
+  return store as Redux.Store<IState>;
 };

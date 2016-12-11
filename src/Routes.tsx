@@ -6,8 +6,12 @@ import {
 
 import App from 'View/App';
 
+import SettingsIndex from 'View/Settings/Index';
+
 export default (
   <Route path="/"
          component={App}>
+    <Route path="/settings"
+           component={SettingsIndex} />
   </Route>
 );
