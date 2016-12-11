@@ -28,5 +28,13 @@
     "typings": "^2.0.0",
     "webpack": "^1.14.0",
     "webpack-stream": "^3.2.0"
+  },
+  "dependencies": {
+    "react": "^15.4.1",
+    "react-dom": "^15.4.1",
+    "react-redux": "^4.4.6",
+    "react-router": "^3.0.0",
+    "react-router-redux": "^4.0.7",
+    "redux": "^3.6.0"
   }
 }
