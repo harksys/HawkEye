@@ -22,6 +22,8 @@ import * as objectAssign from 'object-assign';
 /**
  * @param  {any} reducer
  * @returns Redux
+ *
+ * @todo: Migrate all of this.
  */
 export default function configureStore(reducer: any): Redux.Store<IState>
 {
