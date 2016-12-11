@@ -3,6 +3,9 @@ const gulp       = require('gulp');
 const rename     = require('gulp-rename');
 const runSeq     = require('run-sequence');
 const typescript = require('gulp-typescript');
+const webpack    = require('webpack-stream');
+
+const ENV = process.env.NODE_ENV || 'production';
 
 /**
  * Clean Task
@@ -28,8 +31,24 @@ gulp.task('main', () =>
 });
 
 /**
+ * Bundle Task
+ *
+ * Bundle our application in to a single file.
+ */
+gulp.task('bundle', () =>
+{
+  var webpackConfig = ENV === 'production'
+                        ? './webpack.config.js'
+                        : './webpack.dev.config.js';
+
+  return gulp.src('./src/App.ts')
+             .pipe(webpack(require(webpackConfig)))
+             .pipe(gulp.dest('./'));
+});
+
+/**
  * Default Task
  *
  * Do all the things.
  */
-gulp.task('default', cb => runSeq('clean', 'main', cb));
+gulp.task('default', cb => runSeq('clean', 'main', 'bundle', cb));
