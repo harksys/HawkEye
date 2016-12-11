@@ -3,7 +3,8 @@
     "target"           : "ES5",
     "sourceMap"        : true,
     "module"           : "commonjs",
-    "moduleResolution" : "node"
+    "moduleResolution" : "node",
+    "baseUrl"          : "./src"
   },
   "exclude" : [
     "node_modules"
