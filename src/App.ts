@@ -1,1 +1,1 @@
-console.log('online');
+import * as React from 'react';
