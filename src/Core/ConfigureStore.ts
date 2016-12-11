@@ -6,7 +6,14 @@ import {
   applyMiddleware,
   combineReducers
 } from 'redux';
-import { routerMiddleware, routerReducer } from 'react-router-redux';
+import {
+  routerMiddleware,
+  routerReducer
+} from 'react-router-redux';
+import {
+  persistStore,
+  autoRehydrate
+} from 'redux-persist';
 import thunk from 'redux-thunk';
 import { hashHistory } from 'react-router';
 
@@ -21,9 +28,14 @@ export default function configureStore(reducer: any): Redux.Store<IState>
   const router      = routerMiddleware(hashHistory);
   const middlewares = [thunk, router];
 
-  const enhancer = compose(applyMiddleware(...middlewares));
+  const enhancer = compose(autoRehydrate(), applyMiddleware(...middlewares));
 
-  return createStore(combineReducers(objectAssign({}, reducer, {
+  const store = createStore(combineReducers(objectAssign({}, reducer, {
     routing : routerReducer
   })), undefined, enhancer);
+
+  // Persist this store in localstorage
+  persistStore(store, {});
+
+  return store;
 };
