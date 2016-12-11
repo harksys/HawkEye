@@ -8,6 +8,10 @@ module.exports = {
     filename : 'app.js'
   },
   resolve : {
+    root       : [
+      path.resolve('./node_modules'),
+      path.resolve('./src')
+    ],
     extensions : [
       '',
       '.webpack.js',
