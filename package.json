@@ -30,8 +30,11 @@
     "webpack-stream": "^3.2.0"
   },
   "dependencies": {
+    "async": "^2.1.4",
     "es6-promise": "^4.0.5",
     "object-assign": "^4.1.0",
+    "q": "^1.4.1",
+    "query-string": "^4.2.3",
     "react": "^15.4.1",
     "react-dom": "^15.4.1",
     "react-redux": "^4.4.6",
@@ -39,6 +42,7 @@
     "react-router-redux": "^4.0.7",
     "redux": "^3.6.0",
     "redux-persist": "^3.5.0",
-    "redux-thunk": "^2.1.0"
+    "redux-thunk": "^2.1.0",
+    "whatwg-fetch": "^2.0.1"
   }
 }

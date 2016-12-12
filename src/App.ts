@@ -6,6 +6,10 @@ import configureStore from 'Core/ConfigureStore';
 import { renderApplication } from 'Core/Renderer';
 import routes from 'Routes';
 
+// es6 Promise
+import * as FakePromise from 'es6-promise';
+(FakePromise as any).polyfill();
+
 // Create the store/history
 const store   = configureStore(reducers);
 const history = syncHistoryWithStore(hashHistory, store);
