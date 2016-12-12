@@ -19,9 +19,11 @@
   "homepage": "https://github.com/harksys/Hawk-Eye#readme",
   "devDependencies": {
     "del": "^2.2.2",
+    "exports-loader": "^0.6.3",
     "gulp": "^3.9.1",
     "gulp-rename": "^1.2.2",
     "gulp-typescript": "^3.1.3",
+    "imports-loader": "^0.7.0",
     "run-sequence": "^1.2.2",
     "ts-loader": "^1.3.1",
     "typescript": "^2.1.4",
