@@ -1,4 +1,4 @@
-///<reference path="./IGithubRepository.ts" />
+///<reference path="./IGitHubRepository.ts" />
 
 interface IGitHubNotification
 {
@@ -14,7 +14,7 @@ interface IGitHubNotification
 
   url: string;
 
-  repository: IGithubRepository;
+  repository: IGitHubRepository;
 };
 
 interface IGitHubNotificationSubject

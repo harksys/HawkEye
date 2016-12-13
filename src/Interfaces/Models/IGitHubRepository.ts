@@ -1,4 +1,4 @@
-///<reference path="./IGithubUser.ts" />
+///<reference path="./IGitHubUser.ts" />
 
 interface IGitHubRepository
 {
@@ -12,5 +12,5 @@ interface IGitHubRepository
 
   htmlUrl: string;
 
-  owner: IGithubUser;
+  owner: IGitHubUser;
 };
