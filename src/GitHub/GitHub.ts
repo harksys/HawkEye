@@ -9,3 +9,5 @@ class GitHub
     this.requestFactory = requestFactory;
   }
 };
+
+export default GitHub;
