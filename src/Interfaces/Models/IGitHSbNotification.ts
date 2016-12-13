@@ -1,6 +1,6 @@
 ///<reference path="./IGithubRepository.ts" />
 
-interface IGithubNotification
+interface IGitHubNotification
 {
   id: number;
 
@@ -17,7 +17,7 @@ interface IGithubNotification
   repository: IGithubRepository;
 };
 
-interface IGithubNotificationSubject
+interface IGitHubNotificationSubject
 {
   title: string;
 

@@ -1,5 +1,5 @@
 
-interface IGithubUser
+interface IGitHubUser
 {
   id: number;
 

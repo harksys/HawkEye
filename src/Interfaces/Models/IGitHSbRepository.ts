@@ -1,6 +1,6 @@
 ///<reference path="./IGithubUser.ts" />
 
-interface IGithubRepository
+interface IGitHubRepository
 {
   id: number;
 
