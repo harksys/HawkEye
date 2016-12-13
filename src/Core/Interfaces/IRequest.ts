@@ -14,7 +14,7 @@ interface IRequest
 
   setHeaders(headers?: any): IRequest;
 
-  execute(): Q.IPromise<Response>;
+  execute(): Promise<Response>;
 
   sendAsJson(): IRequest;
 
