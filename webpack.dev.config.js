@@ -24,7 +24,7 @@ module.exports = {
   module  : {
     loaders : [{
       test   : /\.tsx?$/,
-      loader : 'ts-loader?configFileName=tsconfig.json'
+      loader : 'ts-loader?sourceMap=false&configFileName=tsconfig.json'
     }]
   },
   plugins : [
