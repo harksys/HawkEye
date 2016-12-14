@@ -6,6 +6,8 @@ import { renderApplication } from 'Core/Renderer';
 import RequestFactory from 'Core/RequestFactory';
 import GitHub from 'GitHub/GitHub';
 
+import { gitHubApiUrl } from 'Constants/Services/Github';
+
 import routes from 'Routes';
 
 import { syncHistoryWithStore } from 'react-router-redux';
@@ -26,7 +28,7 @@ class HawkEye
     // Services
     InstanceCache
       .addInstance<IGitHub>('IGitHub', new GitHub(
-                                         new RequestFactory('GITHUB HOST')));
+                                         new RequestFactory(gitHubApiUrl)));
 
     // Render the application
     renderApplication(renderTarget, store, history, routes);
