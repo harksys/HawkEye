@@ -1,15 +1,13 @@
 ///<reference path="./Interfaces/IGitHubNotificationsService.ts" />
 ///<reference path="../GitHub/Interfaces/IGitHub.ts" />
 
-import InstanceCache from 'Core/InstanceCache';
-
 class GitHubNotificationsService implements IGitHubNotificationsService
 {
   private gitHub: IGitHub;
 
-  constructor()
+  constructor(gitHub: IGitHub)
   {
-    this.gitHub = InstanceCache.getInstance<IGitHub>('IGitHub');
+    this.gitHub = gitHub;
   }
 };
 
