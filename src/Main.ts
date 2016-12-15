@@ -40,6 +40,11 @@ class Main
 
     Main.mainWindow.loadURL('file://' + __dirname + '/index.html');
     Main.mainWindow.on('closed', Main.onClose);
+
+    // If development, open dev tools
+    if (process.env.NODE_ENV === 'development') {
+      (Main.mainWindow as any).openDevTools();
+    }
   }
 
   static main(app: Electron.App, browserWindow: typeof BrowserWindow)
