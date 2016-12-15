@@ -1,5 +1,8 @@
 import * as React from 'react';
-import { getElectron } from 'Helpers/System/Electron';
+import OAuthBrowserWindow from 'Electron/OAuthBrowserWindow';
+import InstanceCache from 'Core/InstanceCache';
+
+import HawkEyeConfig from 'Config/HawkEye';
 
 class SettingsIndex extends React.Component<any, any>
 {
@@ -20,28 +23,16 @@ class SettingsIndex extends React.Component<any, any>
   {
     e.preventDefault();
 
-    let BrowserWindow = getElectron().remote.BrowserWindow;
-    let authWindow    = new BrowserWindow({
-      width : 800,
-      height : 600,
-      show : true,
-      webPreferences : {
-        nodeIntegration : false
-      }
-    });
-
-    var url = 'https://harksys.com';
-    authWindow.loadURL(url);
-
-    authWindow.on('close', () =>
-    {
-      authWindow.destroy();
-    });
-
-    authWindow.webContents.on('will-navigate', (e, u) =>
-    {
-      console.log(u);
-    });
+    InstanceCache.getInstance<IGitHub>('IGitHub')
+                 .authentication
+                 .generateOAuthURL(HawkEyeConfig.github.clientId, HawkEyeConfig.github.scopes)
+                 .then(url =>
+                 {
+                   new OAuthBrowserWindow(url)
+                        .setOnCloseHandler(() => console.log('Closed'))
+                        .setOnReceivedCodeHandler(code => console.log('got code! ', code))
+                        .setOnReceivedErrorHandler(err => console.log('error! ', err));
+                 });
   }
 };
 
