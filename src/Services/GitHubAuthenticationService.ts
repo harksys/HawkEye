@@ -26,6 +26,22 @@ class GitHubAuthenticationService implements IGitHubAuthenticationService
                .generateOAuthUrl(getGitHubClientId(), getGitHubScopes());
 
   }
+
+  /**
+   * @param  {string} code
+   * @returns Promise
+   */
+  public authenticateAccessToken = (code: string): Promise<string> =>
+  {
+    return new Promise((resolve, reject) =>
+    {
+      this.gitHub
+          .authentication
+          .authenticateAccessToken(getGitHubClientId(), getGitHubClientSecret(), code)
+          .then(res => resolve(res),
+                err => reject(err));
+    });
+  };
 };
 
 export default GitHubAuthenticationService;
