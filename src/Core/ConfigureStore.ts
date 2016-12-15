@@ -30,7 +30,7 @@ export default function configureStore(reducer: any): Redux.Store<IState>
   const router      = routerMiddleware(hashHistory);
   const middlewares = [thunk, router];
 
-  const enhancer = compose(autoRehydrate(), applyMiddleware(...middlewares));
+  const enhancer = compose(applyMiddleware(...middlewares), autoRehydrate());
 
   const store = createStore(combineReducers(objectAssign({}, reducer, {
     routing : routerReducer
