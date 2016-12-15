@@ -23,8 +23,7 @@ class GitHubAuthenticationService implements IGitHubAuthenticationService
   {
     return this.gitHub
                .authentication
-               .generateOAuthUrl(getGitHubClientId(), getGitHubScopes()
-               );
+               .generateOAuthUrl(getGitHubClientId(), getGitHubScopes());
 
   }
 };
