@@ -8,7 +8,9 @@ class App extends React.Component<any, any>
   {
     return (
       <div>
-       {'app here'}
+       <Link to="/settings">
+         {'View Settings'}
+       </Link>
         {this.props.children}
       </div>
     );

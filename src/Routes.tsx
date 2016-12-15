@@ -10,10 +10,9 @@ import SettingsIndex from 'View/Settings/Index';
 
 export default (
   <Route path="/"
-         component={App}
-         onChange={d => console.log(d)}>
+         component={App}>
     <IndexRoute component={Index} />
-    <Route path="/settings"
+    <Route path="settings"
            component={SettingsIndex} />
   </Route>
 );
