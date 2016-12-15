@@ -11,6 +11,11 @@ class Authentication implements IGitHubAuthentication
     this.requestFactory = requestFactory;
   }
 
+  /**
+   * @param  {string} clientId
+   * @param  {string[]} scopes
+   * @returns Promise
+   */
   generateOAuthURL(clientId: string, scopes: string[]): Promise<string>
   {
     return new Promise(resolve =>
