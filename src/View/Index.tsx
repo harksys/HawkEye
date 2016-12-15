@@ -2,17 +2,16 @@ import * as React from 'react';
 
 import { Link } from 'react-router';
 
-class App extends React.Component<any, any>
+class Index extends React.Component<any, any>
 {
   render()
   {
     return (
       <div>
-       {'app here'}
-        {this.props.children}
+        {'Index here'}
       </div>
     );
   }
 };
 
-export default App;
+export default Index;
