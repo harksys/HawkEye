@@ -2,5 +2,12 @@
 
 interface IStateAccounts
 {
-  [accountId: string]: IGitHubUser;
+  [accountId: string]: IStateAccountsAccount;
+};
+
+interface IStateAccountsAccount
+{
+  gitHubToken: string;
+
+  gitHubUser: IGitHubUser;
 };
