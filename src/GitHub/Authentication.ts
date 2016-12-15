@@ -16,7 +16,7 @@ class Authentication implements IGitHubAuthentication
    * @param  {string[]} scopes
    * @returns Promise
    */
-  generateOAuthUrl(clientId: string, scopes: string[]): Promise<string>
+  public generateOAuthUrl = (clientId: string, scopes: string[]): Promise<string> =>
   {
     return new Promise(resolve =>
     {
@@ -27,6 +27,44 @@ class Authentication implements IGitHubAuthentication
       };
 
       resolve(url + QueryString.stringify(qs));
+    });
+  }
+
+  /**
+   * @param  {string} clientId
+   * @param  {string} clientSecret
+   * @param  {string} code
+   * @returns Promise
+   */
+  public authenticateAccessToken = (clientId: string, clientSecret: string, code: string): Promise<string> =>
+  {
+    return new Promise((resolve, reject) =>
+    {
+      let body = {
+        client_id     : clientId,
+        client_secret : clientSecret,
+        code
+      };
+
+      // @todo: Host set :/ Extract?
+      this.requestFactory
+          .newRequest()
+          .setHost('https://github.com')
+          .setUrl('/login/oauth/access_token')
+          .setMethod('post')
+          .setBody(body)
+          .sendAsJson()
+          .execute()
+          .then(r => r.json())
+          .then(res =>
+          {
+            // @todo: IMPROVE THIS ERROR HANDLING.
+            if (typeof res.access_token === 'undefined') {
+              reject(null);
+            }
+
+            resolve(res.access_token);
+          }, err => reject(null));
     });
   }
 };
