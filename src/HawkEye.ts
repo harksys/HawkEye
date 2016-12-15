@@ -6,7 +6,7 @@ import { renderApplication } from 'Core/Renderer';
 import RequestFactory from 'Core/RequestFactory';
 import GitHub from 'GitHub/GitHub';
 
-import { gitHubApiUrl } from 'Constants/Services/Github';
+import { gitHubApiUrl } from 'Constants/Services/GitHub';
 
 import routes from 'Routes';
 
