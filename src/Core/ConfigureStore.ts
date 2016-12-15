@@ -37,7 +37,9 @@ export default function configureStore(reducer: any): Redux.Store<IState>
   })), undefined, enhancer);
 
   // Persist this store in localstorage
-  persistStore(store, {});
+  persistStore(store, {
+    blacklist : ['routing']
+  });
 
   return store as Redux.Store<IState>;
 };
