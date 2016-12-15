@@ -1,7 +1,10 @@
 import Reducify from 'Helpers/State/Reducify';
 
-const initialState = {
-
+const initialState: IStateSettings = {
+  authentication : {
+    isAuthenticating : false
+  },
+  accountSettings : {}
 };
 
 let reducingMethods = {

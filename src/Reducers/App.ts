@@ -1,6 +1,6 @@
 import Reducify from 'Helpers/State/Reducify';
 
-const initialState = {
+const initialState: IStateApp = {
 
 };
 
