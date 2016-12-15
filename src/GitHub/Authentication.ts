@@ -16,7 +16,7 @@ class Authentication implements IGitHubAuthentication
    * @param  {string[]} scopes
    * @returns Promise
    */
-  generateOAuthURL(clientId: string, scopes: string[]): Promise<string>
+  generateOAuthUrl(clientId: string, scopes: string[]): Promise<string>
   {
     return new Promise(resolve =>
     {

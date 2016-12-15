@@ -25,7 +25,7 @@ class SettingsIndex extends React.Component<any, any>
 
     InstanceCache.getInstance<IGitHub>('IGitHub')
                  .authentication
-                 .generateOAuthURL(HawkEyeConfig.github.clientId, HawkEyeConfig.github.scopes)
+                 .generateOAuthUrl(HawkEyeConfig.github.clientId, HawkEyeConfig.github.scopes)
                  .then(url =>
                  {
                    new OAuthBrowserWindow(url)
