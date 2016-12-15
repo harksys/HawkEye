@@ -3,16 +3,18 @@ import { render } from 'react-dom';
 import { Provider } from 'react-redux';
 import { Router } from 'react-router';
 
-export function renderApplication(element: HTMLElement,
-                                  store: Redux.Store<IState>,
-                                  history: ReactRouterRedux.ReactRouterReduxHistory,
-                                  routes: ReactRouter.RouteConfig): void
+export function renderApplication(containerElement: HTMLElement,
+                                  storeCreator: IStoreCreator<IState>,
+                                  routing: IRouting): void
 {
+  /*
+   * Render the application with our routes and store!
+   */
   render(
-    <Provider store={store}>
-      <Router history={history}
-              routes={routes} />
+    <Provider store={storeCreator.getStore()}>
+      <Router history={routing.getSyncdHistory()}
+              routes={routing.getRoutes()} />
     </Provider>,
-    element
+    containerElement
   );
 };

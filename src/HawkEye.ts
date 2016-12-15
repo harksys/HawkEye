@@ -1,38 +1,49 @@
 import InstanceCache from 'Core/InstanceCache';
-import reducers from 'Reducers/Index';
-import configureStore from 'Core/ConfigureStore';
 import { renderApplication } from 'Core/Renderer';
 
+import App from 'View/App';
+import Routing from 'Core/Routing';
+import StoreCreator from 'Core/StoreCreator';
 import RequestFactory from 'Core/RequestFactory';
+
+import { gitHubApiUrl } from 'Constants/Services/GitHub';
 import GitHub from 'GitHub/GitHub';
 
 import GitHubAccountsService from 'Services/GitHubAccountsService';
 import GitHubAuthenticationService from 'Services/GitHubAuthenticationService';
 import GitHubNotificationsService from 'Services/GitHubNotificationsService';
 
-import { gitHubApiUrl } from 'Constants/Services/GitHub';
-
-import routes from 'Routes';
-
-import { syncHistoryWithStore } from 'react-router-redux';
-import { hashHistory } from 'react-router';
+import Routes from 'Routes';
 
 /**
  * @todo: This needs to change. A lot.
  */
 class HawkEye
 {
+  private routing: IRouting;
+
+  private storeCreator: IStoreCreator<IState>;
+
   constructor()
   {
-    const store   = configureStore(reducers);
-    const history = syncHistoryWithStore(hashHistory, store);
+    /*
+     * Setup Routing and StoreCreator for our application
+     */
+    this.routing      = new Routing(App);
+    this.storeCreator = new StoreCreator<IState>(this.routing.getHistory());
 
-    const renderTarget = document.getElementById('root');
+    /*
+     * Sync history with the Store and add
+     * the routing configuration
+     */
+    this.routing
+        .syncHistoryWithStore(this.storeCreator.getStore())
+        .addRouteConfigs(...Routes);
 
-    // GitHub
+
+    // @todo: Migrate the lot.
     const gitHubService = new GitHub(new RequestFactory(gitHubApiUrl));
 
-    // Services
     InstanceCache
       .addInstance<IGitHub>('IGitHub', gitHubService)
       .addInstance<IGitHubAccountsService>('IGitHubAccountsService',
@@ -42,8 +53,15 @@ class HawkEye
       .addInstance<IGitHubNotificationsService>('IGitHubNotificationsService',
                                                  new GitHubNotificationsService(gitHubService))
 
-    // Render the application
-    renderApplication(renderTarget, store, history, routes);
+    /*
+     * Render our application in the container,
+     * along with our storeCreator and routing instances.
+     */
+    renderApplication(
+      document.getElementById('root'),
+      this.storeCreator,
+      this.routing
+    );
   }
 };
 
