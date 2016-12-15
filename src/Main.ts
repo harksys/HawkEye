@@ -25,6 +25,15 @@ class Main
     Main.mainWindow = null;
   }
 
+  static onActivate()
+  {
+    if (Main.mainWindow !== null) {
+      return;
+    }
+
+    Main.onReady();
+  }
+
   static onReady()
   {
     Main.mainWindow = new Main.browserWindow({ width: 330, height : 500 });
@@ -40,6 +49,7 @@ class Main
 
     Main.app.on('window-all-closed', Main.onWindowAllClosed);
     Main.app.on('ready', Main.onReady);
+    Main.app.on('activate', Main.onActivate);
   }
 };
 
