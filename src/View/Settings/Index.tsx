@@ -1,12 +1,18 @@
 import * as React from 'react';
 import { Link } from 'react-router';
+import { connect } from 'react-redux';
 
 import OAuthBrowserWindow from 'Electron/OAuthBrowserWindow';
 import InstanceCache from 'Core/InstanceCache';
 
 import HawkEyeConfig from 'Config/HawkEye';
 
-class SettingsIndex extends React.Component<any, any>
+interface ISettingsIndexProps
+{
+  settings: IStateSettings;
+};
+
+class SettingsIndex extends React.Component<ISettingsIndexProps, any>
 {
   render()
   {
@@ -20,6 +26,9 @@ class SettingsIndex extends React.Component<any, any>
            onClick={this.handleClick.bind(this)}>
           {'Add User'}
         </a>
+        {this.props.settings.authentication.isAuthenticating
+          ? <p>{'Doing the auth!'}</p>
+          : undefined}
       </div>
     );
   }
@@ -50,4 +59,8 @@ class SettingsIndex extends React.Component<any, any>
   }
 };
 
-export default SettingsIndex;
+export default connect(
+  (state: IState) => ({
+    settings : state.settings
+  })
+)(SettingsIndex);
