@@ -4,12 +4,17 @@ import { connect } from 'react-redux';
 
 import OAuthBrowserWindow from 'Electron/OAuthBrowserWindow';
 import InstanceCache from 'Core/InstanceCache';
+import { dispatch } from 'Helpers/State/Store';
+
+import { setIsAuthenticating } from 'Actions/Authentication';
 
 import HawkEyeConfig from 'Config/HawkEye';
 
 interface ISettingsIndexProps
 {
   settings: IStateSettings;
+
+  authentication: IStateAuthentication;
 };
 
 class SettingsIndex extends React.Component<ISettingsIndexProps, any>
@@ -26,7 +31,7 @@ class SettingsIndex extends React.Component<ISettingsIndexProps, any>
            onClick={this.handleClick.bind(this)}>
           {'Add User'}
         </a>
-        {this.props.settings.authentication.isAuthenticating
+        {this.props.authentication.isAuthenticating
           ? <p>{'Doing the auth!'}</p>
           : undefined}
       </div>
@@ -36,6 +41,11 @@ class SettingsIndex extends React.Component<ISettingsIndexProps, any>
   handleClick(e)
   {
     e.preventDefault();
+    if (this.props.authentication.isAuthenticating) {
+      return;
+    }
+
+    dispatch(setIsAuthenticating(true));
 
     InstanceCache.getInstance<IGitHub>('IGitHub')
                  .authentication
@@ -43,24 +53,30 @@ class SettingsIndex extends React.Component<ISettingsIndexProps, any>
                  .then(url =>
                  {
                    new OAuthBrowserWindow(url)
-                        .setOnCloseHandler(() => console.log('Closed'))
+                        .setOnCloseHandler(() => dispatch(setIsAuthenticating(false)))
                         .setOnReceivedCodeHandler(code => {
                           InstanceCache.getInstance<IGitHubAuthenticationService>('IGitHubAuthenticationService')
                           .authenticateAccessToken(code)
-                          .then(res => {
+                          .then(code => {
                             // We has a code
                             // Store code, success notification, request notifications?
+                            dispatch(setIsAuthenticating(false));
+                            alert(code);
                           }, err => {
                             // Set an error
+                            dispatch(setIsAuthenticating(false));
                           })
                         })
-                        .setOnReceivedErrorHandler(err => console.log('error! ', err));
+                        .setOnReceivedErrorHandler(err => {
+                          dispatch(setIsAuthenticating(false));
+                        });
                  });
   }
 };
 
 export default connect(
   (state: IState) => ({
-    settings : state.settings
+    settings       : state.settings,
+    authentication : state.authentication
   })
 )(SettingsIndex);
