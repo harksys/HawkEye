@@ -40,8 +40,15 @@ class HawkEye
         .syncHistoryWithStore(this.storeCreator.getStore())
         .addRouteConfigs(...Routes);
 
+    /*
+     * Bind our Routing and StoreCreator to the cache
+     */
+    InstanceCache
+      .addInstance<IRouting>('IRouting', this.routing)
+      .addInstance<IStoreCreator<IState>>('IStoreCreator', this.storeCreator);
 
-    // @todo: Migrate the lot.
+
+    // @todo: Migrate the lot. ServiceBinder
     const gitHubService = new GitHub(new RequestFactory(gitHubApiUrl));
 
     InstanceCache
@@ -51,7 +58,7 @@ class HawkEye
       .addInstance<IGitHubAuthenticationService>('IGitHubAuthenticationService',
                                                  new GitHubAuthenticationService(gitHubService))
       .addInstance<IGitHubNotificationsService>('IGitHubNotificationsService',
-                                                 new GitHubNotificationsService(gitHubService))
+                                                 new GitHubNotificationsService(gitHubService));
 
     /*
      * Render our application in the container,
