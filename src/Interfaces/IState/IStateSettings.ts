@@ -1,22 +1,15 @@
 
 interface IStateSettings
 {
-  authentication: IStateSettingsAuthentication;
-
-  accountSettings: IStateSettingsAccounts;
+  accountSettings: IStateSettingsAccountSettings;
 };
 
-interface IStateSettingsAuthentication
+interface IStateSettingsAccountSettings
 {
-  isAuthenticating: boolean;
+  [accountId: string]: IStateSettingsAccountSettingsItem;
 };
 
-interface IStateSettingsAccounts
-{
-  [accountId: string]: IStateSettingsAccountsSettingsItem;
-};
-
-interface IStateSettingsAccountsSettingsItem
+interface IStateSettingsAccountSettingsItem
 {
 
 };
