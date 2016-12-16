@@ -6,4 +6,6 @@ interface IAppAlert
   status: string;
 
   message: string;
+
+  show: boolean;
 };
