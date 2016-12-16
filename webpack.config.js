@@ -2,7 +2,7 @@ const webpack = require('webpack');
 const path    = require('path');
 
 module.exports = {
-  entry   : './src/App.ts',
+  entry   : './src/js/App.ts',
   output  : {
     path     : path.resolve('./'),
     filename : 'app.min.js'
@@ -10,7 +10,7 @@ module.exports = {
   resolve : {
     root       : [
       path.resolve('./node_modules'),
-      path.resolve('./src')
+      path.resolve('./src/js')
     ],
     extensions : [
       '',

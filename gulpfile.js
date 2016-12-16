@@ -22,7 +22,7 @@ gulp.task('clean', () => del(['./app.js', './main.js']));
 gulp.task('main', () =>
 {
   var tsProject = typescript.createProject('tsconfig.main.json');
-  var res       = gulp.src('src/Main.ts')
+  var res       = gulp.src('src/js/Main.ts')
                       .pipe(tsProject());
 
   return res.js
@@ -41,7 +41,7 @@ gulp.task('bundle', () =>
                         ? './webpack.config.js'
                         : './webpack.dev.config.js';
 
-  return gulp.src('./src/App.ts')
+  return gulp.src('./src/js/App.ts')
              .pipe(webpack(require(webpackConfig)))
              .pipe(gulp.dest('./'));
 });

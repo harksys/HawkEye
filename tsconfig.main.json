@@ -4,7 +4,7 @@
     "sourceMap"        : true,
     "module"           : "commonjs",
     "moduleResolution" : "node",
-    "baseUrl"          : "./src"
+    "baseUrl"          : "./src/js"
   },
   "exclude" : [
     "node_modules"
