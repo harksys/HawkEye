@@ -11,8 +11,8 @@ class AppAlerts extends React.Component<IAppAlertsProps, any>
   render()
   {
     return (
-      <div>
-        {'Alerts'}
+      <div className="app-alert-container">
+
       </div>
     );
   }
@@ -22,4 +22,4 @@ export default connect(
   (state: IState, props: IAppAlertsProps) => ({
     appAlerts : state.appAlerts
   })
-)(AppAlerts as any); // @todo: Fix this.
+)(AppAlerts as any); // @todo: Fix this. It's complaining. :(
