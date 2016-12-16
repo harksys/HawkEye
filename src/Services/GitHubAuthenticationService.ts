@@ -42,6 +42,22 @@ class GitHubAuthenticationService implements IGitHubAuthenticationService
                 err => reject(err));
     });
   };
+
+  /**
+   * @param  {string} token
+   * @returns Promise
+   */
+  public getAuthenticatedUser = (token: string): Promise<any> =>
+  {
+    return new Promise((resolve, reject) =>
+    {
+      this.gitHub
+          .users
+          .getAuthenticatedUser(token)
+          .then(res => resolve(res),
+                err => reject(err));
+    });
+  }
 };
 
 export default GitHubAuthenticationService;
