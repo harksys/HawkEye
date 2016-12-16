@@ -8,7 +8,7 @@ const initialState: IStateApp = {
 };
 
 let reducingMethods = {
-  [ActionConstants.app.SET_CURRENT_ACCOUNT_ID] : (state: IState, action) =>
+  [ActionConstants.app.SET_CURRENT_ACCOUNT_ID] : (state: IStateApp, action) =>
   {
     return objectAssign({}, state, {
       currentAccountId : action.currentAccountId

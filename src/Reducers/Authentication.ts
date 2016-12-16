@@ -8,7 +8,7 @@ const initialState: IStateAuthentication = {
 };
 
 let reducingMethods = {
-  [ActionConstants.authentication.SET_IS_AUTHENTICATING] : (state: IState, action) =>
+  [ActionConstants.authentication.SET_IS_AUTHENTICATING] : (state: IStateAuthentication, action) =>
   {
     return objectAssign({}, state, {
       isAuthenticating : action.isAuthenticating
