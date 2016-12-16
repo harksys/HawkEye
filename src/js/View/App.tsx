@@ -15,7 +15,9 @@ class App extends React.Component<any, any>
 
           </div>
           <div className="hard-left__content">
-            <AppAlerts />
+            <div className="position--relative width--full">
+              <AppAlerts />
+            </div>
             <Link to="/settings">
               {'View Settings'}
             </Link>
