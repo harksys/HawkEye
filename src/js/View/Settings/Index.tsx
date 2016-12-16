@@ -6,10 +6,12 @@ import OAuthBrowserWindow from 'Electron/OAuthBrowserWindow';
 import InstanceCache from 'Core/InstanceCache';
 import { dispatch, getState } from 'Helpers/State/Store';
 import { makeGitHubUser } from 'Helpers/Models/GitHubUser';
+import { createAppAlert } from 'Helpers/Models/AppAlert';
 
 import { addAccount } from 'Actions/Accounts';
 import { setCurrentAccountId } from 'Actions/App';
 import { setIsAuthenticating } from 'Actions/Authentication';
+import { pushAppAlert } from 'Actions/AppAlerts';
 
 import HawkEyeConfig from 'Config/HawkEye';
 
@@ -45,6 +47,8 @@ class SettingsIndex extends React.Component<ISettingsIndexProps, any>
 
   handleClick(e)
   {
+    dispatch(pushAppAlert(createAppAlert('Testing!', 'error')));
+
     e.preventDefault();
     if (this.props.authentication.isAuthenticating) {
       return;
@@ -60,6 +64,7 @@ class SettingsIndex extends React.Component<ISettingsIndexProps, any>
                    new OAuthBrowserWindow(url)
                         .setOnCloseHandler(() => dispatch(setIsAuthenticating(false)))
                         .setOnReceivedCodeHandler(code => {
+                          dispatch(pushAppAlert(createAppAlert('Winning', 'success')));
                           InstanceCache.getInstance<IGitHubAuthenticationService>('IGitHubAuthenticationService')
                           .authenticateAccessToken(code)
                           .then(code => {
@@ -69,6 +74,7 @@ class SettingsIndex extends React.Component<ISettingsIndexProps, any>
                                          .getAuthenticatedUser(code)
                                          .then(user =>
                                          {
+                                           dispatch(pushAppAlert(createAppAlert('Got user!', 'warning')));
                                            dispatch(setIsAuthenticating(false));
 
                                            let gitHubUser = makeGitHubUser(user);
