@@ -48,7 +48,10 @@ class StoreCreator<T> implements IStoreCreator<T>
      */
     this.store = createStore(reducers, undefined, enhancer) as Redux.Store<T>;
     persistStore(this.store, {
-      blacklist : ['routing']
+      blacklist : [
+        'routing',
+        'authentication'
+      ]
     });
   }
 
