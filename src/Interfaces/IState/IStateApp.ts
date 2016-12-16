@@ -1,5 +1,5 @@
 
 interface IStateApp
 {
-  currentAccountId: string;
+  currentAccountId: number;
 };
