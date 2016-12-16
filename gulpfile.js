@@ -69,4 +69,4 @@ gulp.task('styles', () =>
  *
  * Do all the things.
  */
-gulp.task('default', cb => runSeq('clean', 'main', 'bundle', cb));
+gulp.task('default', cb => runSeq('clean', 'main', 'bundle', 'styles', cb));
