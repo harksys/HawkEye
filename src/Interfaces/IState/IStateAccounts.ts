@@ -7,7 +7,7 @@ interface IStateAccounts
 
 interface IStateAccountsAccount
 {
-  gitHubToken: string;
+  token: string;
 
   gitHubUser: IGitHubUser;
 };
