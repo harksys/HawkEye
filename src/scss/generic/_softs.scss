@@ -1,0 +1,39 @@
+/**
+ * Softs
+ * Jan 2016 - Andrew Hathaway
+ *
+ * Generate soft (padding) rules for
+ * required values
+ */
+@mixin generate-soft-rules($class-pre-name, $spacing-name: 'alpha') {
+  .#{$class-pre-name}soft-#{$spacing-name}         { padding:        get-soft-value($spacing-name)!important; }
+  .#{$class-pre-name}soft-#{$spacing-name}--top    { padding-top:    get-soft-value($spacing-name)!important; }
+  .#{$class-pre-name}soft-#{$spacing-name}--bottom { padding-bottom: get-soft-value($spacing-name)!important; }
+  .#{$class-pre-name}soft-#{$spacing-name}--left   { padding-left:   get-soft-value($spacing-name)!important; }
+  .#{$class-pre-name}soft-#{$spacing-name}--right  { padding-right:  get-soft-value($spacing-name)!important; }
+  .#{$class-pre-name}soft-#{$spacing-name}--ends   { padding-top:    get-soft-value($spacing-name)!important;
+                                                     padding-bottom: get-soft-value($spacing-name)!important; }
+  .#{$class-pre-name}soft-#{$spacing-name}--sides  { padding-left:   get-soft-value($spacing-name)!important;
+                                                     padding-right:  get-soft-value($spacing-name)!important; }
+}
+
+/*
+ * Generate a set of soft rules for the
+ * defined soft-values.
+ */
+@each $spacing-name, $spacing-value in $base-soft-values {
+  @include generate-soft-rules(null, $spacing-name);
+};
+
+/*
+ * Generate a set of soft rules for the breakpoints
+ * defined in each sets list. Wrap them in a breakpoint
+ * and prefix the class with the breakpoint name and -.
+ */
+@each $spacing-name, $breakpoint-list in $breakpoint-softs {
+  @each $breakpoint-name in $breakpoint-list {
+    @include breakpoint($breakpoint-name) {
+      @include generate-soft-rules(prefix-breakpoint-class($breakpoint-name), $spacing-name);
+    };
+  };
+};

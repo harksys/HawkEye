@@ -1,0 +1,61 @@
+/**
+ * Pushes
+ * Jan 2016 - Andrew Hathaway
+ *
+ * Generate push rules for required values
+ */
+
+@mixin generate-push-rules($class-pre-name: null, $spacing-name: 'alpha') {
+  .#{$class-pre-name}push-#{$spacing-name}         { margin:        get-push-value($spacing-name)!important; }
+  .#{$class-pre-name}push-#{$spacing-name}--top    { margin-top:    get-push-value($spacing-name)!important; }
+  .#{$class-pre-name}push-#{$spacing-name}--bottom { margin-bottom: get-push-value($spacing-name)!important; }
+  .#{$class-pre-name}push-#{$spacing-name}--left   { margin-left:   get-push-value($spacing-name)!important; }
+  .#{$class-pre-name}push-#{$spacing-name}--right  { margin-right:  get-push-value($spacing-name)!important; }
+  .#{$class-pre-name}push-#{$spacing-name}--ends   { margin-top:    get-push-value($spacing-name)!important;
+                                                     margin-bottom: get-push-value($spacing-name)!important; }
+  .#{$class-pre-name}push-#{$spacing-name}--sides  { margin-left:   get-push-value($spacing-name)!important;
+                                                     margin-right:  get-push-value($spacing-name)!important; }
+}
+
+@mixin generate-push-autos($class-pre-name: null) {
+  .#{$class-pre-name}push-auto--sides {
+    margin-left:  auto!important;
+    margin-right: auto!important;
+  }
+}
+
+/*
+ * Generate a set of push rules for the
+ * defined push-values.
+ */
+@each $spacing-name, $spacing-value in $base-push-values {
+  @include generate-push-rules(null, $spacing-name);
+}
+
+/*
+ * Generate default push-auto rules
+ */
+@include generate-push-autos();
+
+/*
+ * Generate a set of push rules for the breakpoints
+ * defined in each sets list. Wrap them in a breakpoint
+ * and prefix the class with the breakpoint name and -.
+ */
+@each $spacing-name, $breakpoint-list in $breakpoint-pushes {
+   @each $breakpoint-name in $breakpoint-list {
+     @include breakpoint($breakpoint-name) {
+       @include generate-push-rules(prefix-breakpoint-class($breakpoint-name), $spacing-name);
+     };
+   };
+};
+
+/*
+ * Generate the set of push autos for
+ * breakpoints defined in the variables.
+ */
+@each $breakpoint-name in $breakpoint-push-autos {
+  @include breakpoint($breakpoint-name) {
+    @include generate-push-autos(prefix-breakpoint-class($breakpoint-name));
+  };
+};

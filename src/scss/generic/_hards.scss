@@ -1,0 +1,31 @@
+/**
+ * Hards
+ * March 2016 - Andrew Hathaway
+ *
+ * Generate hard (padding) rules for values.
+ */
+@mixin generate-hard-rules($class-pre-name) {
+  .#{$class-pre-name}hard        { padding: 0!important; }
+  .#{$class-pre-name}hard--top    { padding-top: 0!important; }
+  .#{$class-pre-name}hard--bottom { padding-bottom: 0!important; }
+  .#{$class-pre-name}hard--left   { padding-left: 0!important; }
+  .#{$class-pre-name}hard--right  { padding-right: 0!important; }
+  .#{$class-pre-name}hard--ends   { padding-top: 0!important;
+                                    padding-bottom: 0!important; }
+  .#{$class-pre-name}hard--sides  { padding-left: 0!important;
+                                    padding-right: 0!important; }
+};
+
+/*
+ * Generate the standard hards
+ */
+@include generate-hard-rules(null);
+
+/*
+ * For each breakpoint, generate the hards.
+ */
+@each $breakpoint-name in $breakpoint-hards {
+  @include breakpoint($breakpoint-name) {
+    @include generate-hard-rules(prefix-breakpoint-class($breakpoint-name));
+  }
+};

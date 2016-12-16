@@ -1,0 +1,26 @@
+/**
+ * Text Weights
+ * Jan 2016 - Andrew Hathaway
+ *
+ * Text weight helpers
+ */
+
+@mixin generate-text-weights($pre-class-name: null) {
+  .#{$pre-class-name}text--bold   { font-weight: bold!important; }
+  .#{$pre-class-name}text--normal { font-weight: normal!important; }
+}
+
+/*
+ * Generate default text weights
+ */
+@include generate-text-weights();
+
+/*
+ * Generate text weights for any
+ * breakpoints in the variables
+ */
+@each $breakpoint-name in $breakpoint-text-weights {
+  @include breakpoint($breakpoint-name) {
+    @include generate-text-weights(prefix-breakpoint-class($breakpoint-name));
+  };
+};

@@ -1,0 +1,63 @@
+/**
+ * Typography
+ * Jan 2016 - Andrew Hathaway
+ *
+ * Typography base
+ */
+
+/*
+ * Paragraphs
+ */
+p {
+  line-height: $text-line-height;
+}
+
+/*
+ * Anchors
+ */
+a {
+  font-size: inherit;
+  text-decoration: none;
+  color: $anchor-text-color;
+
+  &:hover {
+    cursor: pointer;
+    color: $anchor-text-color;
+  }
+
+  &:active {
+    color: $anchor-text-active-color;
+  }
+
+  &:visited {
+    color: $anchor-text-visited-color;
+  }
+}
+
+/*
+ * Headings
+ */
+@include headings() {
+  font-weight: $header-font-weight;
+  line-height: $header-line-height;
+}
+
+h1 { font-size: get-font-size(alpha); }
+h2 { font-size: get-font-size(beta); }
+h3 { font-size: get-font-size(gamma); }
+h4 { font-size: get-font-size(delta); }
+h5 { font-size: get-font-size(epsilon); }
+h6 { font-size: get-font-size(zeta); }
+
+/*
+ * Labels
+ */
+label {
+  display: block;
+  font: {
+    size: $label-size;
+    weight: $label-font-weight;
+  };
+  color: $label-text-color;
+  text-transform: $label-text-transform;
+}

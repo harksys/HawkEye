@@ -1,0 +1,16 @@
+/**
+ * Soft Directives
+ * Jan 2016 - Andrew Hathaway
+ *
+ * Methods associated with our values
+ * for soft values.
+ */
+
+/**
+ * get-soft-value
+ *
+ * Retreive the sot value for a spacingName
+ */
+@function get-soft-value($spacing-name: 'alpha') {
+  @return map-get($base-soft-values, $spacing-name);
+}

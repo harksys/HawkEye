@@ -1,0 +1,29 @@
+/**
+ * Overflows
+ * Jan 2016 - Andrew Hathaway
+ *
+ * Overflow helpers
+ */
+
+@mixin generate-overflows($pre-class-name: null) {
+  .#{$pre-class-name}overflow--visible { overflow: visible!important; }
+  .#{$pre-class-name}overflow--hidden  { overflow: hidden!important; }
+  .#{$pre-class-name}overflow--scroll  { overflow: scroll!important; }
+  .#{$pre-class-name}overflow--xscroll { overflow-x: scroll!important; }
+  .#{$pre-class-name}overflow--yscroll { overflow-y: scroll!important; }
+}
+
+/*
+ * Generate default overflows
+ */
+@include generate-overflows();
+
+/*
+ * Generate overflows for any breakpoints
+ * setup in the variables
+ */
+@each $breakpoint-name in $breakpoint-overflows {
+  @include breakpoint($breakpoint-name) {
+    @include generate-overflows(prefix-breakpoint-class($breakpoint-name));
+  };
+};

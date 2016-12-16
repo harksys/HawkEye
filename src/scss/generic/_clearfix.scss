@@ -1,0 +1,18 @@
+/**
+ * Clearfix
+ * Jan 2016 - Andrew Hathaway
+ *
+ * The clear fix object. Extend this
+ * instead of having it appear in markup
+ * majority of the time.
+ */
+
+.clear {
+
+  &:after {
+    content: '';
+    display: table;
+    clear: both;
+  }
+
+}

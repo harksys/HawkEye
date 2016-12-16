@@ -1,0 +1,16 @@
+/**
+ * Grid Directives
+ * Jan 2016 - Andrew Hathaway
+ *
+ * Helpers for grid methods
+ */
+
+@function get-grid-gutter($gutter-name: default) {
+  @return map-get($grid-gutters, $gutter-name);
+};
+
+@mixin silent-relative() {
+  @if $grid-use-silent == true {
+    position: relative;
+  };
+};

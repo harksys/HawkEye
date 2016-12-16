@@ -1,0 +1,18 @@
+.cover-height {
+  width: 100%;
+  overflow: hidden;
+  max-height: 120px;
+  @include transition(max-height .25s ease);
+}
+
+.cover-height--130 {
+  max-height: 130px;
+}
+
+.cover-height--show {
+  max-height: 9000px!important;
+}
+
+.cover-height--to-470.cover-height--show {
+  max-height: 470px!important;
+}

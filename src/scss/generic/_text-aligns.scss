@@ -1,0 +1,27 @@
+/**
+ * Text Aligns
+ * Jan 2016 - Andrew Hathaway
+ *
+ * Text align helpers
+ */
+
+@mixin generate-text-aligns($pre-class-name: null) {
+  .#{$pre-class-name}text--center { text-align: center!important; }
+  .#{$pre-class-name}text--left   { text-align: left!important; }
+  .#{$pre-class-name}text--right  { text-align: right!important; }
+}
+
+/*
+ * Generate default text aligns
+ */
+@include generate-text-aligns();
+
+/*
+ * Generate text aligns for any
+ * breakpoints in the variables
+ */
+@each $breakpoint-name in $breakpoint-text-aligns {
+  @include breakpoint($breakpoint-name) {
+    @include generate-text-aligns(prefix-breakpoint-class($breakpoint-name));
+  };
+};

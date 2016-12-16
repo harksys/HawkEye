@@ -1,0 +1,21 @@
+/**
+ * Line Heights
+ * May 2016 - Andrew Hathaway
+ *
+ * Line Heights
+ */
+
+@mixin generate-line-heights($pre-class-name: null) {
+  .#{$pre-class-name}line-height--none { line-height: 1em!important; }
+  .#{$pre-class-name}line-height--1-3 { line-height: 1.3em!important; }
+
+  .#{$pre-class-name}line-height--40 { line-height: 40px!important; }
+}
+
+@include generate-line-heights();
+
+@each $breakpoint-name in $breakpoint-line-heights {
+  @include breakpoint($breakpoint-name) {
+    @include generate-line-heights(prefix-breakpoint-class($breakpoint-name));
+  }
+};

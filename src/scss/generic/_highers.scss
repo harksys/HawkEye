@@ -1,0 +1,15 @@
+/*
+ * Highers
+ * March 2016 - Andrew Hathaway
+ *
+ * Generate z-index helpers
+ */
+.higher { z-index: $higher; }
+
+@mixin generate-higher-rule($higher-name: 'alpha', $sizing-value: $higher) {
+  .higher--#{$higher-name} { z-index: $sizing-value; }
+};
+
+@each $sizing-name, $sizing-value in $higher-sizes {
+  @include generate-higher-rule($sizing-name, $sizing-value);
+};

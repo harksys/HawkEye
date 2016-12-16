@@ -1,0 +1,50 @@
+.hard-right {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  position: relative; //@todo: Mixin these rules? fullRelative()
+}
+
+.hard-right--allow-overflow {
+  overflow: visible;
+}
+
+.hard-right__right {
+  top: 0;
+  right: 0;
+  bottom: 0;
+  height: 100%;
+  position: absolute;
+  width: $hard-right-width;
+  @include transition(right .25s ease-in-out);
+}
+
+.hard-right__content {
+  width: 100%;
+  height: 100%;
+  padding-right: $hard-right-width;
+  @include transition(padding-right .25s ease-in-out);
+}
+
+.hard-right--pull {
+  overflow: hidden;
+
+  > .hard-right__right   { right: -$hard-right-width; }
+  > .hard-right__content { padding-right: 0; }
+}
+
+@mixin generate-hards($post-class-name: null) {
+  .hard-right--#{$post-class-name} {
+    > .hard-right__right   { width: map-get($hard-right-sizes, $post-class-name); }
+    > .hard-right__content { padding-right: map-get($hard-right-sizes, $post-class-name)!important;  }
+
+    &.hard-right--pull {
+      > .hard-right__right   { right: map-get($hard-right-sizes, $post-class-name); }
+      > .hard-right__content { padding-right: 0;  }
+    }
+  }
+};
+
+@each $hard-name, $hard-size in $hard-right-sizes {
+  @include generate-hards($hard-name);
+}

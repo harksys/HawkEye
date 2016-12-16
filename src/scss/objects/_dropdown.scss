@@ -1,0 +1,19 @@
+.dropdown {
+  position: relative;
+}
+
+.dropdown__menu {
+  top: 100%;
+  right: 0;
+  display: none;
+  position: absolute;
+}
+
+.dropdown--open .dropdown__menu {
+  display: block;
+}
+
+.dropdown__menu--center {
+  left: 50%;
+  right: auto;
+}

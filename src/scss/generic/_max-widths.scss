@@ -1,0 +1,35 @@
+/**
+ * Max Widths
+ * Mar 2016 - Andrew Hathaway
+ *
+ * Max-Width helpers
+ */
+
+@mixin generate-max-widths($pre-class-name: null) {
+  /*
+   * None-fractional max-widths
+   */
+   .#{$pre-class-name}max-width--240 { max-width: 240px!important; }
+   .#{$pre-class-name}max-width--290 { max-width: 290px!important; }
+   .#{$pre-class-name}max-width--450 { max-width: 450px!important; }
+   .#{$pre-class-name}max-width--540 { max-width: 540px!important; }
+
+  .#{$pre-class-name}max-width--35p { max-width: 35%!important; }
+  .#{$pre-class-name}max-width--50p { max-width: 50%!important; }
+  .#{$pre-class-name}max-width--75p { max-width: 75%!important; }
+}
+
+/*
+ * Generate defafult max-widths
+ */
+@include generate-max-widths();
+
+/*
+ * Generate max-widths for any
+ * breakpoints in the variables
+ */
+@each $breakpoint-name in $breakpoint-max-widths {
+  @include breakpoint($breakpoint-name) {
+    @include generate-max-widths(prefix-breakpoint-class($breakpoint-name));
+  }
+};

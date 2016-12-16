@@ -1,0 +1,124 @@
+/**
+ * Grid System
+ * Jan 2016 - Andrew Hathaway
+ *
+ * Awesome grid system. Split out
+ * from CSSWizardry Grids.
+ */
+
+.grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  margin-left: get-grid-gutter() * -1;
+}
+
+@if $grid-use-markup-fix != true {
+  /* Opera hack */
+  .opera:-o-prefocus,
+  .grid{
+    word-spacing:-0.43em;
+  }
+}
+
+.grid__item {
+  display: inline-block;
+  padding-left: get-grid-gutter();
+  vertical-align: top;
+
+  @if $grid-mobile-first == true {
+    width: 100%;
+  }
+
+  @if $grid-use-markup-fix != true {
+    letter-spacing: normal;
+    word-spacing: normal;
+  }
+}
+
+/**
+ * Modifiers
+ */
+
+/*
+ * Reversed grids allow you to structure your source in the opposite order to
+ * how your rendered layout will appear. Extends `.grid`.
+ */
+.grid--rev {
+  direction: rtl;
+  text-align: left;
+
+  > .grid__item {
+    direction: ltr;
+    text-align: left;
+  }
+}
+
+/*
+ * Gutterless grids have all the properties of regular grids, minus any spacing.
+ * Extends `.grid`.
+ */
+.grid--full {
+  margin-left: 0;
+
+  > .grid__item {
+    padding-left: 0;
+  }
+}
+
+/*
+ * Align the entire grid to the right. Extends `.grid`.
+ */
+.grid--right {
+  text-align: right;
+
+  > .grid__item {
+    text-align: left;
+  }
+}
+
+/*
+ * Centered grids align grid items centrally without needing to use push or pull
+ * classes. Extends `.grid`.
+ */
+.grid--center {
+  text-align: center;
+
+  > .grid__item {
+    text-align: left;
+  }
+}
+
+/*
+ * Align grid cells vertically (`.grid--middle` or `.grid--bottom`). Extends
+ * `.grid`.
+ */
+.grid--middle {
+  > .grid__item {
+    vertical-align: middle;
+  }
+}
+
+.grid--bottom {
+  > .grid__item {
+    vertical-align: bottom;
+  }
+}
+
+/*
+ * Generate gutter methods for any
+ * others than the default.
+ *
+ * SIDENOTE: WHY CANNOT SASS JUST GET @CONTINUE
+ */
+@each $gutter-name, $gutter-value in $grid-gutters {
+  @if $gutter-name != default {
+    .grid--#{$gutter-name} {
+      margin-left: -$gutter-value;
+
+      > .grid__item {
+        padding-left: $gutter-value;
+      }
+    }
+  }
+}

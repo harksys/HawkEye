@@ -1,0 +1,30 @@
+/**
+ * Displays
+ * Jan 2016 - Andrew Hathaway
+ *
+ * Display helpers
+ */
+
+@mixin generate-displays($pre-class-name: null) {
+  .#{$pre-class-name}display--hidden       { display: none!important; }
+  .#{$pre-class-name}display--block        { display: block!important; }
+  .#{$pre-class-name}display--inline       { display: inline!important; }
+  .#{$pre-class-name}display--inline-block { display: inline-block!important; }
+  .#{$pre-class-name}display--table        { display: table!important; }
+  .#{$pre-class-name}display--table-cell   { display: table-cell!important; }
+}
+
+/*
+ * Generate default displays
+ */
+@include generate-displays();
+
+/*
+ * Generate displays for any breakpoints
+ * setup in the variables.
+ */
+@each $breakpoint-name in $breakpoint-displays {
+  @include breakpoint($breakpoint-name) {
+    @include generate-displays(prefix-breakpoint-class($breakpoint-name));
+  };
+};

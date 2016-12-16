@@ -1,0 +1,36 @@
+/**
+ * Headings Directives
+ * Jan 2016 - Andrew Hathaway
+ *
+ * Headings directives
+ */
+
+/**
+ * headings-each
+ *
+ * Duplicate a block of code, for headings
+ * from x to y.
+ */
+@mixin headings-each($from: 1, $to: 6){
+  @for $i from $from through $to{
+    h#{$i}{
+      @content;
+    };
+  };
+};
+
+/**
+ * headings
+ */
+@mixin headings() {
+  h1, h2, h3,
+  h4, h5, h6 {
+    @content;
+  }
+}
+
+@mixin heading($i) {
+  h#{$i} {
+    @content;
+  }
+}

@@ -1,0 +1,16 @@
+/**
+ * Push Directives
+ * Jan 2016 - Andrew Hathaway
+ *
+ * Methods associated with our values
+ * for pushes.
+ */
+
+/**
+ * get-push-value
+ *
+ * Retreive the push value for a spacingName
+ */
+@function get-push-value($spacing-name: 'alpha') {
+  @return map-get($base-push-values, $spacing-name);
+}

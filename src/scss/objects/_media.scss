@@ -1,0 +1,31 @@
+/**
+ * Media Object
+ * Jan 2016 - Andrew Hathaway
+ *
+ * The media object:
+ * http://www.stubbornella.org/content/2010/06/25/the-media-object-saves-hundreds-of-lines-of-code/
+ */
+
+.media {
+  @extend .clear;
+  @extend .display--block;
+}
+
+.media__img {
+  float: left;
+  margin-right: 20px; // @todo: replace
+}
+
+.media--right .media__img {
+   float: right;
+   margin-left: 20px; // @todo: replace
+   margin-right: 0;
+}
+
+.media__body {
+  overflow: hidden;
+
+  &, & > :last-child {
+    margin-bottom: 0;
+  }
+}

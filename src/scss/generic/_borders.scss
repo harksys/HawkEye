@@ -1,0 +1,35 @@
+/**
+ * Borders
+ * Jan 2016 - Andrew Hathaway
+ *
+ * Border helpers
+ */
+
+@mixin generate-borders($pre-class-name: null) {
+  .#{$pre-class-name}border-solid  { border-style: solid!important; }
+  .#{$pre-class-name}border-dashed { border-style: dashed!important; }
+
+  .#{$pre-class-name}border-single { border-width: 1px!important; }
+
+  .#{$pre-class-name}border-top-single    { border-top-width: 1px!important; }
+  .#{$pre-class-name}border-bottom-single { border-bottom-width: 1px!important; }
+
+  .#{$pre-class-name}border-mid-grey   { border-color: #D6D6D6!important; }
+  .#{$pre-class-name}border-light-grey { border-color: #EEE!important; }
+  .#{$pre-class-name}border-black      { border-color: black!important; }
+}
+
+/*
+ * Generate defafult borders
+ */
+@include generate-borders();
+
+/*
+ * Generate borders for any
+ * breakpoints in the variables
+ */
+@each $breakpoint-name in $breakpoint-borders {
+  @include breakpoint($breakpoint-name) {
+    @include generate-borders(prefix-breakpoint-class($breakpoint-name));
+  }
+};

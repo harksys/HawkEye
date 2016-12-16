@@ -1,3 +1,90 @@
-body {
-  background: red;
-}
+/**
+ * HawkEye CSS
+ * Jan 2016 - Andrew Hathaway
+ *
+ * Central point of includes/imports
+ * for the HawkEye SCSS project.
+ *
+ * Follow BEM syntax.
+ */
+
+/*
+ * Setup
+ */
+@import "compass/css3";
+@import "compass/reset";
+@import "animation/core";
+
+/*
+ * Import Variables
+ */
+@import "variables";
+
+/*
+ * Import all directives (methods) that
+ * the projects file will then use
+ */
+@import "directives/breakpoints";
+@import "directives/pushes";
+@import "directives/softs";
+@import "directives/transparents";
+@import "directives/headings";
+@import "directives/font-sizes";
+@import "directives/keyframes";
+@import "directives/grid";
+
+/*
+ * Import all base files
+ */
+@import "base/page";
+@import "base/typography";
+@import "base/lists";
+@import "base/form";
+@import "base/images";
+@import "base/fonts";
+
+/*
+ * Import all objects
+ */
+@import "objects/grid";
+@import "objects/media";
+@import "objects/dialog";
+@import "objects/vscroll";
+@import "objects/hard-top";
+@import "objects/truncate";
+@import "objects/dropdown";
+@import "objects/hard-left";
+@import "objects/hard-right";
+@import "objects/hard-bottom";
+@import "objects/fixed-left";
+@import "objects/flexi-side";
+@import "objects/cover-height";
+@import "objects/fixed-overlay";
+@import "objects/loading-overlay";
+
+/*
+ * Import all generic components
+ */
+@import "generic/clearfix";
+@import "generic/pushes";
+@import "generic/softs";
+@import "generic/floats";
+@import "generic/displays";
+@import "generic/positionings";
+@import "generic/backgrounds";
+@import "generic/overflows";
+@import "generic/text-aligns";
+@import "generic/text-colors";
+@import "generic/text-fonts";
+@import "generic/text-sizes";
+@import "generic/text-transforms";
+@import "generic/text-weights";
+@import "generic/text-emboss";
+@import "generic/widths";
+@import "generic/heights";
+@import "generic/borders";
+@import "generic/max-widths";
+@import "generic/min-heights";
+@import "generic/hards";
+@import "generic/highers";
+@import "generic/line-heights";

@@ -1,0 +1,12 @@
+
+.dialog {
+  width: 100%;
+  height: 100%;
+  display: table;
+}
+
+.dialog__cell {
+  text-align: center;
+  display: table-cell;
+  vertical-align: middle;
+}

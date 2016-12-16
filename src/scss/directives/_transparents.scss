@@ -1,0 +1,24 @@
+/**
+ * Transparent Directives
+ * Jan 2016 - Andrew Hathaway
+ *
+ * Methods to help with transparancies
+ */
+
+/**
+ * trans-dark
+ *
+ * Simple method to help with dark overlays etc
+ */
+@function trans-dark($percentage: 0.5) {
+	@return rgba(0, 0, 0, $percentage);
+}
+
+/**
+ * trans-light
+ *
+ * Simple method to help with light overlays etc
+ */
+@function trans-light($percentage: 0.5) {
+	@return rgba(255, 255, 255, $percentage);
+}

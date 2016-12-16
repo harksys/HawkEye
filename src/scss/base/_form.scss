@@ -1,0 +1,12 @@
+/**
+ * Form Base
+ * Jan 2016 - Andrew Hathaway
+ *
+ * Base form/input styles
+ */
+
+input, textarea, button {
+  resize: none;
+  outline: none;
+  @include border-radius(0);
+}

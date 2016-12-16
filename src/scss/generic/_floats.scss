@@ -1,0 +1,27 @@
+/**
+ * Floats
+ * Jan 2016 - Andrew Hathaway
+ *
+ * Float helpers
+ */
+
+@mixin generate-floats($pre-class-name: null) {
+  .#{$pre-class-name}float--left  { float: left!important; }
+  .#{$pre-class-name}float--right { float: right!important; }
+  .#{$pre-class-name}float--none  { float: none!important; }
+}
+
+/*
+ * Generate default floats
+ */
+@include generate-floats();
+
+/*
+ * Generate floats for any breakpoints
+ * setup in the variables.
+ */
+@each $breakpoint-name in $breakpoint-floats {
+  @include breakpoint($breakpoint-name) {
+    @include generate-floats(prefix-breakpoint-class($breakpoint-name));
+  }
+}

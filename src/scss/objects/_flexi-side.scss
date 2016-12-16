@@ -1,0 +1,19 @@
+.flexi-side {
+  width: 100%;
+  display: table;
+  position: relative;
+}
+
+.flexi-side__side,
+.flexi-side__content {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.flexi-side__side {
+  height: 100%;
+}
+
+.flexi-side__content {
+  width: 100%;
+}

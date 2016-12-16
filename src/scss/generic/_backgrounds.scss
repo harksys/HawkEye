@@ -1,0 +1,34 @@
+/**
+ * Backgrounds
+ * Jan 2016 - Andrew Hathaway
+ *
+ * Background helpers
+ */
+
+@mixin generate-backgrounds($pre-class-name: null) {
+  .#{$pre-class-name}bg--none   { background: transparent!important; }
+  .#{$pre-class-name}bg--white  { background: white!important; }
+
+  .#{$pre-class-name}bg--success { background: $background-success!important; }
+  .#{$pre-class-name}bg--error   { background: $background-error!  important; }
+  .#{$pre-class-name}bg--warning { background: $background-warning!important; }
+
+  @each $name, $color in $backgrounds {
+    .#{$pre-class-name}bg--#{$name} { background: $color!important; }
+  }
+}
+
+/*
+ * Generate defafult backgrounds
+ */
+@include generate-backgrounds();
+
+/*
+ * Generate backgrounds for any
+ * breakpoints in the variables
+ */
+@each $breakpoint-name in $breakpoint-backgrounds {
+  @include breakpoint($breakpoint-name) {
+    @include generate-backgrounds(prefix-breakpoint-class($breakpoint-name));
+  }
+};

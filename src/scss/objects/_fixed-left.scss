@@ -1,0 +1,36 @@
+.fixed-left {
+  width: 100%;
+  height: 100%;
+  min-height: 100%;
+  position: relative; //@todo: Mixin these rules? fullRelative()
+}
+
+.fixed-left__left {
+  top: 0;
+  left: 0;
+  bottom: 0;
+  height: 100%;
+  position: fixed;
+  width: $fixed-left-width;
+}
+
+.fixed-left__content {
+  width: 100%;
+  height: 100%;
+  padding-left: $fixed-left-width;
+}
+
+@mixin generate-fixed-lefts($post-class-name: null) {
+  .fixed-left--#{$post-class-name} {
+    > .fixed-left__left    { width: map-get($fixed-left-sizes, $post-class-name); }
+    > .fixed-left__content { padding-left: map-get($fixed-left-sizes, $post-class-name)!important;  }
+  }
+
+  .fixed-left-push--#{$post-class-name} {
+    left: map-get($fixed-left-sizes, $post-class-name);
+  }
+};
+
+@each $fixed-name, $fixed-size in $fixed-left-sizes {
+  @include generate-fixed-lefts($fixed-name);
+}

@@ -1,0 +1,39 @@
+/**
+ * Breakpoint Directives
+ * Jan 2016 - Andrew Hathaway
+ *
+ * Methods and helpers for working
+ * with our defined breakpoints.
+ */
+
+@mixin breakpoint($breakpoint-name) {
+
+  @if $breakpoint-name == mobile {
+    @media (max-width: $mobile-max-breakpoint) {
+      @content
+    }
+  }
+
+  @else if $breakpoint-name == tablet {
+    @media (min-width: $tablet-min-breakpoint) and (max-width: $tablet-max-breakpoint) {
+      @content;
+    }
+  }
+
+  @else if $breakpoint-name == desktop {
+    @media (min-width: $desktop-min-breakpoint) {
+      @content;
+    }
+  }
+
+  @else if $breakpoint-name == max {
+    @media (min-width: $max-min-breakpoint) {
+      @content;
+    }
+  }
+
+}
+
+@function prefix-breakpoint-class($class-name) {
+  @return $class-name + $breakpoint-separator;
+};

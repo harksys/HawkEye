@@ -1,0 +1,28 @@
+/**
+ * Text Colors
+ * Jan 2016 - Andrew Hathaway
+ *
+ * Text color helpers
+ */
+
+@mixin generate-text-colors($pre-class-name: null) {
+  .#{$pre-class-name}text--white { color: white!important; }
+  .#{$pre-class-name}text--body  { color: $body-text-color!important; }
+
+  .#{$pre-class-name}text--error { color: $background-error!important; }
+}
+
+/*
+ * Generate default text aligns
+ */
+@include generate-text-colors();
+
+/*
+ * Generate text colors for any
+ * breakpoints in the variables
+ */
+@each $breakpoint-name in $breakpoint-text-colors {
+  @include breakpoint($breakpoint-name) {
+    @include generate-text-colors(prefix-breakpoint-class($breakpoint-name));
+  };
+};

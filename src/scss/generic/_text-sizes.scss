@@ -1,0 +1,30 @@
+/**
+ * Text Sizes
+ * Jan 2016 - Andrew Hathaway
+ *
+ * Text size helpers
+ */
+
+@mixin generate-text-sizes($pre-class-name: null) {
+  @each $size-name, $font-size in $font-sizes {
+    .#{$pre-class-name}text--#{$size-name} { font-size: $font-size!important; }
+  };
+};
+
+/*
+ * Generate the default text sizes
+ */
+@include generate-text-sizes();
+
+/*
+ * Generate a set of text size rules for the breakpoints
+ * defined in each sets list. Wrap them in a breakpoint
+ * and prefix them with the class and the breakpoint name.
+ */
+@each $space-name, $breakpoint-list in $breakpoint-font-sizes {
+  @each $breakpoint-name in $breakpoint-list {
+    @include breakpoint($breakpoint-name) {
+      @include generate-text-sizes(prefix-breakpoint-class($breakpoint-name));
+    };
+  };
+};

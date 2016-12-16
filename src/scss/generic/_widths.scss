@@ -1,0 +1,125 @@
+/**
+ * Widths
+ * Jan 2016 - Andrew Hathaway
+ *
+ * Width helpers
+ */
+
+@mixin generate-widths($pre-class-name: null) {
+  /*
+   * None-fractional widths
+   */
+  .#{$pre-class-name}width--full { width: 100%!important; }
+  .#{$pre-class-name}width--auto { width: auto!important; }
+
+  .#{$pre-class-name}width--28  { width: 28px!important; }
+
+  .#{$pre-class-name}width--30  { width: 30px!important; }
+  .#{$pre-class-name}width--40  { width: 40px!important; }
+  .#{$pre-class-name}width--120 { width: 120px!important; }
+  .#{$pre-class-name}width--250 { width: 250px!important; }
+  .#{$pre-class-name}width--300 { width: 300px!important; }
+  .#{$pre-class-name}width--350 { width: 350px!important; }
+
+  /*
+   * Whole
+   */
+  .#{$pre-class-name}one-whole       { width:100%; }
+
+
+  /*
+   * Halves
+   */
+  .#{$pre-class-name}one-half        { width:50%; }
+
+
+  /*
+   * Thirds
+   */
+  .#{$pre-class-name}one-third       { width:33.333%; }
+  .#{$pre-class-name}two-thirds      { width:66.666%; }
+
+
+  /*
+   * Quarters
+   */
+  .#{$pre-class-name}one-quarter     { width:25%; }
+  .#{$pre-class-name}two-quarters    { @extend .#{$pre-class-name}one-half; }
+  .#{$pre-class-name}three-quarters  { width:75%; }
+
+
+  /*
+   * Fifths
+   */
+  .#{$pre-class-name}one-fifth       { width:20%; }
+  .#{$pre-class-name}two-fifths      { width:40%; }
+  .#{$pre-class-name}three-fifths    { width:60%; }
+  .#{$pre-class-name}four-fifths     { width:80%; }
+
+
+  /*
+   * Sixths
+   */
+  .#{$pre-class-name}one-sixth       { width:16.666%; }
+  .#{$pre-class-name}two-sixths      { @extend .#{$pre-class-name}one-third; }
+  .#{$pre-class-name}three-sixths    { @extend .#{$pre-class-name}one-half; }
+  .#{$pre-class-name}four-sixths     { @extend .#{$pre-class-name}two-thirds; }
+  .#{$pre-class-name}five-sixths     { width:83.333%; }
+
+
+  /*
+   * Eighths
+   */
+  .#{$pre-class-name}one-eighth      { width:12.5%; }
+  .#{$pre-class-name}two-eighths     { @extend .#{$pre-class-name}one-quarter; }
+  .#{$pre-class-name}three-eighths   { width:37.5%; }
+  .#{$pre-class-name}four-eighths    { @extend .#{$pre-class-name}one-half; }
+  .#{$pre-class-name}five-eighths    { width:62.5%; }
+  .#{$pre-class-name}six-eighths     { @extend .#{$pre-class-name}three-quarters; }
+  .#{$pre-class-name}seven-eighths   { width:87.5%; }
+
+
+  /*
+   * Tenths
+   */
+  .#{$pre-class-name}one-tenth       { width:10%; }
+  .#{$pre-class-name}two-tenths      { @extend .#{$pre-class-name}one-fifth; }
+  .#{$pre-class-name}three-tenths    { width:30%; }
+  .#{$pre-class-name}four-tenths     { @extend .#{$pre-class-name}two-fifths; }
+  .#{$pre-class-name}five-tenths     { @extend .#{$pre-class-name}one-half; }
+  .#{$pre-class-name}six-tenths      { @extend .#{$pre-class-name}three-fifths; }
+  .#{$pre-class-name}seven-tenths    { width:70%; }
+  .#{$pre-class-name}eight-tenths    { @extend .#{$pre-class-name}four-fifths; }
+  .#{$pre-class-name}nine-tenths     { width:90%; }
+
+
+  /*
+   * Twelfths
+   */
+  .#{$pre-class-name}one-twelfth     { width:8.333%; }
+  .#{$pre-class-name}two-twelfths    { @extend .#{$pre-class-name}one-sixth; }
+  .#{$pre-class-name}three-twelfths  { @extend .#{$pre-class-name}one-quarter; }
+  .#{$pre-class-name}four-twelfths   { @extend .#{$pre-class-name}one-third; }
+  .#{$pre-class-name}five-twelfths   { width:41.666% }
+  .#{$pre-class-name}six-twelfths    { @extend .#{$pre-class-name}one-half; }
+  .#{$pre-class-name}seven-twelfths  { width:58.333%; }
+  .#{$pre-class-name}eight-twelfths  { @extend .#{$pre-class-name}two-thirds; }
+  .#{$pre-class-name}nine-twelfths   { @extend .#{$pre-class-name}three-quarters; }
+  .#{$pre-class-name}ten-twelfths    { @extend .#{$pre-class-name}five-sixths; }
+  .#{$pre-class-name}eleven-twelfths { width:91.666%; }
+}
+
+/*
+ * Generate defafult widths
+ */
+@include generate-widths();
+
+/*
+ * Generate widths for any
+ * breakpoints in the variables
+ */
+@each $breakpoint-name in $breakpoint-widths {
+  @include breakpoint($breakpoint-name) {
+    @include generate-widths(prefix-breakpoint-class($breakpoint-name));
+  }
+};

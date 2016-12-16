@@ -1,0 +1,16 @@
+/**
+ * Font Size Directives
+ * Jan 2016 - Andrew Hathaway
+ *
+ * Methods to associate with our
+ * font-size values.
+ */
+
+/*
+ * get-font-size
+ *
+ * Retrive the font size for a font size name
+ */
+@function get-font-size($size-name: 'alpha') {
+  @return map-get($font-sizes, $size-name);
+}

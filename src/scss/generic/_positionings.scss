@@ -1,0 +1,28 @@
+/**
+ * Positionings
+ * Jan 2016 - Andrew Hathaway
+ *
+ * Generate position rules
+ */
+
+@mixin generate-positionings($class-pre-name: null) {
+  .#{$class-pre-name}position--static   { position: static!important; }
+  .#{$class-pre-name}position--fixed    { position: fixed!important; }
+  .#{$class-pre-name}position--relative { position: relative!important; }
+  .#{$class-pre-name}position--absolute { position: absolute!important; }
+}
+
+/*
+ * Generate default positionings
+ */
+@include generate-positionings();
+
+/*
+ * Generate positionings for any breakpoints
+ * setup in the variables
+ */
+@each $breakpoint-name in $breakpoint-positionings {
+  @include breakpoint($breakpoint-name) {
+    @include generate-positionings(prefix-breakpoint-class($breakpoint-name));
+  }
+}

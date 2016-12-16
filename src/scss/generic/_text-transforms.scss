@@ -1,0 +1,28 @@
+/**
+ * Text Transforms
+ * Jan 2016 - Andrew Hathaway
+ *
+ * Text font helpers
+ */
+
+@mixin generate-text-transforms($pre-class-name: null) {
+  .#{$pre-class-name}text--no-transform { text-transform: none!important; }
+  .#{$pre-class-name}text--uppercase    { text-transform: uppercase!important; }
+  .#{$pre-class-name}text--lowercase    { text-transform: lowercase!important; }
+  .#{$pre-class-name}text--capitalize   { text-transform: capitalize!important; }
+}
+
+/*
+ * Generate default text transforms
+ */
+@include generate-text-transforms();
+
+/*
+ * Generate text transforms for any
+ * breakpoints in the variables
+ */
+@each $breakpoint-name in $breakpoint-text-transforms {
+  @include breakpoint($breakpoint-name) {
+    @include generate-text-transforms(prefix-breakpoint-class($breakpoint-name));
+  };
+};

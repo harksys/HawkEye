@@ -1,0 +1,25 @@
+/**
+ * Text Fonts
+ * Jan 2016 - Andrew Hathaway
+ *
+ * Text font helpers
+ */
+
+@mixin generate-text-fonts($pre-class-name: null) {
+  .#{$pre-class-name}text--primary { font-family: $primary-font!important; }
+}
+
+/*
+ * Generate default text fonts
+ */
+@include generate-text-fonts();
+
+/*
+ * Generate text fonts for any
+ * breakpoints in the variables
+ */
+@each $breakpoint-name in $breakpoint-text-fonts {
+  @include breakpoint($breakpoint-name) {
+    @include generate-text-fonts(prefix-breakpoint-class($breakpoint-name));
+  };
+};

@@ -1,0 +1,17 @@
+/**
+ * Text Embossings
+ * May 2016 - Andrew Hathaway
+ *
+ * Text Embossings
+ */
+@mixin generate-text-embossings($pre-class-name: null) {
+  .#{$pre-class-name}text--emboss { text-shadow: 0 1px rgba(0, 0, 0, .4); }
+}
+
+@include generate-text-embossings();
+
+@each $breakpoint-name in $breakpoint-text-embossings {
+  @include breakpoint($breakpoint-name) {
+    @include generate-text-embossings(prefix-breakpoint-class($breakpoint-name));
+  }
+};

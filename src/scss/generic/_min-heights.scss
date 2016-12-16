@@ -1,0 +1,28 @@
+/**
+ * Min Height
+ * Mar 2016 - Andrew Hathaway
+ *
+ * Min-Height helpers
+ */
+
+@mixin generate-min-heights($pre-class-name: null) {
+  /*
+   * None-fractional min-heights
+   */
+   .#{$pre-class-name}min-height--full { min-height: 100%!important; }
+}
+
+/*
+ * Generate defafult min-heights
+ */
+@include generate-min-heights();
+
+/*
+ * Generate min-heights for any
+ * breakpoints in the variables
+ */
+@each $breakpoint-name in $breakpoint-min-heights {
+  @include breakpoint($breakpoint-name) {
+    @include generate-min-heights(prefix-breakpoint-class($breakpoint-name));
+  }
+};

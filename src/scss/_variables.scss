@@ -1,0 +1,209 @@
+/**
+ * Variables
+ * Jan 2016 - Andrew Hathaway
+ *
+ * Variables must have suitable names
+ * and be separated via dashes.
+ */
+
+/**
+ * Widths & Page
+ */
+ $min-page-width: 320px!default;
+
+ /**
+  * Colours
+  */
+$body-text-color:       #333!default;
+$body-background-color: #EEF3F6!default;
+
+$anchor-text-color:       blue!default;
+$anchor-text-hover-color:   darken($anchor-text-color, 10)!default;
+$anchor-text-active-color:  $anchor-text-color!default;
+$anchor-text-visited-color: $anchor-text-color!default;
+
+$label-text-color: #666!default;
+
+/**
+ * Text, Fonts etc
+ */
+$primary-font:      'Roboto', sans-serif!default;
+//$primary-icon-font: 'themify', sans-serif!default;
+$base-body-font:    $primary-font!default;
+
+$header-font-weight: normal!default;
+$text-font-weight:   normal!default;
+$body-font-weight:   normal!default;
+$label-font-weight:  bold!default;
+
+$text-line-height:   1.5em!default;
+$header-line-height: 1.5em!default;
+
+$label-text-transform: uppercase;
+
+$font-sizes: (
+  alpha   : 30px,
+  beta    : 20px,
+  gamma   : 18px,
+  delta   : 16px,
+  epsilon : 14px,
+  zeta    : 12px
+)!default;
+$base-font-size: map-get($font-sizes, delta)!default;
+$label-size:     map-get($font-sizes, epsilon)!default;
+
+/**
+ * Spacing values
+ */
+$base-soft-values: (
+  alpha   : 40px,
+  beta    : 30px,
+  gamma   : 25px,
+  delta   : 20px,
+  epsilon : 15px,
+  zeta    : 10px,
+  iota    : 5px,
+  kappa   : 1px
+)!default;
+
+$base-push-values: (
+  alpha   : 40px,
+  beta    : 30px,
+  gamma   : 25px,
+  delta   : 20px,
+  epsilon : 15px,
+  zeta    : 10px,
+  iota    : 5px,
+  omega   : 1px
+)!default;
+
+/**
+ * Grid Setup
+ *
+ * More information regarding these
+ * variables in objects/grid
+ */
+$grid-mobile-first:   true!default;
+$grid-use-silent:     false!default;
+$grid-use-markup-fix: false!default;
+$grid-gutters:        (
+  default  : 20px,
+  zeta     : 5px
+)!default;
+
+/**
+ * Breakpoint definitions and setup
+ */
+$mobile-max-breakpoint:  599px!default;
+$tablet-min-breakpoint:  600px!default;
+$tablet-max-breakpoint:  959px!default;
+$desktop-min-breakpoint: 960px!default;
+$max-min-breakpoint:     1200px!default;
+
+$breakpoint-separator: '-'!default;
+
+/**
+ * Breakpoint generations
+ */
+$breakpoint-font-sizes: (
+  alpha   : (),
+  beta    : (),
+  gamma   : (),
+  delta   : (),
+  epsilon : (),
+  zeta    : ()
+)!default;
+
+$breakpoint-softs: (
+  alpha   : (),
+  beta    : (),
+  gamma   : (),
+  delta   : (),
+  epsilon : (),
+  zeta    : ()
+)!default;
+
+$breakpoint-pushes: (
+  alpha   : (),
+  beta    : (),
+  gamma   : (),
+  delta   : (),
+  epsilon : (),
+  zeta    : ()
+)!default;
+
+$breakpoint-push-autos:      ()!default;
+$breakpoint-floats:          ()!default;
+$breakpoint-displays:        ()!default;
+$breakpoint-positionings:    ()!default;
+$breakpoint-backgrounds:     ()!default;
+$breakpoint-overflows:       ()!default;
+$breakpoint-text-aligns:     ()!default;
+$breakpoint-text-colors:     ()!default;
+$breakpoint-text-fonts:      ()!default;
+$breakpoint-text-transforms: ()!default;
+$breakpoint-text-weights:    ()!default;
+$breakpoint-widths:          ()!default;
+$breakpoint-heights:         ()!default;
+$breakpoint-borders:         ()!default;
+$breakpoint-max-widths:      ()!default;
+$breakpoint-min-heights:     ()!default;
+$breakpoint-hards:           ()!default;
+$breakpoint-line-heights:    ()!default;
+$breakpoint-text-embossings: ()!default;
+
+/**
+ * Miscellaneous variables
+ */
+$default-border-radius: 3px!default;
+
+/*
+ * Hards
+ */
+$hard-left-width: 320px;
+$hard-left-sizes: (
+
+)!default;
+
+$hard-right-width: 320px;
+$hard-right-sizes: (
+)!default;
+
+$hard-top-width: 200px;
+$hard-top-sizes: (
+)!default;
+
+$hard-bottom-width: 200px;
+$hard-bottom-sizes: (
+)!default;
+
+/*
+ * Fixed
+ */
+$fixed-left-width: 230px!default;
+$fixed-left-sizes: (
+)!default;
+
+/*
+ * Highers
+ */
+$higher: 9999999;
+$higher-sizes: (
+  alpha   : 999999,
+  beta    : 99999,
+  gamma   : 9999,
+  delta   : 999,
+  epsilon : 99,
+  zeta    : 9
+);
+
+/*
+ * Backgrounds
+ */
+$background-success: #92CB94;
+$background-error: #C82222;
+$background-warning: #DEC23F;
+
+$backgrounds: (
+
+);

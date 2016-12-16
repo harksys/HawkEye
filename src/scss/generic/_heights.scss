@@ -1,0 +1,38 @@
+/**
+ * Heights
+ * Jan 2016 - Andrew Hathaway
+ *
+ * Height helpers
+ */
+
+@mixin generate-heights($pre-class-name: null) {
+  /*
+   * None-fractional heights
+   */
+
+  .#{$pre-class-name}height--full { height: 100%!important; }
+  .#{$pre-class-name}height--auto { height: auto!important; }
+
+  .#{$pre-class-name}height--40  { height: 40px!important; }
+  .#{$pre-class-name}height--80  { height: 80px!important; }
+  .#{$pre-class-name}height--90  { height: 90px!important; }
+  .#{$pre-class-name}height--100 { height: 100px!important; }
+  .#{$pre-class-name}height--300 { height: 300px!important; }
+  .#{$pre-class-name}height--340 { height: 340px!important; }
+  .#{$pre-class-name}height--400 { height: 400px!important; }
+}
+
+/*
+ * Generate defafult heights
+ */
+@include generate-heights();
+
+/*
+ * Generate heights for any
+ * breakpoints in the variables
+ */
+@each $breakpoint-name in $breakpoint-heights {
+  @include breakpoint($breakpoint-name) {
+    @include generate-heights(prefix-breakpoint-class($breakpoint-name));
+  }
+};

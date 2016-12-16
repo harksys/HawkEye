@@ -1,0 +1,30 @@
+/**
+ * Page Base
+ * Jan 2016 - Andrew Hathaway
+ *
+ * Base page styles
+ */
+
+* { @include box-sizing(border-box); }
+
+html, body {
+  height: 100%;
+  min-height: 100%;
+}
+
+body, input, textarea, button {
+  color: $body-text-color;
+
+  font: {
+    size: $base-font-size;
+    family: $base-body-font;
+    weight: $body-font-weight;
+  }
+
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  min-width: $min-page-width;
+  background: $body-background-color;
+}

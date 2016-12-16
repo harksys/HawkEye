@@ -1,0 +1,33 @@
+/**
+ * Keyframes Directives
+ * Jan 2106 - Andrew Hathaway
+ *
+ * Directives to help with keyframes
+ */
+
+/**
+ * Keyframes mixin
+ *
+ * Usage: @include keyframes([name], { CONTENT });
+ */
+@mixin keyframes($name) {
+    @-webkit-keyframes #{$name} {
+        @content;
+    }
+
+    @-moz-keyframes #{$name} {
+        @content;
+    }
+
+    @-ms-keyframes #{$name} {
+        @content;
+    }
+
+    @-o-keyframes #{$name} {
+        @content;
+    }
+
+    @keyframes #{$name} {
+        @content;
+    }
+}
