@@ -5,6 +5,10 @@
  */
 export function makeGitHubUser(user: any): IGitHubUser
 {
+  if (typeof user.any === 'undefined') {
+    return null;
+  }
+
   return {
     id        : user.id,
     avatarUrl : user.avatar_url,
