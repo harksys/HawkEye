@@ -4,6 +4,7 @@ const rename     = require('gulp-rename');
 const runSeq     = require('run-sequence');
 const typescript = require('gulp-typescript');
 const webpack    = require('webpack-stream');
+const sass       = require('gulp-sass');
 
 const ENV = process.env.NODE_ENV || 'production';
 
@@ -43,6 +44,23 @@ gulp.task('bundle', () =>
 
   return gulp.src('./src/js/App.ts')
              .pipe(webpack(require(webpackConfig)))
+             .pipe(gulp.dest('./'));
+});
+
+/*
+ * Styles Task
+ *
+ * Use Node Sass to build our main stylesheet
+ */
+gulp.task('styles', () =>
+{
+  return gulp.src('./src/scss/hawkeye.scss')
+             .pipe(sass({
+               outputStyle  : 'compressed',
+               includePaths : [
+                 './node_modules/compass-mixins/lib'
+               ]
+             }).on('err', sass.logError))
              .pipe(gulp.dest('./'));
 });
 
