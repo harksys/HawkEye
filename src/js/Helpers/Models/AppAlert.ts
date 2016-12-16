@@ -1,4 +1,5 @@
 import { getState } from 'Helpers/State/Store';
+import { generateId } from 'Helpers/Lang/String';
 
 /**
  * @returns number
@@ -23,6 +24,7 @@ export function getNextAppAlertIndex(): number
 export function createAppAlert(message: string, status: string): IAppAlert
 {
   let appAlert: IAppAlert = {
+    id      : generateId(),
     index   : getNextAppAlertIndex(),
     show    : false,
     message : message,

@@ -1,6 +1,8 @@
 
 interface IAppAlert
 {
+  id: string;
+
   index: number;
 
   status: string;
