@@ -162,26 +162,42 @@ $default-border-radius: 3px!default;
  */
 $hard-left-width: 320px;
 $hard-left-sizes: (
-
+  alpha   : 20px,
+  beta    : 20px,
+  gamma   : 20px,
+  delta   : 68px,
+  epsilon : 40px,
+  zeta    : 20px
 )!default;
 
 $hard-right-width: 320px;
 $hard-right-sizes: (
+  alpha   : 20px,
+  beta    : 20px,
+  gamma   : 20px,
+  delta   : 20px,
+  epsilon : 20px,
+  zeta    : 20px
 )!default;
 
 $hard-top-width: 200px;
 $hard-top-sizes: (
+  alpha   : 20px,
+  beta    : 20px,
+  gamma   : 20px,
+  delta   : 20px,
+  epsilon : 20px,
+  zeta    : 20px
 )!default;
 
 $hard-bottom-width: 200px;
 $hard-bottom-sizes: (
-)!default;
-
-/*
- * Fixed
- */
-$fixed-left-width: 230px!default;
-$fixed-left-sizes: (
+  alpha   : 20px,
+  beta    : 20px,
+  gamma   : 20px,
+  delta   : 20px,
+  epsilon : 20px,
+  zeta    : 20px
 )!default;
 
 /*
