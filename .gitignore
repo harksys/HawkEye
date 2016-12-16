@@ -6,4 +6,4 @@ typings/*
 main.js
 app.js
 
-src/Config/HawkEye.ts
+src/js/Config/HawkEye.ts
