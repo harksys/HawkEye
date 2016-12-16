@@ -4,9 +4,11 @@ import { connect } from 'react-redux';
 
 import OAuthBrowserWindow from 'Electron/OAuthBrowserWindow';
 import InstanceCache from 'Core/InstanceCache';
-import { dispatch } from 'Helpers/State/Store';
+import { dispatch, getState } from 'Helpers/State/Store';
 import { makeGitHubUser } from 'Helpers/Models/GitHubUser';
 
+import { addAccount } from 'Actions/Accounts';
+import { setCurrentAccountId } from 'Actions/App';
 import { setIsAuthenticating } from 'Actions/Authentication';
 
 import HawkEyeConfig from 'Config/HawkEye';
@@ -16,6 +18,8 @@ interface ISettingsIndexProps
   settings: IStateSettings;
 
   authentication: IStateAuthentication;
+
+  app: IStateApp;
 };
 
 class SettingsIndex extends React.Component<ISettingsIndexProps, any>
@@ -61,16 +65,26 @@ class SettingsIndex extends React.Component<ISettingsIndexProps, any>
                           .then(code => {
                             // We has a code
                             // Store code, success notification, request notifications?
-                            dispatch(setIsAuthenticating(false));
-
                             InstanceCache.getInstance<IGitHubAuthenticationService>('IGitHubAuthenticationService')
                                          .getAuthenticatedUser(code)
                                          .then(user =>
                                          {
+                                           dispatch(setIsAuthenticating(false));
+
                                            let gitHubUser = makeGitHubUser(user);
-                                           // Store!
+                                           if (gitHubUser === null) {
+                                             console.log(1, 'ISSUE');
+                                             return;
+                                           }
+
+                                           dispatch(addAccount(code, gitHubUser));
+                                           if (this.props.app.currentAccountId == null) {
+                                             dispatch(setCurrentAccountId(gitHubUser.id));
+                                           }
+                                           console.log(getState());
                                          }, err => {
-                                           console.log('e', err);
+                                           dispatch(setIsAuthenticating(false));
+                                           console.log(2, 'ISSUE');
                                          });
                           }, err => {
                             // Set an error
@@ -87,6 +101,7 @@ class SettingsIndex extends React.Component<ISettingsIndexProps, any>
 export default connect(
   (state: IState) => ({
     settings       : state.settings,
-    authentication : state.authentication
+    authentication : state.authentication,
+    app            : state.app
   })
 )(SettingsIndex);
