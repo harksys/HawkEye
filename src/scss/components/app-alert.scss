@@ -1,0 +1,27 @@
+.app-alert-container {
+  left: 0;
+  top: -20px;
+  width: 100%;
+  height: 20px;
+  background: red;
+  position: absolute;
+}
+
+.app-alert {
+  left: 0;
+  top: 0px;
+  width: 100%;
+  height: 20px;
+  position: absolute;
+  background: green;
+  @include transition(top .25s ease);
+}
+
+.app-alert--show {
+  top: 20px;
+}
+
+// Statuses
+.app-alert--success { background: green; }
+.app-alert--warning { background: orange; }
+.app-alert--error   { background: red; }
