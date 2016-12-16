@@ -1,9 +1,11 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 
+import AppAlert from './AppAlert';
+
 interface IAppAlertsProps
 {
-  appAlerts?: IStateAppAlerts;
+  appAlerts?: IAppAlert[];
 };
 
 class AppAlerts extends React.Component<IAppAlertsProps, any>
@@ -12,7 +14,9 @@ class AppAlerts extends React.Component<IAppAlertsProps, any>
   {
     return (
       <div className="app-alert-container">
-
+        {this.props.appAlerts
+             .map(a => <AppAlert key={a.index}
+                                 appAlert={a} />)}
       </div>
     );
   }
@@ -20,6 +24,6 @@ class AppAlerts extends React.Component<IAppAlertsProps, any>
 
 export default connect(
   (state: IState, props: IAppAlertsProps) => ({
-    appAlerts : state.appAlerts
+    appAlerts : state.appAlerts.alerts
   })
 )(AppAlerts as any); // @todo: Fix this. It's complaining. :(
