@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import OAuthBrowserWindow from 'Electron/OAuthBrowserWindow';
 import InstanceCache from 'Core/InstanceCache';
 import { dispatch } from 'Helpers/State/Store';
+import { makeGitHubUser } from 'Helpers/Models/GitHubUser';
 
 import { setIsAuthenticating } from 'Actions/Authentication';
 
@@ -61,7 +62,16 @@ class SettingsIndex extends React.Component<ISettingsIndexProps, any>
                             // We has a code
                             // Store code, success notification, request notifications?
                             dispatch(setIsAuthenticating(false));
-                            alert(code);
+
+                            InstanceCache.getInstance<IGitHubAuthenticationService>('IGitHubAuthenticationService')
+                                         .getAuthenticatedUser(code)
+                                         .then(user =>
+                                         {
+                                           let gitHubUser = makeGitHubUser(user);
+                                           // Store!
+                                         }, err => {
+                                           console.log('e', err);
+                                         });
                           }, err => {
                             // Set an error
                             dispatch(setIsAuthenticating(false));
