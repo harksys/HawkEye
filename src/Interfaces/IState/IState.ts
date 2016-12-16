@@ -2,6 +2,7 @@
 ///<reference path="./IStateAccounts.ts" />
 ///<reference path="./IStateNotifications.ts" />
 ///<reference path="./IStateSettings.ts" />
+///<reference path="./IStateAuthentication.ts" />
 
 interface IState
 {
@@ -12,4 +13,6 @@ interface IState
   notifications: IStateNotifications;
 
   settings: IStateSettings;
+
+  authentication: IStateAuthentication;
 };

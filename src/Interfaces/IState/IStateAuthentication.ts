@@ -1,0 +1,5 @@
+
+interface IStateAuthentication
+{
+  isAuthenticating: boolean;
+};
