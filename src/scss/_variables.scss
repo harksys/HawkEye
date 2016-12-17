@@ -247,5 +247,9 @@ $btn-square-sizes: (
 );
 
 $btn-backgrounds: (
-  dark-grey-brand: (#444, $brand-color-secondary)
+  light-grey      : (#999, darken(#999, 10)),
+
+  brand-main      : ($brand-color-main, lighten($brand-color-main, 10)),
+  brand-secondary : ($brand-color-secondary, lighten($brand-color-secondary, 10)),
+  dark-grey-brand : (#444, $brand-color-secondary)
 )
