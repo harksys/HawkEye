@@ -188,7 +188,7 @@ $hard-top-sizes: (
   alpha   : 20px,
   beta    : 20px,
   gamma   : 20px,
-  delta   : 20px,
+  delta   : 40px,
   epsilon : 20px,
   zeta    : 20px
 )!default;
@@ -224,7 +224,8 @@ $background-error: #C82222;
 $background-warning: #DEC23F;
 
 $backgrounds: (
-  dark-grey : #444
+  dark-grey : #444,
+  light-grey : #EEE
 );
 
 /*
@@ -244,3 +245,7 @@ $button-transition-speed: .25s;
 $btn-square-sizes: (
   delta : 48px
 );
+
+$btn-backgrounds: (
+  dark-grey-brand: (#444, $brand-color-secondary)
+)

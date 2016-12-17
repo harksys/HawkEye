@@ -29,3 +29,13 @@
     line-height: $size;
   }
 }
+
+@each $bg-name, $bgs in $btn-backgrounds {
+  .btn--#{$bg-name} {
+    background: nth($bgs, 1);
+
+    &:hover {
+      background: nth($bgs, 2);
+    }
+  }
+}
