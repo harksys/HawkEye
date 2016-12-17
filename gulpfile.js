@@ -70,3 +70,14 @@ gulp.task('styles', () =>
  * Do all the things.
  */
 gulp.task('default', cb => runSeq('clean', 'main', 'bundle', 'styles', cb));
+
+/**
+ * Watch Task
+ *
+ * Watch for changes
+ */
+gulp.task('watch', () =>
+{
+  gulp.watch('./src/js/**/*', {}, () => gulp.start('default'));
+  gulp.watch('./src/scss/**/*.scss', {}, () => gulp.start('styles'));
+});
