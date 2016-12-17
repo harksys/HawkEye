@@ -2,6 +2,7 @@ import * as React from 'react';
 
 import { Link } from 'react-router';
 
+import AppBar from './Components/AppBar';
 import AppAlerts from './Components/AppAlerts';
 
 class App extends React.Component<any, any>
@@ -12,12 +13,13 @@ class App extends React.Component<any, any>
       <div className="width--full height--full">
         <div className="hard-left hard-left--delta">
           <div className="hard-left__left bg--dark-grey">
-
+            <AppBar />
           </div>
           <div className="hard-left__content">
             <div className="position--relative width--full">
               <AppAlerts />
             </div>
+            <i className="ti ti-world" />
             <Link to="/settings">
               {'View Settings'}
             </Link>
