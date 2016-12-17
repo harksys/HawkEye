@@ -1,15 +1,15 @@
 import * as React from 'react';
 
-import { Link } from 'react-router';
+import ViewBar from 'View/Components/ViewBar/Index';
 
 class Index extends React.Component<any, any>
 {
   render()
   {
     return (
-      <div>
-        {'Index here'}
-      </div>
+      <ViewBar title="Notifications">
+        <p>{'Notifications go here'}</p>
+      </ViewBar>
     );
   }
 };

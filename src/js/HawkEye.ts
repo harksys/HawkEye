@@ -2,6 +2,8 @@ import InstanceCache from 'Core/InstanceCache';
 import { renderApplication } from 'Core/Renderer';
 
 import App from 'View/App';
+import AppIndex from 'View/Index';
+
 import Routing from 'Core/Routing';
 import StoreCreator from 'Core/StoreCreator';
 import RequestFactory from 'Core/RequestFactory';
@@ -29,7 +31,7 @@ class HawkEye
     /*
      * Setup Routing and StoreCreator for our application
      */
-    this.routing      = new Routing(App);
+    this.routing      = new Routing(App, AppIndex);
     this.storeCreator = new StoreCreator<IState>(this.routing.getHistory());
 
     /*

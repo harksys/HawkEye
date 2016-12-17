@@ -16,7 +16,7 @@ class Routing implements IRouting
   /**
    * @param  {any} appContainer
    */
-  constructor(appContainer: any)
+  constructor(appContainer: any, indexComponent: any)
   {
     /*
      * Setup the default chilRoutes and
@@ -33,6 +33,9 @@ class Routing implements IRouting
       childRoutes : [{
         path        : '/',
         component   : appContainer,
+        indexRoute  : {
+          component : indexComponent
+        },
         childRoutes : this.childRoutes
       }]
     };
