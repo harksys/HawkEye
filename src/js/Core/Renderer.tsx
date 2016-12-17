@@ -5,16 +5,20 @@ import { Router } from 'react-router';
 
 export function renderApplication(containerElement: HTMLElement,
                                   storeCreator: IStoreCreator<IState>,
-                                  routing: IRouting): void
+                                  routing: IRouting): Promise<any>
 {
   /*
    * Render the application with our routes and store!
    */
-  render(
+  return new Promise(resolve =>
+  {
+    render(
     <Provider store={storeCreator.getStore()}>
       <Router history={routing.getSyncdHistory()}
               routes={routing.getRoutes()} />
     </Provider>,
-    containerElement
+    containerElement,
+    resolve
   );
+  });
 };
