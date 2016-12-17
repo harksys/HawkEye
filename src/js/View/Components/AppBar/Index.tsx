@@ -28,7 +28,10 @@ class AppBar extends React.Component<IAppBarProps, any>
                (
                  <div key={account.gitHubUser.id}
                       className="soft-zeta hard--bottom">
-                   <Btn className="btn--square-delta">
+                   <Btn className={'btn--square-delta'
+                                      + (this.props.app.currentAccountId != account.gitHubUser.id
+                                          ? ' btn--dark-grey-brand'
+                                          : '')}>
                      <div className="soft-kappa">
                        <ProfilePicture picture={account.gitHubUser.avatarUrl} />
                      </div>
