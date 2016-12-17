@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 
 import {
   Icon,
+  Btn,
+  BtnTo,
   CenteredBox,
   ProfilePicture
 } from 'View/Ui/Index';
@@ -26,14 +28,21 @@ class AppBar extends React.Component<IAppBarProps, any>
                (
                  <div key={account.gitHubUser.id}
                       className="soft-zeta">
-                   <ProfilePicture picture={account.gitHubUser.avatarUrl} />
+                   <Btn className="btn--square-delta">
+                     <div className="soft-kappa">
+                       <ProfilePicture picture={account.gitHubUser.avatarUrl} />
+                     </div>
+                   </Btn>
                  </div>
                ))}
         </div>
         <div className="hard-bottom__bottom">
-          <CenteredBox>
-            <Icon icon="world" />
-          </CenteredBox>
+          <div className="soft-zeta">
+            <BtnTo to="/settings"
+                   className="btn--square-delta text--beta">
+              <Icon icon="settings" />
+            </BtnTo>
+          </div>
         </div>
       </div>
     );
