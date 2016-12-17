@@ -2,6 +2,8 @@
 interface IHawkEyeConfig
 {
   github: IHawkEyeConfigGitHub;
+
+  appAlerts: IHawkEyeConfigAppAlerts;
 };
 
 interface IHawkEyeConfigGitHub
@@ -11,4 +13,9 @@ interface IHawkEyeConfigGitHub
   clientSecret: string;
 
   scopes: string[];
+};
+
+interface IHawkEyeConfigAppAlerts
+{
+  showFor: number;
 };

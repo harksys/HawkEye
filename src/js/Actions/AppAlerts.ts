@@ -1,6 +1,8 @@
 import ActionConstants from 'Constants/Actions/Index';
-import { getState } from 'Helpers/State/Store';
+
 import { wait } from 'Helpers/Lang/Timeout';
+import { getState } from 'Helpers/State/Store';
+import { getAppAlertShowForTime } from 'Helpers/Models/AppAlert';
 
 /**
  * @param  {IAppAlert} appAlert
@@ -29,7 +31,7 @@ export function pushAppAlert(appAlert: IAppAlert)
         /*
          * Wait 5 seconds for the user to read.
          */
-        wait(5000)
+        wait(getAppAlertShowForTime())
           .then(() =>
           {
             /*

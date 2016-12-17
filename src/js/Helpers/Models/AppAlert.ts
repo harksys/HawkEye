@@ -1,5 +1,6 @@
 import { getState } from 'Helpers/State/Store';
 import { generateId } from 'Helpers/Lang/String';
+import HawkEyeConfig from 'Config/HawkEye';
 
 /**
  * @returns number
@@ -32,4 +33,12 @@ export function createAppAlert(message: string, status: string): IAppAlert
   };
 
   return appAlert;
+};
+
+/**
+ * @returns number
+ */
+export function getAppAlertShowForTime(): number
+{
+  return HawkEyeConfig.appAlerts.showFor;
 };

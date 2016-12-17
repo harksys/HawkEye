@@ -1,12 +1,15 @@
 import { gitHubScopes } from 'Constants/Services/GitHub';
 
 const config: IHawkEyeConfig = {
-  github : {
+  github    : {
     clientId     : '',
     clientSecret : '',
     scopes       : [
       gitHubScopes.notifications
     ]
+  },
+  appAlerts : {
+    showFor : 4000
   }
 };
 
