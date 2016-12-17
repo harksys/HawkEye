@@ -37,7 +37,8 @@ class SettingsIndex extends React.Component<ISettingsIndexProps, any>
   render()
   {
     return (
-      <ViewBar title="Settings">
+      <ViewBar title="Settings"
+               backLink="/">
         <div className="soft-delta">
           <div className="grid">
             <div className="grid__item one-whole push-delta--bottom">
