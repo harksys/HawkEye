@@ -1,0 +1,31 @@
+
+.hideable-left {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.hideable-left__left {
+  top: 0;
+  left: 0;
+  bottom: 0;
+  height: 100%;
+  position: absolute;
+  width: 200px;
+}
+
+.hideable-left__content {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  padding-left: 200px;
+};
+
+@include breakpoint(mobile) {
+  .hideable-left__content {
+    padding-left: 0;
+  }
+  .hideable-left__left {
+    display: none;
+  }
+}
