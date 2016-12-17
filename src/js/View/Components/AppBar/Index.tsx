@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 
 import {
   Icon,
+  CenteredBox,
   ProfilePicture
 } from 'View/Ui/Index';
 
@@ -30,7 +31,9 @@ class AppBar extends React.Component<IAppBarProps, any>
                ))}
         </div>
         <div className="hard-bottom__bottom">
-          <Icon icon="world" />
+          <CenteredBox>
+            <Icon icon="world" />
+          </CenteredBox>
         </div>
       </div>
     );
