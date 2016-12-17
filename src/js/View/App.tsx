@@ -19,7 +19,16 @@ class App extends React.Component<any, any>
             <div className="position--relative width--full">
               <AppAlerts />
             </div>
-            {this.props.children}
+            {this.props.children || (
+              <div className="hard-top hard-top--delta">
+                <div className="hard-top__top bg--light-grey">
+                  {'App Top Bar'}
+                </div>
+                <div className="hard-top__content">
+                  {'Notifications to go here'}
+                </div>
+              </div>
+            )}
           </div>
         </div>
       </div>
