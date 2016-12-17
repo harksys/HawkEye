@@ -21,6 +21,9 @@
   background: $button-hover-background;
 }
 
+/*
+ * Square Sizes
+ */
 @each $size-name, $size in $btn-square-sizes {
   .btn--square-#{$size-name} {
     padding: 0;
@@ -30,6 +33,9 @@
   }
 }
 
+/*
+ * Backgrounds
+ */
 @each $bg-name, $bgs in $btn-backgrounds {
   .btn--#{$bg-name} {
     background: nth($bgs, 1);
@@ -39,3 +45,10 @@
     }
   }
 }
+
+/*
+ * Hard Corners
+ */
+.btn--hard        { @include border-radius(0); }
+.btn--hard-top    { @include border-radius(0 0 $button-border-radius $button-border-radius); }
+.btn--hard-bottom { @include border-radius($button-border-radius $button-border-radius 0 0); }
