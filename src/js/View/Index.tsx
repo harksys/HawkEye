@@ -8,7 +8,14 @@ class Index extends React.Component<any, any>
   {
     return (
       <ViewBar title="Notifications">
-        <p>{'Notifications go here'}</p>
+        <div className="hideable-left">
+          <div className="hideable-left__left bg--lighter-grey">
+            <p>{'Filters'}</p>
+          </div>
+          <div className="hideable-left__content">
+            <p>{'Notifications go here'}</p>
+          </div>
+        </div>
       </ViewBar>
     );
   }
