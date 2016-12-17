@@ -1,0 +1,34 @@
+.view-bar {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.view-bar__title {
+  line-height: 40px;
+  text-align: center;
+
+  font-size: 14px;
+}
+
+.view-bar__back-link {
+  top: 0;
+  left: 0;
+  width: 35px;
+  height: 40px;
+  color: #333;
+  text-align: right;
+  position: absolute;
+
+
+  &:hover {
+    color: black;
+  }
+
+  i {
+    width: 35px;
+    height: 40px;
+    font-size: 18px;
+    line-height: 40px;
+  }
+}
