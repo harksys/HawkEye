@@ -19,10 +19,6 @@ class App extends React.Component<any, any>
             <div className="position--relative width--full">
               <AppAlerts />
             </div>
-            <i className="ti ti-world" />
-            <Link to="/settings">
-              {'View Settings'}
-            </Link>
             {this.props.children}
           </div>
         </div>
