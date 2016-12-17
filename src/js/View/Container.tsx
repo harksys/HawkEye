@@ -23,7 +23,7 @@ class Container extends React.Component<IContainerProps, any>
     return (
       <div className="app">
         {this.props.setup.isLoading
-          ? <AppLoading />
+          ? <AppLoading show={this.props.setup.showLoading} />
           : undefined}
         {this.props.setup.renderApp
           ? (
