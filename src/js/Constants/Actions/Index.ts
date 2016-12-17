@@ -4,6 +4,7 @@ import NotificationsActions from './Notifications';
 import SettingsActions from './Settings';
 import AuthenticationActions from './Authentication';
 import AppAlertsActions from './AppAlerts';
+import SetupActions from './Setup';
 
 const ActionConstants = {
   accounts       : AccountsActions,
@@ -11,7 +12,8 @@ const ActionConstants = {
   notifications  : NotificationsActions,
   settings       : SettingsActions,
   authentication : AuthenticationActions,
-  appAlerts      : AppAlertsActions
+  appAlerts      : AppAlertsActions,
+  setup          : SetupActions
 };
 
 export default ActionConstants;
