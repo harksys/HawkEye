@@ -15,6 +15,12 @@ import { pushAppAlert } from 'Actions/AppAlerts';
 
 import HawkEyeConfig from 'Config/HawkEye';
 
+import {
+  Btn,
+  BtnTo
+} from 'View/Ui/Index';
+import ViewBar from 'View/Components/ViewBar/Index';
+
 interface ISettingsIndexProps
 {
   settings: IStateSettings;
@@ -22,6 +28,8 @@ interface ISettingsIndexProps
   authentication: IStateAuthentication;
 
   app: IStateApp;
+
+  accounts: IStateAccountsAccount[];
 };
 
 class SettingsIndex extends React.Component<ISettingsIndexProps, any>
@@ -29,27 +37,47 @@ class SettingsIndex extends React.Component<ISettingsIndexProps, any>
   render()
   {
     return (
-      <div>
-        {'Settings page'}
-        <Link to="/">
-          {'Go Back'}
-        </Link>
-        <a href="#"
-           onClick={this.handleClick.bind(this)}>
-          {'Add User'}
-        </a>
-        {this.props.authentication.isAuthenticating
-          ? <p>{'Doing the auth!'}</p>
-          : undefined}
-      </div>
+      <ViewBar title="Settings">
+        <div className="soft-delta">
+          <div className="grid">
+            <div className="grid__item one-whole push-delta--bottom">
+              <BtnTo to={'/settings/notifications'}
+                     className={'btn--light-grey'}>
+                {'Notifications'}
+              </BtnTo>
+            </div>
+            <div className="grid__item one-whole">
+              {this.props.accounts
+                   .map((acc, i) =>
+                   (
+                     <BtnTo key={acc.gitHubUser.id}
+                            to={'/settings/accounts/' + acc.gitHubUser.id}
+                            className={'btn--light-grey'
+                                          + (i === 0
+                                              ? ' btn--hard-bottom'
+                                              : '')
+                                          + (i !== 0
+                                              ? ' btn--hard'
+                                              : '')}>
+                       {'@' + acc.gitHubUser.username}
+                     </BtnTo>
+                   ))}
+              <Btn className={this.props.accounts.length > 0
+                                ? 'btn--hard-top'
+                                : undefined}
+                   onClick={this.handleClick.bind(this)}>
+                {'Add Account'}
+              </Btn>
+            </div>
+          </div>
+        </div>
+      </ViewBar>
     );
   }
 
-  handleClick(e)
+  handleClick()
   {
     dispatch(pushAppAlert(createAppAlert('Testing!', 'error')));
-
-    e.preventDefault();
     if (this.props.authentication.isAuthenticating) {
       return;
     }
@@ -108,6 +136,8 @@ export default connect(
   (state: IState) => ({
     settings       : state.settings,
     authentication : state.authentication,
-    app            : state.app
+    app            : state.app,
+    accounts       : Object.keys(state.accounts)
+                           .map(id => state.accounts[id])
   })
 )(SettingsIndex);
