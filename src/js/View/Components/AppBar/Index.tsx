@@ -27,7 +27,7 @@ class AppBar extends React.Component<IAppBarProps, any>
                .map(account =>
                (
                  <div key={account.gitHubUser.id}
-                      className="soft-zeta">
+                      className="soft-zeta hard--bottom">
                    <Btn className="btn--square-delta">
                      <div className="soft-kappa">
                        <ProfilePicture picture={account.gitHubUser.avatarUrl} />
