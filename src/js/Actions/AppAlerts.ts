@@ -18,7 +18,7 @@ export function pushAppAlert(appAlert: IAppAlert)
      * to make sure it's rendered.
      */
     dispatch(addAppAlert(appAlert));
-    wait(0)
+    wait(100)
       .then(() =>
       {
         /*
