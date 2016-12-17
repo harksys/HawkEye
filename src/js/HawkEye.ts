@@ -32,7 +32,10 @@ class HawkEye
      * Setup Routing and StoreCreator for our application
      */
     this.routing      = new Routing(App, AppIndex);
-    this.storeCreator = new StoreCreator<IState>(this.routing.getHistory());
+    this.storeCreator = new StoreCreator<IState>(this.routing.getHistory(), () =>
+    {
+      console.log('rehydrated');
+    });
 
     /*
      * Sync history with the Store and add

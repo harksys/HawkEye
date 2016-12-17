@@ -26,7 +26,8 @@ class StoreCreator<T> implements IStoreCreator<T>
   /**
    * @param  {ReactRouter.History} historyInstance
    */
-  constructor(historyInstance: ReactRouter.History)
+  constructor(historyInstance: ReactRouter.History,
+              rehydrateCallback: () => void)
   {
     /*
      * Setup the middlewares and reducers
@@ -53,7 +54,7 @@ class StoreCreator<T> implements IStoreCreator<T>
         'authentication',
         'setup'
       ]
-    });
+    }, rehydrateCallback);
   }
 
   /**
