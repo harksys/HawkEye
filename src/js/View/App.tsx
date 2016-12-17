@@ -2,8 +2,9 @@ import * as React from 'react';
 
 import { Link } from 'react-router';
 
-import AppBar from './Components/AppBar';
-import AppAlerts from './Components/AppAlerts';
+import AppBar from './Components/AppBar/Index';
+import ViewBar from './Components/ViewBar/Index';
+import AppAlerts from './Components/AppAlerts/Index';
 
 class App extends React.Component<any, any>
 {
@@ -20,14 +21,9 @@ class App extends React.Component<any, any>
               <AppAlerts />
             </div>
             {this.props.children || (
-              <div className="hard-top hard-top--delta">
-                <div className="hard-top__top bg--light-grey">
-                  {'App Top Bar'}
-                </div>
-                <div className="hard-top__content">
-                  {'Notifications to go here'}
-                </div>
-              </div>
+              <ViewBar title="App Top Bar">
+                <p>{'Notifications go here'}</p>
+              </ViewBar>
             )}
           </div>
         </div>
