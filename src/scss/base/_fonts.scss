@@ -1,1 +1,16 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:400,700,500,300);
+
+/**
+ * Themify Icon Font
+ */
+@font-face {
+  font-family: 'themify';
+  src:url('./src/fonts/themify/themify.eot?-fvbane');
+  src:url('./src/fonts/themify/themify.eot?#iefix-fvbane') format('embedded-opentype'),
+    url('./src/fonts/themify/themify.woff?-fvbane') format('woff'),
+    url('./src/fonts/themify/themify.ttf?-fvbane') format('truetype'),
+    url('./src/fonts/themify/themify.svg?-fvbane#themify') format('svg');
+
+  font-weight: normal;
+  font-style: normal;
+}
