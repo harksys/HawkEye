@@ -16,7 +16,9 @@ class AppAlert extends React.Component<IAppAlertProps, any>
                               ? ' app-alert--show'
                               : '')}>
         <div className="app-alert__inner">
-          <p>{this.props.appAlert.message}</p>
+          <p className="truncate">
+            {this.props.appAlert.message}
+          </p>
         </div>
       </div>
     );
