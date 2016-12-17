@@ -66,7 +66,7 @@ $base-soft-values: (
   epsilon : 15px,
   zeta    : 10px,
   iota    : 5px,
-  kappa   : 1px
+  kappa   : 2px
 )!default;
 
 $base-push-values: (
@@ -225,4 +225,22 @@ $background-warning: #DEC23F;
 
 $backgrounds: (
   dark-grey : #444
+);
+
+/*
+ * Btn
+ */
+$button-color: white!default;
+$button-font-size: 14px!default;
+$button-text-transform: uppercase!default;
+$button-text-shadow: none;
+$button-padding: 8px 0px;
+$button-flex-padding: 8px 20px;
+$button-background: $brand-color-secondary;
+$button-hover-background: lighten($brand-color-secondary, 5);
+$button-border-radius: $default-border-radius;
+$button-transition-speed: .25s;
+
+$btn-square-sizes: (
+  delta : 48px
 );
