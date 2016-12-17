@@ -8,6 +8,14 @@ export function setSetupIsLoading(isLoading: boolean)
   };
 };
 
+export function setSetupShowLoading(showLoading: boolean)
+{
+  return {
+    type        : ActionConstants.setup.SET_SETUP_SHOW_LOADING,
+    showLoading
+  };
+};
+
 export function setSetupRenderApp(renderApp: boolean)
 {
   return {
