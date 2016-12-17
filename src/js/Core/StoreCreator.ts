@@ -50,7 +50,8 @@ class StoreCreator<T> implements IStoreCreator<T>
     persistStore(this.store, {
       blacklist : [
         'routing',
-        'authentication'
+        'authentication',
+        'setup'
       ]
     });
   }
