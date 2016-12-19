@@ -6,3 +6,11 @@ export const cronPeriods = {
   fourtyFiveMinute : '*/45 * * * *',
   sixtyMinute      : '* * /1 * * *'
 };
+
+export const cronPeriodPrettyNames = {
+  fiveMinutes      : '5 Minutes',
+  fifteenMinute    : '15 Minutes',
+  thirtyMinute     : '30 Minutes',
+  fourtyFiveMinute : '45 Minutes',
+  sixtyMinute      : '1 Hour',
+};
