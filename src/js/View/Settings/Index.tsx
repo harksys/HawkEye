@@ -30,8 +30,12 @@ class SettingsIndex extends React.Component<ISettingsIndexProps, any>
         <div className="soft-delta">
           <div className="grid">
             <div className="grid__item one-whole push-delta--bottom">
+              <BtnTo to={'/settings/frequency'}
+                     className={'btn--light-grey btn--hard-bottom'}>
+                {'Frequency'}
+              </BtnTo>
               <BtnTo to={'/settings/notifications'}
-                     className={'btn--light-grey'}>
+                     className={'btn--light-grey btn--hard-top'}>
                 {'Notifications'}
               </BtnTo>
             </div>
