@@ -6,7 +6,7 @@ interface IGitHubRepository
 
   name: String;
 
-  fillName: string;
+  fullName: string;
 
   private: boolean;
 

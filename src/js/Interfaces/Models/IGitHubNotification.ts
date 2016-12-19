@@ -15,6 +15,8 @@ interface IGitHubNotification
   url: string;
 
   repository: IGitHubRepository;
+
+  subject: IGitHubNotificationSubject;
 };
 
 interface IGitHubNotificationSubject
