@@ -1,7 +1,7 @@
 
 interface IScheduler
 {
-  scheduleJob(time: string, parameters: any, method: () => {}): string;
+  scheduleJob(time: string, parameters: any, method: () => any): string;
 
   getJobParameters(name: string): any;
 

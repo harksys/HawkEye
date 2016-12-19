@@ -28,7 +28,7 @@ class Scheduler implements IScheduler
    * @param  {()=>{}} method
    * @returns string
    */
-  public scheduleJob = (time: string, parameters: any, method: () => {}): string =>
+  public scheduleJob = (time: string, parameters: any, method: () => any): string =>
   {
     let name = this.makeJobName();
     let job  = scheduleJob(time, method);
