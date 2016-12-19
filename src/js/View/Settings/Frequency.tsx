@@ -2,15 +2,16 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 
 import { cronPeriodPrettyNames } from 'Constants/Lang/Date';
+import { dispatch } from 'Helpers/State/Store';
+
+import { configurePollPeriod } from 'Actions/UIActions/Settings';
 
 import ViewBar from 'View/Components/ViewBar/Index';
-import {
-  Button
-} from 'View/Ui/Index';
+import { Button } from 'View/Ui/Index';
 
 interface IFrequencySettingsProps
 {
-
+  settings: IStateSettings;
 };
 
 class FrequencySettings extends React.Component<IFrequencySettingsProps, any>
@@ -28,8 +29,8 @@ class FrequencySettings extends React.Component<IFrequencySettingsProps, any>
                      .map((name, i, a) =>
                      (
                        <Button key={name}
-                               onClick={() => {}}
-                               className={(i === 1 //change to active check
+                     onClick={() => dispatch(configurePollPeriod(name))}
+                               className={(this.props.settings.pollPeriod === name
                                             ? ''
                                             : 'btn--light-grey')
                                           + (i === 0
@@ -55,6 +56,6 @@ class FrequencySettings extends React.Component<IFrequencySettingsProps, any>
 
 export default connect(
   (state: IState) => ({
-
+    settings : state.settings
   })
 )(FrequencySettings);
