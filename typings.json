@@ -9,6 +9,7 @@
     "es6-promise": "registry:dt/es6-promise#0.0.0+20160614011821",
     "history": "registry:dt/history#1.8.0+20160316155526",
     "node": "registry:dt/node#6.0.0+20161121110008",
+    "node-schedule": "registry:dt/node-schedule#1.1.0+20161119044246",
     "object-assign": "registry:dt/object-assign#4.0.1+20161006140353",
     "query-string": "registry:dt/query-string#3.0.0+20161129181732",
     "react": "registry:dt/react#0.14.0+20161203201537",
