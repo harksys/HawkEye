@@ -7,7 +7,7 @@ import * as nodeSchedule from 'node-schedule';
  */
 export function getNodeSchedule(): any
 {
-  return windowRequire['node-schedule'];
+  return windowRequire('node-schedule');
 };
 
 /**

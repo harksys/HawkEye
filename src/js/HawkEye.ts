@@ -15,6 +15,8 @@ import {
 } from 'Actions/Setup';
 import { wait } from 'Helpers/Lang/Timeout';
 
+import Scheduler from 'Scheduler/Scheduler';
+
 import { gitHubApiUrl } from 'Constants/Services/GitHub';
 import GitHub from 'GitHub/GitHub';
 
@@ -55,7 +57,8 @@ class HawkEye
      */
     InstanceCache
       .addInstance<IRouting>('IRouting', this.routing)
-      .addInstance<IStoreCreator<IState>>('IStoreCreator', this.storeCreator);
+      .addInstance<IStoreCreator<IState>>('IStoreCreator', this.storeCreator)
+      .addInstance<IScheduler>('IScheduler', new Scheduler);
 
 
     // @todo: Migrate the lot. ServiceBinder
