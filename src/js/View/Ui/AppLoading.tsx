@@ -1,5 +1,10 @@
 import * as React from 'react';
 
+import {
+  Loader,
+  CenteredBox
+} from 'View/Ui/Index';
+
 interface IAppLoadingProps
 {
   show: boolean;
@@ -7,8 +12,13 @@ interface IAppLoadingProps
 
 const AppLoading: React.SFC<IAppLoadingProps> = ({ show }) =>
 (
-  <div className="app__loading">
-    {'Loading'}
+  <div className={'app__loading'
+                    + (show
+                        ? ' app__loading--show'
+                        : '')}>
+    <CenteredBox>
+      <Loader size="medium" />
+    </CenteredBox>
   </div>
 );
 
