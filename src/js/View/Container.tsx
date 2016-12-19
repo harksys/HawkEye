@@ -38,8 +38,8 @@ class Container extends React.Component<IContainerProps, any>
   }
 };
 
-export default connect(
+export default connect<{}, {}, IContainerProps>(
   (state: IState) => ({
     setup : state.setup
   })
-)(Container as any); // @todo: Fix. Caused by 'setup?'
+)(Container);
