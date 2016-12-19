@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { render } from 'react-dom';
-import { Provider } from 'react-redux';
-import { Router } from 'react-router';
+
+import Container from 'View/Container';
 
 export function renderApplication(containerElement: HTMLElement,
                                   storeCreator: IStoreCreator<IState>,
@@ -13,12 +13,11 @@ export function renderApplication(containerElement: HTMLElement,
   return new Promise(resolve =>
   {
     render(
-    <Provider store={storeCreator.getStore()}>
-      <Router history={routing.getSyncdHistory()}
-              routes={routing.getRoutes()} />
-    </Provider>,
-    containerElement,
-    resolve
-  );
+      <Container store={storeCreator.getStore()}
+                 history={routing.getSyncdHistory()}
+                 routes={routing.getRoutes()} />,
+      containerElement,
+      resolve
+    );
   });
 };
