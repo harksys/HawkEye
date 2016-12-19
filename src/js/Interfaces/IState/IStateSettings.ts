@@ -1,6 +1,8 @@
 
 interface IStateSettings
 {
+  pollPeriod: string;
+
   accountSettings: IStateSettingsAccountSettings;
 };
 
