@@ -60,7 +60,6 @@ class HawkEye
       .addInstance<IStoreCreator<IState>>('IStoreCreator', this.storeCreator)
       .addInstance<IScheduler>('IScheduler', new Scheduler);
 
-
     // @todo: Migrate the lot. ServiceBinder
     const gitHubService = new GitHub(new RequestFactory(gitHubApiUrl));
 
