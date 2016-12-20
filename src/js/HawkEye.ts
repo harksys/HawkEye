@@ -8,17 +8,11 @@ import Routing from 'Core/Routing';
 import StoreCreator from 'Core/StoreCreator';
 import RequestFactory from 'Core/RequestFactory';
 
-import {
-  setSetupRenderApp,
-  setSetupIsLoading,
-  setSetupShowLoading
-} from 'Actions/Setup';
-import { wait } from 'Helpers/Lang/Timeout';
-
+import GitHub from 'GitHub/GitHub';
 import Scheduler from 'Scheduler/Scheduler';
 
 import { gitHubApiUrl } from 'Constants/Services/GitHub';
-import GitHub from 'GitHub/GitHub';
+import { appSetupFlow } from 'Actions/HawkEye';
 
 import GitHubAccountsService from 'Services/GitHubAccountsService';
 import GitHubAuthenticationService from 'Services/GitHubAuthenticationService';
@@ -85,24 +79,7 @@ class HawkEye
 
   public onRehydrated = () =>
   {
-    let dispatch = this.storeCreator.getStore().dispatch;
-
-    /*
-     * Render the application, and wait some time
-     * for completion
-     */
-    dispatch(setSetupRenderApp(true));
-    wait(250)
-      .then(() =>
-      {
-        /*
-         * Hide the loading page, wait for it to fade out.
-         * When it has, remove the loading screen from the DOM.
-         */
-        dispatch(setSetupShowLoading(false));
-        wait(250)
-          .then(() => dispatch(setSetupIsLoading(false)));
-      });
+    this.storeCreator.getStore().dispatch(appSetupFlow());
   }
 };
 
