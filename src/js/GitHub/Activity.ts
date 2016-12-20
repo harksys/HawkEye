@@ -11,7 +11,6 @@ class Activity implements IGitHubActivity
 
   public getNotifications = (token: string,
                              page: number = 1,
-                             perPage: number = 100,
                              all: boolean = false,
                              participating: boolean = false,
                              since?: string,
@@ -20,7 +19,8 @@ class Activity implements IGitHubActivity
     let query = {
       access_token  : token,
       all           : all,
-      participating : participating
+      participating : participating,
+      page          : page
     };
 
     if (typeof since === 'string') {
