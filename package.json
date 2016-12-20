@@ -38,6 +38,7 @@
     "compass-mixins": "^0.12.10",
     "es6-promise": "^4.0.5",
     "lodash": "^4.17.2",
+    "moment": "^2.17.1",
     "node-schedule": "^1.2.0",
     "object-assign": "^4.1.0",
     "q": "^1.4.1",
