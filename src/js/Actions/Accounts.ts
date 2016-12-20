@@ -1,3 +1,5 @@
+import * as Async from 'async';
+
 import InstanceCache from 'Core/InstanceCache';
 import ActionConstants from 'Constants/Actions/Index';
 
@@ -37,15 +39,24 @@ export function removeUser(accountId: string)
 
 /**
  */
-export function updateAccounts()
+export function updateAccounts(updatedCallback: () => any = () => {})
 {
-  return dispatch => getAccountIds().forEach(id => dispatch(updateAccount(id)));
+  return dispatch =>
+  {
+    let tasks = [];
+    getAccountIds()
+      .forEach(id => tasks.push(cb => {
+        dispatch(updateAccount(id, cb));
+      }));
+
+    Async.parallel(tasks, updatedCallback)
+  };
 };
 
 /**
  * @param  {string} accountId
  */
-export function updateAccount(accountId: string)
+export function updateAccount(accountId: string, callback?: () => any)
 {
   return dispatch =>
   {
@@ -69,6 +80,7 @@ export function updateAccount(accountId: string)
                        'Account @' + account.gitHubUser.username + ' removed'
                      )));
                      dispatch(removeUser(accountId));
+                     callback();
 
                      return;
                    }
@@ -78,6 +90,7 @@ export function updateAccount(accountId: string)
                     * their accounts information.
                     */
                    dispatch(addAccount(account.token, gitHubUser));
-                 });
+                   callback();
+                 }, callback);
   };
 };
