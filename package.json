@@ -37,6 +37,7 @@
     "async": "^2.1.4",
     "compass-mixins": "^0.12.10",
     "es6-promise": "^4.0.5",
+    "lodash": "^4.17.2",
     "node-schedule": "^1.2.0",
     "object-assign": "^4.1.0",
     "q": "^1.4.1",
