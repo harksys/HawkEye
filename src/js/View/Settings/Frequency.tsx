@@ -29,7 +29,7 @@ class FrequencySettings extends React.Component<IFrequencySettingsProps, any>
                      .map((name, i, a) =>
                      (
                        <Button key={name}
-                     onClick={() => dispatch(configurePollPeriod(name))}
+                               onClick={() => dispatch(configurePollPeriod(name))}
                                className={(this.props.settings.pollPeriod === name
                                             ? ''
                                             : 'btn--light-grey')
