@@ -19,6 +19,8 @@ class GitHubNotificationsService implements IGitHubNotificationsService
    * @returns Promise
    */
   public getNotifications = (token: string,
+                             page: number = 1,
+                             perPage: number = 100,
                              all?: boolean,
                              participating?: boolean,
                              since?: string,
@@ -28,7 +30,7 @@ class GitHubNotificationsService implements IGitHubNotificationsService
     {
       this.gitHub
           .activity
-          .getNotifications(token, all, participating, since, before)
+          .getNotifications(token, page, perPage, all, participating, since, before)
           .then(res => resolve(res),
                 err => reject(err));
     });

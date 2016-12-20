@@ -10,6 +10,8 @@ class Activity implements IGitHubActivity
   }
 
   public getNotifications = (token: string,
+                             page: number = 1,
+                             perPage: number = 100,
                              all: boolean = false,
                              participating: boolean = false,
                              since?: string,
