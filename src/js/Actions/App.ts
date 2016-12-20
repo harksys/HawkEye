@@ -7,3 +7,19 @@ export function setCurrentAccountId(currentAccountId: number)
     currentAccountId
   };
 };
+
+export function setIsPolling(isPolling: boolean)
+{
+  return {
+    type      : ActionConstants.app.SET_APP_IS_POLLING,
+    isPolling
+  };
+};
+
+export function setLastPoll(lastPoll: string)
+{
+  return {
+    type     : ActionConstants.app.SET_APP_LAST_POLL,
+    lastPoll
+  };
+};
