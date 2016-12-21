@@ -12,6 +12,7 @@ import { makeGitHubUser } from 'Helpers/Models/GitHubUser';
 import { createErrorAppAlert } from 'Helpers/Models/AppAlert';
 
 import { pushAppAlert } from 'Actions/AppAlerts';
+import { removeAccount as removeAccountUi } from 'Actions/UIActions/Accounts';
 
 /**
  * @param  {string} token
@@ -29,7 +30,7 @@ export function addAccount(token: string, user: IGitHubUser)
 /**
  * @param  {string} accountId
  */
-export function removeUser(accountId: string)
+export function removeAccount(accountId: string)
 {
   return {
     type      : ActionConstants.accounts.REMOVE_ACCOUNT,
@@ -79,7 +80,7 @@ export function updateAccount(accountId: string, callback?: () => any)
                      dispatch(pushAppAlert(createErrorAppAlert(
                        'Account @' + account.gitHubUser.username + ' removed'
                      )));
-                     dispatch(removeUser(accountId));
+                     dispatch(removeAccountUi(accountId, false));
                      callback();
 
                      return;
