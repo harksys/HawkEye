@@ -20,6 +20,7 @@
     "react-router": "registry:dt/react-router#2.0.0+20161117134353",
     "react-router-redux": "registry:dt/react-router-redux#4.0.0+20160930121107",
     "react-router/history": "registry:dt/react-router/history#2.0.0+20160830150755",
+    "react-virtualized": "registry:dt/react-virtualized#0.0.0+20161117143210",
     "redux": "registry:dt/redux#3.5.2+20160703092728",
     "redux-thunk": "registry:dt/redux-thunk#2.1.0+20160703120921",
     "whatwg-fetch": "file:typings/custom/whatwg-fetch.d.ts"
