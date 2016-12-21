@@ -47,3 +47,8 @@ export function convertUtcToLocal(date?): moment.Moment
 {
   return Moment(date).utc().local();
 };
+
+export function relativeTime(date: string | moment.Moment): string
+{
+  return Moment(date).fromNow(false);
+};
