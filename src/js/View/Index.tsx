@@ -11,6 +11,8 @@ import ViewBar from 'View/Components/ViewBar/Index';
 
 interface IAppIndexProps
 {
+  app: IStateApp;
+
   notifications: IStateNotifications;
 };
 
@@ -19,17 +21,13 @@ class Index extends React.Component<IAppIndexProps, any>
   render()
   {
     let notifications: IGitHubNotification[] = [];
-    Object.keys(this.props.notifications)
-        .forEach(accId =>
-        {
-          Object.keys(this.props.notifications[accId])
+    Object.keys(this.props.notifications[this.props.app.currentAccountId])
                 .forEach(repoId => {
-                  Object.keys(this.props.notifications[accId][repoId])
+                  Object.keys(this.props.notifications[this.props.app.currentAccountId][repoId])
                         .forEach(notificationId => {
-                          notifications.push(this.props.notifications[accId][repoId][notificationId]);
+                          notifications.push(this.props.notifications[this.props.app.currentAccountId][repoId][notificationId]);
                         })
                 })
-        });
 
     return (
       <ViewBar title={'Notifications - ' + notifications.length}>
@@ -78,6 +76,7 @@ class Index extends React.Component<IAppIndexProps, any>
 
 export default connect(
   (state: IState, props: IAppIndexProps) => ({
+    app           : state.app,
     notifications : state.notifications
   })
 )(Index);

@@ -1,6 +1,9 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 
+import { switchAccount } from 'Actions/UIActions/App';
+import { dispatch } from 'Helpers/State/Store';
+
 import {
   Icon,
   Btn,
@@ -28,7 +31,8 @@ class AppBar extends React.Component<IAppBarProps, any>
                (
                  <div key={account.gitHubUser.id}
                       className="soft-zeta hard--bottom">
-                   <Btn className={'btn--square-delta'
+                   <Btn onClick={() => dispatch(switchAccount(account.gitHubUser.id))}
+                        className={'btn--square-delta'
                                       + (this.props.app.currentAccountId != account.gitHubUser.id
                                           ? ' btn--dark-grey-brand'
                                           : '')}>
