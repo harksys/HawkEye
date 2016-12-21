@@ -1,6 +1,7 @@
 import Reducify from 'Helpers/State/Reducify';
 import ActionConstants from 'Constants/Actions/Index';
 
+import * as omit from 'lodash/omit';
 import * as objectAssign from 'object-assign';
 
 const initialState: IStateNotifications = {
@@ -24,6 +25,10 @@ let reducingMethods = {
         })
       })
     });
+  },
+  [ActionConstants.notifications.REMOVE_ACCOUNT_NOTIFICATIONS] : (state: IStateNotifications, action) =>
+  {
+    return objectAssign({}, omit(state, action.accountId));
   }
 };
 
