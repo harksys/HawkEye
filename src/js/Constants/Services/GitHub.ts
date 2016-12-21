@@ -27,7 +27,7 @@ export const githubNotificationSubjectTypes = {
 };
 
 export const githubNotificationSubjectTypeIcons = {
-  ISSUE       : '',
-  PULLREQUEST : '',
-  COMMIT      : ''
+  ISSUE       : 'issue-opened',
+  PULLREQUEST : 'git-pull-request',
+  COMMIT      : 'git-commit'
 };
