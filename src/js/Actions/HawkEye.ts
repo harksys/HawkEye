@@ -1,3 +1,4 @@
+import { getAccountIds } from 'Helpers/Models/Accounts';
 import { wait } from 'Helpers/Lang/Timeout';
 import { getCurrentPollPeriod } from 'Helpers/Models/Settings';
 
@@ -8,7 +9,10 @@ import {
 } from 'Actions/Setup';
 import { updateAccounts } from 'Actions/Accounts';
 
-import { configurePollingScheduler } from 'Helpers/System/Scheduler';
+import {
+  pollingMethod,
+  configurePollingScheduler
+} from 'Helpers/System/Scheduler';
 
 /**
  * @todo: lol more callback hell...fix this.
@@ -30,6 +34,8 @@ export function appSetupFlow()
          */
         dispatch(updateAccounts(() =>
         {
+          pollingMethod(getAccountIds());
+
           /*
            * Setup our polling scheduler
            */
