@@ -19,3 +19,15 @@ export const gitHubScopes = {
   gist           : 'gist',
   notifications  : 'notifications'
 };
+
+export const githubNotificationSubjectTypes = {
+  Issue       : 'ISSUE',
+  PullRequest : 'PULLREQUEST',
+  Commit      : 'COMMIT'
+};
+
+export const githubNotificationSubjectTypeIcons = {
+  ISSUE       : '',
+  PULLREQUEST : '',
+  COMMIT      : ''
+};
