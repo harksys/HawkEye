@@ -39,7 +39,7 @@ class AppBar extends React.Component<IAppBarProps, any>
                  </div>
                ))}
         </div>
-        <div className="hard-bottom__bottom">
+        <div className="hard-bottom__bottom bg--dark-grey">
           <div className="soft-zeta">
             <BtnTo to="/settings"
                    className="btn--square-delta text--beta">

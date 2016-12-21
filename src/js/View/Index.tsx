@@ -37,7 +37,7 @@ class Index extends React.Component<IAppIndexProps, any>
           <div className="hideable-left__left bg--lighter-grey">
             <p>{'Filters'}</p>
           </div>
-          <div className="hideable-left__content">
+          <div className="hideable-left__content no-outline">
             <AutoSizer>
               {({ height, width }) => {
                 return width === 0
