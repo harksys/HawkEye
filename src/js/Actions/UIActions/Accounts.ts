@@ -1,18 +1,33 @@
 import InstanceCache from 'Core/InstanceCache';
 import OAuthBrowserWindow from 'Electron/OAuthBrowserWindow';
 
+import { push } from 'react-router-redux';
+
 import {
   createErrorAppAlert,
   createSuccessAppAlert
 } from 'Helpers/Models/AppAlert';
-import { makeGitHubUser } from 'Helpers/Models/GitHubUser';
 import { getState } from 'Helpers/State/Store';
+import { formatDateAsUTC } from 'Helpers/Lang/Date';
+import { getAccount } from 'Helpers/Models/Accounts';
+import { makeGitHubUser } from 'Helpers/Models/GitHubUser';
+import { getCurrentPollPeriod } from 'Helpers/Models/Settings';
+import { configurePollingScheduler } from 'Helpers/System/Scheduler';
 
-import { addAccount } from 'Actions/Accounts';
+import {
+  addAccount,
+  removeAccount as removeStoreAccount
+} from 'Actions/Accounts';
+import {
+  pollBeforeNotifications,
+  removeAccountsNotifications,
+} from 'Actions/Notifications';
 import { pushAppAlert } from 'Actions/AppAlerts';
 import { setCurrentAccountId } from 'Actions/App';
 import { setIsAuthenticating } from 'Actions/Authentication';
 
+/**
+ */
 export function handleAddAccountClick()
 {
   let ghAuthService = InstanceCache.getInstance<IGitHubAuthenticationService>
@@ -74,6 +89,14 @@ export function handleAddAccountClick()
                         )));
 
                         /*
+                         * Backport and fill in notifications up until right now.
+                         */
+                        dispatch(pollBeforeNotifications(gitHubUser.id.toString(),
+                                                         authToken,
+                                                         formatDateAsUTC(),
+                                                         true));
+
+                        /*
                          * If theres no accounts set so far, then set the
                          * current account ID.
                          */
@@ -87,6 +110,8 @@ export function handleAddAccountClick()
   };
 };
 
+/**
+ */
 function handleAddAccountError()
 {
   return dispatch =>
@@ -94,6 +119,49 @@ function handleAddAccountError()
     dispatch(setIsAuthenticating(false));
     dispatch(pushAppAlert(createErrorAppAlert(
       'Issue adding account. Try again?'
+    )));
+  };
+};
+
+/**
+ * @param  {string} accoundId
+ * @param  {boolean=true} redirect
+ */
+export function removeAccount(accoundId: string, redirect: boolean = true)
+{
+  return dispatch =>
+  {
+    let account = getAccount(accoundId);
+    if (!account) {
+      return;
+    }
+
+    /*
+     * Remove the account from state,
+     * and remove it's notifications.
+     */
+    dispatch(removeStoreAccount(accoundId));
+    dispatch(removeAccountsNotifications(accoundId));
+
+    /*
+     * Account has been removed. So reconfigure polling to
+     * not include it!
+     */
+    configurePollingScheduler(getCurrentPollPeriod());
+
+    /*
+     * Redirect if needs be, to settings.
+     * @todo: Change this param to a string.
+     */
+    if (redirect) {
+      dispatch(push('/settings'));
+    }
+
+    /*
+     * Show a notification
+     */
+    dispatch(pushAppAlert(createSuccessAppAlert(
+      'Removed @' + account.gitHubUser.username
     )));
   };
 };
