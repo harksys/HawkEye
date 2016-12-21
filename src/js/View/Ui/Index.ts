@@ -6,6 +6,7 @@ import Button from './Button';
 import Loader from './Loader';
 import AppLoading from './AppLoading';
 import CenteredBox from './CenteredBox';
+import Notification from './Notification';
 import ProfilePicture from './ProfilePicture';
 
 export {
@@ -17,5 +18,6 @@ export {
   Loader,
   AppLoading,
   CenteredBox,
+  Notification,
   ProfilePicture
 };
