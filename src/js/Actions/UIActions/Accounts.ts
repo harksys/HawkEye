@@ -97,6 +97,11 @@ export function handleAddAccountClick()
                                                          false));
 
                         /*
+                         * Configure Polling Scheduler to include new account
+                         */
+                        configurePollingScheduler(getCurrentPollPeriod());
+
+                        /*
                          * If theres no accounts set so far, then set the
                          * current account ID.
                          */
