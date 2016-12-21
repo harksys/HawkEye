@@ -8,3 +8,8 @@ app.js
 hawkeye.css
 
 src/js/Config/HawkEye.ts
+
+/*.woff
+/*.eot
+/*.svg
+/*.ttf
