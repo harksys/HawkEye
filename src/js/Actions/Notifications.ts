@@ -11,6 +11,14 @@ import {
   setIsPolling
 } from 'Actions/App';
 
+export function removeAccountsNotifications(accountId: string)
+{
+  return {
+    type      : ActionConstants.notifications.REMOVE_ACCOUNT_NOTIFICATIONS,
+    accountId
+  };
+};
+
 /**
  * @param  {any[]} notifications
  */
