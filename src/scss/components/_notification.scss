@@ -1,0 +1,20 @@
+
+.notification {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  border-bottom: 1px solid #EEE;
+}
+
+.notification__text {
+  display: block;
+  display: -webkit-box;
+
+  height: 14 * 1.5 * 2;
+  font-size: 14px;
+  line-height: 1.5em;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

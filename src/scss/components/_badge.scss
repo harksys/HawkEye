@@ -1,0 +1,25 @@
+.badge {
+  width: 20px;
+  height: 20px;
+  background: #D8D8D8;
+  position: absolute;
+  top: 0;
+  left: 10px;
+  text-align: center;
+
+  i {
+    color: white;
+    font-size: 12px;
+    line-height: 20px;
+  }
+
+  &:after {
+    top: 20px;
+    left: 0;
+    content: '';
+    position: absolute;
+
+    border: 10px solid transparent;
+    border-top-color: #D8D8D8;
+  }
+}

@@ -47,6 +47,7 @@
  * Vendors
  */
 @import "vendors/themify";
+@import "vendors/virtualized";
 
 /*
  * Import all objects
@@ -100,7 +101,9 @@
  */
 @import "components/app";
 @import "components/btn";
+@import "components/badge";
 @import "components/loader";
 @import "components/view-bar";
 @import "components/app-alert";
+@import "components/notification";
 @import "components/profile-picture";
