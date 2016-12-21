@@ -252,7 +252,9 @@ $btn-backgrounds: (
 
   brand-main      : ($brand-color-main, lighten($brand-color-main, 10)),
   brand-secondary : ($brand-color-secondary, lighten($brand-color-secondary, 10)),
-  dark-grey-brand : (#444, $brand-color-secondary)
+  dark-grey-brand : (#444, $brand-color-secondary),
+
+  error           : ($background-error, lighten($background-error, 10))
 );
 
 /*
