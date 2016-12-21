@@ -94,7 +94,7 @@ export function handleAddAccountClick()
                         dispatch(pollBeforeNotifications(gitHubUser.id.toString(),
                                                          authToken,
                                                          formatDateAsUTC(),
-                                                         true));
+                                                         false));
 
                         /*
                          * If theres no accounts set so far, then set the
