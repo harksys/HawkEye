@@ -1,7 +1,7 @@
 .badge {
   width: 20px;
   height: 20px;
-  background: #D8D8D8;
+  background: $background-success;
   position: absolute;
   top: 0;
   left: 10px;
@@ -20,6 +20,13 @@
     position: absolute;
 
     border: 10px solid transparent;
-    border-top-color: #D8D8D8;
+    border-top-color: $background-success;
   }
+}
+
+.badge .octicon {
+  top: 1px;
+  color: white;
+  font-size: 14px;
+  position: relative;
 }

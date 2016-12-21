@@ -1,6 +1,8 @@
 import * as React from 'react';
+import * as Octicon from 'react-octicon';
 
 import { relativeTime } from 'Helpers/Lang/Date';
+import { getNotificationSubjectIcon } from 'Helpers/Services/GitHub';
 
 import { Icon } from 'View/Ui/Index';
 
@@ -13,11 +15,10 @@ class Notification extends React.Component<INotificationProps, any>
 {
   render()
   {
-    console.log(this.props.notification.subject.type);
     return (
       <div className="notification">
         <div className="badge">
-          <Icon icon="world" />
+          <Octicon name={getNotificationSubjectIcon(this.props.notification)} />
         </div>
       <div className="hard-top hard-top--epsilon">
           <div className="hard-top__top">
