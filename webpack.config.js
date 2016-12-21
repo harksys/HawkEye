@@ -25,6 +25,12 @@ module.exports = {
     loaders : [{
       test   : /\.tsx?$/,
       loader : 'ts-loader?sourceMap=false&configFileName=tsconfig.json'
+    }, {
+      test   : /\.css$/,
+      loader : 'style!css'
+    }, {
+      test   : /\.(otf|eot|svg|ttf|woff|woff2).*$/,
+      loader : 'url?limit=8192'
     }]
   },
   plugins : [
