@@ -16,7 +16,7 @@ const routes: ReactRouter.PlainRoute[] = [{
     path      : 'settings/frequency',
     component : FrequencySettings
   }, {
-    path      : 'settings/accounts/:id',
+    path      : 'settings/accounts/:accountId',
     component : SettingsAccountView
   }
 ];
