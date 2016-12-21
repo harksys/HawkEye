@@ -21,7 +21,7 @@ class Index extends React.Component<IAppIndexProps, any>
   render()
   {
     let notifications: IGitHubNotification[] = [];
-    Object.keys(this.props.notifications[this.props.app.currentAccountId])
+    Object.keys(this.props.notifications[this.props.app.currentAccountId] || {})
                 .forEach(repoId => {
                   Object.keys(this.props.notifications[this.props.app.currentAccountId][repoId])
                         .forEach(notificationId => {

@@ -1,4 +1,4 @@
-import { push } from 'react-router-redux';
+import { replace } from 'react-router-redux';
 import { setCurrentAccountId } from 'Actions/App';
 
 /**
@@ -9,6 +9,6 @@ export function switchAccount(accountId: number)
   return dispatch =>
   {
     dispatch(setCurrentAccountId(accountId));
-    dispatch(push('/'));
+    dispatch(replace('/'));
   };
 };
