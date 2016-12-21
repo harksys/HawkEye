@@ -5,6 +5,7 @@
 ///<reference path="./IStateAppAlerts.ts" />
 ///<reference path="./IStateNotifications.ts" />
 ///<reference path="./IStateAuthentication.ts" />
+///<reference path="./IStateNotificationFilters.ts" />
 
 interface IState
 {
@@ -21,4 +22,6 @@ interface IState
   notifications: IStateNotifications;
 
   authentication: IStateAuthentication;
+
+  notificationFilters: IStateNotificationFilters;
 };
