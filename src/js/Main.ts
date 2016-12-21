@@ -36,7 +36,12 @@ class Main
 
   static onReady()
   {
-    Main.mainWindow = new Main.browserWindow({ width: 330, height : 500 });
+    Main.mainWindow = new Main.browserWindow({
+                        width     : 330,
+                        height    : 500,
+                        minHeight : 250,
+                        minWidth  : 328
+                      });
 
     Main.mainWindow.loadURL('file://' + __dirname + '/index.html');
     Main.mainWindow.on('closed', Main.onClose);
