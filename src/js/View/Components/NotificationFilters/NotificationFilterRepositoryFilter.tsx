@@ -27,9 +27,10 @@ class NotificationFilterRepositoryFilter extends React.Component<INotificationFi
              (
                <div key={filter.repository.id}
                     className="soft-delta--right push-iota--bottom">
-                <Btn className="btn--hard-right btn--pill"
+                <Btn className="btn--hard-right btn--pill btn--pill-has-count"
                      onClick={() => {}}>
                   {this.props.getFilterTitle(filter)}
+                  <span className="btn-pill__count">{filter.count}</span>
                 </Btn>
               </div>
              ))}
