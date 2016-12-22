@@ -20,7 +20,7 @@ class NotificationFilterRepositoryFilter extends React.Component<INotificationFi
     return (
       <div className={this.props.className}>
         <div className="soft-delta soft-zeta--bottom">
-          <label>{this.props.getTitle()}</label>
+          <label className="text--zeta">{this.props.getTitle()}</label>
         </div>
         {this.props.repositoryFilters
              .map(filter =>

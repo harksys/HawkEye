@@ -20,7 +20,7 @@ class NotificationFilterStringFilter extends React.Component<INotificationFilter
     return (
       <div className={this.props.className}>
         <div className="soft-delta soft-zeta--bottom">
-          <label>{this.props.getTitle()}</label>
+          <label className="text--zeta">{this.props.getTitle()}</label>
         </div>
         {this.props.stringFilters
              .map(filter =>
