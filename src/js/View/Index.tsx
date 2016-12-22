@@ -3,14 +3,13 @@ import { connect } from 'react-redux';
 import * as concat from 'lodash/concat';
 import * as values from 'lodash/values';
 
-import { createGitHubNotificationFilterSet } from 'Helpers/Models/GitHubNotificationFilterSet';
-
 import {
   AutoSizer,
   Collection
 } from 'react-virtualized';
 import { Notification } from 'View/Ui/Index';
 import ViewBar from 'View/Components/ViewBar/Index';
+import NotificationFilters from 'View/Components/NotificationFilters/Index';
 
 interface IAppIndexProps
 {
@@ -29,7 +28,7 @@ class Index extends React.Component<IAppIndexProps, any>
       <ViewBar title={'Notifications - ' + notifications.length}>
         <div className="hideable-left">
           <div className="hideable-left__left bg--lighter-grey">
-            <p>{'Filters'}</p>
+            <NotificationFilters notifications={notifications} />
           </div>
           <div className="hideable-left__content no-outline">
             <AutoSizer>
