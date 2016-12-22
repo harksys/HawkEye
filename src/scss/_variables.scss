@@ -257,6 +257,19 @@ $btn-backgrounds: (
   error           : ($background-error, lighten($background-error, 10))
 );
 
+$btn-pill-font-size: 13px;
+$btn-pill-text-align: left;
+$btn-pill-text-transform: none;
+$btn-pill-padding: 5px 10px 5px 20px;
+$btn-pill-background: transparent;
+$btn-pill-color: #333;
+
+$btn-pill-active-background: $background-error;
+$btn-pill-active-color: white;
+
+$btn-pill-hover-background: $brand-color-main;
+$btn-pill-hover-color: white;
+
 /*
  * AppLoader Styles
  */

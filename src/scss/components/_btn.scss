@@ -13,7 +13,7 @@
   text-shadow: $button-text-shadow;
   text-transform: $button-text-transform;
   @include border-radius($button-border-radius);
-  @include transition(background $button-transition-speed);
+  @include transition(all $button-transition-speed);
 }
 
 .btn:hover {
@@ -47,8 +47,33 @@
 }
 
 /*
+ * Pill
+ */
+.btn--pill {
+  @extend .truncate;
+  padding: $btn-pill-padding;
+  font-size: $btn-pill-font-size;
+  text-align: $btn-pill-text-align;
+  color: $btn-pill-color!important;
+  text-transform: $btn-pill-text-transform;
+  background: $btn-pill-background!important;
+
+  &:hover {
+    color: $btn-pill-hover-color!important;
+    background: $btn-pill-hover-background!important;
+  }
+}
+
+.btn--pill.btn--active {
+  color: $btn-pill-active-color!important;
+  background: $btn-pill-active-background!important;
+}
+
+/*
  * Hard Corners
  */
 .btn--hard        { @include border-radius(0); }
 .btn--hard-top    { @include border-radius(0 0 $button-border-radius $button-border-radius); }
 .btn--hard-bottom { @include border-radius($button-border-radius $button-border-radius 0 0); }
+.btn--hard-left   { @include border-radius($button-border-radius 0 0 $button-border-radius); }
+.btn--hard-right  { @include border-radius(0 $button-border-radius $button-border-radius 0); }
