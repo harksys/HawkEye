@@ -87,7 +87,7 @@ class NotificationFilters extends React.Component<INotificationFiltersProps, any
           <div className="grid__item one-whole">
             <div className="soft-delta">
               <label className="display--inline-block push-zeta--right">{'Filters'}</label>
-              <Btn className="btn--small-icon btn--error display--inline-block position--relative n-top--nu">
+              <Btn className="btn--small-icon btn--error display--inline-block position--relative n-top--nu display--none">
                 <Icon icon="close" />
               </Btn>
             </div>
