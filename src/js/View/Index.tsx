@@ -9,12 +9,8 @@ import { sortingMethods } from 'Helpers/Lang/Sort';
 import { filterNotificationsByFilteringSet } from 'Helpers/Models/GitHubNotification';
 import { defaultNotificationFilterSet } from 'Constants/Models/NotificationFilterSet';
 
-import {
-  AutoSizer,
-  Collection
-} from 'react-virtualized';
-import { Notification } from 'View/Ui/Index';
 import ViewBar from 'View/Components/ViewBar/Index';
+import NotificationsList from 'View/Components/NotificationsList/Index';
 import NotificationFilters from 'View/Components/NotificationFilters/Index';
 
 interface IAppIndexProps
@@ -59,42 +55,12 @@ class Index extends React.Component<IAppIndexProps, any>
                                  notificationFilters={filterRules} />
           </div>
           <div className="hideable-left__content no-outline">
-            <AutoSizer>
-              {({ height, width }) => {
-                return width === 0
-                         ? <div></div>
-                         : <Collection key={'notifications' + width + height}
-                                       cellCount={filteredNotifications.length}
-                                       height={height}
-                                       width={width}
-                                       cellRenderer={this.renderRow.bind(this, filteredNotifications)}
-                                       cellSizeAndPositionGetter={this.cellSizeCalculator.bind(this, width)} />}}
-            </AutoSizer>
+            <NotificationsList notifications={filteredNotifications} />
           </div>
         </div>
       </ViewBar>
     );
   }
-
-  cellSizeCalculator(width: number, o: any)
-  {
-    return {
-      width  : width,
-      height : 90,
-      x      : 0,
-      y      : o.index * 90
-    };
-  };
-
-  renderRow(notifications: IGitHubNotification[], o: any)
-  {
-    return (
-      <div key={o.key}
-           style={o.style}>
-        <Notification notification={notifications[o.index]} />
-      </div>
-    );
-  };
 };
 
 export default connect(
