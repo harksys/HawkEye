@@ -5,7 +5,12 @@ import * as values from 'lodash/values';
 
 import { defaultNotificationFilterSet } from 'Constants/Models/NotificationFilterSet';
 import Filter from 'Filter/Filter';
-import { Read } from 'Filter/FilterFunctions/GitHubNotifications/Index';
+import {
+  Read,
+  Reason,
+  Subject,
+  Repository
+} from 'Filter/FilterFunctions/GitHubNotifications/Index';
 
 import {
   AutoSizer,
@@ -33,7 +38,7 @@ class Index extends React.Component<IAppIndexProps, any>
                             || defaultNotificationFilterSet);
 
     let filteredN = new Filter<IGitHubNotification>(notifications, filterRules)
-                          .addFilterFunction(Read)
+                          .addFilterFunctions(Read, Subject, Reason, Repository)
                           .filter();
 
     return (
