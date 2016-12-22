@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 
-import * as concat from 'lodash/concat';
 import * as values from 'lodash/values';
 import * as throttle from 'lodash/throttle';
 
