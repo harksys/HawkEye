@@ -1,8 +1,10 @@
 import HawkEyeConfig from 'Config/HawkEye';
 
 import {
+  gitHubNotificationReasonTypes,
   githubNotificationSubjectTypes,
   githubNotificationSubjectTypeIcons,
+  gitHubNotificationReasonTypePrettyNames,
   gitHubNotificationSubjectTypePrettyNames
 } from 'Constants/Services/GitHub';
 
@@ -52,13 +54,28 @@ export function getNotificationSubjectIcon(notification: IGitHubNotification): s
  * @param  {IGitHubNotification} notification
  * @returns string
  */
-export function getNotificationSubjectPrettyName(notification: IGitHubNotification): string
+export function getNotificationSubjectPrettyName(subject: string): string
 {
-  let type = githubNotificationSubjectTypes[notification.subject.type];
+  let type = githubNotificationSubjectTypes[subject];
   if (typeof type === 'undefined'
       || gitHubNotificationSubjectTypePrettyNames[type] === 'undefined') {
-    return 'Subject';
+    return subject;
   }
 
   return gitHubNotificationSubjectTypePrettyNames[type];
+};
+
+/**
+ * @param  {string} reason
+ * @returns string
+ */
+export function getNotificationReasonPrettyName(reason: string): string
+{
+  let type = gitHubNotificationReasonTypes[reason];
+  if (typeof type === 'undefined'
+       || typeof gitHubNotificationReasonTypePrettyNames[type] === 'undefuned') {
+    return reason;
+  }
+
+  return gitHubNotificationReasonTypePrettyNames[type];
 };

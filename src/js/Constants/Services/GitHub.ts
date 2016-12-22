@@ -37,3 +37,25 @@ export const gitHubNotificationSubjectTypePrettyNames = {
   PULLREQUEST : 'Pull Request',
   COMMIT      : 'Commit'
 };
+
+export const gitHubNotificationReasonTypes = {
+  subscribed   : 'SUBSCRIBED',
+  manual       : 'MANUAL',
+  author       : 'AUTHOR',
+  comment      : 'COMMENT',
+  mention      : 'MENTION',
+  team_mention : 'TEAMMENTION',
+  state_change : 'STATECHANGE',
+  assign       : 'ASSIGN'
+};
+
+export const gitHubNotificationReasonTypePrettyNames = {
+  SUBSCRIBED : 'Subscribed',
+  MANUAL : 'Manual',
+  AUTHOR : 'Authored',
+  COMMENT : 'Commented',
+  MENTION : 'Mentioned',
+  TEAMMENTION : 'Team Mention',
+  STATECHANGE : 'State Changed',
+  ASSIGN : 'Assigned'
+};
