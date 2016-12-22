@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import * as concat from 'lodash/concat';
 import * as values from 'lodash/values';
 
+import { defaultNotificationFilterSet } from 'Constants/Models/NotificationFilterSet';
+
 import {
   AutoSizer,
   Collection
@@ -16,6 +18,8 @@ interface IAppIndexProps
   app: IStateApp;
 
   notifications: IStateNotifications;
+
+  notificationFilters: IStateNotificationFilters;
 };
 
 class Index extends React.Component<IAppIndexProps, any>
@@ -23,12 +27,16 @@ class Index extends React.Component<IAppIndexProps, any>
   render()
   {
     let notifications = values(this.props.notifications[this.props.app.currentAccountId] || {});
+    let filterRules   = (this.props.notificationFilters[this.props.app.currentAccountId]
+                            || defaultNotificationFilterSet);
 
     return (
       <ViewBar title={'Notifications - ' + notifications.length}>
         <div className="hideable-left">
           <div className="hideable-left__left bg--lighter-grey">
-            <NotificationFilters notifications={notifications} />
+            <NotificationFilters accountId={this.props.app.currentAccountId}
+                                 notifications={notifications}
+                                 notificationFilters={filterRules} />
           </div>
           <div className="hideable-left__content no-outline">
             <AutoSizer>
@@ -71,7 +79,8 @@ class Index extends React.Component<IAppIndexProps, any>
 
 export default connect(
   (state: IState, props: IAppIndexProps) => ({
-    app           : state.app,
-    notifications : state.notifications
+    app                 : state.app,
+    notifications       : state.notifications,
+    notificationFilters : state.notificationFilters
   })
 )(Index);

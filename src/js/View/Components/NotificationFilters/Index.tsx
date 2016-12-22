@@ -17,7 +17,11 @@ import {
 
 interface INotificationFiltersProps
 {
+  accountId: number;
+
   notifications: IGitHubNotification[];
+
+  notificationFilters: INotificationFilterSet;
 };
 
 class NotificationFilters extends React.Component<INotificationFiltersProps, any>
