@@ -166,7 +166,7 @@ $default-border-radius: 3px!default;
 $hard-left-width: 320px;
 $hard-left-sizes: (
   alpha   : 20px,
-  beta    : 20px,
+  beta    : 150px,
   gamma   : 20px,
   delta   : 68px,
   epsilon : 40px,
@@ -282,3 +282,23 @@ $loader-sizes: (
   medium : 50px,
   large  : 100px
 );
+
+/*
+ * Negative Tops
+ */
+$n-top-sizes: (
+  alpha   : 9999px,
+  beta    : 9999px,
+  gamma   : 9999px,
+  delta   : 9999px,
+  epsilon : 9999px,
+  zeta    : -60px,
+  theta   : -50px,
+  iota    : -40px,
+  kappa   : -30px,
+  lambda  : -20px,
+  mu      : -2px,
+  nu      : -1px,
+  xi      : 0
+);
+$breakpoint-n-tops: ();

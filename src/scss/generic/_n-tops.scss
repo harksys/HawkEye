@@ -1,0 +1,18 @@
+/**
+ * Negative Tops
+ *
+ */
+
+@mixin generate-n-tops($pre-class-name: null) {
+  @each $name, $size in $n-top-sizes {
+    .#{$pre-class-name}n-top--#{$name} { top: $size!important; }
+  }
+};
+
+@include generate-n-tops();
+
+@each $breakpoint-name in $breakpoint-n-tops {
+  @include breakpoint($breakpoint-name) {
+    @include generate-n-tops(prefix-breakpoint-class($breakpoint-name));
+  }
+}
