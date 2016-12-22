@@ -36,13 +36,15 @@ class Filter<T> implements IFilter<T>
   public filter = (): T[] =>
   {
     this.filteredDataSet = clone(this.originalDataSet);
-    for (var i = 0; i < this.filterFunctions.length; i ++) {
+    for (var i = 0; i < this.filterFunctions.length; i++) {
       let func = this.filterFunctions[i];
 
       this.filteredDataSet = func(this.filteredDataSet, this.ruleSet);
     }
 
-    return this.originalDataSet;
+    return this.filteredDataSet;
   }
 
 };
+
+export default Filter;
