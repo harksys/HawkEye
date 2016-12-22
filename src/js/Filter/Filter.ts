@@ -26,7 +26,7 @@ class Filter<T> implements IFilter<T>
     return this;
   }
 
-  public addFilterFunctions = (filterFunctions: IFilterFunction<T>[]): IFilter<T> =>
+  public addFilterFunctions = (...filterFunctions: IFilterFunction<T>[]): IFilter<T> =>
   {
     filterFunctions.forEach(f => this.filterFunctions.push(f));
 
