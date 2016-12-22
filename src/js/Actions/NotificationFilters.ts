@@ -1,9 +1,22 @@
 import ActionConstants from 'Constants/Actions/Index';
 
 /**
+ * @param  {number} accountId
+ * @param  {boolean} read
+ */
+export function setReadFilter(accountId: number, read: boolean)
+{
+  return {
+    type      : ActionConstants.notificationFilter.SET_READ_FILTER,
+    accountId,
+    read
+  };
+};
+
+/**
  * @param  {string} subjectType
  */
-export function addSubjectTypeFilter(accountId: string, subjectType: string)
+export function addSubjectTypeFilter(accountId: number, subjectType: string)
 {
   return addFilter(accountId, 'subjectType', subjectType);
 };
@@ -11,7 +24,7 @@ export function addSubjectTypeFilter(accountId: string, subjectType: string)
 /**
  * @param  {string} subjectType
  */
-export function removeSubjectTypeFilter(accountId: string, subjectType: string)
+export function removeSubjectTypeFilter(accountId: number, subjectType: string)
 {
   return removeFilter(accountId, 'subjectType', subjectType);
 };
@@ -19,7 +32,7 @@ export function removeSubjectTypeFilter(accountId: string, subjectType: string)
 /**
  * @param  {string} reasonType
  */
-export function addReasonFilter(accountId: string, reasonType: string)
+export function addReasonFilter(accountId: number, reasonType: string)
 {
   return addFilter(accountId, 'reasonType', reasonType);
 };
@@ -27,7 +40,7 @@ export function addReasonFilter(accountId: string, reasonType: string)
 /**
  * @param  {string} reasonType
  */
-export function removeReasonFilter(accountId: string, reasonType: string)
+export function removeReasonFilter(accountId: number, reasonType: string)
 {
   return removeFilter(accountId, 'reasonType', reasonType);
 };
@@ -35,7 +48,7 @@ export function removeReasonFilter(accountId: string, reasonType: string)
 /**
  * @param  {string|number} id
  */
-export function addRepositoryFilter(accountId: string, id: string | number)
+export function addRepositoryFilter(accountId: number, id: string | number)
 {
   return addFilter(accountId, 'repository', id);
 };
@@ -43,7 +56,7 @@ export function addRepositoryFilter(accountId: string, id: string | number)
 /**
  * @param  {string|number} id
  */
-export function removeRepositoryFilter(accountId: string, id: string | number)
+export function removeRepositoryFilter(accountId: number, id: string | number)
 {
   return removeFilter(accountId, 'repository', id);
 };
@@ -52,7 +65,7 @@ export function removeRepositoryFilter(accountId: string, id: string | number)
  * @param  {string} area
  * @param  {string|number} filter
  */
-export function addFilter(accountId: string, area: string, filter: string | number)
+export function addFilter(accountId: number, area: string, filter: string | number)
 {
   return {
     type      : ActionConstants.notificationFilter.ADD_FILTER,
@@ -66,7 +79,7 @@ export function addFilter(accountId: string, area: string, filter: string | numb
  * @param  {string} area
  * @param  {string|number} filter
  */
-export function removeFilter(accountId: string, area: string, filter: string | number)
+export function removeFilter(accountId: number, area: string, filter: string | number)
 {
   return {
     type      : ActionConstants.notificationFilter.REMOVE_FILTER,

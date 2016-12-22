@@ -11,6 +11,8 @@ interface INotificationFilterRepositoryFilterProps
   getTitle(): string;
 
   getFilterTitle(filter: IGitHubNotificationFilterSetRepository): string;
+
+  onClick(filter: IGitHubNotificationFilterSetRepository): void;
 };
 
 class NotificationFilterRepositoryFilter extends React.Component<INotificationFilterRepositoryFilterProps, any>
@@ -28,7 +30,7 @@ class NotificationFilterRepositoryFilter extends React.Component<INotificationFi
                <div key={filter.repository.id}
                     className="soft-delta--right push-iota--bottom">
                 <Btn className="btn--hard-right btn--pill btn--pill-has-count"
-                     onClick={() => {}}>
+                     onClick={this.props.onClick.bind(null, filter)}>
                   {this.props.getFilterTitle(filter)}
                   <span className="btn-pill__count">{filter.count}</span>
                 </Btn>

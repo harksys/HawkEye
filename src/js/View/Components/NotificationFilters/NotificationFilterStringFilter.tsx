@@ -11,6 +11,10 @@ interface INotificationFilterStringFilterProps
   getTitle(): string;
 
   getFilterTitle(filter: IGitHubNotificationFilterSetStringFilter): string;
+
+  getFilterIsActive(filter: IGitHubNotificationFilterSetStringFilter): boolean;
+
+  onClick(filter: IGitHubNotificationFilterSetStringFilter): void;
 };
 
 class NotificationFilterStringFilter extends React.Component<INotificationFilterStringFilterProps, any>
@@ -27,8 +31,11 @@ class NotificationFilterStringFilter extends React.Component<INotificationFilter
              (
                <div key={filter.name}
                     className="soft-delta--right push-iota--bottom">
-                 <Btn className="btn--hard-right btn--pill btn--pill-has-count"
-                      onClick={() => {}}>
+                 <Btn className={'btn--hard-right btn--pill btn--pill-has-count'
+                                   + (this.props.getFilterIsActive(filter)
+                                        ? ' btn--active'
+                                        : '')}
+                      onClick={this.props.onClick.bind(null, filter)}>
                   {this.props.getFilterTitle(filter)}
                   <span className="btn-pill__count">{filter.count}</span>
                  </Btn>
