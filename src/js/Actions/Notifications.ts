@@ -27,8 +27,7 @@ export function ingestNotifications(accountId: string, notifications: any[], upd
   return dispatch =>
   {
     let madeNotifications = notifications.map(makeGitHubNotification)
-                                         .filter(n => n !== null
-                                                        && n.repository !== null);
+                                         .filter(n => n !== null);
 
     if (madeNotifications.length === 0) {
       return;

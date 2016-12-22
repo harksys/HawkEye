@@ -1,6 +1,9 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 import * as concat from 'lodash/concat';
+import * as values from 'lodash/values';
+
+import { createGitHubNotificationFilterSet } from 'Helpers/Models/GitHubNotificationFilterSet';
 
 import {
   AutoSizer,
@@ -20,14 +23,7 @@ class Index extends React.Component<IAppIndexProps, any>
 {
   render()
   {
-    let notifications: IGitHubNotification[] = [];
-    Object.keys(this.props.notifications[this.props.app.currentAccountId] || {})
-                .forEach(repoId => {
-                  Object.keys(this.props.notifications[this.props.app.currentAccountId][repoId])
-                        .forEach(notificationId => {
-                          notifications.push(this.props.notifications[this.props.app.currentAccountId][repoId][notificationId]);
-                        })
-                })
+    let notifications = values(this.props.notifications[this.props.app.currentAccountId] || {});
 
     return (
       <ViewBar title={'Notifications - ' + notifications.length}>

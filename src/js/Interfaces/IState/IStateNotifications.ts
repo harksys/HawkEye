@@ -2,15 +2,10 @@
 
 interface IStateNotifications
 {
-  [accountId: string]: IStateNotificationsAccount;
+  [accountId: string]: IStateNotificationsAccountsNotifications;
 };
 
-interface IStateNotificationsAccount
-{
-  [repoId: string]: IStateNotificationsAccountRepo;
-};
-
-interface IStateNotificationsAccountRepo
+interface IStateNotificationsAccountsNotifications
 {
   [notificationId: string]: IGitHubNotification;
 };
