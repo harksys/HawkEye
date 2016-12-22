@@ -6,6 +6,7 @@
 export function createGitHubNotificationFilterSet(notifications: IGitHubNotification[]): IGitHubNotificationFilterSet
 {
   let filterOpts = {
+    read         : 0,
     subjectTypes : {},
     reasonTypes  : {},
     repositories : {}
@@ -18,6 +19,10 @@ export function createGitHubNotificationFilterSet(notifications: IGitHubNotifica
   notifications
     .forEach(notification =>
     {
+      if (!notification.unread) {
+        filterOpts.read++;
+      }
+
       /*
        * Subject Types
        */
@@ -50,6 +55,7 @@ export function createGitHubNotificationFilterSet(notifications: IGitHubNotifica
     });
 
   let notificationFilters: IGitHubNotificationFilterSet = {
+    read         : filterOpts.read,
     subjectTypes : Object.keys(filterOpts.subjectTypes)
                          .map(type => ({
                            name  : type,

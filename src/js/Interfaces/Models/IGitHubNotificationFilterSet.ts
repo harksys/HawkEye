@@ -1,6 +1,8 @@
 
 interface IGitHubNotificationFilterSet
 {
+  read: number;
+
   subjectTypes: IGitHubNotificationFilterSetStringFilter[];
 
   reasonTypes: IGitHubNotificationFilterSetStringFilter[];
