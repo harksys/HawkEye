@@ -1,7 +1,7 @@
 
 interface INotificationFilterSet
 {
-  read?: boolean;
+  read: boolean;
 
   subjectType: string[];
 
