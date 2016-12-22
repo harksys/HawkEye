@@ -4,6 +4,8 @@ import * as concat from 'lodash/concat';
 import * as values from 'lodash/values';
 
 import { defaultNotificationFilterSet } from 'Constants/Models/NotificationFilterSet';
+import Filter from 'Filter/Filter';
+import { Read } from 'Filter/FilterFunctions/GitHubNotifications/Index';
 
 import {
   AutoSizer,
@@ -30,8 +32,12 @@ class Index extends React.Component<IAppIndexProps, any>
     let filterRules   = (this.props.notificationFilters[this.props.app.currentAccountId]
                             || defaultNotificationFilterSet);
 
+    let filteredN = new Filter<IGitHubNotification>(notifications, filterRules)
+                          .addFilterFunction(Read)
+                          .filter();
+
     return (
-      <ViewBar title={'Notifications - ' + notifications.length}>
+      <ViewBar title={'Notifications - ' + filteredN.length}>
         <div className="hideable-left">
           <div className="hideable-left__left bg--lighter-grey">
             <NotificationFilters accountId={this.props.app.currentAccountId}
