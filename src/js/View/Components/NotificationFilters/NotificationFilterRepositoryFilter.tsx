@@ -1,5 +1,7 @@
 import * as React from 'react';
 
+import { Btn } from 'View/Ui/Index';
+
 interface INotificationFilterRepositoryFilterProps
 {
   repositoryFilters: IGitHubNotificationFilterSetRepository[];
@@ -17,13 +19,19 @@ class NotificationFilterRepositoryFilter extends React.Component<INotificationFi
   {
     return (
       <div className={this.props.className}>
-        <label>{this.props.getTitle()}</label>
+        <div className="soft-delta soft-zeta--bottom">
+          <label>{this.props.getTitle()}</label>
+        </div>
         {this.props.repositoryFilters
              .map(filter =>
              (
-               <div key={filter.repository.id}>
-                 {this.props.getFilterTitle(filter) + ' ' + filter.count}
-               </div>
+               <div key={filter.repository.id}
+                    className="soft-delta--right push-iota--bottom">
+                <Btn className="btn--hard-right btn--pill"
+                     onClick={() => {}}>
+                  {this.props.getFilterTitle(filter)}
+                </Btn>
+              </div>
              ))}
       </div>
     );
