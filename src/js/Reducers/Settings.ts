@@ -6,7 +6,7 @@ import { cronPeriods } from 'Constants/Lang/Date';
 import * as objectAssign from 'object-assign';
 
 const initialState: IStateSettings = {
-  pollPeriod      : cronPeriods.fifteenMinute,
+  pollPeriod      : 'fifteenMinute', // @todo: const
   accountSettings : {}
 };
 
