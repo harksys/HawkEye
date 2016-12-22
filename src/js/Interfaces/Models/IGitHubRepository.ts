@@ -4,7 +4,7 @@ interface IGitHubRepository
 {
   id: number;
 
-  name: String;
+  name: string;
 
   fullName: string;
 
