@@ -88,7 +88,23 @@
   position: absolute;
   background: trans-dark(.5);
   @include border-radius(10px);
+}
 
+/*
+ * Small Icon
+ */
+.btn--small-icon {
+  padding: 0;
+  width: 16px;
+  height: 16px;
+  text-align: center;
+  @include border-radius(3px);
+
+  i {
+    font-size: 8px;
+    line-height: 16px;
+    font-weight: bold;
+  }
 }
 
 /*
