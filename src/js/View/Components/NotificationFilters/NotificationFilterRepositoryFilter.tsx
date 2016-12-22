@@ -12,6 +12,8 @@ interface INotificationFilterRepositoryFilterProps
 
   getFilterTitle(filter: IGitHubNotificationFilterSetRepository): string;
 
+  getFilterIsActive(filter: IGitHubNotificationFilterSetRepository): boolean;
+
   onClick(filter: IGitHubNotificationFilterSetRepository): void;
 };
 
@@ -29,7 +31,10 @@ class NotificationFilterRepositoryFilter extends React.Component<INotificationFi
              (
                <div key={filter.repository.id}
                     className="soft-delta--right push-iota--bottom">
-                <Btn className="btn--hard-right btn--pill btn--pill-has-count"
+                <Btn className={'btn--hard-right btn--pill btn--pill-has-count'
+                                  + (this.props.getFilterIsActive(filter)
+                                       ? ' btn--active'
+                                       : '')}
                      onClick={this.props.onClick.bind(null, filter)}>
                   {this.props.getFilterTitle(filter)}
                   <span className="btn-pill__count">{filter.count}</span>

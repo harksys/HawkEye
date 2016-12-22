@@ -94,8 +94,11 @@ class NotificationFilters extends React.Component<INotificationFiltersProps, any
           </div>
           <div className="grid__item one-whole">
             <div className="soft-delta--right push-iota--bottom">
-              <Btn className="btn--hard-right btn--pill btn--pill-has-count"
-                   onClick={() => {}}>
+              <Btn className={'btn--hard-right btn--pill btn--pill-has-count'
+                                + (this.props.notificationFilters.read
+                                     ? ' btn--active'
+                                     : '')}
+                   onClick={this.handleReadFilterClick.bind(this)}>
                 {'Read'}
                 <span className="btn-pill__count">{filterSet.read}</span>
               </Btn>
@@ -117,14 +120,19 @@ class NotificationFilters extends React.Component<INotificationFiltersProps, any
                                               getTitle={() => 'Reasons'}
                                               getFilterTitle={filter => getNotificationReasonPrettyName(filter.name)}
                                               onClick={this.handleReasonFilterClick.bind(this)}
-                                              getFilterIsActive={filter => this.props.notificationFilters.reasonType.indexOf(filter.name) > -1} />
+                                              getFilterIsActive={filter => this.props.notificationFilters
+                                                                               .reasonType
+                                                                               .indexOf(filter.name) > -1} />
             : undefined}
           {filterSet.repositories.length > 0
             ? <NotificationFilterRepositoryFilter repositoryFilters={filterSet.repositories}
                                                   className="grid__item one-whole"
                                                   getTitle={() => 'Repositories'}
                                                   getFilterTitle={filter => filter.repository.fullName.toLowerCase()}
-                                                  onClick={filter => {}} />
+                                                  onClick={this.handleRepositoryFilterClick.bind(this)}
+                                                  getFilterIsActive={filter => this.props.notificationFilters
+                                                                                   .repository
+                                                                                   .indexOf(filter.repository.id) > -1} />
             : undefined}
         </div>
       </Scroll>
