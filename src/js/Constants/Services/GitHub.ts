@@ -31,3 +31,9 @@ export const githubNotificationSubjectTypeIcons = {
   PULLREQUEST : 'git-pull-request',
   COMMIT      : 'git-commit'
 };
+
+export const gitHubNotificationSubjectTypePrettyNames = {
+  ISSUE       : 'Issue',
+  PULLREQUEST : 'Pull Request',
+  COMMIT      : 'Commit'
+};

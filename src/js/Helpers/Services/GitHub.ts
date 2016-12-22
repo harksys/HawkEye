@@ -2,7 +2,8 @@ import HawkEyeConfig from 'Config/HawkEye';
 
 import {
   githubNotificationSubjectTypes,
-  githubNotificationSubjectTypeIcons
+  githubNotificationSubjectTypeIcons,
+  gitHubNotificationSubjectTypePrettyNames
 } from 'Constants/Services/GitHub';
 
 /**
@@ -45,4 +46,19 @@ export function getNotificationSubjectIcon(notification: IGitHubNotification): s
   }
 
   return githubNotificationSubjectTypeIcons[type];
+};
+
+/**
+ * @param  {IGitHubNotification} notification
+ * @returns string
+ */
+export function getNotificationSubjectPrettyName(notification: IGitHubNotification): string
+{
+  let type = githubNotificationSubjectTypes[notification.subject.type];
+  if (typeof type === 'undefined'
+      || gitHubNotificationSubjectTypePrettyNames[type] === 'undefined') {
+    return 'Subject';
+  }
+
+  return gitHubNotificationSubjectTypePrettyNames[type];
 };
