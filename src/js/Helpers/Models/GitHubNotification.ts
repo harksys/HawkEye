@@ -1,5 +1,13 @@
 import { makeGitHubRepository } from './GitHubRepository';
 
+import Filter from 'Filter/Filter';
+import {
+  Read,
+  Reason,
+  Subject,
+  Repository
+} from 'Filter/FilterFunctions/GitHubNotifications/Index';
+
 export function makeGitHubNotification(notification: any): IGitHubNotification
 {
   if (typeof notification.id === 'undefined') {
@@ -34,4 +42,17 @@ export function makeGitHubNotificationSubject(subject: any): IGitHubNotification
     latestCommentUrl : subject.latestCommentUrl,
     type             : subject.type
   };
+};
+
+/**
+ * @param  {IGitHubNotification[]} notifications
+ * @param  {INotificationFilterSet} filterSet
+ * @returns IGitHubNotification
+ */
+export function filterNotificationsByFilteringSet(notifications: IGitHubNotification[],
+                                                  filterSet: INotificationFilterSet): IGitHubNotification[]
+{
+  return (new Filter<IGitHubNotification>(notifications, filterSet))
+              .addFilterFunctions(Read, Subject, Reason, Repository)
+              .filter();
 };

@@ -1,16 +1,13 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
+
 import * as concat from 'lodash/concat';
 import * as values from 'lodash/values';
+import * as throttle from 'lodash/throttle';
 
+import { sortingMethods } from 'Helpers/Lang/Sort';
+import { filterNotificationsByFilteringSet } from 'Helpers/Models/GitHubNotification';
 import { defaultNotificationFilterSet } from 'Constants/Models/NotificationFilterSet';
-import Filter from 'Filter/Filter';
-import {
-  Read,
-  Reason,
-  Subject,
-  Repository
-} from 'Filter/FilterFunctions/GitHubNotifications/Index';
 
 import {
   AutoSizer,
@@ -31,18 +28,30 @@ interface IAppIndexProps
 
 class Index extends React.Component<IAppIndexProps, any>
 {
+  constructor(props)
+  {
+    super(props);
+
+    this.handleFilterNotifications = throttle(this.handleFilterNotifications, 250);
+  }
+
+  handleFilterNotifications(notifications: IGitHubNotification[],
+                           filterSet: INotificationFilterSet): IGitHubNotification[]
+  {
+    return filterNotificationsByFilteringSet(notifications, filterSet);
+  }
+
   render()
   {
     let notifications = values(this.props.notifications[this.props.app.currentAccountId] || {});
     let filterRules   = (this.props.notificationFilters[this.props.app.currentAccountId]
                             || defaultNotificationFilterSet);
 
-    let filteredN = new Filter<IGitHubNotification>(notifications, filterRules)
-                          .addFilterFunctions(Read, Subject, Reason, Repository)
-                          .filter();
+    let filteredNotifications = this.handleFilterNotifications(notifications, filterRules)
+                                    .sort(sortingMethods.dateDesc('updatedAt'));
 
     return (
-      <ViewBar title={'Notifications - ' + filteredN.length}>
+      <ViewBar title={'Notifications - ' + filteredNotifications.length}>
         <div className="hideable-left">
           <div className="hideable-left__left bg--lighter-grey">
             <NotificationFilters accountId={this.props.app.currentAccountId}
@@ -55,10 +64,10 @@ class Index extends React.Component<IAppIndexProps, any>
                 return width === 0
                          ? <div></div>
                          : <Collection key={'notifications' + width + height}
-                                       cellCount={notifications.length}
+                                       cellCount={filteredNotifications.length}
                                        height={height}
                                        width={width}
-                                       cellRenderer={this.renderRow.bind(this, notifications)}
+                                       cellRenderer={this.renderRow.bind(this, filteredNotifications)}
                                        cellSizeAndPositionGetter={this.cellSizeCalculator.bind(this, width)} />}}
             </AutoSizer>
           </div>
