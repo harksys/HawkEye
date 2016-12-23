@@ -9,10 +9,12 @@ import {
 } from 'Helpers/Models/AppAlert';
 import {
   getAccount,
+  getAccountIds,
   accountAlreadyAdded
 } from 'Helpers/Models/Accounts';
 import { getState } from 'Helpers/State/Store';
 import { formatDateAsUTC } from 'Helpers/Lang/Date';
+import { getCurrentAccountId } from 'Helpers/Models/App';
 import { makeGitHubUser } from 'Helpers/Models/GitHubUser';
 import { getCurrentPollPeriod } from 'Helpers/Models/Settings';
 import { configurePollingScheduler } from 'Helpers/System/Scheduler';
@@ -145,11 +147,11 @@ function handleAddAccountError()
  * @param  {string} accoundId
  * @param  {boolean=true} redirect
  */
-export function removeAccount(accoundId: string, redirect: boolean = true)
+export function removeAccount(accountId: string, redirect: boolean = true)
 {
   return dispatch =>
   {
-    let account = getAccount(accoundId);
+    let account = getAccount(accountId);
     if (!account) {
       return;
     }
@@ -158,14 +160,30 @@ export function removeAccount(accoundId: string, redirect: boolean = true)
      * Remove the account from state,
      * and remove it's notifications.
      */
-    dispatch(removeStoreAccount(accoundId));
-    dispatch(removeAccountsNotifications(accoundId));
+    dispatch(removeStoreAccount(accountId));
+    dispatch(removeAccountsNotifications(accountId));
 
     /*
      * Account has been removed. So reconfigure polling to
      * not include it!
      */
     configurePollingScheduler(getCurrentPollPeriod());
+
+    /*
+     * Reset currentAccountId
+     * - If there are no accounts left, set to null.
+     * - If it was set the accountId given, then set to
+     *   another accountId.
+     */
+    let accountIds       = getAccountIds();
+    let currentAccountId = getCurrentAccountId().toString();
+
+    if (currentAccountId === accountId) {
+      dispatch(setCurrentAccountId(accountIds.length > 0
+                                     ? accountIds[0] as any //@todo: Ugh.
+                                     : null));
+    }
+
 
     /*
      * Redirect if needs be, to settings.

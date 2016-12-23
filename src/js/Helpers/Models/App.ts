@@ -15,3 +15,11 @@ export function getLastPoll(): string
 {
   return getState<IState>().app.lastPoll;
 };
+
+/**
+ * @returns number
+ */
+export function getCurrentAccountId(): number
+{
+  return getState<IState>().app.currentAccountId;
+};
