@@ -1,8 +1,11 @@
 import ActionConstants from 'Constants/Actions/Index';
 
+import {
+  getAppAlertShowForTime,
+  attemptToPlayAlertSound
+} from 'Helpers/Models/AppAlert';
 import { wait } from 'Helpers/Lang/Timeout';
 import { getState } from 'Helpers/State/Store';
-import { getAppAlertShowForTime } from 'Helpers/Models/AppAlert';
 
 /**
  * @param  {IAppAlert} appAlert
@@ -27,6 +30,11 @@ export function pushAppAlert(appAlert: IAppAlert)
          */
         dispatch(hideAllAppAlerts());
         dispatch(showAppAlert(appAlert.id));
+
+        /*
+         * Attempt to play an alert sound
+         */
+        attemptToPlayAlertSound(appAlert);
 
         /*
          * Wait 5 seconds for the user to read.

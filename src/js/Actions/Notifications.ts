@@ -1,9 +1,12 @@
 import InstanceCache from 'Core/InstanceCache';
 import ActionConstants from 'Constants/Actions/Index';
+import { soundClipPaths } from 'Constants/Resources/Sound';
 
 import { getLast } from 'Helpers/Lang/Array';
+import { playSound } from 'Helpers/Lang/Audio';
 import { sortingMethods } from 'Helpers/Lang/Sort';
 import { formatDateAsUTC } from 'Helpers/Lang/Date';
+import { newItemsSoundIsEnabled } from 'Helpers/Models/Settings';
 import { makeGitHubNotification } from 'Helpers/Models/GitHubNotification';
 
 import {
@@ -26,13 +29,28 @@ export function ingestNotifications(accountId: string, notifications: any[], upd
 {
   return dispatch =>
   {
+    /*
+     * Make Notifications from the input,
+     * and fitler out. If theres none left,
+     * then do nothing.
+     */
     let madeNotifications = notifications.map(makeGitHubNotification)
                                          .filter(n => n !== null);
-
     if (madeNotifications.length === 0) {
       return;
     }
 
+    /*
+     * If new items sound is enabled, lets play.
+     */
+    if (newItemsSoundIsEnabled()) {
+      playSound(soundClipPaths.harkNewItems);
+    }
+
+    /*
+     * Ingest the notifications in to our state
+     * @todo: Bulk this?
+     */
     madeNotifications.forEach(n => dispatch(ingestNotification(accountId, n)));
     if (!updatedLastPoll) {
       return;

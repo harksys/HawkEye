@@ -1,8 +1,16 @@
 import HawkEyeConfig from 'Config/HawkEye';
 
+import {
+  alertErrorSoundIsEnabled,
+  alertSuccessSoundIsEnabled
+} from 'Helpers/Models/Settings';
 import { getState } from 'Helpers/State/Store';
+import { playSound } from 'Helpers/Lang/Audio';
 import { generateId } from 'Helpers/Lang/String';
+
+import { soundClipPaths } from 'Constants/Resources/Sound';
 import { appAlertStatuses } from 'Constants/Models/AppAlert';
+
 
 /**
  * @returns number
@@ -25,6 +33,29 @@ export function getNextAppAlertIndex(): number
 export function getAppAlertShowForTime(): number
 {
   return HawkEyeConfig.appAlerts.showFor;
+};
+
+/**
+ * @param  {IAppAlert} alert
+ */
+export function attemptToPlayAlertSound(alert: IAppAlert)
+{
+  // @todo: Clean this up
+  if (alert.status == appAlertStatuses.error
+        || alert.status === appAlertStatuses.warning) {
+    let soundFile = soundClipPaths.harkError;
+
+    if (alertErrorSoundIsEnabled()) {
+      playSound(soundClipPaths.harkError)
+    }
+    return;
+  }
+
+  if (!alertSuccessSoundIsEnabled()) {
+    return;
+  }
+
+  playSound(soundClipPaths.harkSuccess);
 };
 
 /**
