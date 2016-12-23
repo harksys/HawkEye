@@ -302,3 +302,21 @@ $n-top-sizes: (
   xi      : 0
 );
 $breakpoint-n-tops: ();
+
+/*
+ * Toggle
+ */
+$toggle-background: $brand-color-secondary;
+$toggle-border-radius: $default-border-radius;
+
+$toggle-option-font-size: 14px;
+$toggle-option-font-weight: normal;
+$toggle-option-padding: 8px 0;
+$toggle-option-color: white;
+$toggle-option-text-transform: uppercase;
+
+$toggle-option-hover-color: white;
+$toggle-option-hover-background: lighten($brand-color-secondary, 5);
+
+$toggle-option-active-color: white;
+$toggle-option-active-background: lighten($brand-color-main, 5);

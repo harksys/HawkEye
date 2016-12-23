@@ -1,0 +1,38 @@
+.toggle {
+  width: 100%;
+  display: inline-block;
+  background: $toggle-background;
+  @include border-radius($toggle-border-radius);
+}
+
+.toggle__option {
+  width: 50%;
+  text-align: center;
+  font: {
+    size: $toggle-option-font-size;
+    weight: $toggle-option-font-weight;
+  }
+  display: inline-block;
+  color: $toggle-option-color;
+  padding: $toggle-option-padding;
+  text-transform: $toggle-option-text-transform;
+  @include transition(all .25s ease);
+}
+
+.toggle__option:hover {
+  color: $toggle-option-hover-color;
+  background: $toggle-option-hover-background;
+}
+
+.toggle__option--active {
+  color: $toggle-option-active-color;
+  background: $toggle-option-active-background;
+}
+
+.toggle__option--first {
+  @include border-radius($toggle-border-radius 0 0 $toggle-border-radius);
+}
+
+.toggle__option--last {
+  @include border-radius(0 $toggle-border-radius $toggle-border-radius 0);
+}

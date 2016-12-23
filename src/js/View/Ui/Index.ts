@@ -5,6 +5,7 @@ import Scroll from './Scroll';
 import Anchor from './Anchor';
 import Button from './Button';
 import Loader from './Loader';
+import Toggle from './Toggle';
 import AppLoading from './AppLoading';
 import CenteredBox from './CenteredBox';
 import Notification from './Notification';
@@ -18,6 +19,7 @@ export {
   Anchor,
   Button,
   Loader,
+  Toggle,
   AppLoading,
   CenteredBox,
   Notification,
