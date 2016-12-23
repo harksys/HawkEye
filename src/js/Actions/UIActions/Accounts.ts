@@ -81,6 +81,8 @@ export function handleAddAccountClick()
                           return;
                         }
 
+                        let accountAlreadyExists = accountAlreadyAdded(gitHubUser.id.toString());
+
                         /*
                          * Okay great. We have the user. So lets store it.
                          * Then let the user know its all going well.
@@ -95,7 +97,7 @@ export function handleAddAccountClick()
                          * If we already have this account, we don't
                          * need to poll for any notifications.
                          */
-                        if (accountAlreadyAdded(gitHubUser.id.toString())) {
+                        if (accountAlreadyExists) {
                           return;
                         }
 
