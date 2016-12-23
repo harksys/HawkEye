@@ -20,9 +20,9 @@ interface IStateSettingsAccountSettingsItem
 
 interface IStateSettingsSound
 {
-  newItems: boolean;
+  newItemsEnabled: boolean;
 
-  alertSuccess: boolean;
+  alertSuccessEnabled: boolean;
 
-  alertError: boolean;
+  alertErrorEnabled: boolean;
 };

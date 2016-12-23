@@ -9,9 +9,9 @@ const initialState: IStateSettings = {
   pollPeriod      : 'fifteenMinute', // @todo: const
   accountSettings : {},
   soundSettings   : {
-    newItems     : true,
-    alertSuccess : true,
-    alertError   : true
+    newItemsEnabled     : true,
+    alertSuccessEnabled : true,
+    alertErrorEnabled   : true
   }
 };
 
@@ -20,6 +20,15 @@ let reducingMethods = {
   {
     return objectAssign({}, state, {
       [action.key] : action.value
+    });
+  },
+  [ActionConstants.settings.SET_SOUND_SETTINGS_ENABLED] : (state: IStateSettings, action: { key: string;
+                                                                                            enabled: boolean; }) =>
+  {
+    return objectAssign({}, state, {
+      soundSettings : objectAssign({}, state.soundSettings, {
+        [action.key] : action.enabled
+      })
     });
   }
 };

@@ -20,3 +20,41 @@ export function updateSettingsValue(key: string, value: any)
     value
   };
 };
+
+/**
+ * @param  {boolean} enabled
+ */
+export function setNewItemsEnabled(enabled: boolean)
+{
+  return updateSoundSettingsEnabled('newItemsEnabled', enabled);
+};
+
+/**
+ * @param  {boolean} enabled
+ */
+export function setAlertSuccessEnabled(enabled: boolean)
+{
+  return updateSoundSettingsEnabled('alertSuccessEnabled', enabled);
+};
+
+/**
+ * @param  {boolean} enabled
+ */
+export function setAlertErrorEnabled(enabled: boolean)
+{
+  return updateSoundSettingsEnabled('alertErrorEnabled', enabled);
+};
+
+
+/**
+ * @param  {string} key
+ * @param  {boolean} enabled
+ */
+export function updateSoundSettingsEnabled(key: string, enabled: boolean)
+{
+  return {
+    type    : ActionConstants.settings.SET_SOUND_SETTINGS_ENABLED,
+    key,
+    enabled
+  };
+};
