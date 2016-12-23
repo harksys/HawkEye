@@ -8,6 +8,7 @@ import { sortingMethods } from 'Helpers/Lang/Sort';
 import { filterNotificationsByFilteringSet } from 'Helpers/Models/GitHubNotification';
 import { defaultNotificationFilterSet } from 'Constants/Models/NotificationFilterSet';
 
+import { Icon, CenteredBox, Loader } from 'View/Ui/Index';
 import ViewBar from 'View/Components/ViewBar/Index';
 import NotificationsList from 'View/Components/NotificationsList/Index';
 import NotificationFilters from 'View/Components/NotificationFilters/Index';
@@ -49,11 +50,18 @@ class Index extends React.Component<IAppIndexProps, any>
       <div className="hideable-left">
         <div className="hideable-left__left bg--dark-grey-alpha">
           <NotificationFilters accountId={this.props.app.currentAccountId}
-                                notifications={notifications}
-                                notificationFilters={filterRules} />
+                               notifications={notifications}
+                               notificationFilters={filterRules} />
         </div>
         <div className="hideable-left__content no-outline">
-          <ViewBar title="Notifications">
+          <ViewBar title="Notifications"
+                   getLeftContent={this.props.app.isPolling
+                                    ? () => (
+                                        <CenteredBox>
+                                          <Loader size="small" />
+                                        </CenteredBox>
+                                      )
+                                    : undefined}>
             <NotificationsList notifications={filteredNotifications} />
           </ViewBar>
         </div>
