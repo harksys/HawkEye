@@ -167,7 +167,7 @@ $breakpoint-pushes: (
 
 $breakpoint-push-autos:      ()!default;
 $breakpoint-floats:          ()!default;
-$breakpoint-displays:        ()!default;
+$breakpoint-displays:        (mobile)!default;
 $breakpoint-positionings:    ()!default;
 $breakpoint-backgrounds:     ()!default;
 $breakpoint-overflows:       ()!default;
