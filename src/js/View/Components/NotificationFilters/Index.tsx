@@ -83,50 +83,51 @@ class NotificationFilters extends React.Component<INotificationFiltersProps, any
 
     return (
       <Scroll>
-        <div className="grid">
-          <div className="grid__item one-whole">
-            <div className="soft-delta--top soft-delta--right push-iota--bottom">
-              <Btn className={'btn--hard-right btn--pill btn--pill-has-count'
-
-                                  + (this.props.notificationFilters.read
-                                     ? ' btn--active'
-                                     : '')}
-                   onClick={this.handleReadFilterClick.bind(this)}>
-                {'Read'}
-                <span className="btn--pill__count">{filterSet.read}</span>
-              </Btn>
+        <div className="soft-delta--ends">
+          <div className="grid">
+            <div className="grid__item one-whole">
+              <div className="push-iota--bottom">
+                <Btn className={'btn--hard btn--pill btn--pill-has-count'
+                                    + (this.props.notificationFilters.read
+                                      ? ' btn--active'
+                                      : '')}
+                    onClick={this.handleReadFilterClick.bind(this)}>
+                  {'Read'}
+                  <span className="btn--pill__count">{filterSet.read}</span>
+                </Btn>
+              </div>
             </div>
+            {filterSet.subjectTypes.length > 0
+              ? <NotificationFilterStringFilter stringFilters={filterSet.subjectTypes}
+                                                className="grid__item one-whole"
+                                                getTitle={() => 'Subjects'}
+                                                getFilterTitle={filter => getNotificationSubjectPrettyName(filter.name)}
+                                                onClick={this.handleSubjectFilterClick.bind(this)}
+                                                getFilterIsActive={filter => this.props.notificationFilters
+                                                                                .subjectType
+                                                                                .indexOf(filter.name) > -1} />
+              : undefined}
+            {filterSet.reasonTypes.length > 0
+              ? <NotificationFilterStringFilter stringFilters={filterSet.reasonTypes}
+                                                className="grid__item one-whole"
+                                                getTitle={() => 'Reasons'}
+                                                getFilterTitle={filter => getNotificationReasonPrettyName(filter.name)}
+                                                onClick={this.handleReasonFilterClick.bind(this)}
+                                                getFilterIsActive={filter => this.props.notificationFilters
+                                                                                .reasonType
+                                                                                .indexOf(filter.name) > -1} />
+              : undefined}
+            {filterSet.repositories.length > 0
+              ? <NotificationFilterRepositoryFilter repositoryFilters={filterSet.repositories}
+                                                    className="grid__item one-whole"
+                                                    getTitle={() => 'Repositories'}
+                                                    getFilterTitle={filter => filter.repository.fullName.toLowerCase()}
+                                                    onClick={this.handleRepositoryFilterClick.bind(this)}
+                                                    getFilterIsActive={filter => this.props.notificationFilters
+                                                                                    .repository
+                                                                                    .indexOf(filter.repository.id) > -1} />
+              : undefined}
           </div>
-          {filterSet.subjectTypes.length > 0
-            ? <NotificationFilterStringFilter stringFilters={filterSet.subjectTypes}
-                                              className="grid__item one-whole"
-                                              getTitle={() => 'Subjects'}
-                                              getFilterTitle={filter => getNotificationSubjectPrettyName(filter.name)}
-                                              onClick={this.handleSubjectFilterClick.bind(this)}
-                                              getFilterIsActive={filter => this.props.notificationFilters
-                                                                               .subjectType
-                                                                               .indexOf(filter.name) > -1} />
-            : undefined}
-          {filterSet.reasonTypes.length > 0
-            ? <NotificationFilterStringFilter stringFilters={filterSet.reasonTypes}
-                                              className="grid__item one-whole"
-                                              getTitle={() => 'Reasons'}
-                                              getFilterTitle={filter => getNotificationReasonPrettyName(filter.name)}
-                                              onClick={this.handleReasonFilterClick.bind(this)}
-                                              getFilterIsActive={filter => this.props.notificationFilters
-                                                                               .reasonType
-                                                                               .indexOf(filter.name) > -1} />
-            : undefined}
-          {filterSet.repositories.length > 0
-            ? <NotificationFilterRepositoryFilter repositoryFilters={filterSet.repositories}
-                                                  className="grid__item one-whole"
-                                                  getTitle={() => 'Repositories'}
-                                                  getFilterTitle={filter => filter.repository.fullName.toLowerCase()}
-                                                  onClick={this.handleRepositoryFilterClick.bind(this)}
-                                                  getFilterIsActive={filter => this.props.notificationFilters
-                                                                                   .repository
-                                                                                   .indexOf(filter.repository.id) > -1} />
-            : undefined}
         </div>
       </Scroll>
     );
