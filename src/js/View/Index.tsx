@@ -5,11 +5,17 @@ import * as values from 'lodash/values';
 import * as throttle from 'lodash/throttle';
 
 import { sortingMethods } from 'Helpers/Lang/Sort';
+import { getAccountIds } from 'Helpers/Models/Accounts';
 import { filterNotificationsByFilteringSet } from 'Helpers/Models/GitHubNotification';
 import { defaultNotificationFilterSet } from 'Constants/Models/NotificationFilterSet';
 
-import { Icon, CenteredBox, Loader } from 'View/Ui/Index';
+import {
+  Icon,
+  Loader,
+  CenteredBox,
+} from 'View/Ui/Index';
 import ViewBar from 'View/Components/ViewBar/Index';
+import NoAccounts from 'View/Components/NoAccounts/Index';
 import NotificationsList from 'View/Components/NotificationsList/Index';
 import NotificationFilters from 'View/Components/NotificationFilters/Index';
 
@@ -45,6 +51,15 @@ class Index extends React.Component<IAppIndexProps, any>
 
     let filteredNotifications = this.handleFilterNotifications(notifications, filterRules)
                                     .sort(sortingMethods.dateDesc('updatedAt'));
+
+    /*
+     * If there are no accounts set up, then
+     * render a No Accounts message.
+     */
+    if (this.props.app.currentAccountId === null
+          && getAccountIds().length == 0) {
+      return <NoAccounts />;
+    }
 
     return (
       <div className="hideable-left">
