@@ -51,7 +51,7 @@ export function ingestNotifications(accountId: string, notifications: any[], upd
      * Ingest the notifications in to our state
      * @todo: Bulk this?
      */
-    madeNotifications.forEach(n => dispatch(ingestNotification(accountId, n)));
+    dispatch(ingestMultipleNotifications(accountId, madeNotifications));
     if (!updatedLastPoll) {
       return;
     }
@@ -70,12 +70,21 @@ export function ingestNotifications(accountId: string, notifications: any[], upd
 /**
  * @param  {IGitHubNotification} notification
  */
-export function ingestNotification(accountId:string, notification: IGitHubNotification)
+export function ingestNotification(accountId: string, notification: IGitHubNotification)
 {
   return {
     type         : ActionConstants.notifications.INGEST_NOTIFICATION,
     accountId,
     notification
+  };
+};
+
+export function ingestMultipleNotifications(accountId: string, notifications: IGitHubNotification[])
+{
+  return {
+    type          : ActionConstants.notifications.INGEST_NOTIFICATIONS,
+    accountId,
+    notifications
   };
 };
 
