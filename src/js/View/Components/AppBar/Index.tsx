@@ -49,7 +49,7 @@ class AppBar extends React.Component<IAppBarProps, any>
         <div className="hard-bottom__bottom bg--dark-grey-beta">
           <div className="soft-zeta">
             <BtnTo to="/settings"
-                   className="btn--square-delta text--beta">
+                   className="btn--square-delta text--beta btn--transparent">
               <Icon icon="settings"
                     className="position--relative top--mu" />
             </BtnTo>

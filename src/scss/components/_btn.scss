@@ -46,6 +46,16 @@
   }
 }
 
+.btn--transparent {
+  background: transparent!important;
+  color: map-get($dark-grey-scale, zeta)!important;
+
+  &:hover {
+    color: white!important;
+    background: transparent!important;
+  }
+}
+
 /*
  * Pill
  */
