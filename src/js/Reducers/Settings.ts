@@ -7,7 +7,12 @@ import * as objectAssign from 'object-assign';
 
 const initialState: IStateSettings = {
   pollPeriod      : 'fifteenMinute', // @todo: const
-  accountSettings : {}
+  accountSettings : {},
+  soundSettings   : {
+    newItems     : true,
+    alertSuccess : true,
+    alertError   : true
+  }
 };
 
 let reducingMethods = {

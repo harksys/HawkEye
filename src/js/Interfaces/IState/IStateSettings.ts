@@ -3,6 +3,8 @@ interface IStateSettings
 {
   pollPeriod: string;
 
+  soundSettings: IStateSettingsSound;
+
   accountSettings: IStateSettingsAccountSettings;
 };
 
@@ -14,4 +16,13 @@ interface IStateSettingsAccountSettings
 interface IStateSettingsAccountSettingsItem
 {
 
+};
+
+interface IStateSettingsSound
+{
+  newItems: boolean;
+
+  alertSuccess: boolean;
+
+  alertError: boolean;
 };
