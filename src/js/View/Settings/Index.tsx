@@ -34,9 +34,9 @@ class SettingsIndex extends React.Component<ISettingsIndexProps, any>
                      className={'btn--light-grey btn--hard-bottom'}>
                 {'Frequency'}
               </BtnTo>
-              <BtnTo to={'/settings/notifications'}
+              <BtnTo to={'/settings/sound'}
                      className={'btn--light-grey btn--hard-top'}>
-                {'Notifications'}
+                {'Sounds'}
               </BtnTo>
             </div>
             <div className="grid__item one-whole">
