@@ -25,8 +25,8 @@
 }
 
 .toggle__option--active {
-  color: $toggle-option-active-color;
-  background: $toggle-option-active-background;
+  color: $toggle-option-active-color!important;
+  background: $toggle-option-active-background!important;
 }
 
 .toggle__option--first {

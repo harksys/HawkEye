@@ -40,47 +40,51 @@ class SoundSettings extends React.Component<ISoundSettingsProps, any>
                backLink="/settings">
         <div className="soft-delta">
           <div className="grid">
-            <div className="grid__item one-whole push-delta--bottom">
-              <label className="push-zeta--bottom">{'New Items'}</label>
-              <Toggle value={this.props.soundSettings.newItemsEnabled}
-                      options={[{
-                        index : 1,
-                        text  : 'Enabled',
-                        value : true
-                      }, {
-                        index : 2,
-                        text  : 'Disabled',
-                        value : false
-                      }]}
-                      onChange={this.handleNewItemsEnabledChange.bind(this)} />
-            </div>
-            <div className="grid__item one-whole push-delta--bottom">
-              <label className="push-zeta--bottom">{'Alert Success'}</label>
-              <Toggle value={this.props.soundSettings.alertSuccessEnabled}
-                      options={[{
-                        index : 1,
-                        text  : 'Enabled',
-                        value : true
-                      }, {
-                        index : 2,
-                        text  : 'Disabled',
-                        value : false
-                      }]}
-                      onChange={this.handleAlertSuccessEnabledChange.bind(this)} />
-            </div>
-            <div className="grid__item one-whole push-delta--bottom">
-              <label className="push-zeta--bottom">{'Alert Error'}</label>
-              <Toggle value={this.props.soundSettings.alertErrorEnabled}
-                      options={[{
-                        index : 1,
-                        text  : 'Enabled',
-                        value : true
-                      }, {
-                        index : 2,
-                        text  : 'Disabled',
-                        value : false
-                      }]}
-                      onChange={this.handleAlertErrorEnabledChange.bind(this)} />
+            <div className="grid__item one-half mobile-one-whole">
+              <div className="grid">
+                <div className="grid__item one-whole push-delta--bottom">
+                  <label className="push-zeta--bottom">{'New Items'}</label>
+                  <Toggle value={this.props.soundSettings.newItemsEnabled}
+                          options={[{
+                            index : 1,
+                            text  : 'Enabled',
+                            value : true
+                          }, {
+                            index : 2,
+                            text  : 'Disabled',
+                            value : false
+                          }]}
+                          onChange={this.handleNewItemsEnabledChange.bind(this)} />
+                </div>
+                <div className="grid__item one-whole push-delta--bottom">
+                  <label className="push-zeta--bottom">{'Alert Success'}</label>
+                  <Toggle value={this.props.soundSettings.alertSuccessEnabled}
+                          options={[{
+                            index : 1,
+                            text  : 'Enabled',
+                            value : true
+                          }, {
+                            index : 2,
+                            text  : 'Disabled',
+                            value : false
+                          }]}
+                          onChange={this.handleAlertSuccessEnabledChange.bind(this)} />
+                </div>
+                <div className="grid__item one-whole push-delta--bottom">
+                  <label className="push-zeta--bottom">{'Alert Error'}</label>
+                  <Toggle value={this.props.soundSettings.alertErrorEnabled}
+                          options={[{
+                            index : 1,
+                            text  : 'Enabled',
+                            value : true
+                          }, {
+                            index : 2,
+                            text  : 'Disabled',
+                            value : false
+                          }]}
+                          onChange={this.handleAlertErrorEnabledChange.bind(this)} />
+                </div>
+              </div>
             </div>
           </div>
         </div>

@@ -23,7 +23,7 @@ class FrequencySettings extends React.Component<IFrequencySettingsProps, any>
                backLink="/settings">
         <div className="soft-delta">
           <div className="grid">
-            <div className="grid__item one-whole">
+            <div className="grid__item one-half mobile-one-whole push-delta--bottom">
               <label className="push-zeta--bottom">Polling Frequency</label>
               {Object.keys(cronPeriodPrettyNames)
                      .map((name, i, a) =>
@@ -32,7 +32,7 @@ class FrequencySettings extends React.Component<IFrequencySettingsProps, any>
                                onClick={() => dispatch(configurePollPeriod(name))}
                                className={(this.props.settings.pollPeriod === name
                                             ? ''
-                                            : 'btn--light-grey')
+                                            : 'btn--dark-grey-epsilon')
                                           + (i === 0
                                               ? ' btn--hard-bottom'
                                               : '')

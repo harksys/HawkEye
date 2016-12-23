@@ -29,23 +29,25 @@ class SettingsIndex extends React.Component<ISettingsIndexProps, any>
                backLink="/">
         <div className="soft-delta">
           <div className="grid">
-            <div className="grid__item one-whole push-delta--bottom">
+            <div className="grid__item one-half mobile-one-whole push-delta--bottom">
+              <label className="push-zeta--bottom">General Settings</label>
               <BtnTo to={'/settings/frequency'}
-                     className={'btn--light-grey btn--hard-bottom'}>
+                     className={'btn--dark-grey-epsilon btn--hard-bottom'}>
                 {'Frequency'}
               </BtnTo>
               <BtnTo to={'/settings/sound'}
-                     className={'btn--light-grey btn--hard-top'}>
+                     className={'btn--dark-grey-epsilon btn--hard-top'}>
                 {'Sounds'}
               </BtnTo>
             </div>
-            <div className="grid__item one-whole">
+            <div className="grid__item one-half mobile-one-whole">
+              <label className="push-zeta--bottom">Account Settings</label>
               {this.props.accounts
                    .map((acc, i) =>
                    (
                      <BtnTo key={acc.gitHubUser.id}
                             to={'/settings/accounts/' + acc.gitHubUser.id}
-                            className={'btn--light-grey'
+                            className={'btn--dark-grey-epsilon'
                                           + (i === 0
                                               ? ' btn--hard-bottom'
                                               : '')

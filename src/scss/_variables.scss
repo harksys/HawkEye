@@ -30,8 +30,8 @@ $label-text-color: #5e5e5e!default;
 /*
  * Backgrounds
  */
-$background-success: #92CB94;
-$background-error: #C82222;
+$background-success: $brand-color-secondary;
+$background-error: #d5335b;
 $background-warning: #DEC23F;
 
 $dark-grey-scale: (
@@ -176,7 +176,7 @@ $breakpoint-text-colors:     ()!default;
 $breakpoint-text-fonts:      ()!default;
 $breakpoint-text-transforms: ()!default;
 $breakpoint-text-weights:    ()!default;
-$breakpoint-widths:          ()!default;
+$breakpoint-widths:          (mobile)!default;
 $breakpoint-heights:         ()!default;
 $breakpoint-borders:         ()!default;
 $breakpoint-max-widths:      ()!default;
@@ -250,11 +250,10 @@ $higher-sizes: (
  * Btn
  */
 $button-color: white!default;
-$button-font-size: 14px!default;
-$button-text-transform: uppercase!default;
+$button-font-size: 13px!default;
+$button-text-transform: none!default;
 $button-text-shadow: none;
 $button-padding: 8px 0px;
-$button-flex-padding: 8px 20px;
 $button-background: $brand-color-main;
 $button-hover-background: lighten($brand-color-main, 5);
 $button-border-radius: $default-border-radius;
@@ -266,6 +265,13 @@ $btn-square-sizes: (
 
 $btn-backgrounds: (
   light-grey      : (#999, darken(#999, 10)),
+
+  dark-grey-alpha   : (map-get($dark-grey-scale, alpha), lighten(map-get($dark-grey-scale, alpha), 10)),
+  dark-grey-beta    : (map-get($dark-grey-scale, beta), lighten(map-get($dark-grey-scale, beta), 10)),
+  dark-grey-gamma   : (map-get($dark-grey-scale, gamma), lighten(map-get($dark-grey-scale, gamma), 10)),
+  dark-grey-delta   : (map-get($dark-grey-scale, delta), lighten(map-get($dark-grey-scale, delta), 10)),
+  dark-grey-epsilon : (map-get($dark-grey-scale, epsilon), lighten(map-get($dark-grey-scale, epsilon), 10)),
+  dark-grey-zeta    : (map-get($dark-grey-scale, zeta), lighten(map-get($dark-grey-scale, zeta), 10)),
 
   brand-main      : ($brand-color-main, lighten($brand-color-main, 10)),
   brand-secondary : ($brand-color-secondary, lighten($brand-color-secondary, 10)),
@@ -343,17 +349,17 @@ $breakpoint-n-tops: ();
 /*
  * Toggle
  */
-$toggle-background: $brand-color-secondary;
+$toggle-background: map-get($dark-grey-scale, epsilon);
 $toggle-border-radius: $default-border-radius;
 
-$toggle-option-font-size: 14px;
+$toggle-option-font-size: 13px;
 $toggle-option-font-weight: normal;
 $toggle-option-padding: 8px 0;
 $toggle-option-color: white;
-$toggle-option-text-transform: uppercase;
+$toggle-option-text-transform: none;
 
 $toggle-option-hover-color: white;
-$toggle-option-hover-background: lighten($brand-color-secondary, 5);
+$toggle-option-hover-background: lighten(map-get($dark-grey-scale, epsilon), 10);
 
 $toggle-option-active-color: white;
 $toggle-option-active-background: lighten($brand-color-main, 5);
