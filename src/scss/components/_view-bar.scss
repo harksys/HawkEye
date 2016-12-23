@@ -32,3 +32,19 @@
     line-height: 40px;
   }
 }
+
+.view-bar__left-content {
+  top: 0;
+  left: 0;
+  width: 40px;
+  height: 40px;
+  position: absolute;
+}
+
+.view-bar__right-content {
+  top: 0;
+  right: 0;
+  width: 40px;
+  height: 40px;
+  position: absolute;
+}

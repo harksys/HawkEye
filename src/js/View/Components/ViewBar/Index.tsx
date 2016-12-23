@@ -8,6 +8,10 @@ interface IViewBarProps
   title: string;
 
   backLink?: string;
+
+  getLeftContent?(): any;
+
+  getRightContent?(): any;
 };
 
 class ViewBar extends React.Component<IViewBarProps, any>
@@ -24,9 +28,19 @@ class ViewBar extends React.Component<IViewBarProps, any>
                   <Icon icon="angle-left" />
                 </Link>
               : undefined}
+            {typeof this.props.getLeftContent !== 'function'
+              ? <div className="view-bar__left-content">
+                  {this.props.getLeftContent()}
+                </div>
+              : undefined}
             <p className="view-bar__title">
               {this.props.title}
             </p>
+            {typeof this.props.getRightContent !== 'function'
+              ? <div className="view-bar__right-content">
+                  {this.props.getRightContent()}
+                </div>
+              : undefined}
           </div>
         </div>
         <div className="hard-top__content">
