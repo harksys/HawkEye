@@ -5,10 +5,10 @@
 }
 
 .view-bar__title {
+  font-size: 14px;
   line-height: 40px;
   text-align: center;
 
-  font-size: 14px;
 }
 
 .view-bar__back-link {
@@ -16,13 +16,13 @@
   left: 0;
   width: 35px;
   height: 40px;
-  color: #333;
+  color: map-get($dark-grey-scale, epsilon);
   text-align: right;
   position: absolute;
 
 
   &:hover {
-    color: black;
+    color: lighten(map-get($dark-grey-scale, epsilon), 10);
   }
 
   i {
