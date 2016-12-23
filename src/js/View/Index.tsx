@@ -16,6 +16,7 @@ import {
 } from 'View/Ui/Index';
 import ViewBar from 'View/Components/ViewBar/Index';
 import NoAccounts from 'View/Components/NoAccounts/Index';
+import NoNotifications from 'View/Components/NoNotifications/Index';
 import NotificationsList from 'View/Components/NotificationsList/Index';
 import NotificationFilters from 'View/Components/NotificationFilters/Index';
 
@@ -77,7 +78,9 @@ class Index extends React.Component<IAppIndexProps, any>
                                         </CenteredBox>
                                       )
                                     : undefined}>
-            <NotificationsList notifications={filteredNotifications} />
+            {filteredNotifications.length > 0
+              ? <NotificationsList notifications={filteredNotifications} />
+              : <NoNotifications />}
           </ViewBar>
         </div>
       </div>
