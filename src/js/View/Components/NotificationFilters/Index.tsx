@@ -85,22 +85,15 @@ class NotificationFilters extends React.Component<INotificationFiltersProps, any
       <Scroll>
         <div className="grid">
           <div className="grid__item one-whole">
-            <div className="soft-delta">
-              <label className="display--inline-block push-zeta--right">{'Filters'}</label>
-              <Btn className="btn--small-icon btn--error display--inline-block position--relative n-top--nu display--none">
-                <Icon icon="close" />
-              </Btn>
-            </div>
-          </div>
-          <div className="grid__item one-whole">
-            <div className="soft-delta--right push-iota--bottom">
+            <div className="soft-delta--top soft-delta--right push-iota--bottom">
               <Btn className={'btn--hard-right btn--pill btn--pill-has-count'
-                                + (this.props.notificationFilters.read
+
+                                  + (this.props.notificationFilters.read
                                      ? ' btn--active'
                                      : '')}
                    onClick={this.handleReadFilterClick.bind(this)}>
                 {'Read'}
-                <span className="btn-pill__count">{filterSet.read}</span>
+                <span className="btn--pill__count">{filterSet.read}</span>
               </Btn>
             </div>
           </div>

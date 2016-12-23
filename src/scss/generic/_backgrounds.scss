@@ -8,6 +8,7 @@
 @mixin generate-backgrounds($pre-class-name: null) {
   .#{$pre-class-name}bg--none   { background: transparent!important; }
   .#{$pre-class-name}bg--white  { background: white!important; }
+  .#{$pre-class-name}bg--black  { background: black!important; }
 
   .#{$pre-class-name}bg--success { background: $background-success!important; }
   .#{$pre-class-name}bg--error   { background: $background-error!  important; }

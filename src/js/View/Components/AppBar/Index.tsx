@@ -46,11 +46,12 @@ class AppBar extends React.Component<IAppBarProps, any>
                 ))}
           </Scroll>
         </div>
-        <div className="hard-bottom__bottom bg--dark-grey">
+        <div className="hard-bottom__bottom bg--dark-grey-beta">
           <div className="soft-zeta">
             <BtnTo to="/settings"
                    className="btn--square-delta text--beta">
-              <Icon icon="settings" />
+              <Icon icon="settings"
+                    className="position--relative top--mu" />
             </BtnTo>
           </div>
         </div>

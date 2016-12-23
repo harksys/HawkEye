@@ -37,7 +37,7 @@ class NotificationFilterStringFilter extends React.Component<INotificationFilter
                                         : '')}
                       onClick={this.props.onClick.bind(null, filter)}>
                   {this.props.getFilterTitle(filter)}
-                  <span className="btn-pill__count">{filter.count}</span>
+                  <span className="btn--pill__count">{filter.count}</span>
                  </Btn>
                </div>
              ))}

@@ -46,18 +46,18 @@ class Index extends React.Component<IAppIndexProps, any>
                                     .sort(sortingMethods.dateDesc('updatedAt'));
 
     return (
-      <ViewBar title={'Notifications - ' + filteredNotifications.length}>
-        <div className="hideable-left">
-          <div className="hideable-left__left bg--lighter-grey">
-            <NotificationFilters accountId={this.props.app.currentAccountId}
-                                 notifications={notifications}
-                                 notificationFilters={filterRules} />
-          </div>
-          <div className="hideable-left__content no-outline">
-            <NotificationsList notifications={filteredNotifications} />
-          </div>
+      <div className="hideable-left">
+        <div className="hideable-left__left bg--dark-grey-alpha">
+          <NotificationFilters accountId={this.props.app.currentAccountId}
+                                notifications={notifications}
+                                notificationFilters={filterRules} />
         </div>
-      </ViewBar>
+        <div className="hideable-left__content no-outline">
+          <ViewBar title="Notifications">
+            <NotificationsList notifications={filteredNotifications} />
+          </ViewBar>
+        </div>
+      </div>
     );
   }
 };

@@ -16,7 +16,7 @@ class ViewBar extends React.Component<IViewBarProps, any>
   {
     return (
       <div className="hard-top hard-top--delta">
-        <div className="hard-top__top bg--light-grey">
+        <div className="hard-top__top bg--black">
           <div className="view-bar">
             {typeof this.props.backLink === 'string'
               ? <Link to={this.props.backLink}

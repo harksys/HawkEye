@@ -17,27 +17,57 @@
 $brand-color-main:      #0092B3;
 $brand-color-secondary: #33D5AD;
 
-$body-text-color:       #333!default;
-$body-background-color: white!default;
+$body-text-color:       #767676!default;
+$body-background-color: #232323!default;
 
 $anchor-text-color:       blue!default;
 $anchor-text-hover-color:   darken($anchor-text-color, 10)!default;
 $anchor-text-active-color:  $anchor-text-color!default;
 $anchor-text-visited-color: $anchor-text-color!default;
 
-$label-text-color: #666!default;
+$label-text-color: #5e5e5e!default;
+
+/*
+ * Backgrounds
+ */
+$background-success: #92CB94;
+$background-error: #C82222;
+$background-warning: #DEC23F;
+
+$dark-grey-scale: (
+  alpha   : #0b0b0b,
+  beta    : #141414,
+  gamma   : #000,
+  delta   : #232323,
+  epsilon : #5e5e5e,
+  zeta    : #767676
+);
+
+$backgrounds: (
+  dark-grey         : map-get($dark-grey-scale, beta),
+
+  dark-grey-alpha   : map-get($dark-grey-scale, alpha),
+  dark-grey-beta    : map-get($dark-grey-scale, beta),
+  dark-grey-gamma   : map-get($dark-grey-scale, gamma),
+  dark-grey-delta   : map-get($dark-grey-scale, delta),
+  dark-grey-epsilon : map-get($dark-grey-scale, epsilon),
+  dark-grey-zeta    : map-get($dark-grey-scale, zeta),
+
+  light-grey   : #D8D8D8,
+  lighter-grey : #EEE
+);
 
 /**
  * Text, Fonts etc
  */
-$primary-font:      'Roboto', sans-serif!default;
+$primary-font:      'Noto Sans', sans-serif!default;
 $primary-icon-font: 'themify', sans-serif!default;
 $base-body-font:    $primary-font!default;
 
 $header-font-weight: normal!default;
 $text-font-weight:   normal!default;
 $body-font-weight:   normal!default;
-$label-font-weight:  bold!default;
+$label-font-weight:  normal!default;
 
 $text-line-height:   1.5em!default;
 $header-line-height: 1.5em!default;
@@ -217,19 +247,6 @@ $higher-sizes: (
 );
 
 /*
- * Backgrounds
- */
-$background-success: #92CB94;
-$background-error: #C82222;
-$background-warning: #DEC23F;
-
-$backgrounds: (
-  dark-grey    : #444,
-  light-grey   : #D8D8D8,
-  lighter-grey : #EEE
-);
-
-/*
  * Btn
  */
 $button-color: white!default;
@@ -238,8 +255,8 @@ $button-text-transform: uppercase!default;
 $button-text-shadow: none;
 $button-padding: 8px 0px;
 $button-flex-padding: 8px 20px;
-$button-background: $brand-color-secondary;
-$button-hover-background: lighten($brand-color-secondary, 5);
+$button-background: $brand-color-main;
+$button-hover-background: lighten($brand-color-main, 5);
 $button-border-radius: $default-border-radius;
 $button-transition-speed: .25s;
 
@@ -252,7 +269,7 @@ $btn-backgrounds: (
 
   brand-main      : ($brand-color-main, lighten($brand-color-main, 10)),
   brand-secondary : ($brand-color-secondary, lighten($brand-color-secondary, 10)),
-  dark-grey-brand : (#444, $brand-color-secondary),
+  dark-grey-brand : (#141414, $brand-color-main),
 
   error           : ($background-error, lighten($background-error, 10))
 );
@@ -262,12 +279,12 @@ $btn-pill-text-align: left;
 $btn-pill-text-transform: none;
 $btn-pill-padding: 5px 10px 5px 20px;
 $btn-pill-background: transparent;
-$btn-pill-color: #333;
+$btn-pill-color: map-get($dark-grey-scale, zeta);
 
-$btn-pill-active-background: $background-error;
+$btn-pill-active-background: $brand-color-main;
 $btn-pill-active-color: white;
 
-$btn-pill-hover-background: $brand-color-main;
+$btn-pill-hover-background: trans-dark(.5);
 $btn-pill-hover-color: white;
 
 /*
@@ -282,6 +299,26 @@ $loader-sizes: (
   medium : 50px,
   large  : 100px
 );
+
+/*
+ * Tops
+ */
+$top-sizes: (
+  alpha   : 9999px,
+  beta    : 9999px,
+  gamma   : 9999px,
+  delta   : 9999px,
+  epsilon : 9999px,
+  zeta    : 60px,
+  theta   : 50px,
+  iota    : 40px,
+  kappa   : 30px,
+  lambda  : 20px,
+  mu      : 2px,
+  nu      : 1px,
+  xi      : 0
+);
+$breakpoint-tops: ();
 
 /*
  * Negative Tops

@@ -3,16 +3,18 @@
   width: 100%;
   height: 100%;
   position: relative;
-  border-bottom: 1px solid #EEE;
+
+  border-bottom: 1px solid lighten(map-get($dark-grey-scale, delta), 3);
 }
 
 .notification__text {
   display: block;
   display: -webkit-box;
 
-  height: 14 * 1.5 * 2;
+  max-height: 14 * 1.5 * 2px;
   font-size: 14px;
-  line-height: 1.5em;
+  line-height: 1.3em;
+  margin-bottom: 5px;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
