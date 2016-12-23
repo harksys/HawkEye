@@ -35,3 +35,12 @@ export function getAccount(accountId: string): IStateAccountsAccount
 
   return accounts[accountId];
 };
+
+/**
+ * @param  {string} accountId
+ * @returns boolean
+ */
+export function accountAlreadyAdded(accountId: string): boolean
+{
+  return getAccount(accountId) != null;
+};

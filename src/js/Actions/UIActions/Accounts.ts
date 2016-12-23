@@ -7,9 +7,12 @@ import {
   createErrorAppAlert,
   createSuccessAppAlert
 } from 'Helpers/Models/AppAlert';
+import {
+  getAccount,
+  accountAlreadyAdded
+} from 'Helpers/Models/Accounts';
 import { getState } from 'Helpers/State/Store';
 import { formatDateAsUTC } from 'Helpers/Lang/Date';
-import { getAccount } from 'Helpers/Models/Accounts';
 import { makeGitHubUser } from 'Helpers/Models/GitHubUser';
 import { getCurrentPollPeriod } from 'Helpers/Models/Settings';
 import { configurePollingScheduler } from 'Helpers/System/Scheduler';
@@ -87,6 +90,14 @@ export function handleAddAccountClick()
                         dispatch(pushAppAlert(createSuccessAppAlert(
                           'Added @' + gitHubUser.username + ' Account'
                         )));
+
+                        /*
+                         * If we already have this account, we don't
+                         * need to poll for any notifications.
+                         */
+                        if (accountAlreadyAdded(gitHubUser.id.toString())) {
+                          return;
+                        }
 
                         /*
                          * Backport and fill in notifications up until right now.
