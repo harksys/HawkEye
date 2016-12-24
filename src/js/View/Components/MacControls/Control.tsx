@@ -7,6 +7,8 @@ import MinimizeIcon from './Icons/Minimize';
 interface IMacControlsControlProps
 {
   control: string;
+
+  setup: IStateSetup;
 };
 
 class Control extends React.Component<IMacControlsControlProps, any>
@@ -19,7 +21,7 @@ class Control extends React.Component<IMacControlsControlProps, any>
         {this.props.control === 'close'
           ? <CloseIcon />
           : this.props.control === 'resize'
-              ? <ResizeIcon />
+              ? <ResizeIcon setup={this.props.setup} />
               : this.props.control === 'minimize'
                   ? <MinimizeIcon />
                   : undefined}
