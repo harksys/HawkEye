@@ -5,17 +5,9 @@ import { handleMarkNotificationAsRead } from 'Actions/Notifications';
 
 import { dispatch } from 'Helpers/State/Store';
 import { relativeTime } from 'Helpers/Lang/Date';
-import {
-  getNotificationWebUrl,
-  getNotificationSubjectIcon
-} from 'Helpers/Services/GitHub';
+import { getNotificationSubjectIcon } from 'Helpers/Services/GitHub';
 
-import {
-  openExternalUrl,
-  copyStringToClipboard,
-  getNewRemoteElectronMenu,
-  getNewRemoteElectronMenuItem
-} from 'Helpers/System/Electron';
+import createMenu from 'Electron/Menus/Notification';
 
 import {
   Icon,
@@ -43,29 +35,10 @@ class Notification extends React.Component<INotificationProps, any>
   {
     e.preventDefault();
 
-    let menu = getNewRemoteElectronMenu();
-    menu.append(getNewRemoteElectronMenuItem({
-      label : 'Open in Browser',
-      click : () => openExternalUrl(getNotificationWebUrl(this.props.notification))
-    }));
-    menu.append(getNewRemoteElectronMenuItem({
-      label : 'Copy Link',
-      click : () => copyStringToClipboard(getNotificationWebUrl(this.props.notification))
-    }));
-    menu.append(getNewRemoteElectronMenuItem({
-      label : 'Copy Title',
-      click : () => copyStringToClipboard(this.props.notification.subject.title)
-    }));
-    menu.append(getNewRemoteElectronMenuItem({
-      type : 'separator'
-    }));
-    menu.append(getNewRemoteElectronMenuItem({
-      label : 'Mark as Read',
-      click : () => dispatch(handleMarkNotificationAsRead(this.props.accountId,
-                                                          this.props.notification.id.toString()))
-    }));
-
-    menu.popup(e.clientX, e.clientY);
+    try {
+      createMenu(this.props.accountId, this.props.notification)
+        .popup(e.clientX, e.clientY);
+    } catch (e) {}
   }
 
   render()
