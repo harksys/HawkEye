@@ -30,7 +30,7 @@ class Notification extends React.Component<INotificationProps, any>
                 {this.props.notification.subject.title}
               </p>
               <p className="text--zeta">
-                {'Updated ' + relativeTime(this.props.notification.updatedAt)}
+                {this.props.notification.repository.fullName + ' - Updated ' + relativeTime(this.props.notification.updatedAt)}
               </p>
             </div>
           </div>

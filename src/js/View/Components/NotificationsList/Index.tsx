@@ -34,9 +34,9 @@ class NotificationsList extends React.Component<INotificationsListProps, any>
   {
     return {
       width  : width,
-      height : 80,
+      height : 100,
       x      : 0,
-      y      : o.index * 80
+      y      : o.index * 100
     };
   };
 
