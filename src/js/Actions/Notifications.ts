@@ -105,7 +105,7 @@ export function pollSinceNotifications(accountId: string, token: string, since: 
            {
              dispatch(ingestNotifications(accountId, notifications, true));
              dispatch(setIsPolling(false));
-           });
+           }, err => dispatch(setIsPolling(false)));
   };
 };
 
@@ -126,6 +126,6 @@ export function pollBeforeNotifications(accountId: string, token: string, before
            {
              dispatch(ingestNotifications(accountId, notifications));
              dispatch(setIsPolling(false));
-           });
+           }, err => dispatch(setIsPolling(false)));
   };
 };
