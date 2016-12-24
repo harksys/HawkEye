@@ -10,6 +10,8 @@
   .#{$pre-class-name}text--body  { color: $body-text-color!important; }
 
   .#{$pre-class-name}text--error { color: $background-error!important; }
+
+  .#{$pre-class-name}text--dark-grey-beta { color: map-get($dark-grey-scale, beta)!important; }
 }
 
 /*

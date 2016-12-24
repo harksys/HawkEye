@@ -4,7 +4,10 @@ import * as Octicon from 'react-octicon';
 import { relativeTime } from 'Helpers/Lang/Date';
 import { getNotificationSubjectIcon } from 'Helpers/Services/GitHub';
 
-import { Icon, CenteredBox } from 'View/Ui/Index';
+import {
+  Icon,
+  CenteredBox
+} from 'View/Ui/Index';
 
 interface INotificationProps
 {
@@ -25,13 +28,25 @@ class Notification extends React.Component<INotificationProps, any>
             </div>
           </div>
           <div className="hard-left__content">
-            <div className="soft-zeta--ends soft-delta--right">
-              <p className="notification__text">
-                {this.props.notification.subject.title}
-              </p>
-              <p className="text--zeta">
-                {this.props.notification.repository.fullName + ' - Updated ' + relativeTime(this.props.notification.updatedAt)}
-              </p>
+            <div className="hard-right hard-right--epsilon">
+              <div className="hard-right__content">
+                <div className="soft-zeta--ends soft-delta--right">
+                  <p className="notification__text">
+                    {this.props.notification.subject.title}
+                  </p>
+                  <p className="text--zeta">
+                    {this.props.notification.repository.fullName + ' - Updated ' + relativeTime(this.props.notification.updatedAt)}
+                  </p>
+                </div>
+              </div>
+              <div className="hard-right__right">
+                <CenteredBox childClassName="text--left">
+                  <a href="#"
+                     className="link--dark-action">
+                    <Octicon name="check" />
+                  </a>
+                </CenteredBox>
+              </div>
             </div>
           </div>
         </div>

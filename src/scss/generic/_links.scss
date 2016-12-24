@@ -1,0 +1,14 @@
+
+.link--dark-action {
+  @include transition(color .25s ease);
+  color: map-get($dark-grey-scale, beta)!important;
+
+  &:hover {
+    cursor: pointer!important;
+    color: $brand-color-main!important;
+  }
+
+  &.link--dark-action--active {
+    color: $brand-color-main!important;
+  }
+}
