@@ -8,4 +8,8 @@ interface IStateSetup
   renderApp: boolean;
 
   windowFocussed: boolean;
+
+  altKeyDown: boolean;
+
+  windowFullScreened: boolean;
 };

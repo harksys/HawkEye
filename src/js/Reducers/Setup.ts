@@ -4,10 +4,12 @@ import ActionConstants from 'Constants/Actions/Index';
 import * as objectAssign from 'object-assign';
 
 const initialState: IStateSetup = {
-  isLoading      : true,
-  showLoading    : true,
-  renderApp      : false,
-  windowFocussed : true
+  isLoading          : true,
+  showLoading        : true,
+  renderApp          : false,
+  windowFocussed     : true,
+  altKeyDown         : false,
+  windowFullScreened : false
 };
 
 let reducingMethods = {
@@ -33,6 +35,18 @@ let reducingMethods = {
   {
     return objectAssign({}, state, {
       windowFocussed : action.windowFocussed
+    });
+  },
+  [ActionConstants.setup.SET_ALT_KEY_DOWN] : (state: IStateSetup, action) =>
+  {
+    return objectAssign({}, state, {
+      altKeyDown : action.altKeyDown
+    });
+  },
+  [ActionConstants.setup.SET_WINDOW_FULLSCREENED] : (state: IStateSetup, action) =>
+  {
+    return objectAssign({}, state, {
+      windowFullScreened : action.windowFullScreened
     });
   }
 };
