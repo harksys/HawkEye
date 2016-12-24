@@ -65,3 +65,55 @@ export function isMac(): boolean
 {
   return getPlatform() === 'darwin';
 };
+
+/**
+ * @returns Electron
+ */
+export function getCurrentWindow(): Electron.BrowserWindow
+{
+  return getElectron().remote.getCurrentWindow();
+};
+
+/**
+ * @param  {boolean} fullScreen
+ */
+export function setCurrentWindowFullScreen(fullScreen: boolean)
+{
+  return getCurrentWindow().setFullScreen(fullScreen);
+};
+
+/**
+ */
+export function maximizeCurrentWindow()
+{
+  return getCurrentWindow().maximize();
+};
+
+/**
+ */
+export function unmaximizeCurrentWindow()
+{
+  return getCurrentWindow().unmaximize();
+};
+
+/**
+ * @returns boolean
+ */
+export function getCurrentWindowIsMaximized(): boolean
+{
+  return getCurrentWindow().isMaximized();
+};
+
+/**
+ */
+export function minimizeCurrentWindow()
+{
+  return getCurrentWindow().minimize();
+};
+
+/**
+ */
+export function closeCurrentWindow()
+{
+  return getCurrentWindow().close();
+};

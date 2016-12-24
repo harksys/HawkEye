@@ -1,6 +1,18 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 
+import { setWindowFullScreened } from 'Actions/Setup';
+
+import {
+  closeCurrentWindow,
+  minimizeCurrentWindow,
+  maximizeCurrentWindow,
+  unmaximizeCurrentWindow,
+  setCurrentWindowFullScreen,
+  getCurrentWindowIsMaximized
+} from 'Helpers/System/Electron';
+import { dispatch } from 'Helpers/State/Store';
+
 import Control from './Control';
 
 interface IMacControlsProps
@@ -10,16 +22,59 @@ interface IMacControlsProps
 
 class MacControls extends React.Component<IMacControlsProps, any>
 {
+  handleCloseClick()
+  {
+    closeCurrentWindow();
+  }
+
+  handleMinimizeClick()
+  {
+    if (this.props.setup.windowFullScreened) {
+      return;
+    }
+
+    minimizeCurrentWindow();
+  }
+
+  handleMaximizeClick()
+  {
+    // If the window is full screened, then unfull screen
+    if (this.props.setup.windowFullScreened) {
+      setCurrentWindowFullScreen(false);
+      dispatch(setWindowFullScreened(false));
+      return;
+    }
+
+    // If the alt key is not down, full screen
+    if (!this.props.setup.altKeyDown) {
+      setCurrentWindowFullScreen(true);
+      dispatch(setWindowFullScreened(true));
+      return;
+    }
+
+    // Alt key is down, so if we can maximise,
+    // do it
+    if (getCurrentWindowIsMaximized()) {
+      unmaximizeCurrentWindow();
+      return;
+    }
+
+    maximizeCurrentWindow();
+  }
+
   render()
   {
     return (
       <div className="mac-controls">
         <Control control="close"
-                 setup={this.props.setup} />
+                 setup={this.props.setup}
+                 onClick={this.handleCloseClick.bind(this)} />
         <Control control="minimize"
-                 setup={this.props.setup} />
+                 setup={this.props.setup}
+                 onClick={this.handleMinimizeClick.bind(this)} />
         <Control control="resize"
-                 setup={this.props.setup} />
+                 setup={this.props.setup}
+                 onClick={this.handleMaximizeClick.bind(this)} />
       </div>
     );
   }

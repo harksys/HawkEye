@@ -9,14 +9,25 @@ interface IMacControlsControlProps
   control: string;
 
   setup: IStateSetup;
+
+  onClick(): void;
 };
 
 class Control extends React.Component<IMacControlsControlProps, any>
 {
+  handleControlClick(e)
+  {
+    e.preventDefault();
+
+    this.props.onClick();
+  }
+
   render()
   {
     return (
-      <div className={'mac-controls__control mac-controls__control--'
+      <a href="#"
+         onClick={this.handleControlClick.bind(this)}
+         className={'mac-controls__control mac-controls__control--'
                         + this.props.control}>
         {this.props.control === 'close'
           ? <CloseIcon />
@@ -25,7 +36,7 @@ class Control extends React.Component<IMacControlsControlProps, any>
               : this.props.control === 'minimize'
                   ? <MinimizeIcon />
                   : undefined}
-      </div>
+      </a>
     );
   }
 };
