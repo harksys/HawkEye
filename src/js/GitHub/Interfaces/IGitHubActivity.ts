@@ -7,4 +7,7 @@ interface IGitHubActivity
                    participating?: boolean,
                    since?: string,
                    before?: string): Promise<any[]>;
+
+  markThreadAsRead(token: string,
+                   threadId: string): Promise<any>;
 };

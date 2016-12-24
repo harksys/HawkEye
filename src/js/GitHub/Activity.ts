@@ -43,6 +43,30 @@ class Activity implements IGitHubActivity
                 err => reject(err));
     });
   }
+
+  public markThreadAsRead = (token: string, threadId: string): Promise<any> =>
+  {
+    return new Promise((resolve, reject) =>
+    {
+      this.requestFactory
+          .newRequest()
+          .setUrl('/notifications/threads/' + threadId)
+          .setQuery({
+            access_token : token
+          })
+          .setMethod('post')
+          .execute()
+          .then(response =>
+          {
+            if (response.status === 205) {
+              resolve();
+              return;
+            }
+
+            reject();
+          });
+    });
+  }
 };
 
 export default Activity;
