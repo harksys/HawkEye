@@ -48,7 +48,9 @@ export function getNotificationWebUrl(notification: IGitHubNotification): string
 {
   let subjectUrl = notification.subject.url;
 
-  return subjectUrl.replace('https://api.github.com/repos/', getGitHubWebUrl());
+  return subjectUrl.replace('https://api.github.com/repos/', getGitHubWebUrl())
+                   .replace('/commits/', '/commit/')
+                   .replace('/pulls/', '/pull/');
 };
 
 /**

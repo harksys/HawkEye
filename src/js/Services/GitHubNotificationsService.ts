@@ -99,7 +99,7 @@ class GitHubNotificationsService implements IGitHubNotificationsService
 
       Async.doWhilst(cb =>
       {
-        this.getNotifications(token, currentPage, false, false, since, before)
+        this.getNotifications(token, currentPage, all, false, since, before)
             .then(res =>
             {
               /*
