@@ -8,6 +8,8 @@ import { Notification } from 'View/Ui/Index';
 
 interface INotificationsListProps
 {
+  accountId: string;
+
   notifications: IGitHubNotification[];
 };
 
@@ -45,7 +47,8 @@ class NotificationsList extends React.Component<INotificationsListProps, any>
     return (
       <div key={o.key}
            style={o.style}>
-        <Notification notification={notifications[o.index]} />
+        <Notification accountId={this.props.accountId}
+                      notification={notifications[o.index]} />
       </div>
     );
   };

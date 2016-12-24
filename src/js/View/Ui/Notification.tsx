@@ -1,6 +1,9 @@
 import * as React from 'react';
 import * as Octicon from 'react-octicon';
 
+import { handleMarkNotificationAsRead } from 'Actions/Notifications';
+
+import { dispatch } from 'Helpers/State/Store';
 import { relativeTime } from 'Helpers/Lang/Date';
 import { getNotificationSubjectIcon } from 'Helpers/Services/GitHub';
 
@@ -11,11 +14,21 @@ import {
 
 interface INotificationProps
 {
+  accountId: string;
+
   notification: IGitHubNotification;
 };
 
 class Notification extends React.Component<INotificationProps, any>
 {
+  handleMarkAsReadClick(e)
+  {
+    e.preventDefault();
+
+    dispatch(handleMarkNotificationAsRead(this.props.accountId,
+                                          this.props.notification.id.toString()));
+  }
+
   render()
   {
     return (
@@ -42,7 +55,8 @@ class Notification extends React.Component<INotificationProps, any>
               <div className="hard-right__right">
                 <CenteredBox childClassName="text--left">
                   <a href="#"
-                     className="link--dark-action">
+                     className="link--dark-action"
+                     onClick={this.handleMarkAsReadClick.bind(this)}>
                     <Octicon name="check" />
                   </a>
                 </CenteredBox>

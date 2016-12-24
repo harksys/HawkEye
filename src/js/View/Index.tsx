@@ -79,7 +79,8 @@ class Index extends React.Component<IAppIndexProps, any>
                                       )
                                     : undefined}>
             {filteredNotifications.length > 0
-              ? <NotificationsList notifications={filteredNotifications} />
+            ? <NotificationsList accountId={this.props.app.currentAccountId.toString()}
+                                 notifications={filteredNotifications} />
               : <NoNotifications />}
           </ViewBar>
         </div>
