@@ -27,9 +27,41 @@ export function getGitHubClientSecret(): string
 /**
  * @returns string
  */
+export function getGitHubWebUrl(): string
+{
+  return HawkEyeConfig.github.webUrl;
+};
+
+/**
+ * @returns string
+ */
 export function getGitHubScopes(): string[]
 {
   return HawkEyeConfig.github.scopes;
+};
+
+/**
+ * @param  {IGitHubNotification} notification
+ * @returns string
+ */
+export function getNotificationWebUrl(notification: IGitHubNotification): string
+{
+  let subjectUrl = notification.subject.url;
+
+  return subjectUrl.replace('https://api.github.com/repos/', getGitHubWebUrl());
+};
+
+/**
+ * @param  {IGitHubNotification} notification
+ * @returns string
+ */
+export function getNotificationSubjectIdFromUrl(notification: IGitHubNotification): string
+{
+  // @todo: Add tests etc
+  let subjectUrl = notification.subject.url;
+  let parts      = subjectUrl.split('/');
+
+  return parts[parts.length - 1];
 };
 
 /**
