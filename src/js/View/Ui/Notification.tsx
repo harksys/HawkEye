@@ -5,7 +5,17 @@ import { handleMarkNotificationAsRead } from 'Actions/Notifications';
 
 import { dispatch } from 'Helpers/State/Store';
 import { relativeTime } from 'Helpers/Lang/Date';
-import { getNotificationSubjectIcon } from 'Helpers/Services/GitHub';
+import {
+  getNotificationWebUrl,
+  getNotificationSubjectIcon
+} from 'Helpers/Services/GitHub';
+
+import {
+  openExternalUrl,
+  copyStringToClipboard,
+  getNewRemoteElectronMenu,
+  getNewRemoteElectronMenuItem
+} from 'Helpers/System/Electron';
 
 import {
   Icon,
@@ -29,10 +39,40 @@ class Notification extends React.Component<INotificationProps, any>
                                           this.props.notification.id.toString()));
   }
 
+  handleRightClick(e)
+  {
+    e.preventDefault();
+
+    let menu = getNewRemoteElectronMenu();
+    menu.append(getNewRemoteElectronMenuItem({
+      label : 'Open in Browser',
+      click : () => openExternalUrl(getNotificationWebUrl(this.props.notification))
+    }));
+    menu.append(getNewRemoteElectronMenuItem({
+      label : 'Copy Link',
+      click : () => copyStringToClipboard(getNotificationWebUrl(this.props.notification))
+    }));
+    menu.append(getNewRemoteElectronMenuItem({
+      label : 'Copy Title',
+      click : () => copyStringToClipboard(this.props.notification.subject.title)
+    }));
+    menu.append(getNewRemoteElectronMenuItem({
+      type : 'separator'
+    }));
+    menu.append(getNewRemoteElectronMenuItem({
+      label : 'Mark as Read',
+      click : () => dispatch(handleMarkNotificationAsRead(this.props.accountId,
+                                                          this.props.notification.id.toString()))
+    }));
+
+    menu.popup(e.clientX, e.clientY);
+  }
+
   render()
   {
     return (
-      <div className="notification">
+      <div className="notification"
+           onContextMenu={this.handleRightClick.bind(this)}>
         <div className="hard-left hard-left--epsilon">
           <div className="hard-left__left">
             <div className="text--center push-zeta--top">
