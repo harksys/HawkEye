@@ -30,3 +30,22 @@ export function getNewRemoteElectronMenuItem(opts: Electron.MenuItemOptions): El
 
   return new electron.remote.MenuItem(opts);
 };
+
+/**
+ * @param  {string} string
+ */
+export function copyStringToClipboard(string: string)
+{
+  getElectron().clipboard.writeText(string);
+};
+
+/**
+ * @param  {string} url
+ * @param  {boolean=true} activate
+ */
+export function openExternalUrl(url: string, activate: boolean = true)
+{
+  getElectron().shell.openExternal(url, {
+    activate : activate
+  });
+};
