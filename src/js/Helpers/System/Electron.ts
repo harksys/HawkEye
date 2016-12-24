@@ -49,3 +49,19 @@ export function openExternalUrl(url: string, activate: boolean = true)
     activate : activate
   });
 };
+
+/**
+ * @returns string
+ */
+export function getPlatform(): string
+{
+  return getElectron().remote.getGlobal('process').platform;
+};
+
+/**
+ * @returns boolean
+ */
+export function isMac(): boolean
+{
+  return getPlatform() === 'darwin';
+};

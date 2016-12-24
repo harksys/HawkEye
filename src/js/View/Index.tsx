@@ -64,7 +64,7 @@ class Index extends React.Component<IAppIndexProps, any>
 
     return (
       <div className="hideable-left">
-        <div className="hideable-left__left bg--dark-grey-alpha">
+        <div className="hideable-left__left bg--dark-grey-alpha app-drag">
           <NotificationFilters accountId={this.props.app.currentAccountId}
                                notifications={notifications}
                                notificationFilters={filterRules} />

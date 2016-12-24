@@ -4,9 +4,10 @@ import ActionConstants from 'Constants/Actions/Index';
 import * as objectAssign from 'object-assign';
 
 const initialState: IStateSetup = {
-  isLoading   : true,
-  showLoading : true,
-  renderApp   : false
+  isLoading      : true,
+  showLoading    : true,
+  renderApp      : false,
+  windowFocussed : true
 };
 
 let reducingMethods = {
@@ -26,6 +27,12 @@ let reducingMethods = {
   {
     return objectAssign({}, state, {
       renderApp : action.renderApp
+    });
+  },
+  [ActionConstants.setup.SET_WINDOW_FOCUSSED] : (state: IStateSetup, action) =>
+  {
+    return objectAssign({}, state, {
+      windowFocussed : action.windowFocussed
     });
   }
 };

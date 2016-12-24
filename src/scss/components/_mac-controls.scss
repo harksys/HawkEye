@@ -1,0 +1,67 @@
+.mac-controls {
+  width: 68px;
+  height: 30px;
+  position: relative;
+  @extend .app-drag--none;
+
+  &:hover .mac-controls__control svg {
+    display: block;
+  }
+}
+
+.mac-controls__control {
+  top: 8px;
+  width: 12px;
+  height: 12px;
+  line-height: 0;
+  display: block;
+  position: absolute;
+  @include border-radius(100%);
+  @extend .app-drag--none;
+
+  svg {
+    display: none;
+  }
+}
+
+.mac-controls__control--close {
+  left: 8px;
+  background: #ff5f57;
+  border: 1px solid #E2463F;
+
+  &:active {
+    background: #BF4943;
+    border-color: #AD3934;
+  }
+}
+
+.mac-controls__control--minimize {
+  left: 28px;
+  background: #FFBD2E;
+  border: 1px solid #E1A116;
+
+  &:active {
+    background: #BF9123;
+    border-color: #AD7D15;
+  }
+}
+
+.mac-controls__control--resize {
+  left: 48px;
+  background: #28C940;
+  border: 1px solid #12AC28;
+
+  &:active {
+    background: #1F9A31;
+    border-color: #128622;
+  }
+}
+
+.app--blurred .mac-controls__control {
+  background: #DDDDDD!important;
+  border-color: #D0D0D0!important;
+
+  svg {
+    display: none;
+  }
+}

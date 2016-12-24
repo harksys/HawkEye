@@ -1,0 +1,8 @@
+.app-drag {
+  -ms-overflow-style: scrollbar;
+  -webkit-app-region:drag;
+}
+
+.app-drag--none {
+  -webkit-app-region: no-drag;
+}

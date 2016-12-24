@@ -1,8 +1,9 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 
-import { switchAccount } from 'Actions/UIActions/App';
 import { dispatch } from 'Helpers/State/Store';
+import { isMac } from 'Helpers/System/Electron';
+import { switchAccount } from 'Actions/UIActions/App';
 
 import {
   Btn,
@@ -12,6 +13,7 @@ import {
   CenteredBox,
   ProfilePicture
 } from 'View/Ui/Index';
+import MacControls from 'View/Components/MacControls/Index';
 
 interface IAppBarProps
 {
@@ -25,14 +27,21 @@ class AppBar extends React.Component<IAppBarProps, any>
   render()
   {
     return (
-      <div className="hard-bottom hard-bottom--delta">
+      <div className="hard-bottom hard-bottom--delta app-drag">
         <div className="hard-bottom__content">
+          {isMac()
+            ? <MacControls />
+            : undefined}
           <Scroll>
             {this.props.accounts
-                .map(account =>
+                .map((account, i, a) =>
                 (
                   <div key={account.gitHubUser.id}
-                        className="soft-zeta hard--bottom">
+                        className={'soft-zeta hard--bottom'
+                                    + (i === 0
+                                        && isMac()
+                                        ? ' hard--top'
+                                        : '')}>
                     <Btn onClick={() => dispatch(switchAccount(account.gitHubUser.id))}
                           className={'btn--square-delta'
                                         + (this.props.app.currentAccountId != account.gitHubUser.id

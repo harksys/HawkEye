@@ -6,4 +6,6 @@ interface IStateSetup
   showLoading: boolean;
 
   renderApp: boolean;
+
+  windowFocussed: boolean;
 };

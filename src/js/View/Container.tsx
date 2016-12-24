@@ -1,8 +1,11 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
-
 import { Provider } from 'react-redux';
 import { Router } from 'react-router';
+
+import { dispatch } from 'Helpers/State/Store';
+import { setWindowFocussed } from 'Actions/Setup';
+
 import { AppLoading } from 'View/Ui/Index';
 
 interface IContainerProps
@@ -21,7 +24,10 @@ class Container extends React.Component<IContainerProps, any>
   render()
   {
     return (
-      <div className="app">
+      <div className={'app '
+                        + (this.props.setup.windowFocussed
+                            ? 'app--focussed'
+                            : 'app--blurred')}>
         {this.props.setup.isLoading
           ? <AppLoading show={this.props.setup.showLoading} />
           : undefined}
@@ -35,6 +41,28 @@ class Container extends React.Component<IContainerProps, any>
           : undefined}
       </div>
     );
+  }
+
+  handleSetWindowFocussed(e)
+  {
+    dispatch(setWindowFocussed(true));
+  }
+
+  handleSetWindowBlurred()
+  {
+    dispatch(setWindowFocussed(false));
+  }
+
+  componentDidMount()
+  {
+    window.addEventListener('focus', this.handleSetWindowFocussed.bind(this));
+    window.addEventListener('blur', this.handleSetWindowBlurred.bind(this));
+  }
+
+  componentWillUnmount()
+  {
+    window.removeEventListener('focus', this.handleSetWindowFocussed.bind(this));
+    window.removeEventListener('blur', this.handleSetWindowBlurred.bind(this));
   }
 };
 

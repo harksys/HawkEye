@@ -2,6 +2,8 @@
 
 import { app, BrowserWindow } from 'electron';
 
+const isMac = process.platform === 'darwin';
+
 class Main
 {
   static mainWindow: Electron.BrowserWindow;
@@ -12,7 +14,7 @@ class Main
 
   static onWindowAllClosed()
   {
-    if (process.platform === 'darwin') {
+    if (isMac) {
       return;
     }
 
@@ -40,7 +42,10 @@ class Main
                         width     : 330,
                         height    : 500,
                         minHeight : 250,
-                        minWidth  : 328
+                        minWidth  : 328,
+                        frame     : isMac
+                                      ? false
+                                      : true
                       });
 
     Main.mainWindow.loadURL('file://' + __dirname + '/index.html');

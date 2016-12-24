@@ -23,3 +23,11 @@ export function setSetupRenderApp(renderApp: boolean)
     renderApp
   };
 };
+
+export function setWindowFocussed(windowFocussed: boolean)
+{
+  return {
+    type           : ActionConstants.setup.SET_WINDOW_FOCUSSED,
+    windowFocussed
+  };
+};
