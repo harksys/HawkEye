@@ -15,6 +15,16 @@ class GitHubNotificationsService implements IGitHubNotificationsService
 
   /**
    * @param  {string} token
+   * @param  {string} threadId
+   * @returns Promise
+   */
+  public markNotificationAsThread = (token: string, threadId: string): Promise<any> =>
+  {
+    return this.gitHub.activity.markThreadAsRead(token, threadId);
+  }
+
+  /**
+   * @param  {string} token
    * @param  {boolean} all?
    * @param  {boolean} participating?
    * @param  {string} since?
