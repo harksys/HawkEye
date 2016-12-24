@@ -6,7 +6,8 @@ const config: IHawkEyeConfig = {
     clientSecret : '',
     scopes       : [
       gitHubScopes.notifications
-    ]
+    ],
+    webUrl       : 'https://github.com/'
   },
   appAlerts : {
     showFor : 4000

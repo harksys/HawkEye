@@ -13,6 +13,8 @@ interface IHawkEyeConfigGitHub
   clientSecret: string;
 
   scopes: string[];
+
+  webUrl: string;
 };
 
 interface IHawkEyeConfigAppAlerts
