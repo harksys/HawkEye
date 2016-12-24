@@ -2,10 +2,17 @@ import InstanceCache from 'Core/InstanceCache';
 import ActionConstants from 'Constants/Actions/Index';
 import { soundClipPaths } from 'Constants/Resources/Sound';
 
+import { pushAppAlert } from 'Actions/AppAlerts';
+
+import {
+  createErrorAppAlert,
+  createSuccessAppAlert
+} from 'Helpers/Models/AppAlert';
 import { getLast } from 'Helpers/Lang/Array';
 import { playSound } from 'Helpers/Lang/Audio';
 import { sortingMethods } from 'Helpers/Lang/Sort';
 import { formatDateAsUTC } from 'Helpers/Lang/Date';
+import { getAccountToken } from 'Helpers/Models/Accounts';
 import { newItemsSoundIsEnabled } from 'Helpers/Models/Settings';
 import { makeGitHubNotification } from 'Helpers/Models/GitHubNotification';
 
@@ -19,6 +26,15 @@ export function removeAccountsNotifications(accountId: string)
   return {
     type      : ActionConstants.notifications.REMOVE_ACCOUNT_NOTIFICATIONS,
     accountId
+  };
+};
+
+export function markNotificationAsRead(accountId: string, notificationId: string)
+{
+  return {
+    type           : ActionConstants.notifications.MARK_NOTIFICATION_AS_READ,
+    accountId,
+    notificationId
   };
 };
 
@@ -127,5 +143,29 @@ export function pollBeforeNotifications(accountId: string, token: string, before
              dispatch(ingestNotifications(accountId, notifications));
              dispatch(setIsPolling(false));
            }, err => dispatch(setIsPolling(false)));
+  };
+};
+
+/**
+ * @param  {string} accountId
+ * @param  {string} threadId
+ */
+export function handleMarkNotificationAsRead(accountId: string, threadId: string)
+{
+  let service = InstanceCache.getInstance<IGitHubNotificationsService>('IGitHubNotificationsService');
+
+  return dispatch =>
+  {
+    service
+      .markNotificationAsThread(getAccountToken(accountId), threadId)
+      .then(res =>
+      {
+        dispatch(markNotificationAsRead(accountId, threadId));
+        dispatch(pushAppAlert(createSuccessAppAlert(
+          'Notification marked as read'
+        )));
+      }, err => dispatch(pushAppAlert(createErrorAppAlert(
+                  'Issue marking notification as read'
+                ))));
   };
 };

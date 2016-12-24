@@ -36,6 +36,20 @@ let reducingMethods = {
                                                                   (v: IGitHubNotification, k) => v))
     });
   },
+  [ActionConstants.notifications.MARK_NOTIFICATION_AS_READ] : (state: IStateNotifications, action: { accountId: string,
+                                                                                                     notificationId: string; }) =>
+  {
+    let accountState      = getNotificationAccountsOrDefault(state, action.accountId);
+    let notificationState = getAccountsNotificationState(state, action.accountId, action.notificationId);
+
+    return objectAssign({}, state, {
+      [action.accountId] : objectAssign({}, accountState, {
+        [action.notificationId] : objectAssign({}, notificationState, {
+          unread : false
+        })
+      })
+    });
+  },
   [ActionConstants.notifications.REMOVE_ACCOUNT_NOTIFICATIONS] : (state: IStateNotifications, action) =>
   {
     return objectAssign({}, omit(state, action.accountId));
@@ -46,6 +60,13 @@ function getNotificationAccountsOrDefault(state: IStateNotifications,
                                           actionId: string): IStateNotificationsAccountsNotifications
 {
   return state[actionId] || {};
+};
+
+function getAccountsNotificationState(state: IStateNotifications, accountId: string, notificationId: string)
+{
+  let accountState = getNotificationAccountsOrDefault(state, accountId);
+
+  return accountState[notificationId] || {};
 };
 
 export default Reducify(initialState, reducingMethods);
