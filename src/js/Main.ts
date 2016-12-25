@@ -1,6 +1,11 @@
 ///<reference path="../../typings/index.d.ts" />
 
-import { app, BrowserWindow } from 'electron';
+import {
+  app,
+  ipcMain,
+  BrowserWindow
+} from 'electron';
+import * as Request from 'request';
 import windowStateKeeper = require('electron-window-state');
 
 const isMac = process.platform === 'darwin';
@@ -78,6 +83,40 @@ class Main
     Main.app.on('activate', Main.onActivate);
   }
 };
+
+/**
+ * IPC Main Tasks
+ */
+
+/*
+ * Mark GH Notification as read
+ */
+ipcMain.on('MarkNotificationRead', (event, args: { token: string,
+                                                   notificationId: string; }[]) =>
+{
+  if (args.length === 0) {
+    event.sender.send('MarkNotificationReadError', args);
+    return;
+  }
+
+  let token = args[0].token;
+  let id    = args[0].notificationId;
+
+  Request.post({
+    url : 'https://api.github.com/notifications/threads/' + id,
+    qs  : {
+      access_token : token
+    }
+  }, (err, resp, body) =>
+  {
+    if (resp.statusCode === 205) {
+      event.sender.send('MarkNotificationReadSuccess', args);
+      return;
+    }
+
+    event.sender.send('MarkNotificationReadError', args);
+  });
+});
 
 // Run
 Main.main(app, BrowserWindow);
