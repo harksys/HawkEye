@@ -44,6 +44,11 @@ class Index extends React.Component<IAppIndexProps, any>
     return filterNotificationsByFilteringSet(notifications, filterSet);
   }
 
+  handleNotificationDoubleClick(notification: IGitHubNotification)
+  {
+
+  }
+
   render()
   {
     let notifications = values(this.props.notifications[this.props.app.currentAccountId] || {});
@@ -80,7 +85,8 @@ class Index extends React.Component<IAppIndexProps, any>
                                     : undefined}>
             {filteredNotifications.length > 0
             ? <NotificationsList accountId={this.props.app.currentAccountId.toString()}
-                                 notifications={filteredNotifications} />
+                                 notifications={filteredNotifications}
+                                 onDoubleClick={this.handleNotificationDoubleClick.bind(this)} />
               : <NoNotifications />}
           </ViewBar>
         </div>

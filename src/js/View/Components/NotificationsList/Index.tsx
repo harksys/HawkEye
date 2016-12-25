@@ -11,10 +11,19 @@ interface INotificationsListProps
   accountId: string;
 
   notifications: IGitHubNotification[];
+
+  onClick?(notification: IGitHubNotification);
+
+  onDoubleClick?(notification: IGitHubNotification);
 };
 
 class NotificationsList extends React.Component<INotificationsListProps, any>
 {
+  static defaultProps = {
+    onClick       : () => {},
+    onDoubleClick : () => {},
+  };
+
   render()
   {
     return (
@@ -48,7 +57,9 @@ class NotificationsList extends React.Component<INotificationsListProps, any>
       <div key={o.key}
            style={o.style}>
         <Notification accountId={this.props.accountId}
-                      notification={notifications[o.index]} />
+                      notification={notifications[o.index]}
+                      onClick={this.props.onClick}
+                      onDoubleClick={this.props.onDoubleClick} />
       </div>
     );
   };

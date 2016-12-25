@@ -19,6 +19,10 @@ interface INotificationProps
   accountId: string;
 
   notification: IGitHubNotification;
+
+  onClick?(notification: IGitHubNotification);
+
+  onDoubleClick?(notification: IGitHubNotification);
 };
 
 class Notification extends React.Component<INotificationProps, any>
@@ -41,11 +45,23 @@ class Notification extends React.Component<INotificationProps, any>
     } catch (e) {}
   }
 
+  handleClick()
+  {
+    this.props.onClick(this.props.notification);
+  }
+
+  handleDoubleClick()
+  {
+    this.props.onDoubleClick(this.props.notification);
+  }
+
   render()
   {
     return (
       <div className="notification"
-           onContextMenu={this.handleRightClick.bind(this)}>
+           onContextMenu={this.handleRightClick.bind(this)}
+           onClick={this.handleClick.bind(this)}
+           onDoubleClick={this.handleDoubleClick.bind(this)}>
         <div className="hard-left hard-left--epsilon">
           <div className="hard-left__left">
             <div className="text--center push-zeta--top">
