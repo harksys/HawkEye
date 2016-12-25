@@ -1,6 +1,7 @@
 {
   "name": "hawkeye",
   "dependencies": {
+    "form-data": "registry:npm/form-data#1.0.0+20160812072516",
     "lodash": "registry:npm/lodash#4.0.0+20161015015725",
     "redux-persist": "registry:npm/redux-persist#3.2.2+20160817092816",
     "request": "registry:dt/request#0.0.0+20161128184003"
