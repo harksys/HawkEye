@@ -91,31 +91,56 @@ class Main
 /*
  * Mark GH Notification as read
  */
-ipcMain.on('MarkNotificationRead', (event, args: { token: string,
+ipcMain.on('MarkNotificationRead', (event, args: { token: string;
+                                                   accountId: string;
                                                    notificationId: string; }[]) =>
 {
-  if (args.length === 0) {
-    event.sender.send('MarkNotificationReadError', args);
-    return;
-  }
-
-  let token = args[0].token;
-  let id    = args[0].notificationId;
-
-  Request.post({
-    url : 'https://api.github.com/notifications/threads/' + id,
-    qs  : {
-      access_token : token
-    }
-  }, (err, resp, body) =>
-  {
-    if (resp.statusCode === 205) {
-      event.sender.send('MarkNotificationReadSuccess', args);
+  try {
+    /*
+     * If theres no arguments, then fail.
+     */
+    if (args.length === 0) {
+      event.sender.send('MarkNotificationReadError');
       return;
     }
 
-    event.sender.send('MarkNotificationReadError', args);
-  });
+    let token     = args[0].token;
+    let id        = args[0].notificationId;
+    let accountId = args[0].accountId;
+
+    console.log('[Starting] Marking ' + id + ' as read for account ' + accountId);
+
+    /*
+     * Make a POST request to mark the notification as read
+     */
+    Request.post({
+      url     : 'https://api.github.com/notifications/threads/' + id,
+      qs      : {
+        access_token : token
+      },
+      headers : {
+        'User-Agent' : 'HawkEye'
+      }
+    }, (err, resp, body) =>
+    {
+      /*
+       * 205 == win
+       */
+      if (resp.statusCode === 205) {
+        event.sender.send('MarkNotificationReadSuccess', args[0]);
+        console.log('[Success] Marking ' + id + ' as read for account ' + accountId);
+        return;
+      }
+
+      /*
+       * Handle error
+       */
+      event.sender.send('MarkNotificationReadError', args[0]);
+      console.log('[Failed] Marking ' + id + ' as read for account ' + accountId);
+    });
+  } catch(e) {
+    event.sender.send('MarkNotificationReadError', args[0]);
+  }
 });
 
 // Run
