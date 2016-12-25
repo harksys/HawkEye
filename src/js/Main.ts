@@ -39,13 +39,13 @@ class Main
   static onReady()
   {
     Main.mainWindow = new Main.browserWindow({
-                        width     : 330,
-                        height    : 500,
-                        minHeight : 250,
-                        minWidth  : 328,
-                        frame     : isMac
-                                      ? false
-                                      : true
+                        width         : 330,
+                        height        : 500,
+                        minHeight     : 250,
+                        minWidth      : 328,
+                        titleBarStyle : isMac
+                                          ? 'hidden-inset'
+                                          : 'default'
                       });
 
     Main.mainWindow.loadURL('file://' + __dirname + '/index.html');

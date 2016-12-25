@@ -83,6 +83,14 @@ export function setCurrentWindowFullScreen(fullScreen: boolean)
 };
 
 /**
+ * @returns boolean
+ */
+export function getCurrentWindowIsFullscreen(): boolean
+{
+  return getCurrentWindow().isFullScreen();
+};
+
+/**
  */
 export function maximizeCurrentWindow()
 {
