@@ -1,5 +1,13 @@
 import ActionConstants from 'Constants/Actions/Index';
 
+export function clearFilters(accountId: number)
+{
+  return {
+    type      : ActionConstants.notificationFilter.CLEAR_FILTERS,
+    accountId
+  };
+};
+
 /**
  * @param  {number} accountId
  * @param  {boolean} read

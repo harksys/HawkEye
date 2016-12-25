@@ -1,5 +1,6 @@
 import Reducify from 'Helpers/State/Reducify';
 import ActionConstants from 'Constants/Actions/Index';
+import { defaultNotificationFilterSet } from 'Constants/Models/NotificationFilterSet';
 
 import * as omit from 'lodash/omit';
 import * as objectAssign from 'object-assign';
@@ -18,6 +19,13 @@ const initialState: IStateNotificationFilters = {
 };
 
 let reducingMethods = {
+  [ActionConstants.notificationFilter.CLEAR_FILTERS] : (state: IStateNotificationFilters,
+                                                        action: { accountId: number }) =>
+  {
+    return objectAssign({}, state, {
+      [action.accountId] : defaultNotificationFilterSet
+    })
+  },
   [ActionConstants.notificationFilter.ADD_FILTER] : (state: IStateNotificationFilters,
                                                      action: INotificationFilterUpdateAction) =>
   {
@@ -61,14 +69,7 @@ let reducingMethods = {
 
 function getAccountState(state: IStateNotificationFilters, accountId: string)
 {
-  let defaultAccountState: INotificationFilterSet = {
-    read        : false,
-    subjectType : [],
-    reasonType  : [],
-    repository  : []
-  };
-
-  return state[accountId] || defaultAccountState;
+  return state[accountId] || defaultNotificationFilterSet;
 };
 
 function getAccountFilterAreaState(state: IStateNotificationFilters, accountId: string, area: string)
