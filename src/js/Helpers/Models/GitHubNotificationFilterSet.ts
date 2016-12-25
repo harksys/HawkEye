@@ -3,7 +3,8 @@
  * @param  {IGitHubNotification[]} notifications
  * @returns IGitHubNotificationFilterSet
  */
-export function createGitHubNotificationFilterSet(notifications: IGitHubNotification[]): IGitHubNotificationFilterSet
+export function createGitHubNotificationFilterSet(notifications: IGitHubNotification[],
+                                                  filterRules: INotificationFilterSet): IGitHubNotificationFilterSet
 {
   let filterOpts = {
     read         : 0,
@@ -21,6 +22,16 @@ export function createGitHubNotificationFilterSet(notifications: IGitHubNotifica
     {
       if (!notification.unread) {
         filterOpts.read++;
+      }
+
+      if (filterRules.read
+          && notification.unread) {
+        return;
+      }
+
+      if (!filterRules.read
+          && !notification.unread) {
+        return;
       }
 
       /*

@@ -79,7 +79,8 @@ class NotificationFilters extends React.Component<INotificationFiltersProps, any
 
   render()
   {
-    let filterSet = createGitHubNotificationFilterSet(this.props.notifications);
+    let filterSet = createGitHubNotificationFilterSet(this.props.notifications,
+                                                      this.props.notificationFilters);
 
     return (
       <Scroll>
