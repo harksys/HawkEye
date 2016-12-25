@@ -2,7 +2,8 @@
   "name": "hawkeye",
   "dependencies": {
     "lodash": "registry:npm/lodash#4.0.0+20161015015725",
-    "redux-persist": "registry:npm/redux-persist#3.2.2+20160817092816"
+    "redux-persist": "registry:npm/redux-persist#3.2.2+20160817092816",
+    "request": "registry:dt/request#0.0.0+20161128184003"
   },
   "globalDependencies": {
     "async": "registry:dt/async#2.0.1+20161211174247",
