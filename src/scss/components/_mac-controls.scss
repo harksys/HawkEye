@@ -65,3 +65,12 @@
     display: none;
   }
 }
+
+.mac-controls__control--disabled {
+  background: #DDDDDD!important;
+  border-color: #D0D0D0!important;
+
+  svg {
+    display: none!important;
+  }
+}

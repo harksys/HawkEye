@@ -38,7 +38,7 @@ class MacControls extends React.Component<IMacControlsProps, any>
 
   handleMaximizeClick()
   {
-    // If the window is full screened, then unfull screen
+    // If the window is full screened, then un-fullscreen
     if (this.props.setup.windowFullScreened) {
       setCurrentWindowFullScreen(false);
       dispatch(setWindowFullScreened(false));
@@ -52,13 +52,15 @@ class MacControls extends React.Component<IMacControlsProps, any>
       return;
     }
 
-    // Alt key is down, so if we can maximise,
-    // do it
+    // Alt key is down, so if we can maximize,
+    // do it and stop.
     if (getCurrentWindowIsMaximized()) {
       unmaximizeCurrentWindow();
       return;
     }
 
+    // Alt key is down, and we are maximized,
+    // so unmaximize
     maximizeCurrentWindow();
   }
 
