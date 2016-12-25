@@ -1,4 +1,7 @@
+import { getAccountToken } from './Accounts';
 import { makeGitHubRepository } from './GitHubRepository';
+
+import { markMultipleNotificationsAsRead } from 'Electron/Tasks/Notification';
 
 import Filter from 'Filter/Filter';
 import {
@@ -55,4 +58,20 @@ export function filterNotificationsByFilteringSet(notifications: IGitHubNotifica
   return (new Filter<IGitHubNotification>(notifications, filterSet))
               .addFilterFunctions(Read, Subject, Reason, Repository)
               .filter();
+};
+
+/**
+ * @param  {string} accountId
+ * @param  {IGitHubNotification[]} notifications
+ */
+export function markNotificationsAsRead(accountId: number,
+                                        notifications: IGitHubNotification[])
+{
+  let token = getAccountToken(accountId.toString()); // @todo: this needs to stop
+  if (!token) {
+    return;
+  }
+
+  let nIds = notifications.map(n => n.id.toString());
+  markMultipleNotificationsAsRead(token, accountId, nIds);
 };
