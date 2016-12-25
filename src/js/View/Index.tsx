@@ -1,13 +1,21 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
+import * as Octicon from 'react-octicon';
 
 import * as values from 'lodash/values';
 import * as throttle from 'lodash/throttle';
 
-import { sortingMethods } from 'Helpers/Lang/Sort';
-import { getAccountIds } from 'Helpers/Models/Accounts';
-import { filterNotificationsByFilteringSet } from 'Helpers/Models/GitHubNotification';
+import { clearFilters } from 'Actions/NotificationFilters';
 import { defaultNotificationFilterSet } from 'Constants/Models/NotificationFilterSet';
+
+import {
+  markNotificationsAsRead,
+  filterNotificationsByFilteringSet
+} from 'Helpers/Models/GitHubNotification';
+import { dispatch } from 'Helpers/State/Store';
+import { sortingMethods } from 'Helpers/Lang/Sort';
+import { getElectron } from 'Helpers/System/Electron';
+import { getAccountIds } from 'Helpers/Models/Accounts';
 
 import {
   Icon,
@@ -44,6 +52,12 @@ class Index extends React.Component<IAppIndexProps, any>
     return filterNotificationsByFilteringSet(notifications, filterSet);
   }
 
+  handleMarkAllNotificationsAsRead(notifications: IGitHubNotification[])
+  {
+    dispatch(clearFilters(this.props.app.currentAccountId));
+    markNotificationsAsRead(this.props.app.currentAccountId, notifications);
+  }
+
   handleNotificationDoubleClick(notification: IGitHubNotification)
   {
 
@@ -77,12 +91,22 @@ class Index extends React.Component<IAppIndexProps, any>
         <div className="hideable-left__content no-outline">
           <ViewBar title="Notifications"
                    getRightContent={this.props.app.isPolling
-                                    ? () => (
+                                    ? () =>
+                                      (
                                         <CenteredBox>
                                           <Loader size="small" />
                                         </CenteredBox>
                                       )
-                                    : undefined}>
+                                    : () =>
+                                      (
+                                        <CenteredBox>
+                                          <a href="#"
+                                             className="link--dark-action"
+                                             onClick={this.handleMarkAllNotificationsAsRead.bind(this, filteredNotifications)}>
+                                            <Octicon name="check" />
+                                          </a>
+                                        </CenteredBox>
+                                      )}>
             {filteredNotifications.length > 0
             ? <NotificationsList accountId={this.props.app.currentAccountId.toString()}
                                  notifications={filteredNotifications}

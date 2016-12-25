@@ -1,6 +1,7 @@
 import * as React from 'react';
-
 import { Link } from 'react-router';
+
+import { registerMarkNotificationAsReadSuccess } from 'Electron/Tasks/Notification';
 
 import AppBar from './Components/AppBar/Index';
 import AppAlerts from './Components/AppAlerts/Index';
@@ -24,6 +25,11 @@ class App extends React.Component<any, any>
         </div>
       </div>
     );
+  }
+
+  componentDidMount()
+  {
+    registerMarkNotificationAsReadSuccess();
   }
 };
 
