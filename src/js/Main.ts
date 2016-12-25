@@ -1,6 +1,7 @@
 ///<reference path="../../typings/index.d.ts" />
 
 import { app, BrowserWindow } from 'electron';
+import windowStateKeeper = require('electron-window-state');
 
 const isMac = process.platform === 'darwin';
 
@@ -38,15 +39,25 @@ class Main
 
   static onReady()
   {
+    let windowState = windowStateKeeper({
+      defaultWidth  : 330,
+      defaultHeight : 500
+    });
+
     Main.mainWindow = new Main.browserWindow({
-                        width         : 330,
-                        height        : 500,
+                        x             : windowState.x,
+                        y             : windowState.y,
+                        width         : windowState.width,
+                        height        : windowState.height,
+                        fullScreen    : windowState.isFullScreen,
                         minHeight     : 250,
                         minWidth      : 328,
                         titleBarStyle : isMac
                                           ? 'hidden-inset'
                                           : 'default'
                       });
+
+    windowState.manage(Main.mainWindow);
 
     Main.mainWindow.loadURL('file://' + __dirname + '/index.html');
     Main.mainWindow.on('closed', Main.onClose);

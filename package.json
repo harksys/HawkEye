@@ -40,6 +40,7 @@
   "dependencies": {
     "async": "^2.1.4",
     "compass-mixins": "^0.12.10",
+    "electron-window-state": "^4.0.1",
     "es6-promise": "^4.0.5",
     "lodash": "^4.17.2",
     "moment": "^2.17.1",
