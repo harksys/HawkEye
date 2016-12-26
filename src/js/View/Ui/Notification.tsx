@@ -20,6 +20,8 @@ interface INotificationProps
 
   notification: IGitHubNotification;
 
+  disableMarkAsRead?: boolean;
+
   onClick?(notification: IGitHubNotification);
 
   onDoubleClick?(notification: IGitHubNotification);
@@ -82,13 +84,17 @@ class Notification extends React.Component<INotificationProps, any>
                 </div>
               </div>
               <div className="hard-right__right">
-                <CenteredBox childClassName="text--left">
-                  <a href="#"
-                     className="link--beta-dark-action"
-                     onClick={this.handleMarkAsReadClick.bind(this)}>
-                    <Octicon name="check" />
-                  </a>
-                </CenteredBox>
+                {this.props.disableMarkAsRead
+                  ? (
+                      <CenteredBox childClassName="text--left">
+                        <a href="#"
+                          className="link--beta-dark-action"
+                          onClick={this.handleMarkAsReadClick.bind(this)}>
+                          <Octicon name="check" />
+                        </a>
+                      </CenteredBox>
+                    )
+                : undefined}
               </div>
             </div>
           </div>

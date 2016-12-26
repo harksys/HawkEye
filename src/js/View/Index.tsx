@@ -97,19 +97,21 @@ class Index extends React.Component<IAppIndexProps, any>
                                           <Loader size="small" />
                                         </CenteredBox>
                                       )
-                                    : () =>
-                                      (
-                                        <CenteredBox>
-                                          <a href="#"
-                                             className="link--epsilon-dark-action"
-                                             onClick={this.handleMarkAllNotificationsAsRead.bind(this, filteredNotifications)}>
-                                            <Octicon name="check" />
-                                          </a>
-                                        </CenteredBox>
-                                      )}>
+                                    : () => !filterRules.read
+                                              ? (
+                                                  <CenteredBox>
+                                                    <a href="#"
+                                                      className="link--epsilon-dark-action"
+                                                      onClick={this.handleMarkAllNotificationsAsRead.bind(this, filteredNotifications)}>
+                                                      <Octicon name="check" />
+                                                    </a>
+                                                  </CenteredBox>
+                                                )
+                                              : undefined}>
             {filteredNotifications.length > 0
             ? <NotificationsList accountId={this.props.app.currentAccountId.toString()}
                                  notifications={filteredNotifications}
+                                 disableMarkAsRead={!filterRules.read}
                                  onDoubleClick={this.handleNotificationDoubleClick.bind(this)} />
               : <NoNotifications />}
           </ViewBar>

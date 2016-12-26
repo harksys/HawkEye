@@ -12,6 +12,8 @@ interface INotificationsListProps
 
   notifications: IGitHubNotification[];
 
+  disableMarkAsRead?: boolean;
+
   onClick?(notification: IGitHubNotification);
 
   onDoubleClick?(notification: IGitHubNotification);
@@ -58,6 +60,7 @@ class NotificationsList extends React.Component<INotificationsListProps, any>
            style={o.style}>
         <Notification accountId={this.props.accountId}
                       notification={notifications[o.index]}
+                      disableMarkAsRead={this.props.disableMarkAsRead}
                       onClick={this.props.onClick}
                       onDoubleClick={this.props.onDoubleClick} />
       </div>
