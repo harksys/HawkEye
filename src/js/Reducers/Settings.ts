@@ -1,7 +1,9 @@
 import Reducify from 'Helpers/State/Reducify';
-import ActionConstants from 'Constants/Actions/Index';
 
 import { cronPeriods } from 'Constants/Lang/Date';
+import ActionConstants from 'Constants/Actions/Index';
+import { notificationDoubleClickActions } from 'Constants/Models/Settings';
+
 
 import * as objectAssign from 'object-assign';
 
@@ -12,6 +14,9 @@ const initialState: IStateSettings = {
     newItemsEnabled     : true,
     alertSuccessEnabled : true,
     alertErrorEnabled   : true
+  },
+  notifications   : {
+    doubleClickAction : notificationDoubleClickActions.open
   }
 };
 
@@ -30,6 +35,14 @@ let reducingMethods = {
         [action.key] : action.enabled
       })
     });
+  },
+  [ActionConstants.settings.SET_NOTIFICATIONS_DOUBLE_CLICK_ACTION] : (state: IStateSettings, action: { action: string }) =>
+  {
+    return objectAssign({}, state, {
+      notifications : objectAssign({}, state.notifications, {
+        doubleClickAction : action.action
+      })
+    })
   }
 };
 

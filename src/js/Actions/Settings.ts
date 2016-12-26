@@ -58,3 +58,11 @@ export function updateSoundSettingsEnabled(key: string, enabled: boolean)
     enabled
   };
 };
+
+export function setNotificationDoubleClickAction(action: string)
+{
+  return {
+    type   : ActionConstants.settings.SET_NOTIFICATIONS_DOUBLE_CLICK_ACTION,
+    action
+  };
+};

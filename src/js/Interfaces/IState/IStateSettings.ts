@@ -6,6 +6,8 @@ interface IStateSettings
   soundSettings: IStateSettingsSound;
 
   accountSettings: IStateSettingsAccountSettings;
+
+  notifications: IStateSettingsNotification;
 };
 
 interface IStateSettingsAccountSettings
@@ -25,4 +27,9 @@ interface IStateSettingsSound
   alertSuccessEnabled: boolean;
 
   alertErrorEnabled: boolean;
+};
+
+interface IStateSettingsNotification
+{
+  doubleClickAction: string;
 };
