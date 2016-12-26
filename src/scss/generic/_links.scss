@@ -1,7 +1,35 @@
 
-.link--dark-action {
+.link--beta-dark-action {
   @include transition(color .25s ease);
   color: map-get($dark-grey-scale, beta)!important;
+
+  &:hover {
+    cursor: pointer!important;
+    color: $brand-color-main!important;
+  }
+
+  &.link--dark-action--active {
+    color: $brand-color-main!important;
+  }
+}
+
+.link--delta-dark-action {
+  @include transition(color .25s ease);
+  color: map-get($dark-grey-scale, delta)!important;
+
+  &:hover {
+    cursor: pointer!important;
+    color: $brand-color-main!important;
+  }
+
+  &.link--dark-action--active {
+    color: $brand-color-main!important;
+  }
+}
+
+.link--epsilon-dark-action {
+  @include transition(color .25s ease);
+  color: map-get($dark-grey-scale, epsilon)!important;
 
   &:hover {
     cursor: pointer!important;

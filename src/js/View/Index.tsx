@@ -101,7 +101,7 @@ class Index extends React.Component<IAppIndexProps, any>
                                       (
                                         <CenteredBox>
                                           <a href="#"
-                                             className="link--dark-action"
+                                             className="link--epsilon-dark-action"
                                              onClick={this.handleMarkAllNotificationsAsRead.bind(this, filteredNotifications)}>
                                             <Octicon name="check" />
                                           </a>
