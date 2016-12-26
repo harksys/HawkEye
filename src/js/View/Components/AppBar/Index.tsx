@@ -25,7 +25,7 @@ class AppBar extends React.Component<IAppBarProps, any>
   render()
   {
     return (
-      <div className="hard-top hard-top--zeta">
+      <div className="hard-top hard-top--epsilon">
         <div className="hard-top__top">
         </div>
         <div className="hard-top__content">
