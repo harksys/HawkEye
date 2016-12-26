@@ -9,6 +9,8 @@ interface IAnchorProps
   preventDefault?: boolean;
 
   onClick?(): void;
+
+  onContextMenu?(): void;
 };
 
 class Anchor extends React.Component<IAnchorProps, any>
@@ -16,7 +18,8 @@ class Anchor extends React.Component<IAnchorProps, any>
   static defaultProps = {
     href           : '#',
     preventDefault : true,
-    onClick        : () => {}
+    onClick        : () => {},
+    onContextMenu  : () => {}
   };
 
   handleClick(e)
@@ -33,7 +36,8 @@ class Anchor extends React.Component<IAnchorProps, any>
     return (
       <a href={this.props.href}
          className={this.props.className}
-         onClick={this.handleClick.bind(this)}>
+         onClick={this.handleClick.bind(this)}
+         onContextMenu={this.props.onContextMenu}>
         {this.props.children}
       </a>
     );

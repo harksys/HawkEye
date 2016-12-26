@@ -1,5 +1,7 @@
 import * as React from 'react';
 
+import createMenu from 'Electron/Menus/Accounts';
+
 import {
   Btn,
   ProfilePicture
@@ -22,10 +24,21 @@ class AppBarAccount extends React.Component<IAppBarAccountProps, any>
     onClick : () => {}
   };
 
+  handleRightClick(e)
+  {
+    e.preventDefault();
+
+    try {
+      createMenu(this.props.account.gitHubUser.id)
+        .popup(e.clientX, e.clientY);
+    } catch (e) {}
+  }
+
   render()
   {
     return (
       <Btn onClick={this.props.onClick.bind(null, this.props.account)}
+           onContextMenu={this.handleRightClick.bind(this)}
            className={'btn--square-delta push-auto--sides'
                         + (this.props.currentAccountId !== this.props.account.gitHubUser.id
                              ? ' btn--dark-grey-brand'

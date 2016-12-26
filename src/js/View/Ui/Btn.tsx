@@ -9,6 +9,8 @@ interface IBtnProps
   children?: any;
 
   onClick?(): void;
+
+  onContextMenu?(): void;
 };
 
 const Btn: React.SFC<IBtnProps> = props =>
@@ -17,7 +19,8 @@ const Btn: React.SFC<IBtnProps> = props =>
                       + (typeof props.className === 'string'
                            ? ' ' + props.className
                            : '')}
-          onClick={props.onClick}>
+          onClick={props.onClick}
+          onContextMenu={props.onContextMenu}>
     {props.children}
   </Anchor>
 );

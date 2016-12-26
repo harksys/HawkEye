@@ -57,7 +57,7 @@ export function updateAccounts(updatedCallback: () => any = () => {})
 /**
  * @param  {string} accountId
  */
-export function updateAccount(accountId: string, callback?: () => any)
+export function updateAccount(accountId: string, callback: () => any = () => {})
 {
   return dispatch =>
   {
