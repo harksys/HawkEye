@@ -15,3 +15,5 @@ src/js/Config/HawkEye.ts
 /*.ttf
 
 npm-debug.log
+
+dist
