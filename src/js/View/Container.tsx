@@ -21,7 +21,7 @@ class Container extends React.Component<IContainerProps, any>
   render()
   {
     return (
-      <div className={'app'}>
+      <div className={'app app--dark'}>
         {this.props.setup.isLoading
           ? <AppLoading show={this.props.setup.showLoading} />
           : undefined}

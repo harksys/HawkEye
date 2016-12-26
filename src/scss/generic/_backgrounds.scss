@@ -33,3 +33,33 @@
     @include generate-backgrounds(prefix-breakpoint-class($breakpoint-name));
   }
 };
+
+/*
+ * Scales
+ */
+.app--dark {
+  .bg--scale-alpha   { background: map-get($dark-grey-scale, alpha)!important; }
+  .bg--scale-beta    { background: map-get($dark-grey-scale, beta)!important; }
+  .bg--scale-gamma   { background: map-get($dark-grey-scale, gamma)!important; }
+  .bg--scale-delta   { background: map-get($dark-grey-scale, delta)!important; }
+  .bg--scale-epsilon { background: map-get($dark-grey-scale, epsilon)!important; }
+  .bg--scale-zeta    { background: map-get($dark-grey-scale, zeta)!important; }
+}
+
+.app--light {
+  .bg--scale-alpha   { background: map-get($light-grey-scale, alpha)!important; }
+  .bg--scale-beta    { background: map-get($light-grey-scale, beta)!important; }
+  .bg--scale-gamma   { background: map-get($light-grey-scale, gamma)!important; }
+  .bg--scale-delta   { background: map-get($light-grey-scale, delta)!important; }
+  .bg--scale-epsilon { background: map-get($light-grey-scale, epsilon)!important; }
+  .bg--scale-zeta    { background: map-get($light-grey-scale, zeta)!important; }
+}
+
+.bg--scale-alpha,
+.bg--scale-beta,
+.bg--scale-gamma,
+.bg--scale-delta,
+.bg--scale-epsilon,
+.bg--scale-zeta {
+  @include transition(all .25s ease);
+}

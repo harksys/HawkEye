@@ -43,6 +43,15 @@ $dark-grey-scale: (
   zeta    : #767676
 );
 
+$light-grey-scale: (
+  alpha   : #a3a9af,
+  beta    : #bbc1c5,
+  gamma   : #000,
+  delta   : #c9cdd0,
+  epsilon : #d5dadf,
+  zeta    : #c9cdd0
+);
+
 $backgrounds: (
   brand-main        : $brand-color-main,
 
@@ -57,6 +66,13 @@ $backgrounds: (
   dark-grey-delta   : map-get($dark-grey-scale, delta),
   dark-grey-epsilon : map-get($dark-grey-scale, epsilon),
   dark-grey-zeta    : map-get($dark-grey-scale, zeta),
+
+  light-grey-alpha   : map-get($light-grey-scale, alpha),
+  light-grey-beta    : map-get($light-grey-scale, beta),
+  light-grey-gamma   : map-get($light-grey-scale, gamma),
+  light-grey-delta   : map-get($light-grey-scale, delta),
+  light-grey-epsilon : map-get($light-grey-scale, epsilon),
+  light-grey-zeta    : map-get($light-grey-scale, zeta),
 
   light-grey   : #D8D8D8,
   lighter-grey : #EEE

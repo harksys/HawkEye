@@ -34,7 +34,7 @@ class ViewAccountSettings extends React.Component<IViewAccountSettingsProps, any
               <div className="grid__item one-half mobile-one-whole">
                 <div className="grid">
                   <div className="grid__item one-whole push-delta--bottom">
-                    <div className="bg--dark-grey-epsilon soft-zeta round">
+                    <div className="bg--scale-epsilon soft-zeta round">
                       <div className="grid">
                         <div className="grid__item one-third">
                           <img src={account.gitHubUser.avatarUrl}

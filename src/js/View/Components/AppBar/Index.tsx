@@ -51,7 +51,7 @@ class AppBar extends React.Component<IAppBarProps, any>
                     ))}
               </Scroll>
             </div>
-            <div className="hard-bottom__bottom bg--dark-grey-beta">
+            <div className="hard-bottom__bottom bg--scale-beta">
               <div className="soft-zeta">
                 <BtnTo to="/settings"
                       className="btn--square-delta text--beta btn--transparent push-auto--sides">

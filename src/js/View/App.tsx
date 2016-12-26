@@ -13,7 +13,7 @@ class App extends React.Component<any, any>
     return (
       <div className="width--full height--full">
         <div className="hard-left hard-left--delta">
-          <div className="hard-left__left bg--dark-grey-beta">
+          <div className="hard-left__left bg--scale-beta">
             <AppBar />
           </div>
           <div className="hard-left__content">

@@ -2,6 +2,7 @@
   width: 100%;
   height: 100%;
   position: relative;
+  @include transition(background .25s ease);
 }
 
 .app__loading {
@@ -19,3 +20,6 @@
 .app__loading--show {
   opacity: 1;
 }
+
+.app--dark  { background: map-get($dark-grey-scale, delta); }
+.app--light { background: white; }
