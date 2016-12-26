@@ -12,7 +12,6 @@ import {
   CenteredBox,
   ProfilePicture
 } from 'View/Ui/Index';
-import MacControls from 'View/Components/MacControls/Index';
 
 interface IAppBarProps
 {

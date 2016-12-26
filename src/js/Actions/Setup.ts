@@ -23,27 +23,3 @@ export function setSetupRenderApp(renderApp: boolean)
     renderApp
   };
 };
-
-export function setWindowFocussed(windowFocussed: boolean)
-{
-  return {
-    type           : ActionConstants.setup.SET_WINDOW_FOCUSSED,
-    windowFocussed
-  };
-};
-
-export function setAltKeyDown(altKeyDown: boolean)
-{
-  return {
-    type       : ActionConstants.setup.SET_ALT_KEY_DOWN,
-    altKeyDown
-  };
-};
-
-export function setWindowFullScreened(windowFullScreened: boolean)
-{
-  return {
-    type               : ActionConstants.setup.SET_WINDOW_FULLSCREENED,
-    windowFullScreened
-  };
-};
