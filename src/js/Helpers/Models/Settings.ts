@@ -39,3 +39,11 @@ export function getNotificationDoubleClickAction(): string
 {
   return getState<IState>().settings.notifications.doubleClickAction;
 };
+
+/**
+ * @returns boolean
+ */
+export function shouldConfirmBeforeMarkingNotificationsAsRead(): boolean
+{
+  return getState<IState>().settings.notifications.confirmBeforeMarkingMultipleAsRead;
+};

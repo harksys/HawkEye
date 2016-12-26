@@ -5,18 +5,17 @@ import * as Octicon from 'react-octicon';
 import * as values from 'lodash/values';
 import * as throttle from 'lodash/throttle';
 
-import { clearFilters } from 'Actions/NotificationFilters';
-import { doubleClickNotification } from 'Actions/UIActions/Notifications';
-import { defaultNotificationFilterSet } from 'Constants/Models/NotificationFilterSet';
 
 import {
-  markNotificationsAsRead,
-  filterNotificationsByFilteringSet
-} from 'Helpers/Models/GitHubNotification';
+  doubleClickNotification,
+  markMultipleNotificationsAsRead
+} from 'Actions/UIActions/Notifications';
+import { defaultNotificationFilterSet } from 'Constants/Models/NotificationFilterSet';
+
 import { dispatch } from 'Helpers/State/Store';
 import { sortingMethods } from 'Helpers/Lang/Sort';
-import { getElectron } from 'Helpers/System/Electron';
 import { getAccountIds } from 'Helpers/Models/Accounts';
+import { filterNotificationsByFilteringSet } from 'Helpers/Models/GitHubNotification';
 
 import {
   Icon,
@@ -55,8 +54,7 @@ class Index extends React.Component<IAppIndexProps, any>
 
   handleMarkAllNotificationsAsRead(notifications: IGitHubNotification[])
   {
-    dispatch(clearFilters(this.props.app.currentAccountId));
-    markNotificationsAsRead(this.props.app.currentAccountId, notifications);
+    dispatch(markMultipleNotificationsAsRead(this.props.app.currentAccountId, notifications));
   }
 
   handleNotificationDoubleClick(notification: IGitHubNotification)
