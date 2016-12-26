@@ -5,13 +5,12 @@ import { dispatch } from 'Helpers/State/Store';
 import { switchAccount } from 'Actions/UIActions/App';
 
 import {
-  Btn,
   Icon,
   BtnTo,
   Scroll,
-  CenteredBox,
-  ProfilePicture
 } from 'View/Ui/Index';
+
+import Account from './Account';
 
 interface IAppBarProps
 {
@@ -22,6 +21,11 @@ interface IAppBarProps
 
 class AppBar extends React.Component<IAppBarProps, any>
 {
+  handleAccountClick(account: IStateAccountsAccount)
+  {
+    dispatch(switchAccount(account.gitHubUser.id));
+  }
+
   render()
   {
     return (
@@ -40,15 +44,9 @@ class AppBar extends React.Component<IAppBarProps, any>
                                         + (i === 0
                                               ? ' hard--top'
                                               : '')}>
-                        <Btn onClick={() => dispatch(switchAccount(account.gitHubUser.id))}
-                              className={'btn--square-delta push-auto--sides'
-                                            + (this.props.app.currentAccountId != account.gitHubUser.id
-                                                ? ' btn--dark-grey-brand'
-                                                : '')}>
-                          <div className="soft-kappa">
-                            <ProfilePicture picture={account.gitHubUser.avatarUrl} />
-                          </div>
-                        </Btn>
+                        <Account account={account}
+                                 currentAccountId={this.props.app.currentAccountId}
+                                 onClick={this.handleAccountClick.bind(this)} />
                       </div>
                     ))}
               </Scroll>
