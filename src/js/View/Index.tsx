@@ -6,6 +6,7 @@ import * as values from 'lodash/values';
 import * as throttle from 'lodash/throttle';
 
 import { clearFilters } from 'Actions/NotificationFilters';
+import { doubleClickNotification } from 'Actions/UIActions/Notifications';
 import { defaultNotificationFilterSet } from 'Constants/Models/NotificationFilterSet';
 
 import {
@@ -60,7 +61,7 @@ class Index extends React.Component<IAppIndexProps, any>
 
   handleNotificationDoubleClick(notification: IGitHubNotification)
   {
-
+    dispatch(doubleClickNotification(this.props.app.currentAccountId, notification));
   }
 
   render()

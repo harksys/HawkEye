@@ -31,3 +31,11 @@ export function newItemsSoundIsEnabled(): boolean
 {
   return getState<IState>().settings.soundSettings.newItemsEnabled;
 };
+
+/**
+ * @returns string
+ */
+export function getNotificationDoubleClickAction(): string
+{
+  return getState<IState>().settings.notifications.doubleClickAction;
+};
