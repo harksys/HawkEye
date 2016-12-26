@@ -13,3 +13,5 @@ src/js/Config/HawkEye.ts
 /*.eot
 /*.svg
 /*.ttf
+
+npm-debug.log
