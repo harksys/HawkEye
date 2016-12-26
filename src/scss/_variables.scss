@@ -44,6 +44,11 @@ $dark-grey-scale: (
 );
 
 $backgrounds: (
+  brand-main        : $brand-color-main,
+
+  error             : $background-error,
+  warning           : $background-warning,
+
   dark-grey         : map-get($dark-grey-scale, beta),
 
   dark-grey-alpha   : map-get($dark-grey-scale, alpha),

@@ -30,3 +30,8 @@
 @each $hard-name, $hard-size in $hard-top-sizes {
   @include generate-hard-tops($hard-name);
 }
+
+.hard-top--disable {
+  .hard-top__top     { display: none!important; }
+  .hard-top__content { padding-top: 0px!important; }
+}
