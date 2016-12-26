@@ -1,26 +1,69 @@
 {
   "name": "hawkeye",
   "version": "0.0.1",
-  "description": "",
+  "productName" : "Hawk Eye",
+  "description": "Hawk Eye is a GitHub Notification Client",
   "main": "main.js",
   "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build-all" : "gulp",
+    "pack" : "build --dir",
+    "dist" : "build"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/harksys/HawkEye.git"
   },
-  "author": "Andrew Hathaway <andrew@harksys.com>",
+  "author": {
+    "name" : "Andrew Hathaway",
+    "email" : "andrew@harksys.com"
+  },
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/harksys/Hawk-Eye/issues"
+  },
+  "build" : {
+    "appId" : "harksys-hawkeye",
+    "files" : [
+       "**/*",
+       "!src/js",
+       "!src/scss",
+       "!gulpfile.js",
+       "!README.md",
+       "!tsconfig.json",
+       "!tsconfig.main.json",
+       "!typings",
+       "!typings.json",
+       "!webpack.config.js",
+       "!webpack.dev.config.js"
+    ],
+    "asar": false,
+    "linux": {
+      "arch": [
+        "ia32",
+        "x64"
+      ],
+      "target": [
+        "deb",
+        "AppImage",
+        "rpm"
+      ]
+    },
+    "win": {
+      "target": [
+        "squirrel"
+      ]
+    },
+    "mac" : {
+      "category": "public.app-category.developer-tools"
+    }
   },
   "homepage": "https://github.com/harksys/Hawk-Eye#readme",
   "devDependencies": {
     "css-loader": "^0.26.1",
     "del": "^2.2.2",
     "exports-loader": "^0.6.3",
+    "electron-builder": "^10.12.0",
     "file-loader": "^0.9.0",
     "gulp": "^3.9.1",
     "gulp-rename": "^1.2.2",
