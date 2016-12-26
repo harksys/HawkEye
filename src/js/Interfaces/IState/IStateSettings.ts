@@ -32,4 +32,6 @@ interface IStateSettingsSound
 interface IStateSettingsNotification
 {
   doubleClickAction: string;
+
+  confirmBeforeMarkingMultipleAsRead: boolean;
 };

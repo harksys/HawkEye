@@ -16,7 +16,8 @@ const initialState: IStateSettings = {
     alertErrorEnabled   : true
   },
   notifications   : {
-    doubleClickAction : notificationDoubleClickActions.open
+    doubleClickAction                  : notificationDoubleClickActions.open,
+    confirmBeforeMarkingMultipleAsRead : true
   }
 };
 
@@ -41,6 +42,14 @@ let reducingMethods = {
     return objectAssign({}, state, {
       notifications : objectAssign({}, state.notifications, {
         doubleClickAction : action.action
+      })
+    })
+  },
+  [ActionConstants.settings.SET_CONFIRM_BEFORE_MARKING_NOTIFICATIONS_AS_READ] : (state: IStateSettings, action: { confirm: boolean }) =>
+  {
+    return objectAssign({}, state, {
+      notifications : objectAssign({}, state.notifications, {
+        confirmBeforeMarkingMultipleAsRead : action.confirm
       })
     })
   }

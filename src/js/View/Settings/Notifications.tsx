@@ -2,7 +2,10 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 
 import { dispatch } from 'Helpers/State/Store';
-import { setNotificationDoubleClickAction } from 'Actions/Settings';
+import {
+  setNotificationDoubleClickAction,
+  setConfirmBeforeMarkingMultipleNotificationsAsRead
+} from 'Actions/Settings';
 import { notificationDoubleClickActions } from 'Constants/Models/Settings';
 
 import ViewBar from 'View/Components/ViewBar/Index';
@@ -24,6 +27,11 @@ class NotificationSettings extends React.Component<INotificationSettingsProps, a
     dispatch(setNotificationDoubleClickAction(action));
   }
 
+  handleConfirmMultipleAsReadChange(confirm: boolean)
+  {
+    dispatch(setConfirmBeforeMarkingMultipleNotificationsAsRead(confirm));
+  }
+
   render()
   {
     return (
@@ -32,7 +40,7 @@ class NotificationSettings extends React.Component<INotificationSettingsProps, a
         <Scroll>
           <div className="soft-delta">
             <div className="grid">
-              <div className="grid__item  mobile-one-whole push-delta--bottom">
+              <div className="grid__item one-whole push-delta--bottom">
                 <label className="push-zeta--bottom">Double Click Action</label>
                 <Btn onClick={this.handleDoubleClickActionChange.bind(this, notificationDoubleClickActions.nothing)}
                      className={'btn--hard-bottom'
@@ -58,6 +66,20 @@ class NotificationSettings extends React.Component<INotificationSettingsProps, a
                                       : '')}>
                   {'Copy Link'}
                 </Btn>
+              </div>
+              <div className="grid__item one-whole push-delta--bottom">
+                <label className="push-zeta--bottom">Confirm before marking multiple as read</label>
+                <Toggle value={this.props.settings.notifications.confirmBeforeMarkingMultipleAsRead}
+                        options={[{
+                          index : 1,
+                          text  : 'Yes',
+                          value : true
+                        }, {
+                          index : 2,
+                          text  : 'No',
+                          value : false
+                        }]}
+                        onChange={this.handleConfirmMultipleAsReadChange.bind(this)} />
               </div>
             </div>
           </div>

@@ -59,10 +59,24 @@ export function updateSoundSettingsEnabled(key: string, enabled: boolean)
   };
 };
 
+/**
+ * @param  {string} action
+ */
 export function setNotificationDoubleClickAction(action: string)
 {
   return {
     type   : ActionConstants.settings.SET_NOTIFICATIONS_DOUBLE_CLICK_ACTION,
     action
+  };
+};
+
+/**
+ * @param  {boolean} confirm
+ */
+export function setConfirmBeforeMarkingMultipleNotificationsAsRead(confirm: boolean)
+{
+  return {
+    type    : ActionConstants.settings.SET_CONFIRM_BEFORE_MARKING_NOTIFICATIONS_AS_READ,
+    confirm
   };
 };
