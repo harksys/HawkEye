@@ -1,6 +1,6 @@
 
 export const soundClipPaths = {
-  harkSuccess  : './resources/audio/hark-success.mp3',
-  harkError    : './resources/audio/hark-error.mp3',
-  harkNewItems : './resources/audio/hark-new-items.mp3'
+  harkSuccess  : './build/audio/hark-success.mp3',
+  harkError    : './build/audio/hark-error.mp3',
+  harkNewItems : './build/audio/hark-new-items.mp3'
 };
