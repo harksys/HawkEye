@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Link } from 'react-router';
 
+import { registerPreferencesMenuControl } from 'Electron/Tasks/Settings';
 import { registerMarkNotificationAsReadSuccess } from 'Electron/Tasks/Notification';
 
 import AppBar from './Components/AppBar/Index';
@@ -29,6 +30,7 @@ class App extends React.Component<any, any>
 
   componentDidMount()
   {
+    registerPreferencesMenuControl();
     registerMarkNotificationAsReadSuccess();
   }
 };

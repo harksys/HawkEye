@@ -1,14 +1,19 @@
 ///<reference path="../../typings/index.d.ts" />
 
+import * as os from 'os';
+
 import {
   app,
+  Menu,
+  shell,
   ipcMain,
   BrowserWindow
 } from 'electron';
 import * as Request from 'request';
 import windowStateKeeper = require('electron-window-state');
 
-const isMac = process.platform === 'darwin';
+const isMac            = process.platform === 'darwin';
+const hawkEyeGitHubUrl = 'https://github.com/harksys/HawkEye';
 
 class Main
 {
@@ -64,6 +69,13 @@ class Main
 
     windowState.manage(Main.mainWindow);
 
+    /*
+     * Setup Menu
+     */
+    if (isMac) {
+      Menu.setApplicationMenu(Menu.buildFromTemplate(Main.createMacMenuTemplate()));
+    }
+
     Main.mainWindow.loadURL('file://' + __dirname + '/index.html');
     Main.mainWindow.on('closed', Main.onClose);
 
@@ -81,6 +93,77 @@ class Main
     Main.app.on('window-all-closed', Main.onWindowAllClosed);
     Main.app.on('ready', Main.onReady);
     Main.app.on('activate', Main.onActivate);
+  }
+
+  static createMacMenuTemplate(): Electron.MenuItemOptions[]
+  {
+    let appName = Main.app.getName();
+
+    let appMenu: Electron.MenuItemOptions = {
+      label   : appName,
+      submenu : [{
+        role : 'about'
+      }, {
+        type : 'separator'
+      }, {
+        label : 'Preferences...',
+        click : (i, w) => w.webContents.send('Preferences')
+      }, {
+        type : 'separator'
+      }, {
+        role : 'hide'
+      }, {
+        role : 'hideothers'
+      }, {
+        role : 'unhide'
+      }, {
+        type : 'separator'
+      }, {
+        role : 'quit'
+      }]
+    };
+
+    const windowMenu: Electron.MenuItemOptions = {
+      role    : 'window',
+      submenu : [{
+        role : 'minimize'
+      }, {
+        type : 'separator'
+      }, {
+        role : 'front'
+      }, {
+        role : 'togglefullscreen'
+      }]
+    };
+
+    const helpMenu: Electron.MenuItemOptions = {
+      label   : 'Help',
+      submenu : [{
+        label : `${appName} Information`,
+        click : () => shell.openExternal(hawkEyeGitHubUrl)
+      }, {
+        label : 'Report an issue...',
+        click : () =>
+        {
+          const body = `
+Please add information your issue hereinclude reproduction steps and a short description.
+
+-
+
+${Main.app.getName()} ${Main.app.getVersion()}
+Electron ${process.versions.electron}
+${process.platform} ${process.arch} ${os.release()}`;
+
+          shell.openExternal(hawkEyeGitHubUrl + '/issues/new?body=' + encodeURIComponent(body));
+        }
+      }]
+    };
+
+    return [
+      appMenu,
+      windowMenu,
+      helpMenu
+    ];
   }
 };
 
