@@ -52,7 +52,8 @@ class StoreCreator<T> implements IStoreCreator<T>
       blacklist : [
         'routing',
         'authentication',
-        'setup'
+        'setup',
+        'appAlerts'
       ]
     }, rehydrateCallback);
   }
