@@ -3,7 +3,10 @@ import { connect } from 'react-redux';
 
 import { dispatch } from 'Helpers/State/Store';
 import { getAccount } from 'Helpers/Models/Accounts';
-import { confirmRemoveAccount } from 'Electron/Dialogs/Accounts';
+import {
+  confirmRemoveAccount,
+  confirmClearNotifications
+} from 'Electron/Dialogs/Accounts';
 
 import { updateAccount } from 'Actions/Accounts';
 
@@ -54,8 +57,9 @@ class ViewAccountSettings extends React.Component<IViewAccountSettingsProps, any
                          onClick={() => dispatch(updateAccount(account.gitHubUser.id.toString(), true))}>
                       {'Update Details'}
                     </Btn>
-                    <Btn className="btn--error push-delta--bottom">
-                      {'Clear Current Notifications'}
+                    <Btn className="btn--error push-delta--bottom"
+                         onClick={() => confirmClearNotifications(account.gitHubUser.id)}>
+                      {'Clear Notifications'}
                     </Btn>
                     <Btn className="btn--error"
                         onClick={() => confirmRemoveAccount(this.props.params.accountId)}>
