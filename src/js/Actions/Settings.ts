@@ -80,3 +80,14 @@ export function setConfirmBeforeMarkingMultipleNotificationsAsRead(confirm: bool
     confirm
   };
 };
+
+/**
+ * @param  {string} colorMode
+ */
+export function setColorMode(colorMode: string)
+{
+  return {
+    type      : ActionConstants.settings.SET_COLOR_MODE,
+    colorMode
+  };
+};

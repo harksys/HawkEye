@@ -2,12 +2,16 @@ import Reducify from 'Helpers/State/Reducify';
 
 import { cronPeriods } from 'Constants/Lang/Date';
 import ActionConstants from 'Constants/Actions/Index';
-import { notificationDoubleClickActions } from 'Constants/Models/Settings';
+import {
+  colorModes,
+  notificationDoubleClickActions
+} from 'Constants/Models/Settings';
 
 
 import * as objectAssign from 'object-assign';
 
 const initialState: IStateSettings = {
+  colorMode       : colorModes.dark,
   pollPeriod      : 'fifteenMinute', // @todo: const
   accountSettings : {},
   soundSettings   : {
@@ -52,6 +56,12 @@ let reducingMethods = {
         confirmBeforeMarkingMultipleAsRead : action.confirm
       })
     })
+  },
+  [ActionConstants.settings.SET_COLOR_MODE] : (state: IStateSettings, action : { colorMode: string }) =>
+  {
+    return objectAssign({}, state, {
+      colorMode : action.colorMode
+    });
   }
 };
 

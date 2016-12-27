@@ -3,12 +3,16 @@ import { Link } from 'react-router';
 import { connect } from 'react-redux';
 
 import { dispatch } from 'Helpers/State/Store';
+import { setColorMode } from 'Actions/Settings';
 import { handleAddAccountClick } from 'Actions/UIActions/Accounts';
+
+import { colorModes } from 'Constants/Models/Settings';
 
 import {
   Btn,
   BtnTo,
-  Scroll
+  Scroll,
+  Toggle
 } from 'View/Ui/Index';
 import ViewBar from 'View/Components/ViewBar/Index';
 
@@ -23,6 +27,11 @@ interface ISettingsIndexProps
 
 class SettingsIndex extends React.Component<ISettingsIndexProps, any>
 {
+  handleColorModeChange(mode)
+  {
+    dispatch(setColorMode(mode));
+  }
+
   render()
   {
     return (
@@ -42,9 +51,20 @@ class SettingsIndex extends React.Component<ISettingsIndexProps, any>
                   {'Frequency'}
                 </BtnTo>
                 <BtnTo to={'/settings/sound'}
-                      className={'btn--dark-grey-epsilon btn--hard-top'}>
+                      className={'btn--dark-grey-epsilon btn--hard-top push-delta--bottom'}>
                   {'Sounds'}
                 </BtnTo>
+                <Toggle value={this.props.settings.colorMode}
+                        options={[{
+                          index : 1,
+                          text  : 'Dark',
+                          value : colorModes.dark
+                        }, {
+                          index : 2,
+                          text  : 'Light',
+                          value : colorModes.light
+                        }]}
+                        onChange={this.handleColorModeChange.bind(this)} />
               </div>
               <div className="grid__item one-half mobile-one-whole">
                 <label className="push-zeta--bottom">Account Settings</label>

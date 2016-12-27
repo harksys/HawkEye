@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import { Provider } from 'react-redux';
 import { Router } from 'react-router';
 
+import { colorModes } from 'Constants/Models/Settings';
+
 import { AppLoading } from 'View/Ui/Index';
 
 interface IContainerProps
@@ -14,6 +16,8 @@ interface IContainerProps
   routes: ReactRouter.PlainRoute;
 
   setup?: IStateSetup;
+
+  settings?: IStateSettings;
 };
 
 class Container extends React.Component<IContainerProps, any>
@@ -21,7 +25,10 @@ class Container extends React.Component<IContainerProps, any>
   render()
   {
     return (
-      <div className={'app app--dark'}>
+      <div className={'app '
+                        + (this.props.settings.colorMode === colorModes.light
+                            ? 'app--light'
+                            : 'app--dark')}>
         {this.props.setup.isLoading
           ? <AppLoading show={this.props.setup.showLoading} />
           : undefined}
@@ -40,6 +47,7 @@ class Container extends React.Component<IContainerProps, any>
 
 export default connect<{}, {}, IContainerProps>(
   (state: IState) => ({
-    setup : state.setup
+    setup    : state.setup,
+    settings : state.settings
   })
 )(Container);

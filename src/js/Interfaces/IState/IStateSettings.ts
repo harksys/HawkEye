@@ -1,6 +1,8 @@
 
 interface IStateSettings
 {
+  colorMode: string;
+
   pollPeriod: string;
 
   soundSettings: IStateSettingsSound;
