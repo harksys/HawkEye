@@ -47,7 +47,7 @@ class OAuthBrowserWindow
 
     // Close Handler
     this.browserWindow
-        .on('close', () => this.closeWindow());
+        .on('closed', () => this.closeWindow());
 
     /*
      * If the window navigates or redirects,
@@ -85,6 +85,10 @@ class OAuthBrowserWindow
 
   public closeWindow(): OAuthBrowserWindow
   {
+    if (!this.browserWindow.isClosable()) {
+      return;
+    }
+
     /*
      * Destroy the window and dereference it,
      * then fire our close handler and return.
