@@ -85,20 +85,7 @@ class OAuthBrowserWindow
 
   public closeWindow(): OAuthBrowserWindow
   {
-    if (!this.browserWindow.isClosable()) {
-      return;
-    }
-
-    /*
-     * Destroy the window and dereference it,
-     * then fire our close handler and return.
-     */
-    if (!this.browserWindow.isDestroyed()) {
-      this.browserWindow.destroy();
-    }
-
     this.browserWindow = undefined;
-
     this.onCloseHandler();
 
     return this;
