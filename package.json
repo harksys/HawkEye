@@ -16,8 +16,8 @@
     "url": "git+https://github.com/harksys/HawkEye.git"
   },
   "author": {
-    "name" : "Andrew Hathaway",
-    "email" : "andrew@harksys.com"
+    "name" : "Hark Systems LTD.",
+    "email" : "hello@harksys.com"
   },
   "license": "MIT",
   "bugs": {
