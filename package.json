@@ -19,7 +19,7 @@
     "name" : "Andrew Hathaway",
     "email" : "andrew@harksys.com"
   },
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/harksys/Hawk-Eye/issues"
   },
