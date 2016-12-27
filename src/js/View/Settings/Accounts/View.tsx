@@ -5,6 +5,8 @@ import { dispatch } from 'Helpers/State/Store';
 import { getAccount } from 'Helpers/Models/Accounts';
 import { confirmRemoveAccount } from 'Electron/Dialogs/Accounts';
 
+import { updateAccount } from 'Actions/Accounts';
+
 import ViewBar from 'View/Components/ViewBar/Index';
 import {
   Btn,
@@ -48,7 +50,8 @@ class ViewAccountSettings extends React.Component<IViewAccountSettingsProps, any
                     </div>
                   </div>
                   <div className="grid__item one-whole">
-                    <Btn className="push-delta--bottom">
+                    <Btn className="push-delta--bottom"
+                         onClick={() => dispatch(updateAccount(account.gitHubUser.id.toString(), true))}>
                       {'Update Details'}
                     </Btn>
                     <Btn className="btn--error push-delta--bottom">
