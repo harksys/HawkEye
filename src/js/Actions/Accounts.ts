@@ -8,8 +8,11 @@ import {
   getAccountIds,
   getAccountToken
 } from 'Helpers/Models/Accounts';
+import {
+  createErrorAppAlert,
+  createSuccessAppAlert
+} from 'Helpers/Models/AppAlert';
 import { makeGitHubUser } from 'Helpers/Models/GitHubUser';
-import { createErrorAppAlert } from 'Helpers/Models/AppAlert';
 
 import { pushAppAlert } from 'Actions/AppAlerts';
 import { removeAccount as removeAccountUi } from 'Actions/UIActions/Accounts';
@@ -47,7 +50,7 @@ export function updateAccounts(updatedCallback: () => any = () => {})
     let tasks = [];
     getAccountIds()
       .forEach(id => tasks.push(cb => {
-        dispatch(updateAccount(id, cb));
+        dispatch(updateAccount(id, false, cb));
       }));
 
     Async.parallel(tasks, updatedCallback)
@@ -57,7 +60,9 @@ export function updateAccounts(updatedCallback: () => any = () => {})
 /**
  * @param  {string} accountId
  */
-export function updateAccount(accountId: string, callback: () => any = () => {})
+export function updateAccount(accountId: string,
+                              showSuccessAlert: boolean = false,
+                              callback: () => any = () => {})
 {
   return dispatch =>
   {
@@ -91,6 +96,12 @@ export function updateAccount(accountId: string, callback: () => any = () => {})
                     * their accounts information.
                     */
                    dispatch(addAccount(account.token, gitHubUser));
+                   if (showSuccessAlert) {
+                    dispatch(pushAppAlert(createSuccessAppAlert(
+                      'Account @' + account.gitHubUser.username + ' updated'
+                    )));
+                   }
+
                    callback();
                  }, callback);
   };

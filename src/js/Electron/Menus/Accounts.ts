@@ -17,7 +17,7 @@ export default function createMenu(accountId: number): Electron.Menu
    */
   menu.append(getNewRemoteElectronMenuItem({
     label : 'Update Details',
-    click : () => dispatch(updateAccount(accountId.toString()))
+    click : () => dispatch(updateAccount(accountId.toString(), true))
   }));
 
   /*
