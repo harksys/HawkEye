@@ -306,7 +306,8 @@ $btn-pill-text-align: left;
 $btn-pill-text-transform: none;
 $btn-pill-padding: 5px 10px 5px 20px;
 $btn-pill-background: transparent;
-$btn-pill-color: map-get($dark-grey-scale, zeta);
+$btn-pill-dark-color: map-get($dark-grey-scale, zeta);
+$btn-pill-light-color: map-get($light-grey-scale, zeta);
 
 $btn-pill-active-background: $brand-color-main;
 $btn-pill-active-color: white;
@@ -371,7 +372,8 @@ $breakpoint-n-tops: ();
 /*
  * Toggle
  */
-$toggle-background: map-get($dark-grey-scale, epsilon);
+$toggle-dark-background: map-get($dark-grey-scale, epsilon);
+$toggle-light-background: map-get($light-grey-scale, epsilon);
 $toggle-border-radius: $default-border-radius;
 
 $toggle-option-font-size: 13px;
@@ -380,8 +382,18 @@ $toggle-option-padding: 8px 0;
 $toggle-option-color: white;
 $toggle-option-text-transform: none;
 
-$toggle-option-hover-color: white;
-$toggle-option-hover-background: lighten(map-get($dark-grey-scale, epsilon), 10);
+$toggle-option-hover-dark-color: white;
+$toggle-option-hover-light-color: red;
+$toggle-option-hover-dark-background: lighten(map-get($dark-grey-scale, epsilon), 10);
+$toggle-option-hover-light-background: lighten(map-get($light-grey-scale, epsilon), 10);
 
-$toggle-option-active-color: white;
-$toggle-option-active-background: lighten($brand-color-main, 5);
+$toggle-option-active-dark-color: white;
+$toggle-option-active-light-color:blue;
+$toggle-option-active-dark-background: lighten($brand-color-main, 5);
+$toggle-option-active-light-background: lighten($brand-color-main, 5);
+
+/*
+ * View Bar
+ */
+$view-bar-dark-background: black;
+$view-bar-light-background: red;

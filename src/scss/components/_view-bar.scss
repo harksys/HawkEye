@@ -1,9 +1,13 @@
+//@todo: Variable this up
 .view-bar {
   width: 100%;
   height: 100%;
   position: relative;
   @extend .app-drag;
 }
+
+.app--dark .view-bar  { background: $view-bar-dark-background; }
+.app--light .view-bar { background: $view-bar-light-background; }
 
 .view-bar__title {
   font-size: 14px;
@@ -20,7 +24,6 @@
   color: map-get($dark-grey-scale, epsilon);
   text-align: right;
   position: absolute;
-
 
   &:hover {
     color: lighten(map-get($dark-grey-scale, epsilon), 10);

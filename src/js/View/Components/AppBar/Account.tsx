@@ -41,7 +41,7 @@ class AppBarAccount extends React.Component<IAppBarAccountProps, any>
            onContextMenu={this.handleRightClick.bind(this)}
            className={'btn--square-delta push-auto--sides'
                         + (this.props.currentAccountId !== this.props.account.gitHubUser.id
-                             ? ' btn--dark-grey-brand'
+                             ? ' btn--scale-beta-brand'
                              : '')}>
         <div className="soft-kappa">
           <ProfilePicture picture={this.props.account.gitHubUser.avatarUrl} />

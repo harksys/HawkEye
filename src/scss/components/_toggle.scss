@@ -1,9 +1,11 @@
 .toggle {
   width: 100%;
   display: inline-block;
-  background: $toggle-background;
   @include border-radius($toggle-border-radius);
 }
+
+.app--dark .toggle  { background: $toggle-dark-background; }
+.app--light .toggle { background: $toggle-light-background; }
 
 .toggle__option {
   width: 50%;
@@ -19,14 +21,24 @@
   @include transition(all .25s ease);
 }
 
-.toggle__option:hover {
-  color: $toggle-option-hover-color;
-  background: $toggle-option-hover-background;
+.app--dark .toggle__option:hover {
+  color: $toggle-option-hover-dark-color;
+  background: $toggle-option-hover-dark-background;
 }
 
-.toggle__option--active {
-  color: $toggle-option-active-color!important;
-  background: $toggle-option-active-background!important;
+.app--light .toggle__option:hover {
+  color: $toggle-option-hover-light-color;
+  background: $toggle-option-hover-light-background;
+}
+
+.app--dark .toggle__option--active {
+  color: $toggle-option-active-dark-color!important;
+  background: $toggle-option-active-dark-background!important;
+}
+
+.app--light .toggle__option--active {
+  color: $toggle-option-active-light-color!important;
+  background: $toggle-option-active-light-background!important;
 }
 
 .toggle__option--first {

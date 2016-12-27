@@ -64,7 +64,6 @@
   padding: $btn-pill-padding;
   font-size: $btn-pill-font-size;
   text-align: $btn-pill-text-align;
-  color: $btn-pill-color!important;
   text-transform: $btn-pill-text-transform;
   background: $btn-pill-background!important;
 
@@ -73,6 +72,9 @@
     background: $btn-pill-hover-background!important;
   }
 }
+
+.app--dark .btn--pill  { color: $btn-pill-dark-color!important; }
+.app--light .btn--pill { color: $btn-pill-light-color!important; }
 
 .btn--pill.btn--active {
   color: $btn-pill-active-color!important;
@@ -135,4 +137,24 @@
  */
 .btn .profile-picture {
   @include border-radius($button-border-radius - 1px);
+}
+
+.btn--scale-beta-brand {
+
+}
+
+.app--dark .btn--scale-beta-brand {
+  background: map-get($dark-grey-scale, beta)!important;;
+
+  &:hover {
+    background: $brand-color-main!important;
+  }
+}
+
+.app--light .btn--scale-beta-brand {
+  background: map-get($light-grey-scale, beta)!important;;
+
+  &:hover {
+    background: $brand-color-main!important;
+  }
 }
