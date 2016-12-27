@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 import { dispatch } from 'Helpers/State/Store';
 import { getAccount } from 'Helpers/Models/Accounts';
-import { removeAccount } from 'Actions/UIActions/Accounts';
+import { confirmRemoveAccount } from 'Electron/Dialogs/Accounts';
 
 import ViewBar from 'View/Components/ViewBar/Index';
 import {
@@ -55,7 +55,7 @@ class ViewAccountSettings extends React.Component<IViewAccountSettingsProps, any
                       {'Clear Current Notifications'}
                     </Btn>
                     <Btn className="btn--error"
-                        onClick={() => dispatch(removeAccount(this.props.params.accountId))}>
+                        onClick={() => confirmRemoveAccount(this.props.params.accountId)}>
                       Remove Account
                     </Btn>
                   </div>
