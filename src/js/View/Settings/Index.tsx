@@ -54,6 +54,7 @@ class SettingsIndex extends React.Component<ISettingsIndexProps, any>
                       className={'btn--dark-grey-epsilon btn--hard-top push-delta--bottom'}>
                   {'Sounds'}
                 </BtnTo>
+                <label className="push-zeta--bottom">Color Mode</label>
                 <Toggle value={this.props.settings.colorMode}
                         options={[{
                           index : 1,
