@@ -20,9 +20,6 @@ import GitHubNotificationsService from 'Services/GitHubNotificationsService';
 
 import Routes from 'Routes';
 
-/**
- * @todo: This needs to change. A lot.
- */
 class HawkEye
 {
   private routing: IRouting;
