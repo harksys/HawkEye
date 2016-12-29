@@ -76,15 +76,15 @@
   text-align: $btn-pill-text-align;
   text-transform: $btn-pill-text-transform;
   background: $btn-pill-background!important;
-
-  &:hover {
-    color: $btn-pill-hover-color!important;
-    background: $btn-pill-hover-background!important;
-  }
 }
 
 .app--dark .btn--pill  { color: $btn-pill-dark-color!important; }
 .app--light .btn--pill { color: $btn-pill-light-color!important; }
+
+.btn--pill:hover {
+  color: $btn-pill-hover-color!important;
+  background: $btn-pill-hover-background!important;
+}
 
 .btn--pill.btn--active {
   color: $btn-pill-active-color!important;
