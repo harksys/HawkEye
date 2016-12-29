@@ -14,7 +14,7 @@ Hawk Eye has many features, including:
 
 ## Usage
 
-To get started and try out Hawk Eye, download the latest release for your platform on the [Released Page](https://github.com/harksys/hawkeye/releases).
+To get started and try out Hawk Eye, download the latest release for your platform on the [Releases Page](https://github.com/harksys/hawkeye/releases).
 
 ## Screenshots
 
