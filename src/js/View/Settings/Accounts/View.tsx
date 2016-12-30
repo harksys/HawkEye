@@ -46,8 +46,8 @@ class ViewAccountSettings extends React.Component<IViewAccountSettingsProps, any
                                className="profile-picture img-scale" />
                         </div>
                         <div className="grid__item two-thirds">
-                          <h4 className="text--white">{account.gitHubUser.name}</h4>
-                          <p className="text--white text--zeta">{'@' + account.gitHubUser.username}</p>
+                          <h4>{account.gitHubUser.name}</h4>
+                          <p className="text--zeta">{'@' + account.gitHubUser.username}</p>
                         </div>
                       </div>
                     </div>

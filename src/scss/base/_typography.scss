@@ -18,19 +18,9 @@ p {
 a {
   font-size: inherit;
   text-decoration: none;
-  color: $anchor-text-color;
 
   &:hover {
     cursor: pointer;
-    color: $anchor-text-color;
-  }
-
-  &:active {
-    color: $anchor-text-active-color;
-  }
-
-  &:visited {
-    color: $anchor-text-visited-color;
   }
 }
 
@@ -58,6 +48,5 @@ label {
     size: $label-size;
     weight: $label-font-weight;
   };
-  color: $label-text-color;
   text-transform: $label-text-transform;
 }

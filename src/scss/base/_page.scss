@@ -13,8 +13,6 @@ html, body {
 }
 
 body, input, textarea, button {
-  color: $body-text-color;
-
   font: {
     size: $base-font-size;
     family: $base-body-font;
@@ -26,7 +24,6 @@ body, input, textarea, button {
 
 body {
   min-width: $min-page-width;
-  background: $body-background-color;
 }
 
 /*

@@ -88,7 +88,7 @@ class Notification extends React.Component<INotificationProps, any>
                   ? (
                       <CenteredBox childClassName="text--left">
                         <a href="#"
-                          className="link--beta-dark-action"
+                          className=""
                           onClick={this.handleMarkAsReadClick.bind(this)}>
                           <Octicon name="check" />
                         </a>
