@@ -24,24 +24,6 @@ $background-success: $brand-color-secondary;
 $background-error: #d5335b;
 $background-warning: #DEC23F;
 
-$dark-grey-scale: (
-  alpha   : #0b0b0b,
-  beta    : #141414,
-  gamma   : #000,
-  delta   : #232323,
-  epsilon : #5e5e5e,
-  zeta    : #767676
-);
-
-$light-grey-scale: (
-  alpha   : #a3a9af,
-  beta    : #bbc1c5,
-  gamma   : #000,
-  delta   : #c9cdd0,
-  epsilon : #d5dadf,
-  zeta    : #c9cdd0
-);
-
 $backgrounds: (
   brand-main : $brand-color-main,
   error      : $background-error,

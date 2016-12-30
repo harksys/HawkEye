@@ -1,3 +1,12 @@
+$dark-grey-scale: (
+  alpha   : #0b0b0b,
+  beta    : #141414,
+  gamma   : #000,
+  delta   : #232323,
+  epsilon : #5e5e5e,
+  zeta    : #767676
+);
+
 .app-bar {
   background: map-get($dark-grey-scale, beta);
 }
