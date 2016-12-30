@@ -1,0 +1,24 @@
+.app-bar {
+  background: map-get($dark-grey-scale, beta);
+}
+
+.app-bar__account {
+  background: map-get($dark-grey-scale, beta);
+}
+
+.app-bar__account:hover,
+.app-bar__account--active {
+  background: $brand-color-main;
+}
+
+.app-bar__lower {
+  background: map-get($dark-grey-scale, beta);
+}
+
+.filter-controls {
+  background: map-get($dark-grey-scale, alpha);
+}
+
+.view-bar {
+  background: $view-bar-dark-background;
+}

@@ -29,7 +29,7 @@ class AppBar extends React.Component<IAppBarProps, any>
   render()
   {
     return (
-      <div className="hard-top hard-top--epsilon">
+      <div className="hard-top hard-top--epsilon app-bar">
         <div className="hard-top__top">
         </div>
         <div className="hard-top__content">
@@ -51,7 +51,7 @@ class AppBar extends React.Component<IAppBarProps, any>
                     ))}
               </Scroll>
             </div>
-            <div className="hard-bottom__bottom bg--scale-beta">
+            <div className="hard-bottom__bottom app-bar__lower">
               <div className="soft-zeta">
                 <BtnTo to="/settings"
                       className="btn--square-delta text--beta btn--transparent push-auto--sides">

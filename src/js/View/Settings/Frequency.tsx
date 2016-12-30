@@ -36,7 +36,7 @@ class FrequencySettings extends React.Component<IFrequencySettingsProps, any>
                                 onClick={() => dispatch(configurePollPeriod(name))}
                                 className={(this.props.settings.pollPeriod === name
                                               ? ''
-                                              : 'btn--dark-grey-epsilon')
+                                              : '')
                                             + (i === 0
                                                 ? ' btn--hard-bottom'
                                                 : '')

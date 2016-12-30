@@ -53,29 +53,8 @@ $light-grey-scale: (
 );
 
 $backgrounds: (
-  brand-main        : $brand-color-main,
-
-  error             : $background-error,
-  warning           : $background-warning,
-
-  dark-grey         : map-get($dark-grey-scale, beta),
-
-  dark-grey-alpha   : map-get($dark-grey-scale, alpha),
-  dark-grey-beta    : map-get($dark-grey-scale, beta),
-  dark-grey-gamma   : map-get($dark-grey-scale, gamma),
-  dark-grey-delta   : map-get($dark-grey-scale, delta),
-  dark-grey-epsilon : map-get($dark-grey-scale, epsilon),
-  dark-grey-zeta    : map-get($dark-grey-scale, zeta),
-
-  light-grey-alpha   : map-get($light-grey-scale, alpha),
-  light-grey-beta    : map-get($light-grey-scale, beta),
-  light-grey-gamma   : map-get($light-grey-scale, gamma),
-  light-grey-delta   : map-get($light-grey-scale, delta),
-  light-grey-epsilon : map-get($light-grey-scale, epsilon),
-  light-grey-zeta    : map-get($light-grey-scale, zeta),
-
-  light-grey   : #D8D8D8,
-  lighter-grey : #EEE
+  brand-main : $brand-color-main,
+  error      : $background-error,
 );
 
 /**
@@ -270,13 +249,10 @@ $higher-sizes: (
 /*
  * Btn
  */
-$button-color: white!default;
 $button-font-size: 13px!default;
 $button-text-transform: none!default;
 $button-text-shadow: none;
 $button-padding: 8px 0px;
-$button-background: $brand-color-main;
-$button-hover-background: lighten($brand-color-main, 5);
 $button-border-radius: $default-border-radius;
 $button-transition-speed: .25s;
 
@@ -285,35 +261,13 @@ $btn-square-sizes: (
 );
 
 $btn-backgrounds: (
-  light-grey      : (#999, darken(#999, 10)),
-
-  dark-grey-alpha   : (map-get($dark-grey-scale, alpha), lighten(map-get($dark-grey-scale, alpha), 10)),
-  dark-grey-beta    : (map-get($dark-grey-scale, beta), lighten(map-get($dark-grey-scale, beta), 10)),
-  dark-grey-gamma   : (map-get($dark-grey-scale, gamma), lighten(map-get($dark-grey-scale, gamma), 10)),
-  dark-grey-delta   : (map-get($dark-grey-scale, delta), lighten(map-get($dark-grey-scale, delta), 10)),
-  dark-grey-epsilon : (map-get($dark-grey-scale, epsilon), lighten(map-get($dark-grey-scale, epsilon), 10)),
-  dark-grey-zeta    : (map-get($dark-grey-scale, zeta), lighten(map-get($dark-grey-scale, zeta), 10)),
-
-  brand-main      : ($brand-color-main, lighten($brand-color-main, 10)),
-  brand-secondary : ($brand-color-secondary, lighten($brand-color-secondary, 10)),
-  dark-grey-brand : (#141414, $brand-color-main),
-
-  error           : ($background-error, lighten($background-error, 10))
+  error : ($background-error, lighten($background-error, 10))
 );
 
 $btn-pill-font-size: 13px;
 $btn-pill-text-align: left;
 $btn-pill-text-transform: none;
 $btn-pill-padding: 5px 10px 5px 20px;
-$btn-pill-background: transparent;
-$btn-pill-dark-color: map-get($dark-grey-scale, zeta);
-$btn-pill-light-color: map-get($light-grey-scale, zeta);
-
-$btn-pill-active-background: $brand-color-main;
-$btn-pill-active-color: white;
-
-$btn-pill-hover-background: trans-dark(.5);
-$btn-pill-hover-color: white;
 
 /*
  * AppLoader Styles
@@ -372,28 +326,9 @@ $breakpoint-n-tops: ();
 /*
  * Toggle
  */
-$toggle-dark-background: map-get($dark-grey-scale, epsilon);
-$toggle-light-background: map-get($light-grey-scale, epsilon);
 $toggle-border-radius: $default-border-radius;
 
 $toggle-option-font-size: 13px;
 $toggle-option-font-weight: normal;
 $toggle-option-padding: 8px 0;
-$toggle-option-color: white;
 $toggle-option-text-transform: none;
-
-$toggle-option-hover-dark-color: white;
-$toggle-option-hover-light-color: red;
-$toggle-option-hover-dark-background: lighten(map-get($dark-grey-scale, epsilon), 10);
-$toggle-option-hover-light-background: lighten(map-get($light-grey-scale, epsilon), 10);
-
-$toggle-option-active-dark-color: white;
-$toggle-option-active-light-color:blue;
-$toggle-option-active-dark-background: lighten($brand-color-main, 5);
-$toggle-option-active-light-background: lighten($brand-color-main, 5);
-
-/*
- * View Bar
- */
-$view-bar-dark-background: black;
-$view-bar-light-background: white;

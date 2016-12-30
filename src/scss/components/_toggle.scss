@@ -4,9 +4,6 @@
   @include border-radius($toggle-border-radius);
 }
 
-.app--dark .toggle  { background: $toggle-dark-background; }
-.app--light .toggle { background: $toggle-light-background; }
-
 .toggle__option {
   width: 50%;
   text-align: center;
@@ -15,30 +12,9 @@
     weight: $toggle-option-font-weight;
   }
   display: inline-block;
-  color: $toggle-option-color;
   padding: $toggle-option-padding;
   text-transform: $toggle-option-text-transform;
   @include transition(all .25s ease);
-}
-
-.app--dark .toggle__option:hover {
-  color: $toggle-option-hover-dark-color;
-  background: $toggle-option-hover-dark-background;
-}
-
-.app--light .toggle__option:hover {
-  color: $toggle-option-hover-light-color;
-  background: $toggle-option-hover-light-background;
-}
-
-.app--dark .toggle__option--active {
-  color: $toggle-option-active-dark-color!important;
-  background: $toggle-option-active-dark-background!important;
-}
-
-.app--light .toggle__option--active {
-  color: $toggle-option-active-light-color!important;
-  background: $toggle-option-active-light-background!important;
 }
 
 .toggle__option--first {

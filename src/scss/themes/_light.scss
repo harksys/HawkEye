@@ -1,0 +1,52 @@
+.app-bar {
+  background: #2A363F;
+}
+
+.app-bar__lower {
+  background: #2A363F;
+}
+
+.app_bar--lower .btn {
+  color: #5E5E5E!important;
+}
+
+.app_bar--lower .btn:hover {
+  color: white!important;
+}
+
+.app-bar__account {
+  background: #2A363F;
+}
+
+.app-bar__account:hover,
+.app-bar__account--active {
+  background: $brand-color-main;
+}
+
+.filter-controls {
+  background: #EFEEF3;
+}
+
+.filter-controls .btn--pill {
+  color: #333!important;
+}
+
+.filter-controls .btn--pill:hover {
+  color: #5E5E5E!important;
+}
+
+.filter-controls .btn--pill.btn--active {
+  color: white!important;
+}
+
+.view-bar {
+  border-bottom: 1px solid #EEE;
+}
+
+.notification {
+  border-bottom-color: #EEE;
+
+  &:hover {
+    background: #f8f8f8;
+  }
+}

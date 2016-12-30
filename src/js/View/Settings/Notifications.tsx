@@ -46,7 +46,7 @@ class NotificationSettings extends React.Component<INotificationSettingsProps, a
                      className={'btn--hard-bottom'
                                  + (this.props.settings.notifications.doubleClickAction
                                       !== notificationDoubleClickActions.nothing
-                                      ? ' btn--dark-grey-epsilon'
+                                      ? ''
                                       : '')}>
                   {'Do Nothing'}
                 </Btn>
@@ -54,7 +54,7 @@ class NotificationSettings extends React.Component<INotificationSettingsProps, a
                      className={'btn--hard'
                                  + (this.props.settings.notifications.doubleClickAction
                                       !== notificationDoubleClickActions.open
-                                      ? ' btn--dark-grey-epsilon'
+                                      ? ''
                                       : '')}>
                   {'Open in Browser'}
                 </Btn>
@@ -62,7 +62,7 @@ class NotificationSettings extends React.Component<INotificationSettingsProps, a
                      className={'btn--hard-top'
                                  + (this.props.settings.notifications.doubleClickAction
                                       !== notificationDoubleClickActions.copyLink
-                                      ? ' btn--dark-grey-epsilon'
+                                      ? ''
                                       : '')}>
                   {'Copy Link'}
                 </Btn>
