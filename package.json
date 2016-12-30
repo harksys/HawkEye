@@ -2,9 +2,8 @@
   "name": "hawkeye",
   "version": "0.0.1",
   "productName" : "Hawk Eye",
-  "description": "Hawk Eye is a GitHub Notification Client",
+  "description": "A useful app for GitHub Notifications",
   "main": "main.js",
-  "private": true,
   "scripts": {
     "build-all" : "gulp",
     "pack" : "build --dir",
@@ -21,7 +20,7 @@
   },
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/harksys/Hawk-Eye/issues"
+    "url": "https://github.com/harksys/HawkEye/issues"
   },
   "build" : {
     "appId" : "harksys-hawkeye",
@@ -59,7 +58,7 @@
       "category": "public.app-category.developer-tools"
     }
   },
-  "homepage": "https://github.com/harksys/Hawk-Eye#readme",
+  "homepage": "https://github.com/harksys/HawkEye#readme",
   "devDependencies": {
     "css-loader": "^0.26.1",
     "del": "^2.2.2",
