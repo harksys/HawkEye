@@ -26,8 +26,11 @@ $background-warning: #DEC23F;
 
 $backgrounds: (
   brand-main : $brand-color-main,
-  error      : $background-error,
+  error      : $background-error
 );
+
+$app-dark-background: #232323;
+$app-light-background: white;
 
 /**
  * Text, Fonts etc

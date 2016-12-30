@@ -21,5 +21,5 @@
   opacity: 1;
 }
 
-// .app--light { background: white; }
-// .app--dark  { background: map-get($dark-grey-scale, delta); }
+.app--dark  { background: $app-dark-background; }
+.app--light { background: $app-light-background; }
