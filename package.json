@@ -1,6 +1,6 @@
 {
   "name": "hawkeye",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "productName" : "Hawk Eye",
   "description": "A useful app for GitHub Notifications",
   "main": "main.js",
