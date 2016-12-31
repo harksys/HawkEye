@@ -23,19 +23,22 @@ export const gitHubScopes = {
 export const githubNotificationSubjectTypes = {
   Issue       : 'ISSUE',
   PullRequest : 'PULLREQUEST',
-  Commit      : 'COMMIT'
+  Commit      : 'COMMIT',
+  Release     : 'RELEASE'
 };
 
 export const githubNotificationSubjectTypeIcons = {
   ISSUE       : 'issue-opened',
   PULLREQUEST : 'git-pull-request',
-  COMMIT      : 'git-commit'
+  COMMIT      : 'git-commit',
+  RELEASE     : 'tag'
 };
 
 export const gitHubNotificationSubjectTypePrettyNames = {
   ISSUE       : 'Issue',
   PULLREQUEST : 'Pull Request',
-  COMMIT      : 'Commit'
+  COMMIT      : 'Commit',
+  RELEASE     : 'Release'
 };
 
 export const gitHubNotificationReasonTypes = {
