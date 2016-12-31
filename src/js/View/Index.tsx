@@ -89,7 +89,7 @@ class Index extends React.Component<IAppIndexProps, any>
         </div>
         <div className="hideable-left__content no-outline">
           <ViewBar title="Notifications"
-                   getRightContent={true
+                   getRightContent={this.props.app.isPolling
                                     ? () =>
                                       (
                                         <CenteredBox>

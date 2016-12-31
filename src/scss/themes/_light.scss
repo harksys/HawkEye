@@ -175,8 +175,8 @@ label { color: #666; }
  * Loader
  */
 .loader {
-  border-top-color: rgba(255, 255, 255, 0.2);
-  border-right-color: rgba(255, 255, 255, 0.2);
-  border-bottom-color: rgba(255, 255, 255, 0.2);
+  border-top-color: rgba(0, 0, 0, 0.2);
+  border-right-color: rgba(0, 0, 0, 0.2);
+  border-bottom-color: rgba(0, 0, 0, 0.2);
   border-left-color: $text-color;
 }
