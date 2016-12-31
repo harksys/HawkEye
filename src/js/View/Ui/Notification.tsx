@@ -68,7 +68,7 @@ class Notification extends React.Component<INotificationProps, any>
           <div className="hard-left__left">
             <div className="text--center push-zeta--top">
               <Octicon name={getNotificationSubjectIcon(this.props.notification)}
-                       className="position--relative top--nu" />
+                       className="notification-icon position--relative top--nu" />
             </div>
           </div>
           <div className="hard-left__content">
@@ -78,7 +78,7 @@ class Notification extends React.Component<INotificationProps, any>
                   <p className="notification__text">
                     {this.props.notification.subject.title}
                   </p>
-                  <p className="text--zeta">
+                  <p className="notification__info text--zeta">
                     {this.props.notification.repository.fullName + ' - Updated ' + relativeTime(this.props.notification.updatedAt)}
                   </p>
                 </div>
@@ -88,7 +88,7 @@ class Notification extends React.Component<INotificationProps, any>
                   ? (
                       <CenteredBox childClassName="text--left">
                         <a href="#"
-                          className=""
+                          className="notification-check"
                           onClick={this.handleMarkAsReadClick.bind(this)}>
                           <Octicon name="check" />
                         </a>

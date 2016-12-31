@@ -43,6 +43,10 @@ input, button, textarea, :focus {
 a:not([draggable=true]), img:not([draggable=true]) {
   -webkit-user-drag: none;
   user-drag: none; /* Technically not supported in Electron yet */
+
+  i {
+    cursor: default;
+  }
 }
 a[href^="http://"],
 a[href^="https://"],

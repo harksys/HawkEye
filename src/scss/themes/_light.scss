@@ -1,21 +1,34 @@
+$dark-grey: #2A363F;
+$text-color: #333; //#454545
+$light-grey: #EFEEF3;
+
+/*
+ * Generaic
+ */
+label { color: #666; }
+
+
+/*
+ * App Bar
+ */
 .app-bar {
-  background: #2A363F;
+  background: $dark-grey;
 }
 
 .app-bar__lower {
-  background: #2A363F;
+  background: $dark-grey;
 }
 
-.app_bar--lower .btn {
-  color: #5E5E5E!important;
+.app-bar__lower .btn {
+  color: #c8c7cc;
 }
 
-.app_bar--lower .btn:hover {
-  color: white!important;
+.app-bar__lower .btn:hover {
+  color: white;
 }
 
 .app-bar__account {
-  background: #2A363F;
+  background: $dark-grey;
 }
 
 .app-bar__account:hover,
@@ -23,30 +36,78 @@
   background: $brand-color-main;
 }
 
+/*
+ * Filters
+ */
 .filter-controls {
-  background: #EFEEF3;
+  background: $light-grey;
 }
 
 .filter-controls .btn--pill {
-  color: #333!important;
+  color: $text-color;
+
+  &:hover {
+    color: #5E5E5E;
+  }
 }
 
-.filter-controls .btn--pill:hover {
-  color: #5E5E5E!important;
+.filter-controls .btn--pill__count {
+  color: $text-color;
+  background: trans-dark(0.05);
 }
 
 .filter-controls .btn--pill.btn--active {
-  color: white!important;
+  color: white;
 }
 
+.filter-controls .btn--pill.btn--active {
+  background: $brand-color-main;
+
+  .btn--pill__count {
+    color: white;
+    font-weight: bold;
+    background: trans-dark(0.1);
+  }
+}
+
+/*
+ * View Bars
+ */
 .view-bar {
   border-bottom: 1px solid #EEE;
 }
 
+.view-bar__title {
+  color: $text-color;
+}
+
+/*
+ * Notifications
+ */
 .notification {
-  border-bottom-color: #EEE;
+  border-bottom: 1px solid #EEE;
 
   &:hover {
     background: #f8f8f8;
+  }
+}
+
+.notification-icon {
+  color: $text-color;
+}
+
+.notification__text {
+  color: $text-color;
+}
+
+.notification__info {
+  color: $text-color;
+}
+
+.notification-check {
+  color: $text-color;
+
+  &:hover {
+    color: $brand-color-main;
   }
 }

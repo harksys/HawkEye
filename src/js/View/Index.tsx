@@ -100,7 +100,7 @@ class Index extends React.Component<IAppIndexProps, any>
                                               ? (
                                                   <CenteredBox>
                                                     <a href="#"
-                                                      className=""
+                                                      className="notification-check"
                                                       onClick={this.handleMarkAllNotificationsAsRead.bind(this, filteredNotifications)}>
                                                       <Octicon name="check" />
                                                     </a>

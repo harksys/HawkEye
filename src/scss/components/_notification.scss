@@ -19,3 +19,7 @@
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
+.notification-check {
+  @include transition(color .25s ease);
+}
