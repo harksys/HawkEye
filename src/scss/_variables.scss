@@ -17,6 +17,8 @@
 $brand-color-main:      #0092B3;
 $brand-color-secondary: #33D5AD;
 
+$dark-brand-color-main: darken($brand-color-main, 5);
+
 /*
  * Backgrounds
  */

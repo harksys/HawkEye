@@ -1,6 +1,8 @@
 $dark-grey: #2A363F;
 $text-color: #333; //#454545
 $light-grey: #EFEEF3;
+$button-bg: #C8C7CC;
+$button-bg-hover: #AEACB4;
 
 /*
  * Generaic
@@ -20,7 +22,7 @@ label { color: #666; }
 }
 
 .app-bar__lower .btn {
-  color: #c8c7cc;
+  color: $button-bg;
 }
 
 .app-bar__lower .btn:hover {
@@ -81,6 +83,14 @@ label { color: #666; }
   color: $text-color;
 }
 
+.view-bar__back-link {
+  color: #333;
+
+  &:hover {
+    color: $brand-color-main;
+  }
+}
+
 /*
  * Notifications
  */
@@ -92,14 +102,8 @@ label { color: #666; }
   }
 }
 
-.notification-icon {
-  color: $text-color;
-}
-
-.notification__text {
-  color: $text-color;
-}
-
+.notification-icon,
+.notification__text,
 .notification__info {
   color: $text-color;
 }
@@ -110,4 +114,47 @@ label { color: #666; }
   &:hover {
     color: $brand-color-main;
   }
+}
+
+/*
+ * Toggle
+ */
+.toggle {
+  background: $button-bg;
+}
+
+.toggle__option {
+  color: $text-color;
+}
+
+.toggle__option:hover {
+  color: $text-color;
+  background: $button-bg-hover;
+}
+
+.toggle__option--active,
+.toggle__option--active:hover {
+  color: white;
+  background: $brand-color-main;
+}
+
+/*
+ * Settings
+ */
+.settings-btn {
+  color: $text-color;
+  background: $button-bg;
+}
+
+.settings-btn:hover {
+  background: $button-bg-hover;
+}
+
+.settings-btn--major {
+  color: white;
+  background: $brand-color-main;
+}
+
+.settings-btn--major:hover {
+  background: $dark-brand-color-main;
 }

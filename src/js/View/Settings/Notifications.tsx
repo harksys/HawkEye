@@ -45,24 +45,24 @@ class NotificationSettings extends React.Component<INotificationSettingsProps, a
                 <Btn onClick={this.handleDoubleClickActionChange.bind(this, notificationDoubleClickActions.nothing)}
                      className={'btn--hard-bottom'
                                  + (this.props.settings.notifications.doubleClickAction
-                                      !== notificationDoubleClickActions.nothing
-                                      ? ''
+                                      === notificationDoubleClickActions.nothing
+                                      ? ' btn--active'
                                       : '')}>
                   {'Do Nothing'}
                 </Btn>
                 <Btn onClick={this.handleDoubleClickActionChange.bind(this, notificationDoubleClickActions.open)}
                      className={'btn--hard'
                                  + (this.props.settings.notifications.doubleClickAction
-                                      !== notificationDoubleClickActions.open
-                                      ? ''
+                                      === notificationDoubleClickActions.open
+                                      ? ' btn--active'
                                       : '')}>
                   {'Open in Browser'}
                 </Btn>
                 <Btn onClick={this.handleDoubleClickActionChange.bind(this, notificationDoubleClickActions.copyLink)}
                      className={'btn--hard-top'
                                  + (this.props.settings.notifications.doubleClickAction
-                                      !== notificationDoubleClickActions.copyLink
-                                      ? ''
+                                      === notificationDoubleClickActions.copyLink
+                                      ? ' btn--active'
                                       : '')}>
                   {'Copy Link'}
                 </Btn>
