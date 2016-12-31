@@ -9,12 +9,14 @@ export function makeGitHubUser(user: any): IGitHubUser
     return null;
   }
 
-  return {
+  let newUser: IGitHubUser = {
     id        : user.id,
     avatarUrl : user.avatar_url,
     name      : user.name,
     email     : user.email,
     createdAt : user.created_at,
     username  : user.login
-  } as IGitHubUser;
+  };
+
+  return newUser;
 };
