@@ -8,6 +8,10 @@ import { handleAddAccountClick } from 'Actions/UIActions/Accounts';
 
 import { colorModes } from 'Constants/Models/Settings';
 
+import SoundsSection from './Sections/Sounds';
+import FrequencySection from './Sections/Frequency';
+import NotificationsSection from './Sections/Notifications';
+
 import {
   Btn,
   BtnTo,
@@ -40,21 +44,8 @@ class SettingsIndex extends React.Component<ISettingsIndexProps, any>
         <Scroll>
           <div className="soft-delta">
             <div className="grid">
-              <div className="grid__item one-half mobile-one-whole push-delta--bottom">
-                <label className="push-zeta--bottom">General Settings</label>
-                <BtnTo to={'/settings/notifications'}
-                      className={'btn--hard-bottom settings-btn'}>
-                  {'Notifications'}
-                </BtnTo>
-                <BtnTo to={'/settings/frequency'}
-                      className={'btn--hard settings-btn'}>
-                  {'Frequency'}
-                </BtnTo>
-                <BtnTo to={'/settings/sound'}
-                      className={'btn--hard-top settings-btn push-delta--bottom'}>
-                  {'Sounds'}
-                </BtnTo>
-                <label className="push-zeta--bottom">Color Mode</label>
+              <div className="grid__item one-whole push-delta--bottom">
+                <label className="text--zeta push-zeta--bottom">Color Mode</label>
                 <Toggle value={this.props.settings.colorMode}
                         options={[{
                           index : 1,
@@ -67,8 +58,8 @@ class SettingsIndex extends React.Component<ISettingsIndexProps, any>
                         }]}
                         onChange={this.handleColorModeChange.bind(this)} />
               </div>
-              <div className="grid__item one-half mobile-one-whole">
-                <label className="push-zeta--bottom">Account Settings</label>
+              <div className="grid__item one-whole push-delta--bottom">
+                <label className="text--zeta push-zeta--bottom">Accounts</label>
                 {this.props.accounts
                     .map((acc, i) =>
                     (
@@ -91,6 +82,15 @@ class SettingsIndex extends React.Component<ISettingsIndexProps, any>
                     onClick={this.handleClick.bind(this)}>
                   {'Add Account'}
                 </Btn>
+              </div>
+              <div className="grid__item one-whole push-delta--bottom">
+                <NotificationsSection settings={this.props.settings} />
+              </div>
+              <div className="grid__item one-whole push-delta--bottom">
+                <FrequencySection settings={this.props.settings} />
+              </div>
+              <div className="grid__item one-whole">
+                <SoundsSection settings={this.props.settings} />
               </div>
             </div>
           </div>

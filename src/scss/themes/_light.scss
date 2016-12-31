@@ -150,6 +150,7 @@ label { color: #666; }
   background: $button-bg-hover;
 }
 
+.settings-btn.btn--active,
 .settings-btn--major {
   color: white;
   background: $brand-color-main;

@@ -1,42 +1,35 @@
 import * as React from 'react';
-import { connect } from 'react-redux';
 
-import { cronPeriodPrettyNames } from 'Constants/Lang/Date';
 import { dispatch } from 'Helpers/State/Store';
-
+import { cronPeriodPrettyNames } from 'Constants/Lang/Date';
 import { configurePollPeriod } from 'Actions/UIActions/Settings';
 
-import ViewBar from 'View/Components/ViewBar/Index';
-import {
-  Button,
-  Scroll
-} from 'View/Ui/Index';
+import { Button } from 'View/Ui/Index';
 
-interface IFrequencySettingsProps
+interface IFrequencySettingsSectionProps
 {
   settings: IStateSettings;
 };
 
-class FrequencySettings extends React.Component<IFrequencySettingsProps, any>
+class FrequencySettingsSection extends React.Component<IFrequencySettingsSectionProps, any>
 {
   render()
   {
     return (
-      <ViewBar title="Frequency Settings"
-               backLink="/settings">
-        <Scroll>
-          <div className="soft-delta">
-            <div className="grid">
-              <div className="grid__item one-half mobile-one-whole push-delta--bottom">
-                <label className="push-zeta--bottom">Polling Frequency</label>
-                {Object.keys(cronPeriodPrettyNames)
+      <div className="grid">
+        <div className="grid__item one-whole">
+          <label className="text--zeta push-zeta--bottom">
+            {'Update Frequency'}
+          </label>
+          {Object.keys(cronPeriodPrettyNames)
                       .map((name, i, a) =>
                       (
                         <Button key={name}
                                 onClick={() => dispatch(configurePollPeriod(name))}
-                                className={(this.props.settings.pollPeriod === name
-                                              ? 'btn--active'
-                                              : '')
+                                className={'settings-btn'
+                                            + (this.props.settings.pollPeriod === name
+                                                ? ' btn--active'
+                                                : '')
                                             + (i === 0
                                                 ? ' btn--hard-bottom'
                                                 : '')
@@ -50,17 +43,10 @@ class FrequencySettings extends React.Component<IFrequencySettingsProps, any>
                           {cronPeriodPrettyNames[name]}
                         </Button>
                       ))}
-              </div>
-            </div>
-          </div>
-        </Scroll>
-      </ViewBar>
+        </div>
+      </div>
     );
   }
 };
 
-export default connect(
-  (state: IState) => ({
-    settings : state.settings
-  })
-)(FrequencySettings);
+export default FrequencySettingsSection;
