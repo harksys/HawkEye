@@ -17,7 +17,8 @@ const AppLoading: React.SFC<IAppLoadingProps> = ({ show }) =>
                         ? ' app__loading--show'
                         : '')}>
     <CenteredBox>
-      <Loader size="medium" />
+      <Loader size="medium"
+              default />
     </CenteredBox>
   </div>
 );

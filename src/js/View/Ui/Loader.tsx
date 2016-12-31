@@ -3,13 +3,18 @@ import * as React from 'react';
 interface ILoaderProps
 {
   size?: string;
+
+  default?: boolean
 };
 
-const Loader: React.SFC<ILoaderProps> = ({ size }) =>
+const Loader: React.SFC<ILoaderProps> = props =>
 (
   <div className={'loader'
-                    + (typeof size === 'string'
-                        ? ' loader--' + size
+                    + (typeof props.size === 'string'
+                        ? ' loader--' + props.size
+                        : '')
+                    + (props.default
+                        ? ' loader--default'
                         : '')}>
     {'Loading'}
   </div>

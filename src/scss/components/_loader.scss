@@ -9,10 +9,22 @@
   font-size: 10px;
   position: relative;
   text-indent: -9999em;
-  border-top: 5px solid rgba(255, 255, 255, 0.2);
-  border-right: 5px solid rgba(255, 255, 255, 0.2);
-  border-bottom: 5px solid rgba(255, 255, 255, 0.2);
-  border-left: 5px solid #ffffff;
+
+  border-top-color: rgba(255, 255, 255, 0.2);
+  border-right-color: rgba(255, 255, 255, 0.2);
+  border-bottom-color: rgba(255, 255, 255, 0.2);
+  border-left-color: white;
+
+  border-top-width: 5px;
+  border-right-width: 5px;
+  border-bottom-width: 5px;
+  border-left-width: 5px;
+
+  border-top-style: solid;
+  border-right-style: solid;
+  border-bottom-style: solid;
+  border-left-style: solid;
+
   -webkit-transform: translateZ(0);
   -ms-transform: translateZ(0);
   transform: translateZ(0);
@@ -50,8 +62,15 @@
 }
 
 .loader--small {
-  border-top: 2px solid rgba(255, 255, 255, 0.2);
-  border-right: 2px solid rgba(255, 255, 255, 0.2);
-  border-bottom: 2px solid rgba(255, 255, 255, 0.2);
-  border-left: 2px solid #ffffff;
+  border-top-width: 2px;
+  border-right-width: 2px;
+  border-bottom-width: 2px;
+  border-left-width: 2px;
+}
+
+.loader--default {
+  border-top-color: rgba(255, 255, 255, 0.2)!important;
+  border-right-color: rgba(255, 255, 255, 0.2)!important;
+  border-bottom-color: rgba(255, 255, 255, 0.2)!important;
+  border-left-color: white!important;
 }
