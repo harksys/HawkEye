@@ -26,20 +26,28 @@ class SettingsIndex extends React.Component<ISettingsIndexProps, any>
         <Scroll>
           <div className="soft-delta">
             <div className="grid">
-              <div className="grid__item one-whole push-delta--bottom">
-                <AppSection settings={this.props.settings} />
+              <div className="grid__item one-half mobile-one-whole">
+                <div className="grid">
+                  <div className="grid__item one-whole push-delta--bottom">
+                    <AppSection settings={this.props.settings} />
+                  </div>
+                  <div className="grid__item one-whole push-delta--bottom">
+                    <AccountsSection settings={this.props.settings} />
+                  </div>
+                  <div className="grid__item one-whole push-delta--bottom">
+                    <NotificationsSection settings={this.props.settings} />
+                  </div>
+                </div>
               </div>
-              <div className="grid__item one-whole push-delta--bottom">
-                <AccountsSection settings={this.props.settings} />
-              </div>
-              <div className="grid__item one-whole push-delta--bottom">
-                <NotificationsSection settings={this.props.settings} />
-              </div>
-              <div className="grid__item one-whole push-delta--bottom">
-                <FrequencySection settings={this.props.settings} />
-              </div>
-              <div className="grid__item one-whole">
-                <SoundsSection settings={this.props.settings} />
+              <div className="grid__item one-half mobile-one-whole">
+                <div className="grid">
+                  <div className="grid__item one-whole push-delta--bottom">
+                    <FrequencySection settings={this.props.settings} />
+                  </div>
+                  <div className="grid__item one-whole">
+                    <SoundsSection settings={this.props.settings} />
+                  </div>
+                </div>
               </div>
             </div>
           </div>
