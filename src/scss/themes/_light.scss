@@ -180,3 +180,11 @@ label { color: #666; }
   border-bottom-color: rgba(255, 255, 255, 0.2);
   border-left-color: $text-color;
 }
+
+/*
+ * No Notifications
+ */
+.no-notifications__title,
+.no-notifications__text {
+  color: $text-color;
+}

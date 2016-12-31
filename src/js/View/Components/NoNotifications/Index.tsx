@@ -13,8 +13,12 @@ class NoNotifications extends React.Component<INoNotificationsProps, any>
   {
     return (
       <CenteredBox>
-        <h2 className="push-zeta--bottom">Quiver Zero!</h2>
-        <p>{'Hah, get it? But well done!'}</p>
+        <h2 className="push-zeta--bottom no-notifications__title">
+          {'Quiver Zero!'}
+        </h2>
+        <p className="no-notifications__text">
+          {'Hah, get it? But well done!'}
+        </p>
       </CenteredBox>
     );
   }
