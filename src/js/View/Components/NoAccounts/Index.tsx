@@ -20,11 +20,13 @@ class NoAccounts extends React.Component<INoAccountsProps, any>
   {
     return (
       <CenteredBox>
-        <h2 className="push-zeta--bottom">{'Welcome to HawkEye'}</h2>
-        <p className="push-delta--bottom">
+        <h2 className="no-accounts_title push-zeta--bottom">
+          {'Welcome to Hawk Eye'}
+        </h2>
+        <p className="no-accounts_text push-delta--bottom">
           {'Let\'s get started by adding a GitHub account.'}
         </p>
-        <Btn className="max-width--240 push-auto--sides"
+        <Btn className="no-accounts_btn max-width--240 push-auto--sides"
              onClick={this.handleAddAccountClick.bind(this)}>
           {'Add an Account'}
         </Btn>

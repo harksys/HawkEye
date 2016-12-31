@@ -192,3 +192,20 @@ label { color: #666; }
 .no-notifications__text {
   color: $text-color;
 }
+
+/*
+ * No Accounts
+ */
+.no-accounts_title,
+.no-accounts_text {
+  color: $text-color;
+}
+
+.no-accounts_btn {
+  color: $text-color;
+  background: $button-bg;
+}
+
+.no-accounts_btn:hover {
+  background: $button-bg-hover;
+}
