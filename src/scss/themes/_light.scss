@@ -84,7 +84,7 @@ label { color: #666; }
 }
 
 .view-bar__back-link {
-  color: #333;
+  color: $text-color;
 
   &:hover {
     color: $brand-color-main;
@@ -98,7 +98,7 @@ label { color: #666; }
   border-bottom: 1px solid #EEE;
 
   &:hover {
-    background: #f8f8f8;
+    background: #F3F3F3;
   }
 }
 
@@ -163,3 +163,11 @@ label { color: #666; }
 /*
  * Account Settings
  */
+.account-settings-header {
+  background: $light-grey;
+}
+
+.account-settings__name,
+.account-settings__username {
+  color: $text-color;
+}
