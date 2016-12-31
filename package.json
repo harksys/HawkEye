@@ -5,10 +5,10 @@
   "description": "A useful app for GitHub Notifications",
   "main": "main.js",
   "scripts": {
-    "build-all" : "gulp",
     "pack" : "build --dir",
     "dist" : "build",
-    "dist-all" : "build -mlw"
+    "dist-all" : "build -mlw",
+    "build-all" : "gulp && npm run dist-all"
   },
   "repository": {
     "type": "git",
