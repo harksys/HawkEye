@@ -7,10 +7,11 @@ For more details, visit [https://harksys.com/blog](https://harksys.com/blog)
 Hawk Eye has many features, including:
 
 - Support for multiple accounts
-- Light/dark mode
+- Light and dark mode
 - Mark single and multiple notifications as read
 - Filter by type, repository and more
 - Scheduled notification pulling
+- Responsive
 
 ## Usage
 
