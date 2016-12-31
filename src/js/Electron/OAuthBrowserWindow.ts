@@ -47,7 +47,7 @@ class OAuthBrowserWindow
 
     // Close Handler
     this.browserWindow
-        .on('closed', () => this.closeWindow());
+        .on('closed', () => this.handleCloseWindow());
 
     /*
      * If the window navigates or redirects,
@@ -83,10 +83,21 @@ class OAuthBrowserWindow
     return this;
   }
 
-  public closeWindow(): OAuthBrowserWindow
+  public handleCloseWindow(): OAuthBrowserWindow
   {
     this.browserWindow = undefined;
     this.onCloseHandler();
+
+    return this;
+  }
+
+  public closeWindow(): OAuthBrowserWindow
+  {
+    if (this.browserWindow.isClosable()) {
+      this.browserWindow.close();
+    }
+
+    this.browserWindow = undefined;
 
     return this;
   }
