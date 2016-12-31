@@ -7,8 +7,29 @@ $dark-grey-scale: (
   zeta    : #767676
 );
 
+$text-color: #999;
+$button-bg: map-get($dark-grey-scale, beta);
+$button-bg-hover: darken(map-get($dark-grey-scale, beta), 5);
+
+label { color: #666; }
+
+/*
+ * App Bar
+ */
 .app-bar {
   background: map-get($dark-grey-scale, beta);
+}
+
+.app-bar__lower {
+  background: map-get($dark-grey-scale, beta);
+}
+
+.app-bar__lower .btn {
+  color: map-get($dark-grey-scale, zeta);
+}
+
+.app-bar__lower .btn:hover {
+  color: white;
 }
 
 .app-bar__account {
@@ -20,14 +41,146 @@ $dark-grey-scale: (
   background: $brand-color-main;
 }
 
-.app-bar__lower {
-  background: map-get($dark-grey-scale, beta);
-}
-
+/*
+ * Filters
+ */
 .filter-controls {
   background: map-get($dark-grey-scale, alpha);
 }
 
+.filter-controls .btn--pill {
+  color: $text-color;
+
+  &:hover {
+    color: white;
+  }
+}
+
+.filter-controls .btn--pill__count {
+  color: $text-color;
+  background: trans-dark(0.05);
+}
+
+.filter-controls .btn--pill.btn--active {
+  color: white;
+}
+
+.filter-controls .btn--pill.btn--active {
+  background: $brand-color-main;
+
+  .btn--pill__count {
+    color: white;
+    font-weight: bold;
+    background: trans-dark(0.1);
+  }
+}
+
+/*
+ * View Bars
+ */
 .view-bar {
-  background: $view-bar-dark-background;
+  background: black;
+}
+
+.view-bar__title {
+  color: $text-color;
+}
+
+.view-bar__back-link {
+  color: $text-color;
+
+  &:hover {
+    color: $brand-color-main;
+  }
+}
+
+/*
+ * Notifications
+ */
+.notification {
+  border-bottom: 1px solid map-get($dark-grey-scale, beta);
+
+  &:hover {
+    background: rgba(0, 0, 0, .1);
+  }
+}
+
+.notification-icon,
+.notification__text,
+.notification__info {
+  color: $text-color;
+}
+
+.notification-check {
+  color: $text-color;
+
+  &:hover {
+    color: $brand-color-main;
+  }
+}
+
+/*
+ * Toggle
+ */
+.toggle {
+  background: $button-bg;
+}
+
+.toggle__option {
+  color: $text-color;
+}
+
+.toggle__option:hover {
+  color: $text-color;
+  background: $button-bg-hover;
+}
+
+.toggle__option--active,
+.toggle__option--active:hover {
+  color: white;
+  background: $brand-color-main;
+}
+
+/*
+ * Settings
+ */
+.settings-btn {
+  color: $text-color;
+  background: $button-bg;
+}
+
+.settings-btn:hover {
+  background: $button-bg-hover;
+}
+
+.settings-btn.btn--active,
+.settings-btn--major {
+  color: white;
+  background: $brand-color-main;
+}
+
+.settings-btn--major:hover {
+  background: $dark-brand-color-main;
+}
+
+/*
+ * Account Settings
+ */
+.account-settings-header {
+  background: map-get($dark-grey-scale, beta);
+}
+
+.account-settings__name,
+.account-settings__username {
+  color: $text-color;
+}
+
+/*
+ * Loader
+ */
+.loader {
+  border-top-color: rgba(255, 255, 255, 0.2);
+  border-right-color: rgba(255, 255, 255, 0.2);
+  border-bottom-color: rgba(255, 255, 255, 0.2);
+  border-left-color: white;
 }
