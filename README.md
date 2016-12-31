@@ -20,11 +20,11 @@ To get started and try out Hawk Eye, download the latest release for your platfo
 
 ### Dark Mode
 
-![](./.github/dark-group.png?raw=true)
+![](./.github/dark.png?raw=true)
 
 ### Light Mode
 
-![](./.github/light-group.png?raw=true)
+![](./.github/light.png?raw=true)
 
 ## Contributing
 
