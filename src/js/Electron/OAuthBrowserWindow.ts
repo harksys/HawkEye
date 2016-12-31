@@ -35,7 +35,7 @@ class OAuthBrowserWindow
       width          : 1000,
       height         : 600,
       show           : true,
-      title          : 'Authenticate GitHub with HawkEye',
+      title          : 'Authenticate GitHub with Hawk Eye',
       webPreferences : {
         nodeIntegration : false,
         partition       : generateId()
