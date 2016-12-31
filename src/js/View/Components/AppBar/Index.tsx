@@ -2,6 +2,7 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 
 import { dispatch } from 'Helpers/State/Store';
+import { isMac } from 'Helpers/System/Electron';
 import { switchAccount } from 'Actions/UIActions/App';
 
 import {
@@ -29,7 +30,10 @@ class AppBar extends React.Component<IAppBarProps, any>
   render()
   {
     return (
-      <div className="hard-top hard-top--epsilon app-bar">
+      <div className={'hard-top app-bar '
+                        + (isMac()
+                            ? 'hard-top--epsilon'
+                            : 'hard-top--zeta')}>
         <div className="hard-top__top">
         </div>
         <div className="hard-top__content">
