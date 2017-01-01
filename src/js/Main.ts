@@ -9,11 +9,14 @@ import {
   ipcMain,
   BrowserWindow
 } from 'electron';
+import * as nsLog from 'nslog';
 import * as Request from 'request';
+import { autoUpdater } from 'electron-auto-updater';
 import windowStateKeeper = require('electron-window-state');
 
-const isMac            = process.platform === 'darwin';
-const hawkEyeGitHubUrl = 'https://github.com/harksys/HawkEye';
+const isMac             = process.platform === 'darwin';
+const hawkEyeGitHubUrl  = 'https://github.com/harksys/HawkEye';
+const updatedServerHost = 'https://hawkeyeupdates.harksys.com';
 
 class Main
 {
@@ -26,6 +29,7 @@ class Main
   static onWindowAllClosed()
   {
     if (isMac) {
+      Main.setupAutoUpdates();
       return;
     }
 
@@ -78,6 +82,9 @@ class Main
 
     Main.mainWindow.loadURL('file://' + __dirname + '/index.html');
     Main.mainWindow.on('closed', Main.onClose);
+
+    // Setup Autoupdates
+    Main.setupAutoUpdates();
 
     // If development, open dev tools
     if (process.env.NODE_ENV === 'development') {
@@ -165,6 +172,68 @@ ${process.platform} ${process.arch} ${os.release()}`;
       helpMenu
     ];
   }
+
+  /**
+   * Auto Updating
+   */
+  static setupAutoUpdates()
+  {
+    //@todo: dev check
+
+    // Auto Updates not for linux :(
+    const platform = os.platform();
+    if (platform === 'linux') {
+      return;
+    }
+
+    const version = app.getVersion();
+
+    // Register event handlers
+    autoUpdater.addListener('update-available', Main.handleAutoUpdateUpdateAvailable);
+    autoUpdater.addListener('update-downloaded', Main.handleAutoUpdateUpdateDownloaded);
+    autoUpdater.addListener('error', Main.handleAutoUpdateError);
+    autoUpdater.addListener('checking-for-update', Main.handleAutoUpdateCheckingForUpdate);
+    autoUpdater.addListener('update-not-available', Main.handleAutoUpdateUpdateNotAvailable);
+
+    // If we're on a Mac, then set the Feed URL. Windows has this set elsewhere
+    if(platform === 'darwin') {
+      autoUpdater.setFeedURL(`${updatedServerHost}/update/${platform}_${os.arch()}/${version}`);
+    }
+
+    // On load, check for updates
+    Main.mainWindow.webContents.once('did-frame-finish-load', () => autoUpdater.checkForUpdates());
+  }
+
+  static handleAutoUpdateUpdateAvailable(event: any)
+  {
+    log('AUUPDATEAVAILABLE');
+  }
+
+  static handleAutoUpdateUpdateDownloaded(event: any, releaseNotes: string,
+                                          releaseName: string, releaseDate: string,
+                                          updateURL: string)
+  {
+    log('AUNEWUPDATE', 'V: ' + releaseName);
+    log('quit and install?');
+
+    return true;
+  }
+
+  static handleAutoUpdateError(error: any)
+  {
+    log('AUERROR:', error);
+  }
+
+  static handleAutoUpdateCheckingForUpdate(event: any)
+  {
+    log('AUCHECKING');
+  }
+
+  static handleAutoUpdateUpdateNotAvailable()
+  {
+    log('AUNOUPDATE');
+  }
+
 };
 
 /**
@@ -191,7 +260,7 @@ ipcMain.on('MarkNotificationRead', (event, args: { token: string;
     let id        = args[0].notificationId;
     let accountId = args[0].accountId;
 
-    console.log('[Starting] Marking ' + id + ' as read for account ' + accountId);
+    log('[Starting] Marking ' + id + ' as read for account ' + accountId);
 
     /*
      * Make a POST request to mark the notification as read
@@ -211,7 +280,7 @@ ipcMain.on('MarkNotificationRead', (event, args: { token: string;
        */
       if (resp.statusCode === 205) {
         event.sender.send('MarkNotificationReadSuccess', args[0]);
-        console.log('[Success] Marking ' + id + ' as read for account ' + accountId);
+        log('[Success] Marking ' + id + ' as read for account ' + accountId);
         return;
       }
 
@@ -219,7 +288,7 @@ ipcMain.on('MarkNotificationRead', (event, args: { token: string;
        * Handle error
        */
       event.sender.send('MarkNotificationReadError', args[0]);
-      console.log('[Failed] Marking ' + id + ' as read for account ' + accountId);
+      log('[Failed] Marking ' + id + ' as read for account ' + accountId);
     });
   } catch(e) {
     event.sender.send('MarkNotificationReadError', args[0]);
@@ -228,3 +297,16 @@ ipcMain.on('MarkNotificationRead', (event, args: { token: string;
 
 // Run
 Main.main(app, BrowserWindow);
+
+/**
+ * @param  {any[]} ...args
+ */
+function log(...args: any[])
+{
+  if (process.env.NODE_ENV === 'development') {
+    console.log(args);
+    return;
+  }
+
+  nsLog(args);
+}

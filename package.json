@@ -1,41 +1,41 @@
 {
   "name": "hawkeye",
-  "version": "0.1.0",
-  "productName" : "Hawk Eye",
+  "version": "0.0.1",
+  "productName": "Hawk Eye",
   "description": "A useful app for GitHub Notifications",
   "main": "main.js",
   "scripts": {
-    "pack" : "build --dir",
-    "dist" : "build",
-    "dist-all" : "build -mlw",
-    "build-all" : "gulp && npm run dist-all"
+    "pack": "build --dir",
+    "dist": "build",
+    "dist-all": "build -mlw",
+    "build-all": "gulp && npm run dist-all"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/harksys/HawkEye.git"
   },
   "author": {
-    "name" : "Hark Systems LTD.",
-    "email" : "hello@harksys.com"
+    "name": "Hark Systems LTD.",
+    "email": "hello@harksys.com"
   },
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/harksys/HawkEye/issues"
   },
-  "build" : {
-    "appId" : "harksys-hawkeye",
-    "files" : [
-       "**/*",
-       "!src/js",
-       "!src/scss",
-       "!gulpfile.js",
-       "!README.md",
-       "!tsconfig.json",
-       "!tsconfig.main.json",
-       "!typings",
-       "!typings.json",
-       "!webpack.config.js",
-       "!webpack.dev.config.js"
+  "build": {
+    "appId": "harksys-hawkeye",
+    "files": [
+      "**/*",
+      "!src/js",
+      "!src/scss",
+      "!gulpfile.js",
+      "!README.md",
+      "!tsconfig.json",
+      "!tsconfig.main.json",
+      "!typings",
+      "!typings.json",
+      "!webpack.config.js",
+      "!webpack.dev.config.js"
     ],
     "asar": true,
     "linux": {
@@ -54,8 +54,8 @@
         "squirrel"
       ]
     },
-    "mac" : {
-      "category": "public.app-category.developer-tools"
+    "mac": {
+      "category": "ac.app-category.developer-tools"
     }
   },
   "homepage": "https://github.com/harksys/HawkEye#readme",
@@ -83,11 +83,13 @@
   "dependencies": {
     "async": "^2.1.4",
     "compass-mixins": "^0.12.10",
+    "electron-auto-updater": "^0.8.5",
     "electron-window-state": "^4.0.1",
     "es6-promise": "^4.0.5",
     "lodash": "^4.17.2",
     "moment": "^2.17.1",
     "node-schedule": "^1.2.0",
+    "nslog": "^3.0.0",
     "object-assign": "^4.1.0",
     "octonode": "^0.7.7",
     "q": "^1.4.1",
