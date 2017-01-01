@@ -11,7 +11,6 @@ import { generateId } from 'Helpers/Lang/String';
 import { soundClipPaths } from 'Constants/Resources/Sound';
 import { appAlertStatuses } from 'Constants/Models/AppAlert';
 
-
 /**
  * @returns number
  */
@@ -58,20 +57,35 @@ export function attemptToPlayAlertSound(alert: IAppAlert)
   playSound(soundClipPaths.harkSuccess);
 };
 
+interface IAppAlertActionParams
+{
+  stickyActionIcon?: string;
+
+  stickyActionName?: string;
+
+  stickyActionParams?: any;
+};
+
 /**
  * @param  {string} message
  * @param  {string} status
  * @returns IAppAlert
  */
-export function createAppAlert(message: string, status: string, sticky: boolean = false): IAppAlert
+export function createAppAlert(message: string,
+                               status: string,
+                               sticky: boolean = false,
+                               actionParams: IAppAlertActionParams = {}): IAppAlert
 {
   let appAlert: IAppAlert = {
-    id      : generateId(),
-    index   : getNextAppAlertIndex(),
-    show    : false,
-    message : message,
-    status  : status,
-    sticky  : sticky
+    id                 : generateId(),
+    index              : getNextAppAlertIndex(),
+    show               : false,
+    message            : message,
+    status             : status,
+    sticky             : sticky,
+    stickyActionIcon   : actionParams.stickyActionIcon || null,
+    stickyActionName   : actionParams.stickyActionName || null,
+    stickyActionParams : actionParams.stickyActionParams || {}
   };
 
   return appAlert;
@@ -81,25 +95,31 @@ export function createAppAlert(message: string, status: string, sticky: boolean 
  * @param  {string} message
  * @returns IAppAlert
  */
-export function createSuccessAppAlert(message: string, sticky: boolean = false): IAppAlert
+export function createSuccessAppAlert(message: string,
+                                      sticky: boolean = false,
+                                      actionParams: IAppAlertActionParams = {}): IAppAlert
 {
-  return createAppAlert(message, appAlertStatuses.success, sticky);
+  return createAppAlert(message, appAlertStatuses.success, sticky, actionParams);
 };
 
 /**
  * @param  {string} message
  * @returns IAppAlert
  */
-export function createWarningAppAlert(message: string, sticky: boolean = false): IAppAlert
+export function createWarningAppAlert(message: string,
+                                      sticky: boolean = false,
+                                      actionParams: IAppAlertActionParams = {}): IAppAlert
 {
-  return createAppAlert(message, appAlertStatuses.warning, sticky);
+  return createAppAlert(message, appAlertStatuses.warning, sticky, actionParams);
 };
 
 /**
  * @param  {string} message
  * @returns IAppAlert
  */
-export function createErrorAppAlert(message: string, sticky: boolean = false): IAppAlert
+export function createErrorAppAlert(message: string,
+                                    sticky: boolean = false,
+                                    actionParams: IAppAlertActionParams = {}): IAppAlert
 {
-  return createAppAlert(message, appAlertStatuses.error, sticky);
+  return createAppAlert(message, appAlertStatuses.error, sticky, actionParams);
 };

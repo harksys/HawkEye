@@ -36,6 +36,10 @@ export function pushAppAlert(appAlert: IAppAlert)
          */
         attemptToPlayAlertSound(appAlert);
 
+        if (appAlert.sticky) {
+          return;
+        }
+
         /*
          * Wait 5 seconds for the user to read.
          */
@@ -54,6 +58,19 @@ export function pushAppAlert(appAlert: IAppAlert)
       });
   };
 };
+
+/**
+ * @param  {string} appAlertId
+ */
+export function closeAppAlert(appAlertId: string)
+{
+  return dispatch =>
+  {
+    dispatch(hideAppAlert(appAlertId));
+    wait(250)
+      .then(() => dispatch(removeAppAlert(appAlertId)));
+  };
+}
 
 /**
  * @param  {IAppAlert} appAlert

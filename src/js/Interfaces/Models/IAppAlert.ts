@@ -12,4 +12,10 @@ interface IAppAlert
   show: boolean;
 
   sticky: boolean;
+
+  stickyActionIcon?: string;
+
+  stickyActionName?: string;
+
+  stickyActionParams?: any;
 };
