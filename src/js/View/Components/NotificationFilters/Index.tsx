@@ -8,6 +8,7 @@ import { dispatch } from 'Helpers/State/Store';
 import { createGitHubNotificationFilterSet } from 'Helpers/Models/GitHubNotificationFilterSet';
 
 import {
+  clearFilters,
   setReadFilter,
   addReasonFilter,
   removeReasonFilter,
@@ -39,6 +40,7 @@ class NotificationFilters extends React.Component<INotificationFiltersProps, any
 {
   handleReadFilterClick()
   {
+    dispatch(clearFilters(this.props.accountId));
     dispatch(setReadFilter(this.props.accountId, this.props.notificationFilters.read
                                                    ? false
                                                    : true));
