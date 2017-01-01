@@ -88,7 +88,7 @@ class Index extends React.Component<IAppIndexProps, any>
                                notificationFilters={filterRules} />
         </div>
         <div className="hideable-left__content no-outline">
-          <ViewBar title="Notifications"
+          <ViewBar title="Notifications WIN?"
                    getRightContent={this.props.app.isPolling
                                     ? () =>
                                       (
