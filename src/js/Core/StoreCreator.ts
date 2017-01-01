@@ -53,7 +53,8 @@ class StoreCreator<T> implements IStoreCreator<T>
         'routing',
         'authentication',
         'setup',
-        'appAlerts'
+        'appAlerts',
+        'notificationFilters'
       ]
     }, rehydrateCallback);
   }
