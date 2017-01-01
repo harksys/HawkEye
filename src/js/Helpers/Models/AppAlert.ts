@@ -63,14 +63,15 @@ export function attemptToPlayAlertSound(alert: IAppAlert)
  * @param  {string} status
  * @returns IAppAlert
  */
-export function createAppAlert(message: string, status: string): IAppAlert
+export function createAppAlert(message: string, status: string, sticky: boolean = false): IAppAlert
 {
   let appAlert: IAppAlert = {
     id      : generateId(),
     index   : getNextAppAlertIndex(),
     show    : false,
     message : message,
-    status  : status
+    status  : status,
+    sticky  : sticky
   };
 
   return appAlert;
@@ -80,25 +81,25 @@ export function createAppAlert(message: string, status: string): IAppAlert
  * @param  {string} message
  * @returns IAppAlert
  */
-export function createSuccessAppAlert(message: string): IAppAlert
+export function createSuccessAppAlert(message: string, sticky: boolean = false): IAppAlert
 {
-  return createAppAlert(message, appAlertStatuses.success);
+  return createAppAlert(message, appAlertStatuses.success, sticky);
 };
 
 /**
  * @param  {string} message
  * @returns IAppAlert
  */
-export function createWarningAppAlert(message: string): IAppAlert
+export function createWarningAppAlert(message: string, sticky: boolean = false): IAppAlert
 {
-  return createAppAlert(message, appAlertStatuses.warning);
+  return createAppAlert(message, appAlertStatuses.warning, sticky);
 };
 
 /**
  * @param  {string} message
  * @returns IAppAlert
  */
-export function createErrorAppAlert(message: string): IAppAlert
+export function createErrorAppAlert(message: string, sticky: boolean = false): IAppAlert
 {
-  return createAppAlert(message, appAlertStatuses.error);
+  return createAppAlert(message, appAlertStatuses.error, sticky);
 };

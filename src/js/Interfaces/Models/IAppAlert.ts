@@ -10,4 +10,6 @@ interface IAppAlert
   message: string;
 
   show: boolean;
+
+  sticky: boolean;
 };
