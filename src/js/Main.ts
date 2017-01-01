@@ -9,7 +9,11 @@ import {
   ipcMain,
   BrowserWindow
 } from 'electron';
-import * as nsLog from 'nslog';
+
+
+// Windows Squirrel setup for shortcuts etc
+if(require('electron-squirrel-startup')) app.quit();
+
 import * as Request from 'request';
 import { autoUpdater } from 'electron-auto-updater';
 import windowStateKeeper = require('electron-window-state');
@@ -313,10 +317,10 @@ Main.main(app, BrowserWindow);
  */
 function log(...args: any[])
 {
-  if (process.env.NODE_ENV === 'development') {
+  if (isDev) {
     console.log(args);
     return;
   }
 
-  nsLog(args);
+  //nsLog(args);
 }
