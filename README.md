@@ -11,11 +11,11 @@ Hawk Eye has many features, including:
 - Mark single and multiple notifications as read
 - Filter by type, repository and more
 - Scheduled notification pulling
-- Responsive
+- Responsive design
 
 ## Usage
 
-To get started and try out Hawk Eye, download the latest release for your platform on the [Releases Page](https://github.com/harksys/hawkeye/releases).
+To get started and try out Hawk Eye, download the latest release for your platform on the [Releases Page](https://github.com/harksys/hawkeye/releases). You'll then be able to auto-update when new updates are available. Note: this currently only works for macOS, Windows incomming.
 
 ## Screenshots
 
