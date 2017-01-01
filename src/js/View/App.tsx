@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Link } from 'react-router';
 
+import { registerUpdateAvailableHandler } from 'Electron/Tasks/App';
 import { registerPreferencesMenuControl } from 'Electron/Tasks/Settings';
 import { registerMarkNotificationAsReadSuccess } from 'Electron/Tasks/Notification';
 
@@ -30,6 +31,7 @@ class App extends React.Component<any, any>
 
   componentDidMount()
   {
+    registerUpdateAvailableHandler();
     registerPreferencesMenuControl();
     registerMarkNotificationAsReadSuccess();
   }

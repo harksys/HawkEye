@@ -20,7 +20,6 @@
 .app-alert__inner {
     width: 100%;
     height: 25px;
-    padding: 0 10px;
     text-align: center;
     @include border-radius(0 0 5px 5px);
 
@@ -36,7 +35,38 @@
   top: 25px;
 }
 
+.app-alert-pad {
+  padding: 0 10px; //@hack
+}
+
 // Statuses
 .app-alert--success .app-alert__inner { background: $background-success; }
 .app-alert--warning .app-alert__inner { background: $background-warning; }
 .app-alert--error .app-alert__inner   { background: $background-error; }
+
+/*
+ * Actions
+ */
+.app-alert__inner__action {
+  float: left;
+  width: 25px;
+  height: 25px;
+  display: block;
+  color: white;
+  font-size: 12px;
+  line-height: 25px;
+  text-align: center;
+  @include transition(background .25s ease);
+
+  i {
+
+  }
+
+  &:hover {
+    background: trans-dark(.2);
+  }
+}
+
+.app-alert__inner__action--last {
+  @include border-radius(0 0 5px 0);
+}

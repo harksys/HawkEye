@@ -29,7 +29,6 @@ class Main
   static onWindowAllClosed()
   {
     if (isMac) {
-      Main.setupAutoUpdates();
       return;
     }
 
@@ -206,32 +205,39 @@ ${process.platform} ${process.arch} ${os.release()}`;
 
   static handleAutoUpdateUpdateAvailable(event: any)
   {
-    log('AUUPDATEAVAILABLE');
+    log('AU_UPDATEAVAILABLE');
   }
 
   static handleAutoUpdateUpdateDownloaded(event: any, releaseNotes: string,
                                           releaseName: string, releaseDate: string,
                                           updateURL: string)
   {
-    log('AUNEWUPDATE', 'V: ' + releaseName);
-    log('quit and install?');
+    log('AU_NEWUPDATE', 'V: ' + releaseName);
+
+    // Trigger for the alert to show prompting the user
+    Main.mainWindow.webContents.send('AU_UPDATE_AVAILABLE', [{
+      version : releaseName
+    }]);
+
+    // When the user clicks to update, quit and install
+    ipcMain.once('AU_QUIT_INSTALL', () => autoUpdater.quitAndInstall());
 
     return true;
   }
 
   static handleAutoUpdateError(error: any)
   {
-    log('AUERROR:', error);
+    log('AU_ERROR:', error);
   }
 
   static handleAutoUpdateCheckingForUpdate(event: any)
   {
-    log('AUCHECKING');
+    log('AU_CHECKING');
   }
 
   static handleAutoUpdateUpdateNotAvailable()
   {
-    log('AUNOUPDATE');
+    log('AU_NOUPDATE');
   }
 
 };
