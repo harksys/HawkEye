@@ -14,7 +14,9 @@ import * as Request from 'request';
 import { autoUpdater } from 'electron-auto-updater';
 import windowStateKeeper = require('electron-window-state');
 
+const isDev             = process.env.NODE_ENV === 'development';
 const isMac             = process.platform === 'darwin';
+
 const hawkEyeGitHubUrl  = 'https://github.com/harksys/HawkEye';
 const updatedServerHost = 'https://hawkeyeupdates.harksys.com';
 
@@ -177,7 +179,9 @@ ${process.platform} ${process.arch} ${os.release()}`;
    */
   static setupAutoUpdates()
   {
-    //@todo: dev check
+    if (isDev) {
+      return;
+    }
 
     // Auto Updates not for linux :(
     const platform = os.platform();
