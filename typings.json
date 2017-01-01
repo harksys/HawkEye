@@ -8,8 +8,8 @@
   },
   "globalDependencies": {
     "async": "registry:dt/async#2.0.1+20161211174247",
+    "electron": "registry:dt/electron#1.4.8+20161220141501",
     "electron-window-state": "registry:dt/electron-window-state#2.0.0+20161102134001",
-    "electron/github-electron": "registry:dt/electron/github-electron#1.4.4+20161022024109",
     "es6-promise": "registry:dt/es6-promise#0.0.0+20160614011821",
     "history": "registry:dt/history#1.8.0+20160316155526",
     "moment": "registry:dt/moment#2.11.1+20161010105546",
