@@ -1,6 +1,6 @@
 ![](./.github/banner.png?raw=true)
 
-For more details, visit [https://harksys.com/blog](https://harksys.com/blog)
+To read about Hawk Eye, visit the [Hark website](https://harksys.com/labs/introducing-hawk-eye-a-useful-app-for-github-notifications).
 
 ## Features
 
