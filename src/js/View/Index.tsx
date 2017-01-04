@@ -112,7 +112,7 @@ class Index extends React.Component<IAppIndexProps, any>
                                  notifications={filteredNotifications}
                                  disableMarkAsRead={!filterRules.read}
                                  onDoubleClick={this.handleNotificationDoubleClick.bind(this)} />
-              : <NoNotifications />}
+              : <NoNotifications accountId={this.props.app.currentAccountId} />}
           </ViewBar>
         </div>
       </div>
