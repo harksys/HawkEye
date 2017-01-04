@@ -9,6 +9,7 @@
   /*
    * None-fractional max-widths
    */
+   .#{$pre-class-name}max-width--200 { max-width: 200px!important; }
    .#{$pre-class-name}max-width--240 { max-width: 240px!important; }
    .#{$pre-class-name}max-width--290 { max-width: 290px!important; }
    .#{$pre-class-name}max-width--450 { max-width: 450px!important; }
