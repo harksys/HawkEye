@@ -193,19 +193,28 @@ label { color: #666; }
   color: $text-color;
 }
 
-/*
- * No Accounts
- */
-.no-accounts_title,
-.no-accounts_text {
-  color: $text-color;
-}
-
-.no-accounts_btn {
+.no-notifications__btn {
   color: $text-color;
   background: $button-bg;
 }
 
-.no-accounts_btn:hover {
+.no-notifications__btn:hover {
+  background: $button-bg-hover;
+}
+
+/*
+ * No Accounts
+ */
+.no-accounts__title,
+.no-accounts_text {
+  color: $text-color;
+}
+
+.no-accounts__btn {
+  color: $text-color;
+  background: $button-bg;
+}
+
+.no-accounts__btn:hover {
   background: $button-bg-hover;
 }
