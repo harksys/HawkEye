@@ -135,6 +135,25 @@ class Main
       }]
     };
 
+    const editMenu: Electron.MenuItemOptions = {
+      label   : 'Edit',
+      submenu : [{
+        role : 'undo'
+      }, {
+        role : 'redo'
+      }, {
+        type : 'separator'
+      }, {
+        role : 'cut'
+      }, {
+        role : 'copy'
+      }, {
+        role : 'paste'
+      }, {
+        role : 'selectall'
+      }]
+    };
+
     const windowMenu: Electron.MenuItemOptions = {
       role    : 'window',
       submenu : [{
@@ -173,6 +192,7 @@ ${process.platform} ${process.arch} ${os.release()}`;
 
     return [
       appMenu,
+      editMenu,
       windowMenu,
       helpMenu
     ];
