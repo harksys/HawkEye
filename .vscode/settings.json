@@ -1,3 +1,28 @@
 {
+  // Two spaces for tabs.
+  "editor.tabSize": 2,
+  "editor.insertSpaces": true,
+
+  // Ruler at 80 chars
+  "editor.rulers" : [80],
+
+  // Show whitespaces in the editor pane.
+  "editor.renderWhitespace": true,
+
+  // When saving, automatically trim whitespace
+  "files.trimTrailingWhitespace" : true,
+
+  // Exclude folders from being shown in VSC. Just to
+  // clean the view up a little bit.
+  "files.exclude": {
+    "dist" : true,
+    "node_modules" : true
+  },
+
+  // Exclude folders from being shown in the search
+  "search.exclude": {
+    "**/node_modules": true
+  },
+
   "typescript.tsdk": "./node_modules/typescript/lib"
 }
