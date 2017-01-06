@@ -4,6 +4,7 @@ import { cronPeriods } from 'Constants/Lang/Date';
 import ActionConstants from 'Constants/Actions/Index';
 import {
   colorModes,
+  defaultPollPeriod,
   notificationDoubleClickActions
 } from 'Constants/Models/Settings';
 
@@ -12,7 +13,7 @@ import * as objectAssign from 'object-assign';
 
 const initialState: IStateSettings = {
   colorMode       : colorModes.dark,
-  pollPeriod      : 'fifteenMinute', // @todo: const
+  pollPeriod      : defaultPollPeriod,
   accountSettings : {},
   soundSettings   : {
     newItemsEnabled     : true,

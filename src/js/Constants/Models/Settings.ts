@@ -9,3 +9,5 @@ export const notificationDoubleClickActions = {
   open     : 'OPEN',
   copyLink : 'COPYLINK'
 };
+
+export const defaultPollPeriod = 'fifteenMinute';
