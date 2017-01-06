@@ -9,8 +9,6 @@ export function getStore<T>(): Redux.Store<T>
                       .getStore();
 };
 
-window['gs'] = getStore; //@todo: remove
-
 /**
  * @param  {any} action
  */

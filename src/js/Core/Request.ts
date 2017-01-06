@@ -164,7 +164,6 @@ class Request implements IRequest
       /*
       * Execute the request with all the
       * current settings and return the response.
-      * @todo: Add comment regarding the credentials prop
       */
       let requestObject: any = {
         method      : this.method,
