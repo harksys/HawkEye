@@ -85,7 +85,7 @@ export function updateAccount(accountId: string,
                      dispatch(pushAppAlert(createErrorAppAlert(
                        'Account @' + account.gitHubUser.username + ' removed'
                      )));
-                     dispatch(removeAccountUi(accountId, false));
+                     dispatch(removeAccountUi(accountId, '/settings'));
                      callback();
 
                      return;

@@ -11,9 +11,9 @@ import { removeAccountsNotifications } from 'Actions/Notifications';
 
 /**
  * @param  {string} accountId
- * @param  {boolean=true} redirect
+ * @param  {string=null} redirect
  */
-export function confirmRemoveAccount(accountId: string, redirect: boolean = true)
+export function confirmRemoveAccount(accountId: string, redirect: string = null)
 {
   /*
    * Ask the user if they want to remove the account

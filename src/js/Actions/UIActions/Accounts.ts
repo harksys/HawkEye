@@ -147,7 +147,7 @@ function handleAddAccountError()
  * @param  {string} accoundId
  * @param  {boolean=true} redirect
  */
-export function removeAccount(accountId: string, redirect: boolean = true)
+export function removeAccount(accountId: string, redirect: string = null)
 {
   return dispatch =>
   {
@@ -187,10 +187,9 @@ export function removeAccount(accountId: string, redirect: boolean = true)
 
     /*
      * Redirect if needs be, to settings.
-     * @todo: Change this param to a string.
      */
-    if (redirect) {
-      dispatch(push('/settings'));
+    if (typeof redirect === 'string') {
+      dispatch(push(redirect));
     }
 
     /*
