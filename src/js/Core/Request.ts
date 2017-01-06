@@ -22,7 +22,6 @@ class Request implements IRequest
 
   private responsePlugins: any[] = [];
 
-  // @todo: Make enum
   public requestTypes: any = {
     get  : 'get',
     post : 'post',
