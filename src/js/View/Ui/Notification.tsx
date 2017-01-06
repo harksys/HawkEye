@@ -68,7 +68,7 @@ class Notification extends React.Component<INotificationProps, any>
           <div className="hard-left__left">
             <div className="text--center push-zeta--top">
               <Octicon name={getNotificationSubjectIcon(this.props.notification)}
-                       className="notification-icon position--relative top--nu" />
+                       className="notification-icon position--relative top--nu text--gamma" />
             </div>
           </div>
           <div className="hard-left__content">
