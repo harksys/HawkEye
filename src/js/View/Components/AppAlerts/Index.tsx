@@ -22,8 +22,8 @@ class AppAlerts extends React.Component<IAppAlertsProps, any>
   }
 };
 
-export default connect(
+export default connect<{}, {}, IAppAlertsProps>(
   (state: IState, props: IAppAlertsProps) => ({
     appAlerts : state.appAlerts.alerts
   })
-)(AppAlerts as any); // @todo: Fix this. It's complaining. :(
+)(AppAlerts);
