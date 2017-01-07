@@ -23,6 +23,6 @@ install:
 build_script:
   - node --version
   - npm --version
-  - npm run appveyor
+  - npm run citask
 
 test: off
