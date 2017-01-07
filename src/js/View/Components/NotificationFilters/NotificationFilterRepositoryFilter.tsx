@@ -1,9 +1,13 @@
 import * as React from 'react';
 
+import createMenu from 'Electron/Menus/Repository';
+
 import { Btn } from 'View/Ui/Index';
 
 interface INotificationFilterRepositoryFilterProps
 {
+  accountId: number;
+
   repositoryFilters: IGitHubNotificationFilterSetRepository[];
 
   className?: string;
@@ -19,6 +23,16 @@ interface INotificationFilterRepositoryFilterProps
 
 class NotificationFilterRepositoryFilter extends React.Component<INotificationFilterRepositoryFilterProps, any>
 {
+  handleRightClick(repository: IGitHubRepository, e)
+  {
+    e.preventDefault();
+
+    try {
+      createMenu(this.props.accountId, repository)
+        .popup(e.clientX, e.clientY);
+    } catch (e) {}
+  }
+
   render()
   {
     return (
@@ -35,7 +49,8 @@ class NotificationFilterRepositoryFilter extends React.Component<INotificationFi
                                   + (this.props.getFilterIsActive(filter)
                                        ? ' btn--active'
                                        : '')}
-                     onClick={this.props.onClick.bind(null, filter)}>
+                     onClick={this.props.onClick.bind(null, filter)}
+                     onContextMenu={this.handleRightClick.bind(this, filter.repository)}>
                   {this.props.getFilterTitle(filter)}
                   <span className="btn--pill__count">{filter.count}</span>
                 </Btn>

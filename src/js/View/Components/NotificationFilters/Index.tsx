@@ -123,6 +123,7 @@ class NotificationFilters extends React.Component<INotificationFiltersProps, any
             {filterSet.repositories.length > 0
               ? <NotificationFilterRepositoryFilter repositoryFilters={filterSet.repositories}
                                                     className="grid__item one-whole"
+                                                    accountId={this.props.accountId}
                                                     getTitle={() => 'Repositories'}
                                                     getFilterTitle={filter => filter.repository.fullName.toLowerCase()}
                                                     onClick={this.handleRepositoryFilterClick.bind(this)}
