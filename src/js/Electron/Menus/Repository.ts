@@ -11,7 +11,7 @@ export default function createMenu(accountId: number, repository: IGitHubReposit
   let menu = getNewRemoteElectronMenu();
 
   menu.append(getNewRemoteElectronMenuItem({
-    label : 'Setup Mute Filter',
+    label : 'Create Mute Filter',
     click : () => dispatch(setupRepositoryMuteFilter(
       accountId,
       repository,
