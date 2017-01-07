@@ -15,7 +15,7 @@ Hawk Eye has many features, including:
 
 ## Usage
 
-To get started and try out Hawk Eye, download the latest release for your platform on the [Releases Page](https://github.com/harksys/hawkeye/releases). You'll then be able to auto-update when new updates are available. Note: this currently only works for macOS, Windows incomming.
+To get started and try out Hawk Eye, download the latest release for your platform on the [Releases Page](https://github.com/harksys/hawkeye/releases). You'll then be able to auto-update when new updates are available. Note: this currently only works for macOS, Windows incoming.
 
 ## Screenshots
 
@@ -29,7 +29,7 @@ To get started and try out Hawk Eye, download the latest release for your platfo
 
 ## Contributing
 
-For information regarding contributing to this project, then please read the [Contributing](./CONTRIBUTING.md) document.
+For information regarding contributing to this project, please read the [Contributing](./CONTRIBUTING.md) document.
 
 ## License
 
