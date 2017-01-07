@@ -9,7 +9,12 @@ const initialState: IStateRepositories = {
 };
 
 let reducingMethods = {
-
+  [ActionConstants.repositories.ADD_REPOSITORY] : (state: IStateRepositories, action: { repository: IGitHubRepository; }) =>
+  {
+    return objectAssign({}, state, {
+      [action.repository.id] : action.repository
+    });
+  }
 };
 
 export default Reducify(initialState, reducingMethods);
