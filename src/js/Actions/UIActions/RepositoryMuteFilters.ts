@@ -1,4 +1,4 @@
-import * as get from 'lodash/lodash';
+import * as get from 'lodash/get';
 import { push } from 'react-router-redux';
 
 import { getState } from 'Helpers/State/Store';
@@ -28,7 +28,7 @@ export function setupRepositoryMuteFilter(accountId: number,
      */
     if (typeof existingFilter !== 'undefined') {
       if (canRedirect) {
-        push(redirect);
+        dispatch(push(redirect));
       }
 
       return;
@@ -45,9 +45,11 @@ export function setupRepositoryMuteFilter(accountId: number,
      */
     setTimeout(() =>
     {
-      if (canRedirect) {
-        push(redirect);
+      if (!canRedirect) {
+        return;
       }
+
+      dispatch(push(redirect));
     }, 0);
   };
 };
