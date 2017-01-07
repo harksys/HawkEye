@@ -6,6 +6,11 @@ import * as Octicon from 'react-octicon';
 import { dispatch } from 'Helpers/State/Store';
 
 import {
+  setReasonFilter,
+  setSubjectFilter
+} from 'Actions/RepositoryMuteFilters';
+
+import {
   gitHubNotificationReasonTypes,
   githubNotificationSubjectTypes,
   gitHubNotificationReasonTypePrettyNames,
@@ -32,6 +37,22 @@ interface IAccountRepositoryMuteFilterProps extends ReactRouter.RouteComponentPr
 
 class AccountRepositoryMuteFilter extends React.Component<IAccountRepositoryMuteFilterProps, any>
 {
+  handleReasonChange(reason: string, enabled: boolean)
+  {
+    dispatch(setReasonFilter(this.props.params.accountId,
+                             this.props.params.repoId,
+                             reason,
+                             enabled));
+  }
+
+  handleSubjectChange(subjectType: string, enabled: boolean)
+  {
+    dispatch(setSubjectFilter(this.props.params.accountId,
+                              this.props.params.repoId,
+                              subjectType,
+                              enabled));
+  }
+
   render()
   {
     if (typeof this.props.repository === 'undefined'
@@ -91,7 +112,7 @@ class AccountRepositoryMuteFilter extends React.Component<IAccountRepositoryMute
                                          value : false
                                        }]}
                                        value={this.props.repositoryMuteFilter.allowedReasons.indexOf(type) > -1}
-                                       onChange={val => { console.log(val); }} />
+                                       onChange={this.handleReasonChange.bind(this, type)} />
                              </div>
                            );
                          })}
@@ -121,7 +142,7 @@ class AccountRepositoryMuteFilter extends React.Component<IAccountRepositoryMute
                                          value : false
                                        }]}
                                        value={this.props.repositoryMuteFilter.allowedSubjectTypes.indexOf(type) > -1}
-                                       onChange={val => { console.log(val); }} />
+                                       onChange={this.handleSubjectChange.bind(this, type)} />
                              </div>
                            );
                          })}
