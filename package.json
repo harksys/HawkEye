@@ -9,7 +9,7 @@
     "dist": "build",
     "dist-all": "build -mlw",
     "build-all": "gulp && npm run dist-all",
-    "appveyor": "gulp && build"
+    "appveyor": "typings install && gulp && build"
   },
   "repository": {
     "type": "git",
