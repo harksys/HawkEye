@@ -64,6 +64,18 @@ gulp.task('styles', () =>
              .pipe(gulp.dest('./'));
 });
 
+/*
+ * Default Config Task
+ *
+ * This is for CI builds to test a project can build
+ */
+gulp.task('configdefault', () =>
+{
+  return gulp.src('./src/js/Config/HawkEye.default.ts')
+             .pipe(rename('HawkEye.ts'))
+             .pipe(gulp.dest('./src/js/Config'));
+});
+
 /**
  * Default Task
  *

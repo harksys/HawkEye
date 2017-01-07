@@ -9,7 +9,7 @@
     "dist": "build",
     "dist-all": "build -mlw",
     "build-all": "gulp && npm run dist-all",
-    "appveyor": "typings install && gulp && build"
+    "appveyor": "gulp configdefault && typings install && gulp && build"
   },
   "repository": {
     "type": "git",
@@ -97,6 +97,7 @@
     "q": "^1.4.1",
     "query-string": "^4.2.3",
     "react": "^15.4.1",
+    "react-addons-shallow-compare": "^15.4.2",
     "react-dom": "^15.4.1",
     "react-octicon": "^2.0.0",
     "react-redux": "^4.4.6",
