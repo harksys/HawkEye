@@ -90,7 +90,7 @@ class AccountRepositoryMuteFilter extends React.Component<IAccountRepositoryMute
                                          text  : 'Ignore',
                                          value : false
                                        }]}
-                                       value={this.props.repositoryMuteFilter.allowReasons.indexOf(type) > -1}
+                                       value={this.props.repositoryMuteFilter.allowedReasons.indexOf(type) > -1}
                                        onChange={val => { console.log(val); }} />
                              </div>
                            );

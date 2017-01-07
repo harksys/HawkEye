@@ -13,5 +13,5 @@ interface IStateRepositoryMuteFiltersAccountRepo
 {
   allowedSubjectTypes: string[];
 
-  allowReasons: string[];
+  allowedReasons: string[];
 };

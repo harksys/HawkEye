@@ -5,5 +5,5 @@ import {
 
 export const defaultRepositoryMuteFilter: IStateRepositoryMuteFiltersAccountRepo = {
   allowedSubjectTypes : Object.keys(githubNotificationSubjectTypes),
-  allowReasons        : Object.keys(gitHubNotificationReasonTypes)
+  allowedReasons      : Object.keys(gitHubNotificationReasonTypes)
 };
