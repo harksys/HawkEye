@@ -1,5 +1,8 @@
 ![](./.github/banner.png?raw=true)
 
+[![Build status](https://ci.appveyor.com/api/projects/status/3468o1as6k2jm73u?svg=true)](https://ci.appveyor.com/project/andrewhathaway/hawkeye)
+
+
 To read about Hawk Eye, visit the [Hark website](https://harksys.com/labs/introducing-hawk-eye-a-useful-app-for-github-notifications).
 
 ## Features
