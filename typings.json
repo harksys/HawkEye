@@ -10,7 +10,8 @@
     "async": "registry:dt/async#2.0.1+20161211174247",
     "electron": "registry:dt/electron#1.4.8+20161220141501",
     "electron-window-state": "registry:dt/electron-window-state#2.0.0+20161102134001",
-    "es6-promise": "registry:dt/es6-promise#0.0.0+20160614011821",
+    "es2015-symbol": "registry:env/es2015-symbol#1.0.0+20160526151700",
+    "es6-shim": "registry:dt/es6-shim#0.31.2+20160726072212",
     "history": "registry:dt/history#1.8.0+20160316155526",
     "moment": "registry:dt/moment#2.11.1+20161010105546",
     "node": "registry:dt/node#6.0.0+20161121110008",
@@ -26,6 +27,7 @@
     "react-virtualized": "registry:dt/react-virtualized#0.0.0+20161117143210",
     "redux": "registry:dt/redux#3.5.2+20160703092728",
     "redux-thunk": "registry:dt/redux-thunk#2.1.0+20160703120921",
-    "whatwg-fetch": "file:typings/custom/whatwg-fetch.d.ts"
+    "whatwg-fetch": "registry:dt/whatwg-fetch#0.0.0+20161120230953",
+    "whatwg-streams": "registry:dt/whatwg-streams#0.0.0+20161214010628"
   }
 }
