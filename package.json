@@ -84,6 +84,7 @@
   "dependencies": {
     "async": "^2.1.4",
     "compass-mixins": "^0.12.10",
+    "electron": "1.4.11",
     "electron-auto-updater": "^0.8.5",
     "electron-squirrel-startup": "^1.0.0",
     "electron-window-state": "^4.0.1",
