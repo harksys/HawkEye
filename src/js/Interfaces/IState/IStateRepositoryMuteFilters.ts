@@ -1,7 +1,7 @@
 
 interface IStateRepositoryMuteFilters
 {
-  [accountId: string]: IStateRepositoryMuteFiltersAccount;
+  [accountId: number]: IStateRepositoryMuteFiltersAccount;
 };
 
 interface IStateRepositoryMuteFiltersAccount
