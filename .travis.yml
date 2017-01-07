@@ -12,8 +12,8 @@ cache:
   directories:
   - node_modules
   - app/node_modules
-  - "$HOME/.electron"
-  - "$HOME/.cache"
+  - $HOME/.electron
+  - $HOME/.cache
 addons:
   apt:
     packages:
@@ -23,7 +23,8 @@ before_install:
 - mkdir -p /tmp/git-lfs && curl -L https://github.com/github/git-lfs/releases/download/v1.2.1/git-lfs-$([
   "$TRAVIS_OS_NAME" == "linux" ] && echo "linux" || echo "darwin")-amd64-1.2.1.tar.gz
   | tar -xz -C /tmp/git-lfs --strip-components 1 && /tmp/git-lfs/git-lfs pull
-- if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo apt-get install --no-install-recommends -y icnsutils graphicsmagick xz-utils; fi
+- if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo apt-get install --no-install-recommends
+  -y icnsutils graphicsmagick xz-utils; fi
 install:
 - nvm install 6
 - npm install electron-builder@next
@@ -33,4 +34,7 @@ script:
 - npm run appveyor
 branches:
   except:
-  - "/^v\\d+\\.\\d+\\.\\d+$/"
+  - /^v\d+\.\d+\.\d+$/
+notifications:
+  slack:
+    secure: HJyU58ELM/bYAW/oVhVk7HiN0V5ktmMRhMWe/LnYHN+HeQpgpWxiymOVz8qyJmcXCk8uWeT68K1CibNmLOs6JnUkVXVEtb8m9///ri7CflEKJzSKSWK8KoFQG5dYqfxer91yLJCibuAvhAuIrt4ntffX4dUTfV+45Ugv2l+GS0K7GqSeuox38jZYS6o1iXdH+E3EtT2Uu/4iqEN0CLDqiOmCsKfiosb/SixyKEnmtT3VBrYkXPC6QNJNXn7BjBMno87zmG1NlRtYd46RI2Q93Tbtvox61pVN99E7TO3omMssoPT3v5VGCIFfpZz4qGI9mWbaakut2yh+svLbjBPFI0IvHFk9fOIJf/ujgG/pTRbCdcVy12cIj4ifXLaBmN+/EdeBqLd+081XsgDZfb6pYMYdC6OL7Et93AO7A3Em6GcW2YcaR64F4ClA0DMM0c9LrRRW1rQU6QvTOQWecZaWBPZlfiniw36FraVGFlSKcSRcoZ25dpv5IRm7a1MkMrtVKF4jLPguGnalEw3F/NO7ryEswC/XwM3xbq5y7JIl/PG8AFTfkiniikts3qUEmE7/jio8S8S4GK2WFb8256V//hNf3orkz5QvO+weOB0CbZl2py3sEVi75mzxen18La1+az7I94ip7xgjxNRIzwdfR60Ca0sf3xabDD5FfZgia20=
