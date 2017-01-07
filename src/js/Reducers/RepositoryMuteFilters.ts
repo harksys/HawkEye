@@ -50,7 +50,7 @@ let reducingMethods = {
     return objectAssign({}, state, {
       [action.accountId] : objectAssign({}, accountState, {
         [action.repoId] : objectAssign({}, repoState, {
-          allowReasons : filters
+          allowedReasons : filters
         })
       })
     });
