@@ -8,13 +8,18 @@ import {
   createErrorAppAlert,
   createSuccessAppAlert
 } from 'Helpers/Models/AppAlert';
+import {
+  muteFilterNotifications,
+  makeGitHubNotification
+} from 'Helpers/Models/GitHubNotification';
 import { getLast } from 'Helpers/Lang/Array';
 import { playSound } from 'Helpers/Lang/Audio';
 import { sortingMethods } from 'Helpers/Lang/Sort';
 import { formatDateAsUTC } from 'Helpers/Lang/Date';
 import { getAccountToken } from 'Helpers/Models/Accounts';
 import { newItemsSoundIsEnabled } from 'Helpers/Models/Settings';
-import { makeGitHubNotification } from 'Helpers/Models/GitHubNotification';
+import { getAccountRepositoryMuteFilters } from 'Helpers/Models/RepositoryMuteFilters';
+
 
 import {
   setLastPoll,
@@ -47,8 +52,9 @@ export function ingestNotifications(accountId: string, notifications: any[], upd
   {
     /*
      * Make Notifications from the input,
-     * and fitler out. If theres none left,
-     * then do nothing.
+     * and fitler out any that came back null.
+     * Go no further if there are no notifications
+     * to ingest.
      */
     let madeNotifications = notifications.map(makeGitHubNotification)
                                          .filter(n => n !== null);
@@ -57,15 +63,20 @@ export function ingestNotifications(accountId: string, notifications: any[], upd
     }
 
     /*
-     * If new items sound is enabled, lets play.
+     * Mute filter the set of notifications, and
+     * don't play sound ONLY if there are unmuted notifications
+     * and we're allowed to play the sound.
      */
-    if (newItemsSoundIsEnabled()) {
+    let muteFilters          = getAccountRepositoryMuteFilters(accountId);
+    let unmutedNotifications = muteFilterNotifications(madeNotifications, muteFilters);
+
+    if (newItemsSoundIsEnabled()
+          && unmutedNotifications.length > 0) {
       playSound(soundClipPaths.harkNewItems);
     }
 
     /*
      * Ingest the notifications in to our state
-     * @todo: Bulk this?
      */
     dispatch(ingestMultipleNotifications(accountId, madeNotifications));
     if (!updatedLastPoll) {
