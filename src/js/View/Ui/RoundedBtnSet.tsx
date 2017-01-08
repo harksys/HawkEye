@@ -1,5 +1,11 @@
 import * as React from 'react';
 
+import {
+  isLastItem,
+  hasMinItems,
+  isFirstItem
+} from 'Helpers/Lang/Array';
+
 import { Btn } from './Index';
 
 interface IRoundedBtnSetProps
@@ -24,24 +30,23 @@ class RoundedBtnSet extends React.Component<IRoundedBtnSetProps, any>
 {
   render()
   {
-    // @todo: Array helper methods to clean this array logic up
     return (
       <div className={this.props.className}>
         {this.props.buttons
              .map((btn, i, a) =>
              {
                let className = (btn.className || '')
-                                  + (a.length > 1
-                                        && i === 0
+                                  + (hasMinItems(a, 1)
+                                        && isFirstItem(i)
                                         ? ' btn--hard-bottom'
                                         : '')
-                                  + (a.length > 1
-                                        && i + 1 === a.length
+                                  + (hasMinItems(a, 1)
+                                        && isLastItem(a, i)
                                         ? ' btn--hard-top'
                                         : '')
-                                  + (a.length > 1
-                                      && i !== 0
-                                      && i + 1 < a.length
+                                  + (hasMinItems(a, 1)
+                                      && !isFirstItem(i)
+                                      && !isLastItem(a, i)
                                       ? ' btn--hard'
                                       : '')
 
