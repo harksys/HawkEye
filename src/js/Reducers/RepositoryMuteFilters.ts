@@ -85,6 +85,16 @@ let reducingMethods = {
         })
       })
     })
+  },
+  [ActionConstants.repositoryMuteFilters.REMOVE_FILTER] : (state: IStateRepositoryMuteFilters,
+                                                           action: { accountId: number;
+                                                                     repoId: string }) =>
+  {
+    let accountState = getAccountState(state, action.accountId);
+
+    return objectAssign({}, state, {
+      [action.accountId] : objectAssign({}, omit(accountState, action.repoId))
+    })
   }
 };
 

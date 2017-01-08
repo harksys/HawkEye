@@ -36,3 +36,12 @@ export function setSubjectFilter(accountId: number,
     enabled
   };
 };
+
+export function removeFilter(accountId: number, repoId: string)
+{
+  return {
+    type      : ActionConstants.repositoryMuteFilters.REMOVE_FILTER,
+    accountId,
+    repoId
+  };
+};
