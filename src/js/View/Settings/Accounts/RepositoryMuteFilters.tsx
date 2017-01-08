@@ -95,8 +95,9 @@ class AccountRepositoryMuteFilter extends React.Component<IAccountRepositoryMute
                 <Octicon name={this.props.repository.private
                                  ? 'lock'
                                  : 'repo'}
-                         className="display--inline text--betaw" />
-                <p className="display--inline text--delta push-zeta--left account-settings__repo">
+                         className={'display--inline position--relative top--nu '
+                                      + 'account-settings__repo-icon text--beta'} />
+                <p className="account-settings__repo display--inline text--delta push-zeta--left">
                   {this.props.repository.fullName}
                 </p>
               </div>
@@ -115,7 +116,9 @@ class AccountRepositoryMuteFilter extends React.Component<IAccountRepositoryMute
                            return (
                              <div key={type}
                                   className="grid__item one-whole push-delta--bottom">
-                               <label className="text--zeta push-zeta--bottom">{gitHubNotificationReasonTypePrettyNames[t]}</label>
+                               <label className="text--zeta push-zeta--bottom">
+                                 {gitHubNotificationReasonTypePrettyNames[t]}
+                               </label>
                                <Toggle options={[{
                                          index : 1,
                                          text  : 'Keep',
