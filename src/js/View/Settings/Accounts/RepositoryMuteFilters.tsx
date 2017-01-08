@@ -19,13 +19,14 @@ import {
 
 import { confirmRemoveRepositoryMuteFilter } from 'Electron/Dialogs/Accounts';
 
-import ViewBar from 'View/Components/ViewBar/Index';
 import {
   Btn,
   Scroll,
   Toggle,
   CenteredBox,
 } from 'View/Ui/Index';
+import ViewBar from 'View/Components/ViewBar/Index';
+import GenericError from 'View/Components/GenericError';
 
 interface IAccountRepositoryMuteFilterProps extends ReactRouter.RouteComponentProps<{
                                                       accountId: number;
@@ -68,14 +69,28 @@ class AccountRepositoryMuteFilter extends React.Component<IAccountRepositoryMute
 
   render()
   {
+    let accountSettingsUrl = '/settings/accounts/' + this.props.params.accountId;
+
+    /*
+     * If we can't find the repository or mute
+     * filter, theres an issue.
+     */
     if (typeof this.props.repository === 'undefined'
           || typeof this.props.repositoryMuteFilter === 'undefined') {
-      return <p>Error!</p>;
+      return (
+        <ViewBar title="Edit Mute filter"
+                backLink={accountSettingsUrl}>
+          <GenericError title="Cannot find Repository Mute Filter"
+                        description="This Repository Mute Filter was not found."
+                        buttonText="Go Back"
+                        buttonUrl={accountSettingsUrl} />
+        </ViewBar>
+      )
     }
 
     return (
       <ViewBar title={'Edit Mute Filter'}
-               backLink={'/settings/accounts/' + this.props.params.accountId}
+               backLink={accountSettingsUrl}
                getRightContent={() =>
                (
                  <CenteredBox>

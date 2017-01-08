@@ -228,3 +228,20 @@ label { color: #666; }
 .no-accounts__btn:hover {
   background: $button-bg-hover;
 }
+
+/*
+ * Generic Error
+ */
+.generic-error__title,
+.generic-error__description {
+  color: $text-color;
+}
+
+.generic-error__btn {
+  color: $text-color;
+  background: $button-bg;
+}
+
+.generic-error__btn:hover {
+  background: $button-bg-hover;
+}
