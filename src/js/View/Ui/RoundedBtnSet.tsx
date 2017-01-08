@@ -31,15 +31,15 @@ class RoundedBtnSet extends React.Component<IRoundedBtnSetProps, any>
              .map((btn, i, a) =>
              {
                let className = (btn.className || '')
-                                  + (a.length > 0
+                                  + (a.length > 1
                                         && i === 0
                                         ? ' btn--hard-bottom'
                                         : '')
-                                  + (a.length > 0
+                                  + (a.length > 1
                                         && i + 1 === a.length
                                         ? ' btn--hard-top'
                                         : '')
-                                  + (a.length > 0
+                                  + (a.length > 1
                                       && i !== 0
                                       && i + 1 < a.length
                                       ? ' btn--hard'
