@@ -4,7 +4,10 @@ import { push } from 'react-router-redux';
 import { getState } from 'Helpers/State/Store';
 
 import { addRepository } from 'Actions/Repositories';
-import { setupRepositoryMuteFilter as setupRepositoryMuteFilterInStore } from 'Actions/RepositoryMuteFilters';
+import {
+  removeFilter,
+  setupRepositoryMuteFilter as setupRepositoryMuteFilterInStore
+} from 'Actions/RepositoryMuteFilters';
 
 /**
  * @param  {number} accountId
@@ -51,5 +54,47 @@ export function setupRepositoryMuteFilter(accountId: number,
 
       dispatch(push(redirect));
     }, 0);
+  };
+};
+
+/**
+ * @param  {number} accountId
+ * @param  {string} repoId
+ * @param  {string=null} redirect
+ */
+export function removeRepositoryMuteFilter(accountId: number,
+                                           repoId: string,
+                                           redirect: string = null)
+{
+  return dispatch =>
+  {
+    let canRedirect = typeof redirect === 'string';
+
+    let state          = getState<IState>();
+    let existingFilter = get(state.repositoryMuteFilters, `${accountId}.${repoId}`, undefined);
+
+    /*
+     * If there is no filter to delete, then attempt redirect
+     */
+    if (typeof existingFilter === 'undefined') {
+      if (canRedirect) {
+        dispatch(push(redirect));
+      }
+
+      return;
+    }
+
+    /*
+     * First attempt the redirect, to make sure
+     * we're not on the page.
+     */
+    if (canRedirect) {
+      dispatch(push(redirect));
+    }
+
+    /*
+     * Remove the filter
+     */
+    dispatch(removeFilter(accountId, repoId));
   };
 };

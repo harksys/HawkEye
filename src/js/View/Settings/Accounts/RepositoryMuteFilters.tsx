@@ -17,6 +17,8 @@ import {
   gitHubNotificationSubjectTypePrettyNames
 } from 'Constants/Services/GitHub';
 
+import { confirmRemoveRepositoryMuteFilter } from 'Electron/Dialogs/Accounts';
+
 import ViewBar from 'View/Components/ViewBar/Index';
 import {
   Btn,
@@ -53,6 +55,17 @@ class AccountRepositoryMuteFilter extends React.Component<IAccountRepositoryMute
                               enabled));
   }
 
+  handleRemoveRepositoryMuteFilter(e)
+  {
+    e.preventDefault();
+
+    confirmRemoveRepositoryMuteFilter(
+      this.props.params.accountId,
+      this.props.params.repoId,
+      '/settings/accounts/' + this.props.params.accountId
+    );
+  }
+
   render()
   {
     if (typeof this.props.repository === 'undefined'
@@ -68,7 +81,8 @@ class AccountRepositoryMuteFilter extends React.Component<IAccountRepositoryMute
                  <CenteredBox>
                    <a href="#"
                       className={'view-bar__settings__right-icon '
-                                  + 'view-bar__settings__right-icon--delete'}>
+                                  + 'view-bar__settings__right-icon--delete'}
+                      onClick={this.handleRemoveRepositoryMuteFilter.bind(this)}>
                      <Octicon name="x" />
                    </a>
                  </CenteredBox>
