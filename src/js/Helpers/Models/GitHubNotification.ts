@@ -105,6 +105,9 @@ export function muteFilterNotifications(notifications: IGitHubNotification[],
         {
           let muteFilter    = muteFilters[repoIdToFilter];
           let notifications = repoSplit[repoIdToFilter];
+          if (typeof notifications === 'undefined') {
+            return;
+          }
 
           /*
            * Create the FilterSet with the rules
