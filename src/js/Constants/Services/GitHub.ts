@@ -53,12 +53,12 @@ export const gitHubNotificationReasonTypes = {
 };
 
 export const gitHubNotificationReasonTypePrettyNames = {
-  SUBSCRIBED : 'Subscribed',
-  MANUAL : 'Manual',
-  AUTHOR : 'Authored',
-  COMMENT : 'Commented',
-  MENTION : 'Mentioned',
+  SUBSCRIBED  : 'Watching',
+  MANUAL      : 'Watching Thread',
+  AUTHOR      : 'Authored',
+  COMMENT     : 'Commented',
+  MENTION     : 'Mentioned',
   TEAMMENTION : 'Team Mention',
   STATECHANGE : 'State Changed',
-  ASSIGN : 'Assigned'
+  ASSIGN      : 'Assigned'
 };
