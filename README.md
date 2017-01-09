@@ -9,11 +9,12 @@ To read about Hawk Eye, visit the [Hark website](https://harksys.com/labs/introd
 
 Hawk Eye has many features, including:
 
+- Scheduled notification pulling
+- Filter by type, repository and more
+- Flexible per-repository mute filters
+- Mark single and multiple notifications as read
 - Support for multiple accounts
 - Light and dark mode
-- Mark single and multiple notifications as read
-- Filter by type, repository and more
-- Scheduled notification pulling
 - Responsive design
 
 ## Usage
