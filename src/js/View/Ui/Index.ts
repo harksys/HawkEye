@@ -9,6 +9,7 @@ import Toggle from './Toggle';
 import AppLoading from './AppLoading';
 import CenteredBox from './CenteredBox';
 import Notification from './Notification';
+import RoundedBtnSet from './RoundedBtnSet';
 import ProfilePicture from './ProfilePicture';
 
 export {
@@ -23,5 +24,6 @@ export {
   AppLoading,
   CenteredBox,
   Notification,
+  RoundedBtnSet,
   ProfilePicture
 };

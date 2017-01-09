@@ -94,6 +94,18 @@ label { color: #666; }
   }
 }
 
+.view-bar__settings__right-icon {
+  color: $text-color;
+
+  &:hover {
+    color: $brand-color-main;
+  }
+}
+
+.view-bar__settings__right-icon--delete:hover {
+  color: $background-error;
+}
+
 /*
  * Notifications
  */
@@ -171,7 +183,9 @@ label { color: #666; }
 }
 
 .account-settings__name,
-.account-settings__username {
+.account-settings__username,
+.account-settings__repo,
+.account-settings__repo-icon {
   color: $text-color;
 }
 
@@ -216,5 +230,22 @@ label { color: #666; }
 }
 
 .no-accounts__btn:hover {
+  background: $button-bg-hover;
+}
+
+/*
+ * Generic Error
+ */
+.generic-error__title,
+.generic-error__description {
+  color: $text-color;
+}
+
+.generic-error__btn {
+  color: $text-color;
+  background: $button-bg;
+}
+
+.generic-error__btn:hover {
   background: $button-bg-hover;
 }

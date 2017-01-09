@@ -8,6 +8,7 @@ import { createSuccessAppAlert } from 'Helpers/Models/AppAlert';
 import { pushAppAlert } from 'Actions/AppAlerts';
 import { removeAccount } from 'Actions/UIActions/Accounts';
 import { removeAccountsNotifications } from 'Actions/Notifications';
+import { removeRepositoryMuteFilter } from 'Actions/UIActions/RepositoryMuteFilters';
 
 /**
  * @param  {string} accountId
@@ -67,4 +68,34 @@ export function confirmClearNotifications(accountId: number)
       'Accounts notifications have been removed.'
     )));
   });
+};
+
+/**
+ * @param  {number} accountId
+ * @param  {string} repoId
+ * @param  {string=null} redirect
+ */
+export function confirmRemoveRepositoryMuteFilter(accountId: number,
+                                                  repoId: string,
+                                                  redirect: string = null)
+{
+  getElectron().remote.dialog.showMessageBox(getCurrentWindow(), {
+    type    : 'question',
+    title   : 'Are you sure?',
+    message : 'Are you sure you want to remove this repositories Mute Filter?',
+    buttons : [
+      'Yes',
+      'No'
+    ]
+  }, index =>
+  {
+    if (index === 1) {
+      return;
+    }
+
+    dispatch(removeRepositoryMuteFilter(accountId, repoId, redirect));
+    dispatch(pushAppAlert(createSuccessAppAlert(
+      'Repository Mute Filter removed'
+    )));
+  })
 };

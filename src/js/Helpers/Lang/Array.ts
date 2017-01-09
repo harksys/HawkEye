@@ -14,6 +14,40 @@ export function getLast<T>(array: T[]): T
 
 /**
  * @param  {any[]} array
+ */
+export function hasItems(array: any[])
+{
+  return array.length > 0;
+}
+
+/**
+ * @param  {any[]} array
+ * @param  {number} min
+ */
+export function hasMinItems(array: any[], min: number)
+{
+  return array.length > min;
+};
+
+/**
+ * @param  {number} index
+ */
+export function isFirstItem(index: number)
+{
+  return index === 0;
+};
+
+/**
+ * @param  {any[]} array
+ * @param  {number} index
+ */
+export function isLastItem(array: any[], index: number)
+{
+  return array.length === index + 1;
+};
+
+/**
+ * @param  {any[]} array
  * @param  {(key:any)=>any} getValue
  * @returns any
  */
