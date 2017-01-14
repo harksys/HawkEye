@@ -309,6 +309,13 @@ ipcMain.on('MarkNotificationRead', (event, args: { token: string;
       }
     }, (err, resp, body) =>
     {
+      if (err || !resp)  {
+        event.sender.send('MarkNotificationReadError', args[0]);
+        log('[Failed] Marking ' + id + ' as read for account ' + accountId);
+        return;
+      }
+
+
       /*
        * 205 == win
        */
