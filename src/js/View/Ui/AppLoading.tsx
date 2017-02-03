@@ -12,7 +12,7 @@ interface IAppLoadingProps
 
 const AppLoading: React.SFC<IAppLoadingProps> = ({ show }) =>
 (
-  <div className={'app__loading'
+  <div className={'app__loading app-drag'
                     + (show
                         ? ' app__loading--show'
                         : '')}>
