@@ -52,3 +52,14 @@ export function relativeTime(date: string | moment.Moment): string
 {
   return Moment(date).fromNow(false);
 };
+
+/**
+ * @param  {string|moment.Moment} date
+ * @param  {string} unit
+ * @param  {number} amount
+ * @returns moment
+ */
+export function addTime(date: string | moment.Moment, unit: string, amount: number): moment.Moment
+{
+  return Moment(date).add(unit, amount);
+};

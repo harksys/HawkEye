@@ -15,7 +15,10 @@ import {
 import { getLast } from 'Helpers/Lang/Array';
 import { playSound } from 'Helpers/Lang/Audio';
 import { sortingMethods } from 'Helpers/Lang/Sort';
-import { formatDateAsUTC } from 'Helpers/Lang/Date';
+import {
+  addTime,
+  formatDateAsUTC
+} from 'Helpers/Lang/Date';
 import { getAccountToken } from 'Helpers/Models/Accounts';
 import { newItemsSoundIsEnabled } from 'Helpers/Models/Settings';
 import { getAccountRepositoryMuteFilters } from 'Helpers/Models/RepositoryMuteFilters';
@@ -90,7 +93,9 @@ export function ingestNotifications(accountId: string, notifications: any[], upd
     let sortedNotifications = madeNotifications.sort(sortingMethods.dateAsc('updatedAt'));
     let lastNotification    =  getLast<IGitHubNotification>(sortedNotifications);
 
-    dispatch(setLastPoll(formatDateAsUTC(lastNotification.updatedAt)));
+    let lastPoll = formatDateAsUTC(addTime(lastNotification.updatedAt, 'second', 1));
+
+    dispatch(setLastPoll(lastPoll));
   };
 };
 
