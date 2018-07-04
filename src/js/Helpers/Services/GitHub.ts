@@ -107,7 +107,7 @@ export function getNotificationReasonPrettyName(reason: string): string
 {
   let type = gitHubNotificationReasonTypes[reason];
   if (typeof type === 'undefined'
-       || typeof gitHubNotificationReasonTypePrettyNames[type] === 'undefuned') {
+       || typeof gitHubNotificationReasonTypePrettyNames[type] === 'undefined') {
     return reason;
   }
 
